@@ -1,0 +1,45 @@
+#iubenda-view {
+    display: table;
+
+    width: 90%;
+    margin: 50px auto;
+    padding: 50px 6%;
+    box-sizing: border-box;
+
+    border-radius: 2px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.1)
+}
+.iubenda-title {
+    margin-top: 10px;
+    font-weight: bold;
+}
+.iubenda-link {
+    display: table;
+    margin: 0 auto 40px;
+}
+.iubenda-text {
+    margin: 10px auto;
+    color: #434149
+}
+#iubenda-tabs {
+    margin: 30px auto 20px;
+}
+#iub_parser_engine_container {
+    margin-top: 10px;
+}
+#iub_parser_engine_container > div:not(:last-child) {
+    margin-bottom: 10px;
+}
+#iubenda-tabs #contextual-help-back {
+    right: 0;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+}
+#iubenda-tabs .help-tab-content {
+    margin-right: 0;
+}
+#iubenda-tabs .help-tab-content textarea {
+    margin-top: 18px;
+    width: 100%;
+}
