@@ -1,0 +1,60 @@
+/* Expand / Collapse Buttons */
+.field-repeater-toggle-all,
+.field-flexible-toggle {
+	position: relative;
+	z-index: 990;
+	float: right;
+	margin: -6px 0 0 !important;
+	padding: 0 5px 1px!important;
+}
+
+.btn-icon-only > .field-repeater-toggle-all span,
+.btn-icon-only > .field-flexible-toggle span {
+	display: none;
+}
+
+.field-repeater-toggle::before,
+.field-flexible-toggle::before {
+	position: relative;
+	top: 2px;
+	content: "\f506";
+	display: inline;
+	-webkit-font-smoothing: antialiased;
+	font: normal 20px/1 'dashicons';
+	vertical-align: text-bottom;
+	color: #777;
+	margin: 0 5px 0 0;
+}
+
+.field-repeater-toggle-all.collapsed-row::before,
+.field-flexible-toggle-all.collapsed-row::before {
+	content: "\f211";
+}
+
+.btn-icon-only > .field-repeater-toggle-all::before,
+.btn-icon-only > .field-flexible-toggle::before {
+	margin: 0;
+}
+
+.acf-repeater.-table .repeater-collapse {
+	padding-top: 18px;
+}
+
+.acf-repeater.-table .repeater-collapse .acf-actions.acf-hl:before,
+.acf-repeater.-table .repeater-collapse .acf-actions.acf-hl:after {
+	display: inline;
+}
+
+.acf-repeater.-table .repeater-collapse .field-repeater-toggle {
+	position: relative;
+	top: -6px;
+}
+
+.acf-repeater.-table .flexible-collapse {
+	padding-top: 40px;
+}
+
+.acf-repeater.-table .field-flexible-toggle {
+	position: relative;
+	top: -28px;
+}

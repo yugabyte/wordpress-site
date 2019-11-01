@@ -1,0 +1,101 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ACF Repeater & Flexible Content Collapser\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-12-13 11:46+0000\n"
+"PO-Revision-Date: 2017-12-13 11:46+0000\n"
+"Last-Translator: thomas <t.meyer@me.com>\n"
+"Language-Team: German (Formal)\n"
+"Language: de-DE-formal\n"
+"Plural-Forms: nplurals=2; plural=n != 1\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco - https://localise.biz/"
+
+#: acf-repeater-flexible-content-collapser.php:295
+msgid "Plugins by dreihochzwo"
+msgstr "Plugins von dreihochzwo"
+
+#: acf-repeater-flexible-content-collapser.php:102
+#, php-format
+msgid "%1$s requires ACF PRO v%2$s or higher to be installed and activated."
+msgstr "Für %1$s muss ACF PRO v%2$s oder höher installiert und aktiviert sein."
+
+#: acf-repeater-flexible-content-collapser.php:144
+msgid "Expand All Elements"
+msgstr "Alle Felder aufklappen"
+
+#: acf-repeater-flexible-content-collapser.php:145
+msgid "Collapse All Elements"
+msgstr "Alle Felder einklappen"
+
+#: acf-repeater-flexible-content-collapser.php:168
+#: acf-repeater-flexible-content-collapser.php:221
+msgid "Hide collapse button"
+msgstr "Auf-/Zuklappen-Button ausblenden"
+
+#: acf-repeater-flexible-content-collapser.php:169
+#: acf-repeater-flexible-content-collapser.php:222
+msgid "Don't show the collapse button for this group"
+msgstr "Blende den Auf-/Zuklappen-Button aus"
+
+#: acf-repeater-flexible-content-collapser.php:176
+#: acf-repeater-flexible-content-collapser.php:229
+msgid "Collapse all on load"
+msgstr "Beim Laden einklappen"
+
+#: acf-repeater-flexible-content-collapser.php:177
+msgid "Collapse all fields of this repeater field on page load"
+msgstr "Alle Felder dieses Wiederholung-Feldes automatisch einklappen"
+
+#: acf-repeater-flexible-content-collapser.php:184
+#: acf-repeater-flexible-content-collapser.php:237
+msgid "Button only with icon?"
+msgstr "Button nur mit Icon"
+
+#: acf-repeater-flexible-content-collapser.php:185
+#: acf-repeater-flexible-content-collapser.php:238
+msgid "Hides the text on the collapse/expand buttons"
+msgstr "Blendet den Text des Einklappen/Ausklappen Buttons aus"
+
+#: acf-repeater-flexible-content-collapser.php:230
+msgid "Collapse all fields of this flexible content field on page load"
+msgstr "Alle Felder dieses Flexible Inhalte-Feldes automatisch einklappen"
+
+#: acf-repeater-flexible-content-collapser.php:315
+msgid "Thank you for using my plugins!"
+msgstr "Danke, dass Sie meine Plugins nutzen!"
+
+#: acf-repeater-flexible-content-collapser.php:324
+msgid "Documentation"
+msgstr "Dokumentation"
+
+#: acf-repeater-flexible-content-collapser.php:333
+msgid "Please consider making a small donation!"
+msgstr "Ich freue mich über eine kleine Spende!"
+
+#. Name of the plugin
+msgid "ACF Repeater & Flexible Content Collapser"
+msgstr "ACF Repeater & Flexible Content Collapser"
+
+#. Description of the plugin
+msgid ""
+"Collapse and expand ACF Repeater and Flexible Content fields all at once to "
+"get a better overview and enable easier sorting."
+msgstr ""
+"Ermöglicht das Auf-/Zuklappen von ACF Wiederholungs- und Flexible Inhalte-"
+"Feldern, um einen besseren Überblick zu erhalten und eine einfachere "
+"Sortierung zu ermöglichen."
+
+#. URI of the plugin
+msgid "https://wordpress.org/plugins/acf-repeater-flexible-content-collapser/"
+msgstr "https://wordpress.org/plugins/acf-repeater-flexible-content-collapser/"
+
+#. Author of the plugin
+msgid "Thomas Meyer"
+msgstr "Thomas Meyer"
+
+#. Author URI of the plugin
+msgid "https://dreihochzwo.de"
+msgstr "https://dreihochzwo.de"

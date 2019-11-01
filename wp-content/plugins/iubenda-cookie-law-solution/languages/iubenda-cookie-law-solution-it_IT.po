@@ -1,0 +1,291 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Iubenda Cookie Solution\n"
+"POT-Creation-Date: 2018-09-28 09:53+0200\n"
+"PO-Revision-Date: 2018-09-28 10:45+0200\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: it\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1.1\n"
+"X-Poedit-Basepath: ..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: iubenda_cookie_solution.php:502
+msgid "Code"
+msgstr "Codice"
+
+#: iubenda_cookie_solution.php:503
+msgid "Scripts blocking"
+msgstr "Blocco preventivo dei codici"
+
+#: iubenda_cookie_solution.php:504
+msgid "Content type"
+msgstr "Tipo di contenuto"
+
+#: iubenda_cookie_solution.php:505
+msgid "RSS feed"
+msgstr "Feed RSS"
+
+#: iubenda_cookie_solution.php:506
+msgid "Menu position"
+msgstr "Posizione menu"
+
+#: iubenda_cookie_solution.php:507
+msgid "Deactivation"
+msgstr "Disattivazione"
+
+#: iubenda_cookie_solution.php:557
+#, php-format
+msgid "Enter the iubenda code for %s."
+msgstr "Inserire il codice di iubenda per %s."
+
+#: iubenda_cookie_solution.php:568
+msgid "Enter the iubenda code."
+msgstr "Inserire il codice di iubenda."
+
+#: iubenda_cookie_solution.php:581
+msgid "Automatically block scripts detected by the plugin."
+msgstr "Blocca automaticamente gli script rilevati dal plugin."
+
+#: iubenda_cookie_solution.php:582
+#, php-format
+msgid ""
+"see <a href=\"%s\" target=\"_blank\">our documentation</a> for the list of "
+"detected scripts."
+msgstr ""
+"visita <a href=\"%s\" target=\"_blank\">la nostra documentazione</a> per la "
+"lista degli script rilevati automaticamente dal plugin."
+
+#: iubenda_cookie_solution.php:585
+msgid "Primary"
+msgstr "Prima"
+
+#: iubenda_cookie_solution.php:586
+msgid "Secondary"
+msgstr "Seconda"
+
+#: iubenda_cookie_solution.php:587
+msgid "Select parsing engine."
+msgstr "Seleziona il motore di parsing."
+
+#: iubenda_cookie_solution.php:590
+msgid ""
+"Leave scripts untouched on the page if the user has already given consent"
+msgstr ""
+"Lascia gli script intatti sulla pagina se l'utente ha già prestato il "
+"consenso"
+
+#: iubenda_cookie_solution.php:591
+msgid ""
+"improves performance, highly recommended, to be deactivated only if your "
+"site uses a caching system"
+msgstr ""
+"migliora le prestazioni, altamente consigliato, da disattivare solo qualora "
+"il tuo sito utilizzi un sistema di cache"
+
+#: iubenda_cookie_solution.php:605
+msgid ""
+"Restrict the plugin to run only for requests that have \"Content-type: "
+"text / html\" (recommended)"
+msgstr ""
+"Restringi l'esecuzione del plugin alle sole richieste che presentano "
+"\"Content-type: text/html\" (consigliato)"
+
+#: iubenda_cookie_solution.php:617
+msgid "Do not run the plugin inside the RSS feed (recommended)"
+msgstr "Non eseguire il plugin all'interno dei Feed RSS (consigliato)"
+
+#: iubenda_cookie_solution.php:629
+msgid "Top menu"
+msgstr "Menu principale"
+
+#: iubenda_cookie_solution.php:630
+msgid "Submenu"
+msgstr "Sottomenu"
+
+#: iubenda_cookie_solution.php:631
+msgid ""
+"Select whether to display iubenda in a top admin menu or the Settings "
+"submenu."
+msgstr ""
+"Scegli se visualizzare iubenda in una voce di menu principale del pannello "
+"admin o in un sottomenu della scheda Impostazioni."
+
+#: iubenda_cookie_solution.php:643
+msgid "Delete all plugin data upon deactivation?"
+msgstr ""
+"Vuoi eliminare tutti i dati del plugin al momento della disattivazione?"
+
+#: iubenda_cookie_solution.php:680
+msgid "Settings saved."
+msgstr "Impostazioni salvate."
+
+#: iubenda_cookie_solution.php:691
+msgid "Settings restored to defaults."
+msgstr "Impostazioni di default ripristinate."
+
+#: iubenda_cookie_solution.php:737
+msgid "You don't have permission to access this page."
+msgstr "Non disponi dell'autorizzazione per accedere a questa pagina."
+
+#: iubenda_cookie_solution.php:746
+msgid ""
+"This plugin is the easiest and most comprehensive way to adapt your "
+"WordPress site to the European cookie law. Upon your user's first visit, the "
+"plugin will take care of collecting their consent, of blocking the most "
+"popular among the scripts that install cookies and subsequently reactivate "
+"these scripts as soon as consent is provided. The basic settings include "
+"obtaining consent by a simple scroll action (the most effective method) and "
+"script reactivation without refreshing the page."
+msgstr ""
+"Questo plugin è il modo più semplice e completo per adeguare il tuo sito "
+"WordPress alla cookie law. Alla prima visita dell'utente il plugin si "
+"occuperà di raccoglierne il consenso, di bloccare i più popolari fra gli "
+"script che installano cookie e di riattivarli non appena il consenso viene "
+"fornito. Le impostazioni di base includono la raccolta del consenso tramite "
+"il semplice scroll (il metodo più efficace) e la riattivazione senza il "
+"refresh della pagina."
+
+#: iubenda_cookie_solution.php:749
+msgid "Would you like to know more about the cookie law?"
+msgstr "Vuoi capire di più sulla cookie law?"
+
+#: iubenda_cookie_solution.php:750
+#, php-format
+msgid ""
+"Read our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">complete "
+"guide to the cookie law.</a>"
+msgstr ""
+"Consulta la nostra <a href=\"%s\" class=\"iubenda-url\" target=\"_blank"
+"\">guida completa alla cookie law</a>"
+
+#: iubenda_cookie_solution.php:753
+msgid "What is the full functionality of the plugin?"
+msgstr "Qual è la completa funzionalità del plugin?"
+
+#: iubenda_cookie_solution.php:754
+#, php-format
+msgid ""
+"Visit our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">plugin page."
+"</a>"
+msgstr ""
+"Visita la <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">nostra "
+"pagina dedicata</a> al plugin"
+
+#: iubenda_cookie_solution.php:757
+msgid "Enter the iubenda code for the Cookie Solution below."
+msgstr "Inserisci qui sotto il codice di iubenda per la Cookie Solution."
+
+#: iubenda_cookie_solution.php:758
+#, php-format
+msgid ""
+"In order to run the plugin, you need to enter the iubenda code that "
+"activates the cookie law banner and the cookie policy in the form below. "
+"This code can be generated on www.iubenda.com, following <a href=\"%s\" "
+"class=\"iubenda-url\" target=\"_blank\">this guide.</a>"
+msgstr ""
+"Per far funzionare il plugin, è necessario inserire nel form sottostante il "
+"codice di iubenda che attiva il banner cookie law e la cookie policy. Questo "
+"codice può essere generato su www.iubenda.com, <a href=\"%s\" class="
+"\"iubenda-url\" target=\"_blank\">seguendo questa guida.</a>"
+
+#: iubenda_cookie_solution.php:769
+msgid "Reset to defaults"
+msgstr "Ripristina le impostazioni di default"
+
+#: iubenda_cookie_solution.php:775
+msgid "Need support for this plugin?"
+msgstr "Hai bisogno di supporto su questo plugin?"
+
+#: iubenda_cookie_solution.php:776
+#, php-format
+msgid ""
+"Visit our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">support "
+"forum.</a>"
+msgstr ""
+"Visita il nostro <a href=\"%s\" class=\"iubenda-url\" target=\"_blank"
+"\">forum di supporto</a>"
+
+#: iubenda_cookie_solution.php:779
+msgid "Want to try a beta version of this plugin with the latest features?"
+msgstr ""
+"Vuoi provare una versione Beta di questo plugin, con le funzionalità più "
+"recenti?"
+
+#: iubenda_cookie_solution.php:780
+#, php-format
+msgid ""
+"Visit our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank"
+"\">documentation pages</a> and follow the instructions to install a beta "
+"version."
+msgstr ""
+"Visita la <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">nostra "
+"documentazione</a> e segui le istruzioni per installare una versione Beta."
+
+#~ msgid "Default"
+#~ msgstr "Default"
+
+#~ msgid "Experimental"
+#~ msgstr "Sperimentale"
+
+#~ msgid "What’s the full functionality of the plugin?"
+#~ msgstr "Quali sono le funzionalità complete del plugin?"
+
+#~ msgid "Settings applied successfully"
+#~ msgstr "Impostazioni salvate con successo"
+
+#~ msgid "Select a language to correctly pair it with your script"
+#~ msgstr "Seleziona una lingua a cui associare il tuo codice"
+
+#~ msgid "Automatically blocks scripts detected by the plugin"
+#~ msgstr "Effettua il blocco automatico degli script rilevati dal plugin"
+
+#~ msgid ""
+#~ "see <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">our "
+#~ "documentation</a> for the list of detected scripts."
+#~ msgstr ""
+#~ "consulta la <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">nostra "
+#~ "documentazione</a> per la lista di script rilevati."
+
+#~ msgid "Parsing engine"
+#~ msgstr "Parsing engine"
+
+#~ msgid "Experimental (enhances performance)"
+#~ msgstr "Sperimentale (performance migliorata)"
+
+#~ msgid ""
+#~ "Leaves scripts untouched on the page if the user has already given consent"
+#~ msgstr ""
+#~ "Lascia intatti gli script della pagina se l'utente ha già dato il consenso"
+
+#~ msgid "Applies special optimizations in cases with faulty output"
+#~ msgstr "Applica ottimizzazioni speciali in caso di errori con l'output"
+
+#~ msgid ""
+#~ "only select this option if you had performance problems or if you notice "
+#~ "that the blocking of code is run several times"
+#~ msgstr ""
+#~ "attiva questa opzione solo qualora avessi problemi di performance o "
+#~ "notassi che il blocco dei codici viene applicato più volte"
+
+#~ msgid "Save"
+#~ msgstr "Salva"
+
+#~ msgid "Parsed with iubenda experimental class in %s sec."
+#~ msgstr "Parsed with iubenda experimental class in %s sec."
+
+#~ msgid "Parsed with iubenda default class in %s sec."
+#~ msgstr "Parsed with iubenda default class in %s sec."
+
+#~ msgid ""
+#~ "see <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">our "
+#~ "documentation</a> for the list of detected scripts this guide."
+#~ msgstr ""
+#~ "consulta la <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">nostra "
+#~ "documentazione</a> per la lista di script rilevati."

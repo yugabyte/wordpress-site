@@ -1,0 +1,54 @@
+#redirect-panel .field-wrap {
+    margin-bottom: 10px;
+}
+#redirect-panel .field-wrap [type='url'],
+#redirect-panel .field-wrap [type='select'] {
+    height: 28px;
+}
+#redirect-panel .field-wrap [type='url'],
+#redirect-panel .field-wrap [type='text'] {
+    width: 100%;
+}
+#redirect-panel .field-wrap [type='checkbox'] {
+    margin-top: 1px;
+}
+#redirect-panel .field-wrap textarea {
+    direction: ltr;
+    width: 100%;
+}
+#redirect-panel .field-wrap-after-sent-script {
+    margin-top: 10px;
+}
+#redirect-panel .field-wrap-page-id label,
+#redirect-panel .field-wrap-after-sent-script label {
+    display: block;
+    margin-bottom: 5px;
+}
+#redirect-panel .field-wrap-http-build-query-selectively [type='text'] {
+    margin-top: 10px;
+}
+#redirect-panel .field-wrap-after-sent-script .field-message {
+    margin-bottom: 10px;
+}
+#redirect-panel .field-notice {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid;
+    border-radius: 4px;
+    background: #fff;
+}
+#redirect-panel .field-notice-alert {
+    color: #8a6d3b;
+    border: 1px solid #faebcc;
+    background-color: #fcf8e3;
+}
+#redirect-panel .field-hidden,
+#redirect-panel .field-notice-hidden {
+    display: none;
+}
+#redirect-panel .field-warning-alert {
+    color: #a94442;
+    border-color: #ebccd1;
+    background-color: #f2dede;
+}
