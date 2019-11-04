@@ -160,11 +160,49 @@ section {
 	display: block;
 }
 
+#menu-main-menu {
+	position: relative;
+}
+
 .navbar .nav-link {
     color: #333;
-    padding: 1rem 1.25rem;
-    font-size: 12px;
-    line-height: 18px;
+	font-size: 12px;
+	padding: 1rem 1.25rem;
+	line-height: 18px;
+	position: relative;
+  	text-decoration: none;
+}
+
+hr {
+	top: 45px;
+	height: .25rem;
+	width: 0px;
+	margin: 0;
+	left: 1rem;
+	background: #F75821;;
+	position: absolute;
+	border: none;
+	transition: .3s ease-in-out;
+}
+
+#menu-item-12:hover ~ hr {
+	width: 58px;
+}
+  
+#menu-item-601:hover ~ hr {
+	width: 80px;
+}
+
+#menu-item-910:hover ~ hr {
+	width: 96px;
+}
+
+#menu-item-13:hover ~ hr {
+	width: 66px;
+}
+
+#menu-item-908:hover ~ hr {
+	width: 65px;
 }
 
 .navbar .nav-link:hover {
