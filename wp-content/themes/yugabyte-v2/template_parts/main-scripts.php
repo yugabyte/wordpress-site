@@ -95,10 +95,13 @@
 
 window.onload = function () {
 	drawArcs();
-
+	var $navSlidingBar = $("#menu-main-menu hr");
+	$("#menu-main-menu .nav-link").hover(function () {
+		var offsetLeft = $(this).offset().left - $(this).parent().parent().offset().left + 15;
+		$navSlidingBar.css('left', offsetLeft);
+	});
 	$(".feature-list-options li").hover(function onFeatureHover() {
 		var arcId = $(this).attr("data-arc-id");
-		console.log('hovering', this);
 		for (var i = 0; i < $(".arc").length; i++) {
 			if (i != arcId) {
 				var targetArc = $("#arc-" + i);
@@ -107,7 +110,6 @@ window.onload = function () {
 			}
 		}
 	}, function onFeatureHoverOut() {
-		console.log(this);
 		for (var i = 0; i < $(".arc").length; i++) {
 			var targetArc = $("#arc-" + i);
 			console.log(targetArc.css("stroke"));
