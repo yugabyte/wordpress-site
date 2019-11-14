@@ -88,7 +88,9 @@
 		var d = describeArc(arc.x, arc.y, arc.radius, arc.start, arc.end);
 		path.setAttribute('d', d);
 		
-		svg.appendChild(path);
+		if (svg) {
+			svg.appendChild(path);
+		}
 		})
 	});
 }
@@ -112,10 +114,45 @@ window.onload = function () {
 	}, function onFeatureHoverOut() {
 		for (var i = 0; i < $(".arc").length; i++) {
 			var targetArc = $("#arc-" + i);
-			console.log(targetArc.css("stroke"));
 			var color = targetArc.css("stroke").replace(/rgba\((\d+, \d+, \d+), \d\.\d\)/, 'rgb($1)');
 			targetArc.css("stroke", color);
 		}
-	})
+	});
+    
+    var $modal = $("#video-modal");
+    var modalSrc = $('#video-modal iframe').attr('src');
+    
+    $(".hero .hero-image-wrapper").on('click', function(e) {
+      $modal.css('display', "block");
+      $('#video-modal iframe').attr('src', modalSrc);
+  });
+
+
+    $('#video-modal .close').on('click', function() {
+        $modal.css('display', "none");
+        $('#video-modal iframe').attr('src', '');
+    });
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == $modal[0]) {
+            $modal.css('display', "none");
+            $('#video-modal iframe').attr('src', '');
+        }
+    }
+
+	// Mute video and hide controls
+	if ($(".demo-video iframe")[0]) {
+		$(".demo-video iframe")[0].src += "&muted=1&controls=0";
+	}
+
+	// Click handler
+	$(".demo-video, .demo-video .play-btn").on('click', function(ev) {
+		var videoPlayer = $(".demo-video iframe")[0];
+		videoPlayer.src = videoPlayer.src.substring(0, videoPlayer.src.length - 11);
+		videoPlayer.src += "&autoplay=1";
+		$(".demo-video .play-btn").hide();
+		ev.preventDefault();
+	});
 }
 </script>
