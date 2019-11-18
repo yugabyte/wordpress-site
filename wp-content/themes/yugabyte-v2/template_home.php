@@ -12,13 +12,10 @@
 		<?php include(locate_template('template_parts/main-header.php')); ?>
 		
 		<div class="home">
-			<section class="homepage-hero" 
-			<?php echo (get_field('responsive_bg')) ? 'data-responsivebg="'. get_field('responsive_bg') .'"' : '' ?> 
-			style="background-image: url(<?php the_field('hero_background_image'); ?>);"
-			data-fullbg="<?php the_field('hero_background_image'); ?>" >
+			<section class="homepage-hero">
 				<div class="container">
 					<div class="row">
-						<div class="container">
+						<div class="container col-lg-6">
 							<div class="row">
 								<div class="icon"><img src="<?php the_field('banner_icon'); ?>"></div>
 								<div class="text">
@@ -28,42 +25,47 @@
 								</div>
 							
 								<div>
-									<div class="hero-title-phrase"><?php the_field('hero_description_title'); ?></div>
+									<h2 class="hero-title-phrase"><?php the_field('hero_description_title'); ?></h2>
 									<div class="hero-subtext"><?php the_field('hero_description_subtext'); ?></div>
 									<div class="email-contact"><?php echo do_shortcode( get_field('hero_email_cta') ); ?></div>
 								</div>
 							</div>
 						</div>
+						<div class="container col-lg-6">
+							<div style="background-color: #80808045; height: 293px;	width: 600px; text-align: center; float: right;">Placeholder</div>
+						</div>
+					</div>
+					<div class="row">
 						<?php if(have_rows('hero_title_repeater')) { ?>
-						<ul class="col-lg-12 repeater top repeater-container">
-							<?php while(have_rows('hero_title_repeater')) : the_row(); ?>
-							<div class="item-container">
-								<li class="item">
-									<img class="item-logo" src="<?php the_sub_field('image'); ?>">
-									<div class="item-title"><?php the_sub_field('item'); ?></div>
-									<div class="item-subtext"><?php the_sub_field('subtext'); ?></div>
-								</li>
-							</div>
-							<?php endwhile; ?>
-							
-						</ul>
-					<?php } ?>
+							<ul class="col-lg-12 repeater top repeater-container">
+								<?php while(have_rows('hero_title_repeater')) : the_row(); ?>
+								<div class="item-container">
+									<li class="item">
+										<img class="item-logo" src="<?php the_sub_field('image'); ?>">
+										<div class="item-title"><?php the_sub_field('item'); ?></div>
+										<div class="item-subtext"><?php the_sub_field('subtext'); ?></div>
+									</li>
+								</div>
+								<?php endwhile; ?>
+								
+							</ul>
+						<?php } ?>
 					</div>
 				</div>
 			</section>
 			<section class="bg-grey">
-				<div class="community-metrics">
+				<div class="container community-metrics">
 					<div class="row text-center">
 						<?php if(have_rows('section_repeater')): ?>
 							<?php while(have_rows('section_repeater')) : the_row(); ?>
 								<div class="col-xs-12 col-md-6 card-content">
+									<img src="<?php the_sub_field('community_image'); ?>" />	
 									<div class="community-header">
 										<h2><?php the_sub_field('community_title'); ?></h2>
-										<h4><?php the_sub_field('community_subtitle'); ?></h4>
+										<div class="subtitle-text"><?php the_sub_field('community_subtitle'); ?></div>
 									</div>
-									<img src="<?php the_sub_field('community_image'); ?>" />
 
-									<?php if(have_rows('community_section_repeater')): ?>
+									<!-- <?php if(have_rows('community_section_repeater')): ?>
 										<ul class="section-repeater">
 											<?php while(have_rows('community_section_repeater')) : the_row(); ?>
 												<li>
@@ -75,9 +77,11 @@
 												</li>
 											<?php endwhile; ?>
 										</ul>
-									<?php endif; ?>
+									<?php endif; ?> -->
 									<?php if(!empty(get_sub_field('community_hyperlink'))) { ?>
-										<a class="community-hyperlink" href="<?php get_sub_field('community_hyperlink'); ?>" target="_blank">Yugabyte Community</a>
+										<a class="more-info-link" href="<?php get_sub_field('community_hyperlink'); ?>" target="_blank">
+											Learn More <span><i class="fa fa-chevron-right"></i></span>
+										</a>
 									<?php } ?>
 								</div>
 							<?php endwhile; ?>
@@ -87,7 +91,7 @@
 			</section>
 			<section class="layers">
 				<div class="figure-container">
-					<h3>Service Control Platform</h3>
+					<h2>Service Control Platform</h2>
 					<div class="row">
 						<div>
 							Visualization
@@ -108,11 +112,9 @@
 						</div>
 					</div>
 				</div>
-			</section>
-			<section class="value-prop">	
-				<div class="content">
+				<div class="value-prop">
 					<div class="value-header-container">
-						<div class="title"><?php the_field('value_prop_title'); ?></div>
+						<h2 class="title"><?php the_field('value_prop_title'); ?></h2>
 						<div class="description"><?php the_field('value_prop_desc'); ?></div>
 					</div>
 					<div class="value-prop-list">
@@ -123,7 +125,7 @@
 										<img class="feature-icon" src="<?php the_sub_field('feature_icon'); ?>">
 									</div>
 									<div>
-										<h4 class="tile-title"><?php the_sub_field('feature_name'); ?></h4>
+										<div class="tile-title"><?php the_sub_field('feature_name'); ?></div>
 										<div class="tile-caption"><?php the_sub_field('feature_description'); ?></div>
 									</div>
 								</div>
@@ -132,51 +134,47 @@
 					</div>
 				</div>
 			</section>
-			
-			<section class="customers">
-				<?php if(have_rows('customer_repeater_copy')): ?>
-					<?php while(have_rows('customer_repeater_copy')) : the_row(); ?>
-						<div class="case-study-wrapper">
-							<div class="title-logo">
-								<h4>Case Study</h4>
-								<img src="<?php the_sub_field('customer_logo'); ?>" />
-							</div>
-							<div class="customer-testimonial"><?php the_sub_field('testimonial'); ?></div>
-							<div class="customer-advocate">
-								<img class="profile-pic" src="<?php the_sub_field('profile_picture'); ?>"/>
-								<div class="customer-details">
-									<b><?php the_sub_field('customer_name'); ?></b>
-									<div class="customer-position"><?php the_sub_field('customer_position'); ?></div> 
-									</div>
-							</div>
-							<div class="case-study-link">
-								<a href="/wp-content/uploads/2019/03/Narvar-YugaByte-DB-Case-Study.pdf">See Full Case Study</a>
-							</div>
+			<section class="demo-banner">
+				<div class="container">
+					<div class="cta-wrapper">
+						<h3>Take a test drive</h3>
+						<div class="text-content">Avoid cloud lock-in with an enterprise-grade, cloud-native, open-source database.</div>
+						<div class="email-contact"><?php echo do_shortcode( get_field('hero_email_cta') ); ?></div>
+						<div class="more-info-link">
+							<a href="" target="_blank">Or learn more <span><i class="fa fa-chevron-right"></i></span></a>
 						</div>
-					<?php endwhile; ?>
-				<?php endif; ?>
-
-				<!-- <div class="container" data-aos="zoom-in">
-					<div class="row justify-content-center">
-						<div class="col-lg-12">
-							<div class="section-title text-center"><?php the_field('customer_title'); ?></div>
-						</div>
-						<?php if(have_rows('customer_repeater')) { ?>
-						<div class="row customer-holder d-flex it-blocks-holder">
-							<?php while(have_rows('customer_repeater')) : the_row(); ?>
-							<div class="col-lg-4">
-								<div class="item block">
-									<a href="<?php the_sub_field('url'); ?>">
-										<div class="icon"><img src="<?php the_sub_field('image'); ?>"></div>
-										<div class="text"><?php the_sub_field('text'); ?></div>
-									</a>
-								</div>
-							</div>
-							<?php endwhile; ?>
-						</div>
-						<?php } ?>					
 					</div>
-				</div> -->
+				</div>
+			</section>
+			<section class="customers">
+				<div class="container">
+					<h2 class="section-header"><?php the_field('demo_banner_title'); ?></h2>
+					<div class="row case-study-wrapper">
+						<?php if(have_rows('customer_repeater_copy')): ?>
+							<?php while(have_rows('customer_repeater_copy')) : the_row(); ?>
+								<div class="customer-card">
+									<div class="title-logo">
+										<img src="<?php the_sub_field('customer_logo'); ?>" />
+									</div>
+									<div class="customer-testimonial"><?php the_sub_field('testimonial'); ?></div>
+									<div class="customer-advocate">
+										<img class="profile-pic" src="<?php the_sub_field('profile_picture'); ?>"/>
+										<div class="customer-details">
+											<b><?php the_sub_field('customer_name'); ?></b>
+											<div class="customer-position"><?php the_sub_field('customer_position'); ?></div> 
+											</div>
+									</div>
+									<div class="more-info-link">
+										<a href="/wp-content/uploads/2019/03/Narvar-YugaByte-DB-Case-Study.pdf">Read more <span><i class="fa fa-chevron-right"></i></a>
+									</div>
+								</div>
+							<?php endwhile; ?>
+						<?php endif; ?>
+					</div>
+					<div class="success-stories-wrapper more-info-link">
+						<a target="_blank">See all success stories <span><i class="fa fa-chevron-right"></i></span></a>
+					</div>
+				</div>
 			</section>
 
 			</section>

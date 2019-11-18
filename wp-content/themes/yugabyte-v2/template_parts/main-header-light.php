@@ -21,7 +21,7 @@
 			) ); ?>
 		
 			<div class="button-container">
-				<a href="https://download.yugabyte.com" class="button secondary slide-in">
+				<a href="https://download.yugabyte.com" class="button secondary">
 					<span class="text">Get Started</span>
 				</a>
 			</div>

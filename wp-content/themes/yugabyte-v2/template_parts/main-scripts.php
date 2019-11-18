@@ -97,11 +97,13 @@
 
 window.onload = function () {
 	drawArcs();
+
 	var $navSlidingBar = $("#menu-main-menu hr");
 	$("#menu-main-menu .nav-link").hover(function () {
 		var offsetLeft = $(this).offset().left - $(this).parent().parent().offset().left + 15;
 		$navSlidingBar.css('left', offsetLeft);
 	});
+
 	$(".feature-list-options li").hover(function onFeatureHover() {
 		var arcId = $(this).attr("data-arc-id");
 		for (var i = 0; i < $(".arc").length; i++) {
