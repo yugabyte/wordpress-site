@@ -32,7 +32,9 @@
 							</div>
 						</div>
 						<div class="container col-lg-6">
-							<div style="background-color: #80808045; height: 293px;	width: 600px; text-align: center; float: right;">Placeholder</div>
+							<div class="hero-bg-image">
+								<img src="<?php the_field('hero_background_image'); ?>" />
+							</div>
 						</div>
 					</div>
 					<div class="row">
@@ -90,28 +92,6 @@
 				</div>
 			</section>
 			<section class="layers">
-				<div class="figure-container">
-					<h2>Service Control Platform</h2>
-					<div class="row">
-						<div>
-							Visualization
-							<ul class="feature-list-options">
-								<li data-arc-id="12">VITALS</li>
-								<li data-arc-id="13">MANAGER</li>
-								<li data-arc-id="14">PORTAL</li>
-							</ul>
-						</div>
-						<svg id="graphic"></svg>
-						<div>
-							Interpretation
-							<ul class="feature-list-options">
-								<li data-arc-id="6">IMMUNITY</li>
-								<li data-arc-id="2">BRAIN</li>
-								<li data-arc-id="9">OSS PLUGINS</li>
-							</ul>
-						</div>
-					</div>
-				</div>
 				<div class="value-prop">
 					<div class="value-header-container">
 						<h2 class="title"><?php the_field('value_prop_title'); ?></h2>

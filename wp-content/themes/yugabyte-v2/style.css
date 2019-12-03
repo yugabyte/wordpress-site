@@ -257,7 +257,8 @@ a:hover .l-to-r {
 	color: #322965;
     font-size: 12px;
     line-height: 18px;
- 	font-size: 12px;
+	font-size: 16px;
+	font-weight: 500;
  	padding: 1.57rem 1.25rem;
  	line-height: 18px;
  	position: relative;
@@ -428,6 +429,11 @@ hr {
 	text-transform: uppercase;
 	color: #FF6E42;
 	background-color: #FFE7E0;
+}
+
+.homepage-hero .hero-bg-image img {
+	width: 600px;
+	height: auto;
 }
 
 .banner-link span {
@@ -607,7 +613,7 @@ a.banner-link:hover span {
 .homepage-hero .item-title {
 	font-weight: 600;
 	font-size: 18px;
-	margin: 30px 10px 15px 10px;
+	margin: 30px 0 15px;
 }
 
 .container.community-metrics {
@@ -619,6 +625,12 @@ a.banner-link:hover span {
 
 .community-metrics .card-content {
 	padding: 3.125rem;
+}
+
+.community-metrics .card-content img {
+	height: 249px;
+	width: auto;
+	margin-bottom: 3.125rem;
 }
 
 .community-metrics .card-content:first-child {
@@ -712,7 +724,7 @@ a.banner-link:hover span {
 	line-height: 28px;
 	letter-spacing: 1px;
 	display: inline;
-	padding: 0 15px;
+	padding: 0;
 }
 
 .homepage-hero .repeater li:last-child:after {
@@ -788,19 +800,6 @@ a.banner-link:hover span {
 
 .more-info-link span {
 	margin-left: 0.625rem;
-}
-
-.figure-container, .value-prop {
-	background: #ffffff;
-	padding-top: 6.25rem;
-	color: #322965;
-}
-
-.figure-container h2, .value-prop h2.title {
-	font-size: 28px;
-	line-height: 36px;
-	text-align: center;
-	color: #322965;
 }
 
 section.layers {
