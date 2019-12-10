@@ -100,7 +100,7 @@ window.onload = function () {
 
 	var $navSlidingBar = $("#menu-main-menu hr");
 	$("#menu-main-menu .nav-link").hover(function () {
-		var offsetLeft = $(this).offset().left - $(this).parent().parent().offset().left + 15;
+		var offsetLeft = $(this).offset().left - $(this).parent().parent().offset().left + 17;
 		$navSlidingBar.css('left', offsetLeft);
 	});
 
@@ -120,6 +120,14 @@ window.onload = function () {
 			targetArc.css("stroke", color);
 		}
 	});
+
+	var urlParams = new URLSearchParams(window.location.search);
+	if (urlParams.has('contact-email') && window.location.pathname === '/contact-us/') {
+		var $emailForm = $('input.wpcf7-form-control[name="companyEmail"]');
+		if ($emailForm.length) {
+			$emailForm.value(urlParams.get('contact-email'));
+		}
+	}
     
     var $modal = $("#video-modal");
     var modalSrc = $('#video-modal iframe').attr('src');

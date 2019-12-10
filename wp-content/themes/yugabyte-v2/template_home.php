@@ -38,20 +38,49 @@
 						</div>
 					</div>
 					<div class="row">
-						<?php if(have_rows('hero_title_repeater')) { ?>
-							<ul class="col-lg-12 repeater top repeater-container">
-								<?php while(have_rows('hero_title_repeater')) : the_row(); ?>
-								<div class="item-container">
-									<li class="item">
-										<img class="item-logo" src="<?php the_sub_field('image'); ?>">
-										<div class="item-title"><?php the_sub_field('item'); ?></div>
-										<div class="item-subtext"><?php the_sub_field('subtext'); ?></div>
-									</li>
-								</div>
-								<?php endwhile; ?>
-								
-							</ul>
-						<?php } ?>
+						<ul class="col-lg-12 repeater top repeater-container">
+							<div class="item-container">
+								<li class="item latency-tile">
+									<div id="latency-animation">
+										<div class="latency">
+											<div class="box square-left"></div>
+											<div class="box square-right"></div>
+										</div>
+									</div>
+									<div class="item-title">Single-Digit Millisecond Latency</div>
+									<div class="item-subtext">Build blazing fast applications in the cloud and serve queries directly from the DB</div>
+								</li>
+							</div>
+							<div class="item-container">
+								<li class="item scale-tile">
+									<div id="new-node-animation">
+										<div class="box"></div>
+										<div class="animation">
+											<img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0f986508-0139-4bcd-930f-773b78601716" width="40" height="40" />
+											<img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0f986508-0139-4bcd-930f-773b78601716" width="40" height="40" />
+											<img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0f986508-0139-4bcd-930f-773b78601716" width="40" height="40" />
+											<img class="newNode" src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0f986508-0139-4bcd-930f-773b78601716" width="40" height="40" />
+										</div>
+									</div>
+									<div class="item-title">Massive Scale</div>
+									<div class="item-subtext">Achieve millions of transactions per second and store multiple TB’s of data per node</div>
+								</li>
+							</div>
+							<div class="item-container" style="padding: 20px 50px 50px;">
+								<li class="item">
+									<div class="global-animation">
+										<svg class="globe-line" width="120" height="100" xmlns="http://www.w3.org/2000/svg">
+											<path class="path-clockwise" d="M 33, 37 a 50,10 40 1 1 50 42" stroke-width="2" stroke="#FF6E42" fill="transparent" stroke-linejoin="round" stroke-miterlimit="10" 
+											/>
+											<path class="path-counterclockwise" d="M 85, 37 a 50 10 138 1,0 -45 42" stroke="#FF6E42" stroke-width="2" fill="transparent" stroke-linejoin="round" stroke-miterlimit="10" 
+											/>
+										</svg>
+									</div>
+									<div class="item-title">Geo-Distribution</div>
+									<div class="item-subtext">Deploy across regions and clouds with synchronous or multi-master replication</div>
+								</li>
+							</div>
+						</ul>
 					</div>
 				</div>
 			</section>
@@ -61,25 +90,11 @@
 						<?php if(have_rows('section_repeater')): ?>
 							<?php while(have_rows('section_repeater')) : the_row(); ?>
 								<div class="col-xs-12 col-md-6 card-content">
-									<img src="<?php the_sub_field('community_image'); ?>" />	
 									<div class="community-header">
 										<h2><?php the_sub_field('community_title'); ?></h2>
 										<div class="subtitle-text"><?php the_sub_field('community_subtitle'); ?></div>
 									</div>
-
-									<!-- <?php if(have_rows('community_section_repeater')): ?>
-										<ul class="section-repeater">
-											<?php while(have_rows('community_section_repeater')) : the_row(); ?>
-												<li>
-													<?php if(!empty(get_sub_field('card_image'))) { ?>
-														<img class="logo" src="<?php the_sub_field('card_image'); ?>">
-													<?php } ?>
-													<div class="tile-title"><?php the_sub_field('card_title'); ?></div>
-													<div class="tile-caption"><?php the_sub_field('card_caption'); ?></div>
-												</li>
-											<?php endwhile; ?>
-										</ul>
-									<?php endif; ?> -->
+									<img src="<?php the_sub_field('community_image'); ?>" />
 									<?php if(!empty(get_sub_field('community_hyperlink'))) { ?>
 										<a class="more-info-link" href="<?php get_sub_field('community_hyperlink'); ?>" target="_blank">
 											Learn More <span><i class="fa fa-chevron-right"></i></span>

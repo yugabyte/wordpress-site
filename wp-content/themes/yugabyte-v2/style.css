@@ -283,23 +283,23 @@ hr {
 }
 
 #menu-item-12:hover ~ hr {
-	width: 58px;
+	width: 69px;
 }
 
 #menu-item-601:hover ~ hr {
-	width: 80px;
+	width: 100px;
 }
 
 #menu-item-910:hover ~ hr {
-	width: 96px;
+	width: 123px;
 }
 
 #menu-item-13:hover ~ hr {
-	width: 66px;
+	width: 82px;
 }
 
 #menu-item-908:hover ~ hr {
-	width: 65px;
+	width: 81px;
 }
 
 .navbar .dropdown-menu {
@@ -613,7 +613,7 @@ a.banner-link:hover span {
 .homepage-hero .item-title {
 	font-weight: 600;
 	font-size: 18px;
-	margin: 30px 0 15px;
+	margin: 15px 0;
 }
 
 .container.community-metrics {
@@ -660,7 +660,7 @@ a.banner-link:hover span {
 }
 
 .email-contact input[type="email"] {
-	padding-left: 20px;
+	padding: 1px 22px 1px 20px;
     border-radius: 5px;
 	border: 1px solid rgba(0,0,0,.5);
 	height: 40px;
@@ -796,6 +796,22 @@ a.banner-link:hover span {
 	color: #FF6E42;
 	font-weight: 500;
 	text-decoration: none;
+	display: block;
+	cursor: pointer;
+}
+
+.success-stories-wrapper.more-info-link a {
+	border: 1px solid;
+    width: fit-content;
+    margin: 0 auto;
+    padding: 15px 25px;
+    border-radius: 5px;
+    background: white;
+}
+
+.success-stories-wrapper.more-info-link a:hover {
+	background: #dedede;
+	color: #dc5e38;
 }
 
 .more-info-link span {
@@ -806,10 +822,13 @@ section.layers {
 	padding: 3.125rem 0 0;
 }
 
+.value-prop .value-header-container {
+	text-align: center;
+}
+
 .value-prop .description {
 	font-size: 18px;
 	line-height: 26px;
-	text-align: center;
 	margin: 1.875rem auto 0;
 	width: 880px;
 }
@@ -1157,13 +1176,16 @@ section.demo-banner {
 }
 
 .footer-cta .client-holder {
-    display: flex;
+	display: flex;
+	text-align: center;
     align-items: center;
-    justify-content: space-between;
+	justify-content: center;
+	flex-wrap: wrap;
 }
 
 .footer-cta .client-holder .image-container {
-	padding: 35px 15px 50px;
+	padding: 15px;
+	width: 25%;
 }
 
 .footer-cta .button {
@@ -1196,6 +1218,159 @@ section.demo-banner {
 .footer-cta .button .icon {
 	width: -webkit-fill-available;
 }
+
+#latency-animation {
+	position: relative;
+    width: 100%;
+	display: flex;
+	margin: 15px 0;
+}
+
+@keyframes bgmove {
+	to {
+	  background-position: 500px 50%; 
+	} 
+}
+
+#latency-animation .latency {
+	width: 100%;
+	top: 10px;
+	margin: 0 auto 30px;
+    max-width: 250px;
+    position: relative;
+    height: 10px;
+    background-image: repeating-linear-gradient(to right,#322965,#322965 2px,transparent 2px,transparent 6px);
+    -webkit-animation: bgmove 10s linear infinite;
+    animation: bgmove 10s linear infinite;
+    background-position: -50% 50%;
+}
+
+#latency-animation .box {
+	width: 40px;
+	height: 40px;
+	border: 1px solid #b57edc73;
+	background: white;
+}
+
+#latency-animation .square-left {
+	position: absolute;
+	top: -15px;
+	left: 0;
+}
+
+#latency-animation .square-right {
+	position: absolute;
+	top: -15px;
+	right: 0;
+}
+
+#new-node-animation {
+	position: relative;
+	display: flex;
+	margin-top: 15px;
+}
+
+.latency-tile .item-title {
+	margin-top: 40px;
+}
+
+.scale-tile .item-title {
+	margin-top: 80px;
+}
+
+#new-node-animation div.animation {
+	-webkit-animation: moveleft 3s linear infinite;
+	animation: moveleft 3s linear infinite;
+}
+
+#new-node-animation .newNode {
+ -webkit-animation: fadeIn 3s linear infinite;
+ animation: fadeIn 3s linear infinite;
+}
+
+#new-node-animation .box {
+ position: absolute;
+ left: 30px;
+ background: white;
+ height: 40px;
+ width: 40px;
+ z-index: 10;
+}
+
+#new-node-animation .animation {
+	position: absolute;
+	left: 30px;
+}
+
+@keyframes fadeIn {
+ 0% {
+   opacity: 0;
+   display: none;
+ }
+ 
+ 50% {
+   opacity: 1;
+   display: block;
+ }
+}
+@keyframes moveleft {
+ 0% {
+   transform: translateX(44px);
+ }
+ 50% {
+   transform: translateX(44px);
+ }
+ 70% {
+   transform: translateX(22px);
+ } 
+ 
+ 100% {
+   transform: translateX(0px);
+ }
+}
+
+.global-animation {
+	background: url('https://storage.needpix.com/rsynced_images/globe-307805_1280.png');
+	background-repeat: no-repeat;
+	background-size: 64px 64px;
+	background-position: center;
+}
+
+.globe-line .path-clockwise {
+	stroke-dasharray: 200;
+	stroke-dashoffset: 200;
+	animation: dashFirstHalf 3s linear alternate infinite;
+  }
+
+.globe-line .path-counterclockwise {
+	stroke-dasharray: 200;
+	stroke-dashoffset: 200;
+	animation: dashSecondHalf 3s linear alternate infinite;
+}
+  
+  @keyframes dashFirstHalf {
+	0% {
+	  stroke-dashoffset: 200;
+	}
+	60% {
+	  stroke-dashoffset: 0;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+  }
+
+  @keyframes dashSecondHalf {
+	0% {
+	  stroke-dashoffset: 200;
+	}
+	50% {
+	  stroke-dashoffset: 200;
+	}
+	100% {
+		stroke-dashoffset: 0;
+	}
+  }
 
 /* Hero Banner */
 
