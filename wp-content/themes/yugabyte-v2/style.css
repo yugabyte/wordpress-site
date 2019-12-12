@@ -632,7 +632,7 @@ a.banner-link:hover span {
 	padding: 3.125rem;
 }
 
-.community-metrics .card-content img {
+.community-metrics .card-content img.main-illustration {
 	height: 249px;
 	width: auto;
 	margin-bottom: 3.125rem;
@@ -793,6 +793,44 @@ a.banner-link:hover span {
 
 .community-metrics .community-header .subtitle-text {
 	margin: .5rem 0 1rem;
+}
+
+.community-metrics .metrics-header {
+	font-size: 18px;
+	line-height: 26px;
+	color: #322965;
+	margin-bottom: 1rem;
+}
+
+.community-metrics .row {
+	display: flex;
+	justify-content: space-around;
+	margin-bottom: 2rem;
+}
+
+.community-metrics .metric-wrapper {
+	margin: 0.5rem auto;
+	position: relative;
+}
+
+.community-metrics .metric-wrapper img {
+	position: absolute;
+	height: 25px;
+	left: -15px;
+}
+
+.community-metrics .metric-wrapper .metric-stat {
+	font-size: 28px;
+	line-height: 36px;
+	font-weight: 700;
+	color: #322965;
+	margin-top: 2rem;
+}
+
+.community-metrics .metric-wrapper .metric-unit {
+	font-size: 14px;
+	line-height: 18px;
+	opacity: 0.7;
 }
 
 .more-info-link a, .more-info-link {
@@ -1432,12 +1470,10 @@ section.demo-banner {
 @keyframes fadeIn {
  0% {
    opacity: 0;
-   display: none;
  }
  
  50% {
    opacity: 1;
-   display: block;
  }
 }
 @keyframes moveleft {

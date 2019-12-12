@@ -56,10 +56,10 @@
 									<div id="new-node-animation">
 										<div class="box"></div>
 										<div class="animation">
-											<img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0f986508-0139-4bcd-930f-773b78601716" width="40" height="40" />
-											<img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0f986508-0139-4bcd-930f-773b78601716" width="40" height="40" />
-											<img src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0f986508-0139-4bcd-930f-773b78601716" width="40" height="40" />
-											<img class="newNode" src="https://quizizz.com/media/resource/gs/quizizz-media/quizzes/0f986508-0139-4bcd-930f-773b78601716" width="40" height="40" />
+											<img src="http://localhost:8888/wp-content/uploads/2019/12/database-1.svg" width="40" height="40" />
+											<img src="http://localhost:8888/wp-content/uploads/2019/12/database-1.svg" width="40" height="40" />
+											<img src="http://localhost:8888/wp-content/uploads/2019/12/database-1.svg" width="40" height="40" />
+											<img class="newNode" src="http://localhost:8888/wp-content/uploads/2019/12/database-1.svg" width="40" height="40" />
 										</div>
 									</div>
 									<div class="item-title">Massive Scale</div>
@@ -94,7 +94,21 @@
 										<h2><?php the_sub_field('community_title'); ?></h2>
 										<div class="subtitle-text"><?php the_sub_field('community_subtitle'); ?></div>
 									</div>
-									<img src="<?php the_sub_field('community_image'); ?>" />
+									<img class="main-illustration" src="<?php the_sub_field('community_image'); ?>" />
+									<div class="metrics-header"><?php the_sub_field('metrics_caption'); ?></div>
+									<?php if(have_rows('community_section_repeater')): ?>
+										<div class="row">
+										<?php while(have_rows('community_section_repeater')) : the_row(); ?>
+											<div class="metric-wrapper">
+												<?php if(!empty(get_sub_field('card_image'))) { ?>
+													<img height="25" src="<?php the_sub_field('card_image'); ?>" />
+												<?php } ?>
+												<div class="metric-stat"><?php the_sub_field('card_title'); ?></div>
+												<span class="metric-unit"><?php the_sub_field('card_caption'); ?></span>
+											</div>
+										<?php endwhile; ?>
+										</div>
+									<?php endif; ?>
 									<?php if(!empty(get_sub_field('community_hyperlink'))) { ?>
 										<a class="more-info-link" href="<?php get_sub_field('community_hyperlink'); ?>" target="_blank">
 											Learn More <span><i class="fa fa-chevron-right"></i></span>
