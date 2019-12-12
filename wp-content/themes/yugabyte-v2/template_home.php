@@ -8,7 +8,7 @@
 		<?php include(locate_template('template_parts/main-head.php')); ?>
 	</head>
 
-	<body class="home-demo">
+	<body>
 		<?php include(locate_template('template_parts/main-header.php')); ?>
 		
 		<div class="home">
@@ -167,7 +167,7 @@
 						<?php endif; ?>
 					</div>
 					<div class="success-stories-wrapper more-info-link">
-						<a target="_blank">See all success stories <span><i class="fa fa-chevron-right"></i></span></a>
+						<a target="_blank">See more success stories <span><i class="fa fa-chevron-right"></i></span></a>
 					</div>
 				</div>
 			</section>

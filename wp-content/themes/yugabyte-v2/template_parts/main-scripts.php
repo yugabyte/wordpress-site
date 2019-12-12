@@ -121,21 +121,36 @@ window.onload = function () {
 		}
 	});
 
+	/* Contact Us */
 	var urlParams = new URLSearchParams(window.location.search);
 	if (urlParams.has('contact-email') && window.location.pathname === '/contact-us/') {
 		var $emailForm = $('input.wpcf7-form-control[name="companyEmail"]');
 		if ($emailForm.length) {
-			$emailForm.value(urlParams.get('contact-email'));
+			$emailForm.val(urlParams.get('contact-email'));
 		}
 	}
     
+	/* Success Stories */
+	$('.company-gallery .card .expand-icon').on('click', function () {
+		$(this).parent().find('.company-details').removeClass('hidden');
+		$(this).siblings('.shrink-icon').removeClass('hidden');
+		$(this).addClass('hidden');
+	});
+
+	$('.company-gallery .card .shrink-icon').on('click', function () {
+		$(this).parent().find('.company-details').addClass('hidden');
+		$(this).siblings('.expand-icon').removeClass('hidden');
+		$(this).addClass('hidden');
+	});
+
+	/* Case Study Page */
     var $modal = $("#video-modal");
     var modalSrc = $('#video-modal iframe').attr('src');
     
     $(".hero .hero-image-wrapper").on('click', function(e) {
       $modal.css('display', "block");
       $('#video-modal iframe').attr('src', modalSrc);
-  });
+  	});
 
 
     $('#video-modal .close').on('click', function() {
