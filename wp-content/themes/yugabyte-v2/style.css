@@ -20,6 +20,10 @@ html {
 	margin: 0;
 }
 
+.hidden {
+	display: none !important;
+}
+
 body {
 	background-color: #F2F6F9;
 }
@@ -202,6 +206,7 @@ a:hover .l-to-r {
     right: 0;
 	z-index: 100;
 	border-bottom: 1px solid #322965;
+	background: #ffffff;
 	padding: 0 1rem;
 }
 
@@ -660,7 +665,7 @@ a.banner-link:hover span {
 }
 
 .email-contact input[type="email"] {
-	padding: 1px 22px 1px 20px;
+	padding: 1px 20px;
     border-radius: 5px;
 	border: 1px solid rgba(0,0,0,.5);
 	height: 40px;
@@ -674,14 +679,14 @@ a.banner-link:hover span {
 	background: #FF6E42;
     border: none;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: -9px;
+    top: 1px;
     color: #ffffff;
     transition: .2s ease-in-out;
     padding-left: 15px;
     padding-right: 15px;
 	border-radius: 0 5px 5px 0;
-	height: 40px;
+	height: 39px;
     font-weight: 500;
 	font-size: 14px;
 	line-height: 20px;
@@ -810,7 +815,7 @@ a.banner-link:hover span {
 }
 
 .success-stories-wrapper.more-info-link a:hover {
-	background: #dedede;
+	background: #efefef;
 	color: #dc5e38;
 }
 
@@ -819,17 +824,23 @@ a.banner-link:hover span {
 }
 
 section.layers {
-	padding: 3.125rem 0 0;
+	padding: 4.5rem 0 0;
+	background: #ffffff;
 }
 
 .value-prop .value-header-container {
 	text-align: center;
 }
 
+.value-prop .value-header-container h2 {
+	color: #322965;
+	font-weight: 400;
+}
+
 .value-prop .description {
 	font-size: 18px;
 	line-height: 26px;
-	margin: 1.875rem auto 0;
+	margin: 0.875rem auto 0;
 	width: 880px;
 }
 
@@ -837,7 +848,7 @@ section.layers {
 	padding: 6.25rem 0;
 	display: flex;
 	flex-wrap: wrap;
-	max-width: 1320px;
+	max-width: 1250px;
     margin: 0 auto;
 }
 
@@ -846,22 +857,26 @@ section.layers {
 	flex-basis: 33%;
 	width: 33%;
 	flex-wrap: nowrap;
+	margin-bottom: 3.125rem;
+	padding: 0 1rem;
 }
 
 .tile-title {
 	font-size: 20px;
-    font-weight: 500;
-    line-height: 28px;
+    font-weight: 300;
+	line-height: 28px;
+	opacity: 0.7;
 }
 
 .tile-caption {
-	font-size: 15px;
-    line-height: 24px;
-    font-weight: 300;
+	font-size: 13px;
+    line-height: 20px;
+	font-weight: 300;
+	opacity: 0.7;
 }
 
 section.demo-banner {
-	background-image: url('https://thumbs.dreamstime.com/b/music-abstract-blue-background-sound-wave-futuristic-technology-ai-element-big-data-visualization-d-rendering-molecular-146289962.jpg');
+	background-image: linear-gradient(to right, #FF6E42 , #322965);
 	padding: 4rem 0;
 	height: 400px;
 }
@@ -891,7 +906,7 @@ section.demo-banner {
 
 .cta-wrapper .more-info-link a {
 	margin-top: 1.875rem;
-	color: #FF6E42;
+	color: #ff967f;
 }
 
 /* Global Banner */
@@ -964,6 +979,7 @@ section.demo-banner {
 .customers .case-study-wrapper {
     margin: 0 auto;
 	min-height: 300px;
+	justify-content: center;
 }
 
 .customers .case-study-wrapper .customer-card {
@@ -1143,6 +1159,116 @@ section.demo-banner {
 	margin-bottom: 0;
 }
 
+/* Success Stories Page */
+.success-stories .banner-section {
+	background: #322965;
+	color: white;
+    padding: 6rem 0 3.125rem;
+    text-align: left;
+}
+
+.banner-section .row {
+	margin: 0 auto;
+    max-width: 980px;
+}
+
+.banner-section .title {
+	font-size: 28px;
+	line-height: 38px;
+	margin: 2rem 0;
+}
+
+.banner-section img {
+	margin-left: 50px;
+}
+
+.success-stories .company-gallery .table-view {
+	display: flex;
+    text-align: center;
+    align-items: flex-start;
+    justify-content: center;
+	flex-wrap: wrap;
+	margin: 0 auto;
+	max-width: 1080px;
+}
+
+.company-gallery .card {
+	position: relative;
+	padding: 20px;
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+	margin: 0 13px 30px 13px;
+	display: inline-block;
+	max-width: 300px;
+	min-height: 320px;
+	flex: 0 0 30%;
+	box-shadow: 0 2px 12px 0 rgba(0,0,0,0.1);
+}
+
+.company-gallery .card img {
+	margin: 25px 0;
+	height: 50px;
+}
+
+.company-gallery .card img[data-name="Kroger"] {
+	height: 80px;
+	margin: 20px 0 0;
+}
+
+.company-gallery .card img[data-name="Plume"] {
+	margin: 0;
+    height: 100px;
+}
+
+.company-gallery .company-details, .company-gallery .testimonial-quote {
+	text-align: left;
+}
+
+.expand-icon, .shrink-icon {
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
+	color: #757575;
+	cursor: pointer;
+    border: 1px solid #dfe1e5;
+    border-radius: 50%;
+    padding: 8px;
+    width: 2.5rem;
+    height: 2.5rem;
+	background: #fff;
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.20);
+	display: none;
+}
+
+.company-gallery .header-container {
+	margin: 30px 0 15px;
+	text-align: left;
+}
+
+.company-gallery .header-container h4 {
+	font-size: 1.25rem;
+    line-height: 2rem;
+    font-weight: 400;
+	letter-spacing: .0125em;
+	margin-bottom: 0;
+}
+
+.company-gallery .header-container .company-purpose {
+	font-size: .875rem;
+	line-height: 1.25rem;
+	opacity: .6;
+}
+
+.company-gallery .card:hover .expand-icon,
+.company-gallery .card:hover .shrink-icon{
+	display: block;
+}
+
+.expand-icon:hover, .shrink-icon:hover {
+	color: #000000;
+}
+
 /* Homepage Small Devices */
 
 .small-devices .homepage-hero .repeater.top {
@@ -1162,6 +1288,7 @@ section.demo-banner {
 /* Footer-CTA */
 
 .footer-cta {
+	background-image: linear-gradient(to right, #322965, #FF6E42);
 	padding: 100px 0;
 	background-color: #1D2444;
 	background-size: cover;
@@ -1236,10 +1363,10 @@ section.demo-banner {
 	width: 100%;
 	top: 10px;
 	margin: 0 auto 30px;
-    max-width: 250px;
+    max-width: 150px;
     position: relative;
     height: 10px;
-    background-image: repeating-linear-gradient(to right,#322965,#322965 2px,transparent 2px,transparent 6px);
+    background-image: repeating-linear-gradient(to right,#ffc2af,#ffc2af 2px,transparent 2px,transparent 6px);
     -webkit-animation: bgmove 10s linear infinite;
     animation: bgmove 10s linear infinite;
     background-position: -50% 50%;
@@ -1248,20 +1375,20 @@ section.demo-banner {
 #latency-animation .box {
 	width: 40px;
 	height: 40px;
-	border: 1px solid #b57edc73;
-	background: white;
+    background: #fff;
+    box-shadow: 0 0 0 2px #b6dfff, 0 0 0 10px #fff;
 }
 
 #latency-animation .square-left {
 	position: absolute;
 	top: -15px;
-	left: 0;
+	left: -45px;
 }
 
 #latency-animation .square-right {
 	position: absolute;
 	top: -15px;
-	right: 0;
+	right: -45px;
 }
 
 #new-node-animation {

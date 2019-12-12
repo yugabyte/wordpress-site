@@ -1,4 +1,4 @@
-<section class="footer-cta" style="background-image:url(<?php the_field('background_image', 72); ?>)">
+<section class="footer-cta">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6">
