@@ -39,20 +39,15 @@
                                 <?php the_sub_field('testimonial_blurb'); ?>
                             </div>                            
                             <div class="company-details hidden">
-                                <?php the_sub_field('company_testimonial'); ?>
-                                <?php if (!empty(get_sub_field('case_study_url'))) { ?>
-                                    <a href="<?php the_sub_field('case_study_url'); ?>" target="_blank">Read more</a>
-                                <?php } ?>
+                                <p><?php the_sub_field('company_testimonial'); ?></p>
+                                <div class="case-study-link">
+                                    <?php if (!empty(get_sub_field('case_study_url'))) { ?>
+                                        <a class="expand-button" href="<?php the_sub_field('case_study_url'); ?>" target="_blank">See Full Story</a>
+                                    <?php } ?>
+                                </div>
                             </div>
-                            <div style="display: inline-flex">
-                                <div>Read more</div>
-                                <div>Case Study</div>
-                            </div>
-                            <div class="expand-icon">
-                                <i class="fa fa-chevron-down"></i>
-                            </div>
-                            <div class="shrink-icon hidden">
-                                <i class="fa fa-chevron-up"></i>
+                            <div class="action-bar">
+                                <div class="expand-button">Read more</div>
                             </div>
                         </div>
                     <?php endwhile; ?>

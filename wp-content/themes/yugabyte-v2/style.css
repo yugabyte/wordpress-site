@@ -680,13 +680,13 @@ a.banner-link:hover span {
     border: none;
     position: absolute;
     right: -9px;
-    top: 1px;
+    top: 0;
     color: #ffffff;
     transition: .2s ease-in-out;
     padding-left: 15px;
     padding-right: 15px;
 	border-radius: 0 5px 5px 0;
-	height: 39px;
+	height: 40px;
     font-weight: 500;
 	font-size: 14px;
 	line-height: 20px;
@@ -1261,22 +1261,40 @@ section.demo-banner {
 
 .company-gallery .company-details, .company-gallery .testimonial-quote {
 	text-align: left;
+	font-size: 14px;
+	position: relative;
 }
 
-.expand-icon, .shrink-icon {
+.company-gallery .company-details p {
+	margin-bottom: 30px;
+}
+
+.company-gallery .company-details .case-study-link {
 	position: absolute;
-	bottom: 15px;
-	right: 15px;
-	color: #757575;
+    bottom: -35px;
+}
+
+.company-gallery .action-bar {
+	float: left;
+	margin-top: 10px;
+}
+
+.expand-button {
+	padding: 10px;
+	border: none;
+	color: #322965;
+	font-weight: 500;
+	font-size: 14px;
+	border-radius: 5px;
+	letter-spacing: 0.05em;
 	cursor: pointer;
-    border: 1px solid #dfe1e5;
-    border-radius: 50%;
-    padding: 8px;
-    width: 2.5rem;
-    height: 2.5rem;
-	background: #fff;
-	box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 4px 8px 0 rgba(0,0,0,0.20);
-	display: none;
+	text-transform: uppercase;
+}
+
+.expand-button:hover {
+	color: #322965;
+	text-decoration: none;
+	background-color: #faf7ff;
 }
 
 .company-gallery .header-container {
@@ -1296,15 +1314,6 @@ section.demo-banner {
 	font-size: .875rem;
 	line-height: 1.25rem;
 	opacity: .6;
-}
-
-.company-gallery .card:hover .expand-icon,
-.company-gallery .card:hover .shrink-icon{
-	display: block;
-}
-
-.expand-icon:hover, .shrink-icon:hover {
-	color: #000000;
 }
 
 /* Homepage Small Devices */

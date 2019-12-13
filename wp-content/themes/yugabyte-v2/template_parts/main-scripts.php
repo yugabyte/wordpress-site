@@ -131,15 +131,10 @@ window.onload = function () {
 	}
     
 	/* Success Stories */
-	$('.company-gallery .card .expand-icon').on('click', function () {
-		$(this).parent().find('.company-details').removeClass('hidden');
+	$('.company-gallery .card .expand-button').on('click', function () {
+		$(this).parent().parent().find('.company-details').removeClass('hidden');
+		$(this).parent().parent().find('.testimonial-quote').addClass('hidden');
 		$(this).siblings('.shrink-icon').removeClass('hidden');
-		$(this).addClass('hidden');
-	});
-
-	$('.company-gallery .card .shrink-icon').on('click', function () {
-		$(this).parent().find('.company-details').addClass('hidden');
-		$(this).siblings('.expand-icon').removeClass('hidden');
 		$(this).addClass('hidden');
 	});
 
