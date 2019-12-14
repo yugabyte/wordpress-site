@@ -181,7 +181,7 @@
 						<?php endif; ?>
 					</div>
 					<div class="success-stories-wrapper more-info-link">
-						<a target="_blank">See more success stories <span><i class="fa fa-chevron-right"></i></span></a>
+						<a href="/success-stories">See more success stories <span><i class="fa fa-chevron-right"></i></span></a>
 					</div>
 				</div>
 			</section>

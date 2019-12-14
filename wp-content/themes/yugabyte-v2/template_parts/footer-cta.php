@@ -27,6 +27,18 @@
 				<?php endwhile; ?>
 			</div>
 			<?php } ?>
+			<div class="mobile-cta-links">
+				<div class="col-sm-6 button-container-mobile">
+					<a href="<?php the_field('button_primary_url', 72); ?>" class="button left">
+						<span class="text"><?php the_field('button_primary_text', 72); ?></span>
+					</a>
+				</div>
+				<div class="col-sm-6 button-container-mobile">
+					<a href="<?php the_field('button_secondary_url', 72); ?>" class="button secondary">
+						<span class="text"><?php the_field('button_secondary_text', 72); ?></span>
+					</a>
+				</div>
+			</div>
 		</div>
 	</div>
 </section>
