@@ -14,11 +14,11 @@
 		<div class="success-stories">
             <section class="banner-section">
                 <div class="row">
-                    <div class="col-6">
+                    <div class="col-6 header-text">
                         <h2 class="title"><?php the_field('hero_title'); ?></h2>
                         <div class="subtitle"><?php the_field('hero_subtitle'); ?></div>
                     </div>
-                    <div class="col-6">
+                    <div class="col-6 header-image">
                         <img src="<?php the_field('banner_image'); ?>" height="200" />
                     </div>
             </section>
@@ -57,12 +57,7 @@
 		</div>
 
 		<?php include(locate_template('template_parts/footer-cta.php')); ?>
-
         <?php include(locate_template('template_parts/main-footer.php')); ?>
-        
-
-
-
 		<?php include(locate_template('template_parts/main-scripts.php')); ?>	
 	</body>
 </html>

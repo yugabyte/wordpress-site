@@ -427,10 +427,12 @@ hr {
 .homepage-hero .banner-link b {
 	font-size: 13px;
 	font-weight: 500;
+	width: 58px;
 	line-height: 18px;
 	border-radius: 5px;
 	padding: 5px 10px;
 	margin-right: 20px;
+	margin-bottom: 10px;
 	text-transform: uppercase;
 	color: #FF6E42;
 	background-color: #FFE7E0;
@@ -501,6 +503,19 @@ a.banner-link:hover span {
 	text-transform: uppercase;
 }
 
+.main-footer .social-icons {
+	display: flex;
+	font-size: 27px;
+	align-content: space-around;
+	margin: 0 auto;
+    max-width: 280px;
+}
+
+.main-footer .social-icons > a {
+	flex: 0 0 20%;
+	color: #322965;
+}
+
 .main-footer .copyright-container {
 	text-align: center;
 	margin: 0 auto;
@@ -515,6 +530,8 @@ a.banner-link:hover span {
 	text-decoration: none;
 	font-size: 15px;
 	line-height: 34px;
+}
+.main-footer .copyright-container .terms-hyperlink {
 	margin-right: 1.25rem;
 }
 
@@ -609,7 +626,7 @@ a.banner-link:hover span {
 }
 
 .homepage-hero .repeater .item {
-	color: #333;
+	color: #322965;
 	font-size: 12px;
 	display: block;
 	text-align: center;
@@ -868,10 +885,10 @@ section.layers {
 
 .value-prop .value-header-container {
 	text-align: center;
+	color: #322965;
 }
 
 .value-prop .value-header-container h2 {
-	color: #322965;
 	font-weight: 400;
 }
 
@@ -916,7 +933,7 @@ section.layers {
 section.demo-banner {
 	background-image: linear-gradient(to right, #FF6E42 , #322965);
 	padding: 4rem 0;
-	height: 400px;
+	min-height: 400px;
 }
 
 .demo-banner .container .email-contact {
@@ -1201,7 +1218,7 @@ section.demo-banner {
 .success-stories .banner-section {
 	background: #322965;
 	color: white;
-    padding: 6rem 0 3.125rem;
+    padding: 7rem 0 5rem;
     text-align: left;
 }
 
@@ -1232,7 +1249,7 @@ section.demo-banner {
 
 .company-gallery .card {
 	position: relative;
-	padding: 20px;
+	padding: 1.5rem;
     background: #fff;
     border: 1px solid #e8e8e8;
     border-radius: 10px;
@@ -1271,12 +1288,13 @@ section.demo-banner {
 
 .company-gallery .company-details .case-study-link {
 	position: absolute;
-    bottom: -35px;
+	bottom: -40px;
+	margin-left: -10px;
 }
 
 .company-gallery .action-bar {
 	float: left;
-	margin-top: 10px;
+	margin: 30px 0 0 -10px;
 }
 
 .expand-button {
@@ -1312,7 +1330,7 @@ section.demo-banner {
 
 .company-gallery .header-container .company-purpose {
 	font-size: .875rem;
-	line-height: 1.25rem;
+	line-height: 1.8rem;
 	opacity: .6;
 }
 
@@ -1347,6 +1365,7 @@ section.demo-banner {
 	line-height: 58px;
 	color: #ffffff;
 	font-weight: 500;
+	margin-bottom: 2rem;
 }
 
 .footer-cta .client-holder {
@@ -1391,6 +1410,21 @@ section.demo-banner {
 
 .footer-cta .button .icon {
 	width: -webkit-fill-available;
+}
+
+.footer-cta .mobile-cta-links {
+	display: none;
+	margin: 0 auto;
+}
+
+.footer-cta .mobile-cta-links .button-container-mobile {
+	text-align: center;
+}
+.footer-cta .mobile-cta-links .button-container-mobile a {
+	color: #ffffff;
+	font-size: 15px;
+	padding: 10px 20px;
+	width: 240px;
 }
 
 #latency-animation {
@@ -1441,7 +1475,8 @@ section.demo-banner {
 #new-node-animation {
 	position: relative;
 	display: flex;
-	margin-top: 15px;
+	margin: 15px auto 0;
+    width: 250px;
 }
 
 .latency-tile .item-title {
@@ -1453,6 +1488,7 @@ section.demo-banner {
 }
 
 #new-node-animation div.animation {
+	width: 175px;
 	-webkit-animation: moveleft 3s linear infinite;
 	animation: moveleft 3s linear infinite;
 }
@@ -1464,7 +1500,7 @@ section.demo-banner {
 
 #new-node-animation .box {
  position: absolute;
- left: 30px;
+ left: 0;
  background: white;
  height: 40px;
  width: 40px;
@@ -1473,7 +1509,7 @@ section.demo-banner {
 
 #new-node-animation .animation {
 	position: absolute;
-	left: 30px;
+	left: 0;
 }
 
 @keyframes fadeIn {
