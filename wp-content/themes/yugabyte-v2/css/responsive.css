@@ -141,9 +141,6 @@
 		font-size: 42px;
 		line-height: 50px;
 	}
-	.footer-cta .client-holder .image-container {
-		padding: 50px 0;
-	}
 	.footer-cta .client-holder .image-container img {
 		width: 9vw;
 	}
@@ -426,6 +423,10 @@
 	.demo-banner .cta-wrapper {
 		width: unset;
 	}
+	.community-metrics .card-content img.main-illustration {
+		height: auto;
+		width: 100%;
+	}
 	.container.community-metrics {
 		margin: 3.5rem 1.25rem 0;
     	width: unset;
@@ -477,6 +478,9 @@
 	}
 	.footer-cta .mobile-cta-links {
 		display: block;
+	}
+	.main-footer .social-icons {
+		margin: 0 auto;
 	}
 	.footer-cta .button-container {
 		display: none;

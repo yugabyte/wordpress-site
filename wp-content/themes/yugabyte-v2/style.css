@@ -507,7 +507,6 @@ a.banner-link:hover span {
 	display: flex;
 	font-size: 27px;
 	align-content: space-around;
-	margin: 0 auto;
     max-width: 280px;
 }
 
@@ -1414,7 +1413,7 @@ section.demo-banner {
 
 .footer-cta .mobile-cta-links {
 	display: none;
-	margin: 0 auto;
+	margin: 3.125rem auto 0;
 }
 
 .footer-cta .mobile-cta-links .button-container-mobile {
