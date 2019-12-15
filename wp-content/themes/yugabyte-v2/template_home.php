@@ -56,10 +56,10 @@
 									<div id="new-node-animation">
 										<div class="box"></div>
 										<div class="animation">
-											<img src="http://localhost:8888/wp-content/uploads/2019/12/database-1.svg" width="40" height="40" />
-											<img src="http://localhost:8888/wp-content/uploads/2019/12/database-1.svg" width="40" height="40" />
-											<img src="http://localhost:8888/wp-content/uploads/2019/12/database-1.svg" width="40" height="40" />
-											<img class="newNode" src="http://localhost:8888/wp-content/uploads/2019/12/database-1.svg" width="40" height="40" />
+											<img src="<?php the_field('scale_animation_image'); ?>" width="40" height="40" />
+											<img src="<?php the_field('scale_animation_image'); ?>" width="40" height="40" />
+											<img src="<?php the_field('scale_animation_image'); ?>" width="40" height="40" />
+											<img class="newNode" src="<?php the_field('scale_animation_image'); ?>" width="40" height="40" />
 										</div>
 									</div>
 									<div class="item-title">Massive Scale</div>
