@@ -149,9 +149,6 @@
 						<h3>Take a test drive</h3>
 						<div class="text-content">Avoid cloud lock-in with an enterprise-grade, cloud-native, open-source database.</div>
 						<div class="email-contact"><?php echo do_shortcode( get_field('hero_email_cta') ); ?></div>
-						<div class="more-info-link">
-							<a href="" target="_blank">Or learn more <span><i class="fa fa-chevron-right"></i></span></a>
-						</div>
 					</div>
 				</div>
 			</section>
