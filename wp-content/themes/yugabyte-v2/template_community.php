@@ -40,6 +40,7 @@
 					</div>
 				</div>
 			</section>
+			TESTING
 			<?php if(have_rows('hero_banner_repeater')) { ?>
 			<section class="hero-banner">
 				<div class="container">

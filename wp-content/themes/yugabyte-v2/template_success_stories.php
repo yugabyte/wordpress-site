@@ -28,11 +28,13 @@
                 <?php if(have_rows('company_list')): ?>
                     <?php while(have_rows('company_list')) : the_row(); ?>
                         <div class="card">
-                            <a href="<?php the_sub_field('company_url'); ?>" target="_blank">
-                                <img data-name="<?php the_sub_field('company_name'); ?>" src="<?php the_sub_field('company_logo'); ?>" />
-                            </a>
+                            <div class="logo-container">
+                                <a href="<?php the_sub_field('company_url'); ?>" target="_blank">
+                                    <img data-name="<?php the_sub_field('company_name'); ?>" src="<?php the_sub_field('company_logo'); ?>" />
+                                </a>
+                            </div>
                             <div class="header-container">
-                                <h4 class="company-name"><?php the_sub_field('company_name'); ?></h4>
+                                <!-- <h4 class="company-name"><?php the_sub_field('company_name'); ?></h4> -->
                                 <div class="company-purpose"><?php the_sub_field('purpose'); ?></div>
                             </div>
                             <div class="testimonial-quote">

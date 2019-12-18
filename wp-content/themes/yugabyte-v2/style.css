@@ -200,7 +200,7 @@ a:hover .l-to-r {
 
 .navbar {
 	position: absolute;
-    min-height: 70px;
+    height: 70px;
     top: 0;
     left: 0;
     right: 0;
@@ -212,12 +212,6 @@ a:hover .l-to-r {
 
 .navbar > .container {
 	justify-content: normal;
-}
-
-@media (min-width: 1200px) {
-	.container {
-		max-width: 1320px;
-	}
 }
 
 .nav-logo img {
@@ -344,18 +338,24 @@ hr {
 .navbar .button-container .button {
 	height: 44px;
 	width: 112px;
-	border-radius: 8px;
-	background-color: #FF6E42;
+	border-radius: 5px;
+	background: #fff;
+	border: 1px solid #FF6E42;
 	padding: 11.5px 23px 12.5px;
+	color: #FF6E42;
 }
 
 .navbar .button-container span {
-	color: #FFFFFF;
-	font-size: 14px;
+	font-size: 16px;
 	font-weight: 500;
 	letter-spacing: -0.4px;
 	line-height: 20px;
 	text-align: center;
+}
+
+.navbar .button-container .button:hover {
+	background: #FF6E42;
+	color: #fff;
 }
 
 /* Hero Banner */
@@ -411,7 +411,7 @@ hr {
 }
 
 .hero-title-phrase {
-	color: #FF6E42;
+	color: #004b80;
 	font-size: 40px;
 	font-weight: 400;
 	line-height: 52px;
@@ -419,9 +419,14 @@ hr {
 }
 
 .homepage-hero .banner-link {
-	color: #322965;
+	color: #333;
 	font-size: 13px;
 	line-height: 24px;
+}
+
+.homepage-hero .banner-link:hover {
+	color: #008aeb;
+	text-decoration: none;
 }
 
 .homepage-hero .banner-link b {
@@ -434,8 +439,8 @@ hr {
 	margin-right: 20px;
 	margin-bottom: 10px;
 	text-transform: uppercase;
-	color: #FF6E42;
-	background-color: #FFE7E0;
+	color: #008aeb;
+    background: #d0eaff;
 }
 
 .homepage-hero .hero-bg-image img {
@@ -607,7 +612,7 @@ a.banner-link:hover span {
 	width: 400px;
 	font-size: 1.25rem;
 	line-height: 28px;
-	color: #322965;
+	color: #333;
 }
 
 .homepage-hero .repeater .item-container {
@@ -625,7 +630,7 @@ a.banner-link:hover span {
 }
 
 .homepage-hero .repeater .item {
-	color: #322965;
+	color: #333;
 	font-size: 12px;
 	display: block;
 	text-align: center;
@@ -635,6 +640,7 @@ a.banner-link:hover span {
 	font-weight: 600;
 	font-size: 18px;
 	margin: 15px 0;
+	color: #004b80;
 }
 
 .container.community-metrics {
@@ -649,7 +655,7 @@ a.banner-link:hover span {
 }
 
 .community-metrics .card-content img.main-illustration {
-	height: 249px;
+	height: 200px;
 	width: auto;
 	margin-bottom: 3.125rem;
 }
@@ -692,7 +698,7 @@ a.banner-link:hover span {
 }
 
 .email-contact input[type="submit"] {
-	background: #FF6E42;
+	background: #17a956;
     border: none;
     position: absolute;
     right: -9px;
@@ -796,7 +802,7 @@ a.banner-link:hover span {
 }
 
 .community-metrics .community-header {
-	color: #322965;
+	color: #333;
 	text-align: center;
 	font-size: 18px;
 	line-height: 26px;
@@ -805,6 +811,8 @@ a.banner-link:hover span {
 .community-metrics .community-header h2 {
 	font-size: 28px;
 	line-height: 36px;
+	font-weight: 400;
+	color: #004b80;
 }
 
 .community-metrics .community-header .subtitle-text {
@@ -814,7 +822,7 @@ a.banner-link:hover span {
 .community-metrics .metrics-header {
 	font-size: 18px;
 	line-height: 26px;
-	color: #322965;
+	color: #333;
 	margin-bottom: 1rem;
 }
 
@@ -884,11 +892,12 @@ section.layers {
 
 .value-prop .value-header-container {
 	text-align: center;
-	color: #322965;
+	color: #333;
 }
 
 .value-prop .value-header-container h2 {
 	font-weight: 400;
+	color: #004b80;
 }
 
 .value-prop .description {
@@ -930,9 +939,7 @@ section.layers {
 }
 
 section.demo-banner {
-	background-image: linear-gradient(to right, #FF6E42 , #322965);
 	padding: 4rem 0;
-	min-height: 400px;
 }
 
 .demo-banner .container .email-contact {
@@ -941,7 +948,7 @@ section.demo-banner {
 
 .demo-banner .cta-wrapper {
 	text-align: center;
-    color: #ffffff;
+    color: #333;
     width: 550px;
     margin: 0 auto;
 }
@@ -1331,6 +1338,7 @@ section.demo-banner {
 	font-size: .875rem;
 	line-height: 1.8rem;
 	opacity: .6;
+	text-align: center;
 }
 
 /* Homepage Small Devices */
@@ -2434,7 +2442,7 @@ section.demo-banner {
 	margin-bottom: 2.5rem;
 }
 
-.case-study .subtitle .item-container {
+.case-study .item-container {
 	padding: 0.625rem 1rem 0.625rem 0;
 	display: flex;
 }
@@ -3096,6 +3104,12 @@ footer.footer-minimal {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+@media (min-width: 1400px) {
+	.container {
+			max-width: 1320px;
+   }
 }
 
 @media (max-width: 500px) {
