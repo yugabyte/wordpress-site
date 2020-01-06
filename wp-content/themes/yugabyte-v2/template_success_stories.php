@@ -34,7 +34,6 @@
                                 </a>
                             </div>
                             <div class="header-container">
-                                <!-- <h4 class="company-name"><?php the_sub_field('company_name'); ?></h4> -->
                                 <div class="company-purpose"><?php the_sub_field('purpose'); ?></div>
                             </div>
                             <div class="testimonial-quote">
@@ -44,12 +43,13 @@
                                 <p><?php the_sub_field('company_testimonial'); ?></p>
                                 <div class="case-study-link">
                                     <?php if (!empty(get_sub_field('case_study_url'))) { ?>
-                                        <a class="expand-button" href="<?php the_sub_field('case_study_url'); ?>" target="_blank">See Full Story</a>
+                                        <a class="full-story-btn" href="<?php the_sub_field('case_study_url'); ?>" target="_blank">Read Story</a>
                                     <?php } ?>
+                                    <div class="shrink-btn">Show Less</div>
                                 </div>
                             </div>
                             <div class="action-bar">
-                                <div class="expand-button">Read more</div>
+                                <div class="expand-btn">Show More</div>
                             </div>
                         </div>
                     <?php endwhile; ?>

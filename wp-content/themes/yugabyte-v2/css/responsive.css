@@ -417,9 +417,6 @@
 		border-right: none;
 		border-bottom: 1px solid #F2F6F9;
 	}
-	section.demo-banner {
-		background-image: linear-gradient(to bottom left, #322965 , #ce5a37);
-	}
 	.demo-banner .cta-wrapper {
 		width: unset;
 	}
