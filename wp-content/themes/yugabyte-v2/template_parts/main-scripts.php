@@ -167,12 +167,35 @@ window.onload = function () {
 	}
     
 	/* Success Stories */
-	$('.company-gallery .card .expand-button').on('click', function () {
+	$('.company-gallery .card .expand-btn').on('click', function () {
 		$(this).parent().parent().find('.company-details').removeClass('hidden');
 		$(this).parent().parent().find('.testimonial-quote').addClass('hidden');
-		$(this).siblings('.shrink-icon').removeClass('hidden');
-		$(this).addClass('hidden');
+		$(this).parent().addClass('hidden');
 	});
+
+	$('.company-gallery .card .shrink-btn').on('click', function () {
+		$(this).parent().parent().parent().find('.testimonial-quote').removeClass('hidden');
+		$(this).parent().parent().parent().find('.action-bar').removeClass('hidden');
+		$(this).parent().parent().addClass('hidden');
+	});
+
+	/* Community Page Accordion */
+	var acc = document.querySelectorAll(".it-blocks .contribute-wrapper .summary")
+	for (var i = 0; i < acc.length; i++) {
+	acc[i].addEventListener("click", function() {
+		/* Toggle between adding and removing the "active" class,
+		to highlight the button that controls the panel */
+		this.classList.toggle("active");
+
+		/* Toggle between hiding and showing the active panel */
+		var panel = this.nextElementSibling;
+		if (panel.style.maxHeight) {
+			panel.style.maxHeight = null;
+		} else {
+			panel.style.maxHeight = panel.scrollHeight + "px";
+		}
+	});
+	}
 
 	/* Case Study Page */
     var $modal = $("#video-modal");

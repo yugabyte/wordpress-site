@@ -14,7 +14,7 @@
 		<div class="home">
 			<section class="homepage-hero">
 				<div class="container">
-					<div class="row">
+					<div class="row hero-section">
 						<div class="container col-lg-6">
 							<div class="row">
 								<div class="icon"><img src="<?php the_field('banner_icon'); ?>"></div>
@@ -39,49 +39,69 @@
 					</div>
 					<div class="row">
 						<ul class="col-lg-12 repeater top repeater-container">
+							<?php
+								$latency = get_field('latency_tile');
+								if( $latency ): ?>	
 							<div class="item-container">
 								<li class="item latency-tile">
 									<div id="latency-animation">
 										<div class="latency">
 											<div class="box square-left"></div>
 											<div class="box square-right"></div>
+											<div class="opposite-latency"></div>
 										</div>
 									</div>
-									<div class="item-title">Single-Digit Millisecond Latency</div>
-									<div class="item-subtext">Build blazing fast applications in the cloud and serve queries directly from the DB</div>
+									<div class="item-title"><?php echo $latency['item_title']; ?></div>
+									<div class="item-subtext"><?php echo $latency['item_subtext']; ?></div>
 								</li>
 							</div>
+							<?php endif; ?>
+							<?php
+								$scale = get_field('scale_tile');
+								if( $scale ): ?>	
 							<div class="item-container">
 								<li class="item scale-tile">
 									<div id="new-node-animation">
 										<div class="box"></div>
 										<div class="animation">
-											<img src="<?php the_field('scale_animation_image'); ?>" width="40" height="40" />
-											<img src="<?php the_field('scale_animation_image'); ?>" width="40" height="40" />
-											<img src="<?php the_field('scale_animation_image'); ?>" width="40" height="40" />
-											<img class="newNode" src="<?php the_field('scale_animation_image'); ?>" width="40" height="40" />
+											<img src="<?php the_field('scale_animation_image'); ?>" width="40" height="50" />
+											<img src="<?php the_field('scale_animation_image'); ?>" width="40" height="50" />
+											<img src="<?php the_field('scale_animation_image'); ?>" width="40" height="50" />
+											<img class="newNode" src="<?php the_field('scale_animation_image'); ?>" width="40" height="50" />
 										</div>
 									</div>
-									<div class="item-title">Massive Scale</div>
-									<div class="item-subtext">Achieve millions of transactions per second and store multiple TB’s of data per node</div>
+									<div class="item-title"><?php echo $scale['item_title']; ?></div>
+									<div class="item-subtext"><?php echo $scale['item_subtext']; ?></div>
 								</li>
 							</div>
+							<?php endif; ?>
+							<?php
+								$geodist = get_field('geo-distribution_tile');
+								if( $geodist ): ?>
 							<div class="item-container" style="padding: 20px 50px 50px;">
 								<li class="item">
-									<div class="global-animation">
+									<div class="global-animation" style="background-image: url('<?php the_field('globe_image'); ?>');">
 										<svg class="globe-line" width="120" height="100" xmlns="http://www.w3.org/2000/svg">
-											<path class="path-clockwise" d="M 33, 37 a 50,10 40 1 1 50 42" stroke-width="2" stroke="#FF6E42" fill="transparent" stroke-linejoin="round" stroke-miterlimit="10" 
+											<path class="path-clockwise" d="M 33, 37 a 50,10 40 1 1 50 42" stroke-width="2" stroke="#322965" fill="transparent" stroke-linejoin="round" stroke-miterlimit="10" 
 											/>
-											<path class="path-counterclockwise" d="M 85, 37 a 50 10 138 1,0 -45 42" stroke="#FF6E42" stroke-width="2" fill="transparent" stroke-linejoin="round" stroke-miterlimit="10" 
+											<path class="path-counterclockwise" d="M 85, 37 a 50 10 138 1,0 -45 42" stroke="#322965" stroke-width="2" fill="transparent" stroke-linejoin="round" stroke-miterlimit="10" 
 											/>
 										</svg>
 									</div>
-									<div class="item-title">Geo-Distribution</div>
-									<div class="item-subtext">Deploy across regions and clouds with synchronous or multi-master replication</div>
+									<div class="item-title"><?php echo $geodist['item_title']; ?></div>
+									<div class="item-subtext"><?php echo $geodist['item_subtext']; ?></div>
 								</li>
 							</div>
+							<?php endif; ?>
 						</ul>
 					</div>
+					<?php if(have_rows('customer_logos_repeater')): ?>
+						<div class="logo-wall">
+							<?php while(have_rows('customer_logos_repeater')) : the_row(); ?>
+								<img src="<?php the_sub_field('customer_logo'); ?>" />
+							<?php endwhile; ?>
+						</div>
+					<?php endif; ?>
 				</div>
 			</section>
 			<section class="bg-grey">
@@ -110,8 +130,8 @@
 										</div>
 									<?php endif; ?>
 									<?php if(!empty(get_sub_field('community_hyperlink'))) { ?>
-										<a class="more-info-link" href="<?php get_sub_field('community_hyperlink'); ?>" target="_blank">
-											Learn More <span><i class="fa fa-chevron-right"></i></span>
+										<a class="more-info-link" href="<?php the_sub_field('community_hyperlink'); ?>" target="_blank">
+											<?php the_sub_field('community_link_text'); ?> <span><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="caret-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="svg-inline--fa fa-caret-right fa-w-6"><path fill="currentColor" d="M0 128.032v255.93c0 28.425 34.488 42.767 54.627 22.627l128-127.962c12.496-12.496 12.497-32.758 0-45.255l-128-127.968C34.528 85.305 0 99.55 0 128.032zM160 256L32 384V128l128 128z" class=""></path></svg></span>
 										</a>
 									<?php } ?>
 								</div>
@@ -154,7 +174,6 @@
 			</section>
 			<section class="customers">
 				<div class="container">
-					<h2 class="section-header"><?php the_field('demo_banner_title'); ?></h2>
 					<div class="row case-study-wrapper">
 						<?php if(have_rows('customer_repeater_copy')): ?>
 							<?php while(have_rows('customer_repeater_copy')) : the_row(); ?>
