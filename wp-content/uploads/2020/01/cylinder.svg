@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="62px" height="72px" viewBox="0 0 62 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>cylinder</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="cylinder" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M61,62.134 C61,62.134 59.2324777,71 30.9411491,71 C2.65081793,71 1,62.134 1,62.134 L1,9.867 C1,9.867 3.65327836,1 30.9411491,1 C58.2300173,1 61,9.867 61,9.867 L61,62.134 Z" id="Fill-1" fill="#F75821"></path>
+        <path d="M61,10.5005012 C61,15.7464781 47.5688348,20 30.9995003,20 C14.4311652,20 1,15.7464781 1,10.5005012 C1,5.25452435 14.4311652,1 30.9995003,1 C47.5688348,1 61,5.25452435 61,10.5005012 Z" id="Stroke-3" stroke="#202951" stroke-linecap="round"></path>
+        <path d="M61,62 L61,11" id="Stroke-5" stroke="#202951" stroke-linecap="round"></path>
+        <path d="M1,10 L1,62" id="Stroke-8" stroke="#202951" stroke-linecap="round"></path>
+        <path d="M1,26 C1,26 1.67360706,35 31.0004997,35 C60.3263929,35 61,26 61,26" id="Stroke-10" stroke="#202951" stroke-linecap="round"></path>
+        <path d="M1,43 C1,43 1.67360706,52 31.0004997,52 C60.3263929,52 61,43 61,43" id="Stroke-12" stroke="#202951" stroke-linecap="round"></path>
+        <path d="M1,62 C1,62 1.67360706,71 31.0004997,71 C60.3263929,71 61,62 61,62" id="Stroke-14" stroke="#202951" stroke-linecap="round"></path>
+    </g>
+</svg>

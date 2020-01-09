@@ -9,7 +9,7 @@
 	</head>
 
 	<body>
-		<?php include(locate_template('template_parts/main-header-light.php')); ?>
+		<?php include(locate_template('template_parts/main-header.php')); ?>
 		
 		<div class="privacy-policy">
 			<section class="privacy-hero" style="background-image: url(<?php the_field('hero_background_image'); ?>);">

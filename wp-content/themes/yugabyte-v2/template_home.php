@@ -27,7 +27,10 @@
 								<div>
 									<h2 class="hero-title-phrase"><?php the_field('hero_description_title'); ?></h2>
 									<div class="hero-subtext"><?php the_field('hero_description_subtext'); ?></div>
-									<div class="email-contact"><?php echo do_shortcode( get_field('hero_email_cta') ); ?></div>
+									<div class="email-contact">
+										<input type="email" name="contact-email" placeholder="Enter Email" aria-required="true" aria-invalid="false" />
+										<input type="submit" value="Request Demo" class="email-submit-btn" />
+									</div>
 								</div>
 							</div>
 						</div>
@@ -82,9 +85,9 @@
 								<li class="item">
 									<div class="global-animation" style="background-image: url('<?php the_field('globe_image'); ?>');">
 										<svg class="globe-line" width="120" height="100" xmlns="http://www.w3.org/2000/svg">
-											<path class="path-clockwise" d="M 33, 37 a 50,10 40 1 1 50 42" stroke-width="2" stroke="#322965" fill="transparent" stroke-linejoin="round" stroke-miterlimit="10" 
+											<path class="path-clockwise" d="M 33, 37 a 50,10 40 1 1 50 42" stroke-width="2" stroke="#FF6E42" fill="transparent" stroke-linejoin="round" stroke-miterlimit="10" 
 											/>
-											<path class="path-counterclockwise" d="M 85, 37 a 50 10 138 1,0 -45 42" stroke="#322965" stroke-width="2" fill="transparent" stroke-linejoin="round" stroke-miterlimit="10" 
+											<path class="path-counterclockwise" d="M 86, 36 a 50 10 138 1,0 -46 43" stroke="#FF6E42" stroke-width="2" fill="transparent" stroke-linejoin="round" stroke-miterlimit="10" 
 											/>
 										</svg>
 									</div>
@@ -117,11 +120,11 @@
 									<img class="main-illustration" src="<?php the_sub_field('community_image'); ?>" />
 									<div class="metrics-header"><?php the_sub_field('metrics_caption'); ?></div>
 									<?php if(have_rows('community_section_repeater')): ?>
-										<div class="row">
+										<div class="stats-row">
 										<?php while(have_rows('community_section_repeater')) : the_row(); ?>
 											<div class="metric-wrapper">
 												<?php if(!empty(get_sub_field('card_image'))) { ?>
-													<img height="25" src="<?php the_sub_field('card_image'); ?>" />
+													<img src="<?php the_sub_field('card_image'); ?>" />
 												<?php } ?>
 												<div class="metric-stat"><?php the_sub_field('card_title'); ?></div>
 												<span class="metric-unit"><?php the_sub_field('card_caption'); ?></span>
@@ -131,7 +134,8 @@
 									<?php endif; ?>
 									<?php if(!empty(get_sub_field('community_hyperlink'))) { ?>
 										<a class="more-info-link" href="<?php the_sub_field('community_hyperlink'); ?>" target="_blank">
-											<?php the_sub_field('community_link_text'); ?> <span><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="caret-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="svg-inline--fa fa-caret-right fa-w-6"><path fill="currentColor" d="M0 128.032v255.93c0 28.425 34.488 42.767 54.627 22.627l128-127.962c12.496-12.496 12.497-32.758 0-45.255l-128-127.968C34.528 85.305 0 99.55 0 128.032zM160 256L32 384V128l128 128z" class=""></path></svg></span>
+											<?php the_sub_field('community_link_text'); ?> <span><i class="fa fa-chevron-right"></i></span>
+											<!-- <span><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="caret-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="svg-inline--fa fa-caret-right fa-w-6"><path fill="currentColor" d="M0 128.032v255.93c0 28.425 34.488 42.767 54.627 22.627l128-127.962c12.496-12.496 12.497-32.758 0-45.255l-128-127.968C34.528 85.305 0 99.55 0 128.032zM160 256L32 384V128l128 128z" class=""></path></svg></span> -->
 										</a>
 									<?php } ?>
 								</div>
@@ -141,7 +145,7 @@
 				</div>
 			</section>
 			<section class="layers">
-				<div class="value-prop">
+				<div class="container value-prop">
 					<div class="value-header-container">
 						<h2 class="title"><?php the_field('value_prop_title'); ?></h2>
 						<div class="description"><?php the_field('value_prop_desc'); ?></div>
@@ -166,9 +170,12 @@
 			<section class="demo-banner">
 				<div class="container">
 					<div class="cta-wrapper">
-						<h3>Take a test drive</h3>
-						<div class="text-content">Avoid cloud lock-in with an enterprise-grade, cloud-native, open-source database.</div>
-						<div class="email-contact"><?php echo do_shortcode( get_field('hero_email_cta') ); ?></div>
+						<h3><?php the_field('cta_demo_header'); ?></h3>
+						<div class="text-content"><?php the_field('cta_demo_content'); ?></div>
+						<div class="email-contact">
+							<input type="email" name="contact-email" placeholder="Enter Email" aria-required="true" aria-invalid="false" />
+							<input type="submit" value="Request Demo" class="email-submit-btn" />
+						</div>
 					</div>
 				</div>
 			</section>
@@ -187,11 +194,11 @@
 										<div class="customer-details">
 											<b><?php the_sub_field('customer_name'); ?></b>
 											<div class="customer-position"><?php the_sub_field('customer_position'); ?></div> 
-											</div>
-									</div>
-									<div class="more-info-link">
-										<a href="/wp-content/uploads/2019/03/Narvar-YugaByte-DB-Case-Study.pdf">Read more <span><i class="fa fa-chevron-right"></i></a>
-									</div>
+										</div>
+										<div class="more-info-link">
+											<a href="/wp-content/uploads/2019/03/Narvar-YugaByte-DB-Case-Study.pdf">Read more <span><i class="fa fa-chevron-right"></i></span></a>
+										</div>
+									</div>									
 								</div>
 							<?php endwhile; ?>
 						<?php endif; ?>
