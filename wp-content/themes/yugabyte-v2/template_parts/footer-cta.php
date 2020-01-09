@@ -21,7 +21,7 @@
 				<?php while(have_rows('client_repeater', 72)) : the_row(); ?>
 				<div class="image-container">
 					<a href="<?php the_sub_field('link'); ?>">
-						<img src="<?php the_sub_field('image'); ?>">
+						<img height="64" src="<?php the_sub_field('image'); ?>">
 					</a>
 				</div>
 				<?php endwhile; ?>

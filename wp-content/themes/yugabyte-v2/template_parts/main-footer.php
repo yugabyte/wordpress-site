@@ -6,7 +6,10 @@
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo-link">
 						<img class="navBlack" src="/wp-content/uploads/2019/07/ybDB-Dark-v2.svg">
 					</a>
-					<div class="email-contact"><?php echo do_shortcode( get_field('hero_email_cta') ); ?></div>
+					<div class="email-contact">
+						<input type="email" name="contact-email" placeholder="Enter Email" aria-required="true" aria-invalid="false" />
+						<input type="submit" value="Request Demo" class="email-submit-btn" />
+					</div>
 					<?php if(have_rows('footer_social', 23)){ ?>
 						<div class="social-icons">
 						<?php while(have_rows('footer_social', 23)) : the_row(); ?>

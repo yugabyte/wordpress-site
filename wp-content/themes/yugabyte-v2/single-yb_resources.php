@@ -7,7 +7,7 @@
 	</head>
 
 	<body class="download-template animated-hero <?= get_field('gated') == 1 ? 'gated' : 'free' ; ?> <?= (in_category('presentations')) ? 'presentations' : ''; ?>">
-		<?php include(locate_template('template_parts/main-header-light.php')); ?>
+		<?php include(locate_template('template_parts/main-header.php')); ?>
 		
 		<div class="download">
 			<section id="particles-js" class="hero">

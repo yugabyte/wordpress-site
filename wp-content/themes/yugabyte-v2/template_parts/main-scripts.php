@@ -157,9 +157,21 @@ window.onload = function () {
 		}
 	});
 
+	$('.email-contact input[type="submit"]').on('click', function () {
+		var contactEmail = encodeURI($(this).prev()[0].value);
+		window.location.replace(`/contact-sales?contact-email=${contactEmail}&type=Demo`);
+	});
+
 	/* Contact Us */
 	var urlParams = new URLSearchParams(window.location.search);
-	if (urlParams.has('contact-email') && window.location.pathname === '/contact-us/') {
+	if (urlParams.has('contact-email') && (window.location.pathname === '/contact-us/' || window.location.pathname === '/contact-sales/')) {
+		var typeArr = urlParams.get('type').split(',');
+		for (var i = 0; i < typeArr.length; i++) {
+			var targetCheckbox = $(`.wpcf7-list-item input[type="checkbox"][value="${typeArr[i]}"]`);
+			if (targetCheckbox.length) {
+				targetCheckbox.prop('checked', true);
+			}
+		}
 		var $emailForm = $('input.wpcf7-form-control[name="companyEmail"]');
 		if ($emailForm.length) {
 			$emailForm.val(urlParams.get('contact-email'));

@@ -10,8 +10,8 @@
 
 	<body>
 		<?php include(locate_template('template_parts/main-header.php')); ?>
-		<div class="community">
-			<section class="community hero">
+		<div id="community-contribute-page">
+			<section class="community-hero">
 				<div class="container">
 					<div class="row center-align ">
 						<div class="col-lg-12 logo-container">
@@ -63,9 +63,9 @@
 								<img class="contribute-splash" src="<?php the_field('contribute_header_image'); ?>" />
 								<h2><?php the_field('contribute_title'); ?></h2>
 							</div>
-							<?php if(have_rows('contribute_repeater')) { ?>
+							<?php if(have_rows('how_to_contribute_repeater')) { ?>
 								<ul class="accordion-container">
-									<?php while(have_rows('contribute_repeater')) : the_row(); ?>
+									<?php while(have_rows('how_to_contribute_repeater')) : the_row(); ?>
 										<li class="contribute-blocks">
 											<div class="summary">
 												<img src="<?php the_sub_field('section_icon'); ?>" />
@@ -85,6 +85,30 @@
 								</ul>
 							<?php } ?>
 						</div>
+					</div>
+				</div>
+			</section>
+			<section class="contributor-program">
+				<div class="container">
+					<div class="title-wrapper">
+						<h2 class="contributor-program-title"><?php the_field('contributor_program_title'); ?></h2>
+						<div class="contributor-subtext"><?php the_field('contributor_program_subtext'); ?></div>
+					</div>		
+					<?php if(have_rows('contributor_repeater')) { ?>			
+						<div class="row center-container">
+							<?php while(have_rows('contributor_repeater')) : the_row(); ?>
+							<div class="col item">
+								<img width="250" class="header-image" src="<?php the_sub_field('item_image'); ?>" />
+								<h3 class=""><?php the_sub_field('contributor_type'); ?></h3>
+								<div><?php the_sub_field('contributor_info'); ?></div>
+							</div>
+							<?php endwhile; ?>
+						</div>
+					<?php } ?>
+					<div class="contributor-footnote">
+						<?php $cta = get_field('contributor_cta'); ?>
+						<div class="button-container"><a href="<?php echo $cta['button_link']; ?>" class="button"><?php echo $cta['button_text']; ?></a></div>
+						<div class="more-info email-info-text"><?php echo $cta['info_text'] ?></div>
 					</div>
 				</div>
 			</section>

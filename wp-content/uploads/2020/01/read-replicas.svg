@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="71px" height="72px" viewBox="0 0 71 72" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>ICO1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="0.0023 0.499 9.0033 0.499 9.0033 9.5017 0.0023 9.5017"></polygon>
+    </defs>
+    <g id="v2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="02-enterprise-desktop" transform="translate(-233.000000, -2865.000000)">
+            <g id="B" transform="translate(0.000000, 2515.000000)">
+                <g id="tile-1" transform="translate(124.000000, 299.000000)">
+                    <g id="ICO1" transform="translate(109.000000, 50.000000)">
+                        <path d="M47.7396,65.4498 C55.3986,57.0588 62.2856,56.6738 71.0016,65.4498" id="Stroke-1" stroke="#202951" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M47.7396,65.5631 C55.3986,73.9531 62.2856,74.3391 71.0016,65.5631" id="Stroke-3" stroke="#202951" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M59.3734,69.7642 C59.0564,69.7642 58.7354,69.7292 58.4224,69.6582 C56.1024,69.1352 54.6394,66.8232 55.1614,64.5012 C55.6014,62.5502 57.3694,61.1342 59.3664,61.1342 C59.6854,61.1342 60.0044,61.1692 60.3174,61.2412 C62.6384,61.7632 64.1024,64.0762 63.5794,66.3972 C63.1404,68.3482 61.3704,69.7642 59.3734,69.7642" id="Fill-5" fill="#F75821"></path>
+                        <path d="M59.3656,60.6343 C57.1646,60.6343 55.1786,62.1553 54.6746,64.3923 C54.0906,66.9863 55.7196,69.5623 58.3136,70.1463 C58.6696,70.2263 59.0246,70.2643 59.3746,70.2643 C61.5766,70.2643 63.5626,68.7433 64.0666,66.5063 C64.6506,63.9123 63.0206,61.3363 60.4276,60.7523 C60.0716,60.6723 59.7166,60.6343 59.3656,60.6343 M59.3666,61.6343 C59.6476,61.6343 59.9296,61.6663 60.2086,61.7283 C62.2596,62.1903 63.5526,64.2353 63.0916,66.2863 C62.7026,68.0123 61.1396,69.2643 59.3746,69.2643 C59.0946,69.2643 58.8106,69.2333 58.5326,69.1703 C57.5396,68.9473 56.6916,68.3493 56.1466,67.4883 C55.6026,66.6273 55.4266,65.6063 55.6496,64.6123 C56.0386,62.8863 57.6006,61.6343 59.3666,61.6343" id="Fill-7" fill="#202951"></path>
+                        <path d="M27.3939,23.4537 L48.6969,2.1507" id="Stroke-9" stroke="#202951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <polygon id="Fill-11" fill="#202951" points="49.5199 10.0035 48.0199 9.9505 48.2909 2.5595 40.8989 2.8295 40.8449 1.3285 49.8479 1.0025"></polygon>
+                        <path d="M22.4535,28.3941 L1.1515,49.6971" id="Stroke-13" stroke="#202951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <polygon id="Fill-15" fill="#202951" points="0.3275 41.8443 1.8285 41.8973 1.5565 49.2883 8.9495 49.0183 9.0025 50.5193 0.0005 50.8453"></polygon>
+                        <path d="M22.4535,23.4537 L1.1515,2.1507" id="Stroke-17" stroke="#202951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <g id="Group-21" transform="translate(0.000000, 0.501000)">
+                            <mask id="mask-2" fill="white">
+                                <use xlink:href="#path-1"></use>
+                            </mask>
+                            <g id="Clip-20"></g>
+                            <polygon id="Fill-19" fill="#202951" mask="url(#mask-2)" points="9.0033 0.8267 8.9503 2.3277 1.5603 2.0557 1.8293 9.4487 0.3283 9.5017 0.0023 0.4987"></polygon>
+                        </g>
+                        <path d="M27.3939,28.3941 L48.6969,49.6971" id="Stroke-22" stroke="#202951" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <polygon id="Fill-24" fill="#202951" points="40.8441 50.5201 40.8981 49.0191 48.2881 49.2911 48.0191 41.8981 49.5191 41.8451 49.8461 50.8481"></polygon>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
