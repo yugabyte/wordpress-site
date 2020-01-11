@@ -101,7 +101,7 @@
 					<?php if(have_rows('customer_logos_repeater')): ?>
 						<div class="logo-wall">
 							<?php while(have_rows('customer_logos_repeater')) : the_row(); ?>
-								<img src="<?php the_sub_field('customer_logo'); ?>" />
+								<img class="logo" src="<?php the_sub_field('customer_logo'); ?>" />
 							<?php endwhile; ?>
 						</div>
 					<?php endif; ?>
@@ -170,11 +170,10 @@
 			<section class="demo-banner">
 				<div class="container">
 					<div class="cta-wrapper">
-						<h3><?php the_field('cta_demo_header'); ?></h3>
-						<div class="text-content"><?php the_field('cta_demo_content'); ?></div>
+						<h2><?php the_field('cta_demo_header'); ?></h2>
 						<div class="email-contact">
 							<input type="email" name="contact-email" placeholder="Enter Email" aria-required="true" aria-invalid="false" />
-							<input type="submit" value="Request Demo" class="email-submit-btn" />
+							<input type="submit" value="Start Free Trial" class="email-submit-btn" />
 						</div>
 					</div>
 				</div>
@@ -186,6 +185,7 @@
 							<?php while(have_rows('customer_repeater_copy')) : the_row(); ?>
 								<div class="customer-card">
 									<div class="title-logo">
+										<div>Success Story</div>
 										<img src="<?php the_sub_field('customer_logo'); ?>" />
 									</div>
 									<div class="customer-testimonial"><?php the_sub_field('testimonial'); ?></div>
@@ -196,7 +196,7 @@
 											<div class="customer-position"><?php the_sub_field('customer_position'); ?></div> 
 										</div>
 										<div class="more-info-link">
-											<a href="/wp-content/uploads/2019/03/Narvar-YugaByte-DB-Case-Study.pdf">Read more <span><i class="fa fa-chevron-right"></i></span></a>
+											<a href="<?php the_sub_field('case_study_link'); ?>" class="read-more-btn">Read more</a>
 										</div>
 									</div>									
 								</div>
@@ -204,11 +204,10 @@
 						<?php endif; ?>
 					</div>
 					<div class="success-stories-wrapper more-info-link">
-						<a href="/success-stories">See more success stories <span><i class="fa fa-chevron-right"></i></span></a>
+						<a href="/success-stories">See more success stories</a>
 					</div>
 				</div>
-			</section>
-
+			</section>			
 			</section>
 		</div>
 

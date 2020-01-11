@@ -1,4 +1,4 @@
-<section class="footer-cta">
+<section class="footer-cta" id="platform-cta">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-6">

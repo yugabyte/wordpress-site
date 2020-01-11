@@ -415,7 +415,7 @@
 	}
 	.community-metrics .card-content:first-child {
 		border-right: none;
-		border-bottom: 1px solid #F2F6F9;
+		border-bottom: 1px solid #B5BCC1;
 	}
 	.demo-banner .cta-wrapper {
 		width: unset;
@@ -425,7 +425,7 @@
 		width: 100%;
 	}
 	.container.community-metrics {
-		margin: 3.5rem 1.25rem 0;
+		margin: 3.5rem auto 0;
     	width: unset;
 	}
 	.customers .case-study-wrapper .customer-card {
@@ -477,9 +477,10 @@
 		display: block;
 	}
 	.main-footer .social-icons {
-		margin: 0 auto;
+		margin-left: auto;
+		margin-right: auto;
 	}
-	.footer-cta .button-container {
+	#platform-cta .button-container {
 		display: none;
 	}
 	.footer-cta .button {
@@ -527,6 +528,21 @@
 		top: 240px;
 		left: 25px;
 		right: 25px;
+	}
+	#community-contribute-page .hero-banner .item { 
+		flex: unset;
+		margin-bottom: 20px;
+	}
+	#community-contribute-page .it-blocks .accordion-container {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	#community-contribute-page .contributor-program .col.item {
+		margin: 0 15px 20px;
+		flex: unset;
+	}
+	#community-contribute-page .hero-banner .center-container {
+		margin: 0 10px;
 	}
 	.community .hero-container .logo-container {
 		padding: 0 54px;
@@ -891,5 +907,17 @@
 	.resources .hero .hero-resources .col-md-4 {
 		margin: 15px;
 		max-width: unset;
+	}
+}
+
+@media (min-width: 1400px), (max-width: 750px) {
+	.home .customers .customer-testimonial {
+		margin-bottom: 125px;
+	}
+}
+
+@media (min-width: 768px) {
+	section.layers .value-prop-list .text-right.col-3 {
+		max-width: fit-content;
 	}
 }
