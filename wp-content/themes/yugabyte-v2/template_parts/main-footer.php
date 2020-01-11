@@ -25,7 +25,7 @@
 					<ul>
 						<?php while(have_rows('column_1_repeater', 23)) : the_row(); ?>
 							<a href="<?php the_sub_field('item_link', 23); ?>">
-								<li><span class=""><?php the_sub_field('item', 23); ?></span></li>
+								<li><span class="nav-link-text"><?php the_sub_field('item', 23); ?></span></li>
 							</a>
 						<?php endwhile; ?>
 					</ul>
@@ -36,7 +36,7 @@
 					<ul>
 						<?php while(have_rows('column_2_repeater', 23)) : the_row(); ?>
 							<a href="<?php the_sub_field('item_link', 23); ?>">
-								<li><span class=""><?php the_sub_field('item', 23); ?></span></li>
+								<li><span class="nav-link-text"><?php the_sub_field('item', 23); ?></span></li>
 							</a>
 						<?php endwhile; ?>
 					</ul>
@@ -47,7 +47,7 @@
 					<ul>
 						<?php while(have_rows('column_3_repeater', 23)) : the_row(); ?>
 							<a href="<?php the_sub_field('item_link', 23); ?>">
-								<li><span class=""><?php the_sub_field('item', 23); ?></span></li>
+								<li><span class="nav-link-text"><?php the_sub_field('item', 23); ?></span></li>
 							</a>
 						<?php endwhile; ?>
 					</ul>
@@ -58,7 +58,7 @@
 					<ul>
 						<?php while(have_rows('column_4_repeater', 23)) : the_row(); ?>
 							<a href="<?php the_sub_field('item_link', 23); ?>">
-								<li><span class=""><?php the_sub_field('item', 23); ?></span></li>
+								<li><span class="nav-link-text"><?php the_sub_field('item', 23); ?></span></li>
 							</a>
 						<?php endwhile; ?>
 					</ul>

@@ -56,9 +56,20 @@
                 <?php endif; ?>
                 </div>
             </section>
+            <section class="footer-cta">
+				<div class="container">
+					<div class="contributor-footnote">
+                        <?php $cta = get_field('contribute_cta'); ?>
+						<div class="more-info email-info-text"><?php echo $cta['contribute_text'] ?></div>
+						<div class="button-container">
+							<a href="<?php echo $cta['email_url']; ?>" class="email-cta button">
+								<?php echo $cta['email_text']; ?>
+							</a>
+						</div>
+					</div>
+				</div>
+			</section>
 		</div>
-
-		<?php include(locate_template('template_parts/footer-cta.php')); ?>
         <?php include(locate_template('template_parts/main-footer.php')); ?>
 		<?php include(locate_template('template_parts/main-scripts.php')); ?>	
 	</body>
