@@ -102,8 +102,16 @@
 		display: list-item;
 		padding: 0;
 	}
+	.community-metrics .card-content img.main-illustration {
+		height: auto;
+		max-width: 100%;
+	}
 	.homepage-hero .repeater li:after {
 		border: none;
+	}
+	.customers .title-logo img {
+		height: auto;
+		max-width: 100%;
 	}
 	.home .customers .customer-holder {
 		margin-bottom: 35px;
@@ -303,6 +311,13 @@
 	.navbar.darkerNav {
 		background: #FFF;
 	}
+	.navbar.lighterNav .navBlack,
+	.navbar.darkerNav .navWhite {
+		margin: 18px 0;
+	}
+	.navbar #menu-main-menu hr {
+		display: none;
+	}
 	.navbar,
 	.navbar .container {
 		padding: 0;
@@ -314,6 +329,14 @@
 	}
 	.navbar .nav-logo {
 		margin-left: 20px;
+	}
+	.navbar #menu-main-menu {
+		padding-left: 0;
+	}
+	.navbar.lighterNav #main-navbar > .button-container {
+		border-top: 1px solid #E8E8E8;
+		border-bottom: 1px solid #E8E8E8;
+		padding: 20px;
 	}
 	.navbar .menu-container {
 		background: #FFF;
@@ -345,6 +368,10 @@
 		text-align: center;
 		border-bottom: none;
 	}
+	#community-contribute-page .hero-banner .item {
+		flex: 0 0 50%;
+		margin-bottom: 20px;
+	}
 }
 
 @media only screen and (max-width: 768px) {
@@ -372,6 +399,10 @@
 	}
 	.homepage-hero .hero-bg-image img {
 		width: 100%;
+	}
+	.homepage-hero .logo-wall .logo {
+		flex: 0 0 150px;
+		margin: 15px auto;
 	}
 	.it-blocks-holder .item .copy ul {
 		padding-left: 40px;
@@ -432,12 +463,14 @@
 		max-width: unset;
 		flex: unset;
 	}
+	.customers .title-logo img {
+		height: 50px;
+		max-width: unset;
+		width: auto;	
+	}
 	.homepage-hero .repeater .item-container:not(:first-child) , .case-study-wrapper .customer-card:not(:first-child) {
 		margin-left: 0;
 		margin-top: 1.25rem;
-	}
-	.layers .value-prop {
-		margin: 0 1.25rem;
 	}
 	.value-prop .title {
 		font-size: 24px;
@@ -458,6 +491,9 @@
 		flex-basis: unset;
 		width: 100%;
 		margin-bottom: 1.25rem;
+	}
+	.value-prop-list .row .text-right.col-3 {
+		max-width: unset;
 	}
 	.contact-form .cf7-form,
 	.contact-form .map,
@@ -531,7 +567,6 @@
 	}
 	#community-contribute-page .hero-banner .item { 
 		flex: unset;
-		margin-bottom: 20px;
 	}
 	#community-contribute-page .it-blocks .accordion-container {
 		padding-left: 10px;
@@ -567,6 +602,16 @@
 		-ms-flex: unset;
 		flex: unset;
 		max-width: unset;
+		text-align: center;
+	}
+
+	.success-stories .banner-section .header-image {
+		margin: 20px auto 0;
+		max-width: unset;
+	}
+
+	.banner-section img {
+		margin: 0 auto;
 	}
 
 	.company-gallery .card {
@@ -744,6 +789,17 @@
 		font-size: 14px;
 		line-height: 18px;
 	}
+	#community-contribute-page .community-hero .button-container .button {
+		display: block;
+		margin-bottom: 20px;
+	}
+	#community-contribute-page .community-hero .button-container .secondary-button {
+		display: block;
+		margin-left: 0;
+	}
+	#community-contribute-page .hero-banner .center-container {
+		padding: 3.125rem 0;
+	}
 	.about-main .wrapper {
 		padding: 30px 0;
 	}
@@ -908,11 +964,24 @@
 		margin: 15px;
 		max-width: unset;
 	}
+
+	.customers .customer-advocate {
+		position: relative;
+		bottom: unset;
+		padding: 0;
+	}
+	.home .customers .customer-testimonial {
+		margin-bottom: 20px;
+	}
 }
 
-@media (min-width: 1400px), (max-width: 750px) {
+@media (min-width: 1400px) {
 	.home .customers .customer-testimonial {
 		margin-bottom: 125px;
+	}
+
+	.homepage-hero .logo-wall .logo {
+		margin: 0;
 	}
 }
 

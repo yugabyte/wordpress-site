@@ -31,15 +31,15 @@ $(function() {
 function toggleNavClass() {
 	var element = document.getElementById("myNav");
 	if (element.classList) { 
-		element.classList.toggle("darkerNav");
+		element.classList.toggle("lighterNav"); // OR "darkerNav"
 	} else {
 		// For IE9
 		var classes = element.className.split(" ");
-		var i = classes.indexOf("darkerNav");
+		var i = classes.indexOf("lighterNav");
 		if (i >= 0) 
 			classes.splice(i, 1);
 		else 
-			classes.push("darkerNav");
+			classes.push("lighterNav");
 		element.className = classes.join(" ");
 	}
 }

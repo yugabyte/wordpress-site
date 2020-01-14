@@ -2,7 +2,7 @@
 <script src="<?php echo get_template_directory_uri(); ?>/js/bootstrap.bundle.min.js?ver=1" type="text/javascript"></script>
 <script defer src="https://use.fontawesome.com/releases/v5.2.0/js/all.js" integrity="sha384-4oV5EgaV02iISL2ban6c/RmotsABqE4yZxZLcYMAdG7FAPsyHYAPpywE9PJo+Khy" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" type="text/javascript"></script>
-<script src="<?php echo get_template_directory_uri(); ?>/js/main.js?ver=1.165" type="text/javascript"></script>
+<script src="<?php echo get_template_directory_uri(); ?>/js/main.js?ver=1.166" type="text/javascript"></script>
 
 <!-- animate on scroll -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
@@ -158,8 +158,16 @@ window.onload = function () {
 	});
 
 	$('.email-contact input[type="submit"]').on('click', function () {
+		var $formParent = $(this).parent();
+		var type = [];
+		if ($formParent.hasClass('trial')) {
+			type.push('Trial');
+		}
+		if ($formParent.hasClass('demo')) {
+			type.push('Demo');
+		}
 		var contactEmail = encodeURI($(this).prev()[0].value);
-		window.location.replace(`/contact-sales?contact-email=${contactEmail}&type=Demo`);
+		document.location.href = `/contact-sales?contact-email=${contactEmail}&type=${type.join(',')}`;
 	});
 
 	/* Contact Us */

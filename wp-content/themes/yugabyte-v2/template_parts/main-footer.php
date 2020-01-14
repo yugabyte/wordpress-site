@@ -6,7 +6,7 @@
 					<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="footer-logo-link">
 						<img class="navBlack" src="/wp-content/uploads/2019/07/ybDB-Dark-v2.svg">
 					</a>
-					<div class="email-contact">
+					<div class="email-contact demo">
 						<input type="email" name="contact-email" placeholder="Enter Email" aria-required="true" aria-invalid="false" />
 						<input type="submit" value="Request Demo" class="email-submit-btn" />
 					</div>
