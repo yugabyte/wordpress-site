@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.48
+* Version: 1.0.49
 */
 
 /* #region Default */
@@ -239,11 +239,13 @@ a:hover .l-to-r {
 }
 
 .navbar.darkerNav .navBlack,
+.navbar.lighterNav .navWhite,
 .navbar .navWhite {
 	display: none;
 }
 
 .navbar.darkerNav .navWhite,
+.navbar.lighterNav .navBlack,
 .navbar .navBlack {
 	display: block;
 }
@@ -339,8 +341,8 @@ hr {
 
 .navbar .dropdown-item {
 	color: #202951;
-	font-size: 15px;
-	line-height: 20px;
+	font-size: 13px;
+	line-height: 18px;
 	padding: 13px 1.5rem;
 }
 
@@ -685,14 +687,14 @@ a.banner-link:hover span {
 }
 
 .homepage-hero .logo-wall {
-	margin-top: 6.25rem;
+	margin-top: 5.25rem;
 	display: flex;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	flex-wrap: wrap;
 }
 
 .homepage-hero .logo-wall .logo {
-	flex: 0 0 150px;
+	flex: 0 0 10%;
 	margin: 15px;
 }
 
@@ -889,7 +891,7 @@ a.banner-link:hover span {
 }
 
 .community-metrics .metric-wrapper {
-	margin: 0.5rem auto;
+	margin: 0.5rem;
 	position: relative;
 }
 
@@ -1568,6 +1570,7 @@ section.demo-banner {
 #new-node-animation {
 	position: relative;
 	display: flex;
+	display: -webkit-inline-flex;
 	margin: 15px auto 0;
     width: 250px;
 }

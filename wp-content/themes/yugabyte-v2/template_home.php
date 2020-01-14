@@ -27,7 +27,7 @@
 								<div>
 									<h2 class="hero-title-phrase"><?php the_field('hero_description_title'); ?></h2>
 									<div class="hero-subtext"><?php the_field('hero_description_subtext'); ?></div>
-									<div class="email-contact">
+									<div class="email-contact demo">
 										<input type="email" name="contact-email" placeholder="Enter Email" aria-required="true" aria-invalid="false" />
 										<input type="submit" value="Request Demo" class="email-submit-btn" />
 									</div>
@@ -101,7 +101,9 @@
 					<?php if(have_rows('customer_logos_repeater')): ?>
 						<div class="logo-wall">
 							<?php while(have_rows('customer_logos_repeater')) : the_row(); ?>
-								<img class="logo" src="<?php the_sub_field('customer_logo'); ?>" />
+								<a href="<?php the_sub_field('case_study_link'); ?>">
+									<img class="logo" src="<?php the_sub_field('customer_logo'); ?>" />
+								</a>
 							<?php endwhile; ?>
 						</div>
 					<?php endif; ?>
@@ -155,7 +157,7 @@
 							<?php while(have_rows('value_prop_repeater')) : the_row(); ?>
 								<div class="row">
 									<div class="col-3 col-xs-12 text-right">
-										<img class="feature-icon" src="<?php the_sub_field('feature_icon'); ?>">
+										<img class="feature-icon" width="64" height="64" src="<?php the_sub_field('feature_icon'); ?>">
 									</div>
 									<div>
 										<div class="tile-title"><?php the_sub_field('feature_name'); ?></div>
@@ -171,7 +173,7 @@
 				<div class="container">
 					<div class="cta-wrapper">
 						<h2><?php the_field('cta_demo_header'); ?></h2>
-						<div class="email-contact">
+						<div class="email-contact trial">
 							<input type="email" name="contact-email" placeholder="Enter Email" aria-required="true" aria-invalid="false" />
 							<input type="submit" value="Start Free Trial" class="email-submit-btn" />
 						</div>
@@ -186,7 +188,7 @@
 								<div class="customer-card">
 									<div class="title-logo">
 										<div>Success Story</div>
-										<img src="<?php the_sub_field('customer_logo'); ?>" />
+										<a href="<?php the_sub_field('case_study_link'); ?>"><img src="<?php the_sub_field('customer_logo'); ?>" /></a>
 									</div>
 									<div class="customer-testimonial"><?php the_sub_field('testimonial'); ?></div>
 									<div class="customer-advocate">

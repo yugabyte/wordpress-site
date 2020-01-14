@@ -7,18 +7,18 @@
 			</a>
 		</div>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false" aria-label="Toggle navigation" onclick="toggleNavClass()">
-			<img class="icon-hamb" src="/wp-content/uploads/2018/08/hamburger-white.svg">
+			<img class="icon-hamb" src="/wp-content/uploads/2018/08/hamburger-dark.svg">
 			<img class="icon-cross" src="/wp-content/uploads/2018/08/hamburger-close.svg">
 		</button>
 		<div class="menu-container collapse navbar-collapse" id="main-navbar">
-			<?php wp_nav_menu( array( 
+			<!-- <?php wp_nav_menu( array( 
 				'theme_location'	=> 'header-menu',
 				'depth'				=> 2,
 				'container'			=> false,
 				'menu_class'		=> 'nav',
 				'fallback_cb'		=> 'WP_Bootstrap_Navwalker::fallback',
 				'walker'			=> new WP_Bootstrap_Navwalker() 
-			) ); ?>
+			) ); ?> -->
 			<ul id="menu-main-menu" class="nav">
 				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-12" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-12 nav-item"><a title="Products" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-12">Products</a>
 					<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-12" role="menu">
