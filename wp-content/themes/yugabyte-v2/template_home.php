@@ -101,8 +101,8 @@
 					<?php if(have_rows('customer_logos_repeater')): ?>
 						<div class="logo-wall">
 							<?php while(have_rows('customer_logos_repeater')) : the_row(); ?>
-								<a href="<?php the_sub_field('case_study_link'); ?>">
-									<img class="logo" src="<?php the_sub_field('customer_logo'); ?>" />
+								<a class="logo" href="<?php the_sub_field('case_study_link'); ?>">
+									<img src="<?php the_sub_field('customer_logo'); ?>" />
 								</a>
 							<?php endwhile; ?>
 						</div>
@@ -135,9 +135,8 @@
 										</div>
 									<?php endif; ?>
 									<?php if(!empty(get_sub_field('community_hyperlink'))) { ?>
-										<a class="more-info-link" href="<?php the_sub_field('community_hyperlink'); ?>" target="_blank">
+										<a class="more-info-link" href="<?php the_sub_field('community_hyperlink'); ?>">
 											<?php the_sub_field('community_link_text'); ?> <span><i class="fa fa-chevron-right"></i></span>
-											<!-- <span><svg aria-hidden="true" focusable="false" data-prefix="fal" data-icon="caret-right" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 512" class="svg-inline--fa fa-caret-right fa-w-6"><path fill="currentColor" d="M0 128.032v255.93c0 28.425 34.488 42.767 54.627 22.627l128-127.962c12.496-12.496 12.497-32.758 0-45.255l-128-127.968C34.528 85.305 0 99.55 0 128.032zM160 256L32 384V128l128 128z" class=""></path></svg></span> -->
 										</a>
 									<?php } ?>
 								</div>

@@ -2,7 +2,7 @@
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title><?php single_post_title(); echo ' | ';  bloginfo( 'name' ); ?></title>
 <meta name="description" content="">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon.png" />
 
 <!--    
@@ -32,8 +32,8 @@ Site By TheSpider.com | Custom web design + development
 
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?ver=1.0.49" type="text/css" />
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/responsive.css?ver=1.0.27" type="text/css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?ver=1.0.52" type="text/css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/responsive.css?ver=1.0.28" type="text/css" />
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104956980-1"></script>

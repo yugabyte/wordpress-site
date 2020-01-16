@@ -9,13 +9,13 @@
 	</head>
 
 	<body>
-        <nav class="navbar navbar-light justify-content-between" role="menu" id="myNav">
+        <nav class="navbar case-study-page justify-content-between" role="menu" id="myNav">
             <div class="container case-study-page">
                 <a class="customer-hyperlink" href="<?php the_field('customer_site_url'); ?>" target="_blank">
                     <img class="customer-logo" src="<?php the_field('customer_logo'); ?>" />
                 </a>
                 <div class="yugabyte-branding">
-                    <a class="yugabyte-logo" href="<?php the_field('yugabyte_link'); ?>" target="_blank">
+                    <a class="yugabyte-logo" href="<?php the_field('yugabyte_link'); ?>">
                         <img src="<?php the_field('yugabyte_logo'); ?>" />
                     </a>
                     <a class="primary-btn btn" href="<?php the_field('button_primary_url'); ?>">
