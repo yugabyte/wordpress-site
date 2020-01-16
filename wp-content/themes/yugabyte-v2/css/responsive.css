@@ -7,6 +7,9 @@
 	.navbar .menu-container {
 		display: contents;
 	}
+	.navbar .mobile-container.active {
+		right: -100%;
+	}
 }
 @media only screen and (min-width: 1201px) {
 	.versus .vc_section > .vc_row {
@@ -322,6 +325,7 @@
 	.navbar .container {
 		padding: 0;
 		max-width: unset;
+		display: -webkit-inline-flex;
 	}
 	.navbar .navbar-toggler {
 		margin-right: 20px;
@@ -343,14 +347,15 @@
 	}
 	.navbar .menu-container .nav {
 		display: block;
+		margin-bottom: 20px;
+		border-bottom: 1px solid #E8E8E8;
 	}
-	.navbar .menu-container .nav-link {
-		color: #202951;
-		padding: 15px 25px;
-		border-top: 1px solid #E8E8E8;
+	.navbar .button-container {
+		padding: 10px 20px;
+		margin-bottom: 30px;
 	}
-	.navbar .menu-container ul.nav li.dropdown:hover ul.dropdown-menu {
-		display: contents;
+	.navbar .nav-link {
+		padding: 10px;
 	}
 	.navbar .dropdown-menu li {
 		border-top: 1px solid #E8E8E8;
@@ -382,6 +387,10 @@
 	.homepage-hero .banner-link b {
 		display: block;
 	}
+	.homepage-hero .logo-wall { 
+		margin-left: 0;
+		margin-right: 0;
+	}
 	.hero-title-phrase {
 		font-size: 24px;
 		line-height: 36px;
@@ -390,9 +399,6 @@
 		font-size: 15px;
 		line-height: 22px;
 		width: 100%;
-	}
-	.homepage-hero .repeater.top {
-		margin: 6.25rem 0 0;
 	}
 	.navbar .nav-logo img {
 		max-width: 145px;
@@ -767,6 +773,9 @@
 @media only screen and (max-width: 480px) {
 	.homepage-hero .repeater li {
 		font-size: 22px;
+	}
+	.homepage-hero .logo-wall .logo img {
+		max-width: 120px;
 	}
 	.global-banner .d-flex {
 		justify-content: unset;

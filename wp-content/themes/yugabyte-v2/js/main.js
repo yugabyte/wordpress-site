@@ -41,7 +41,10 @@ function toggleNavClass() {
 		else 
 			classes.push("lighterNav");
 		element.className = classes.join(" ");
-	}
+  }
+  var mobileMenu = element.children[1];
+  mobileMenu.classList.toggle('active');
+  document.querySelector('html').classList.toggle('overflow-hidden');
 }
 
 function setCookie(uname, uvalue, exdays) {

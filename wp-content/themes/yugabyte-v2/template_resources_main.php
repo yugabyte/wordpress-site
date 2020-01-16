@@ -47,7 +47,6 @@
 								$query2->the_post();
 								if ($the_slug == "datasheets") {
 						?>
-
 							<div class="d-flex">
 								<div class="item">
 									<a href="<?php the_permalink();?>">
