@@ -1,6 +1,9 @@
 /* Responsive */
 
 @media only screen and (min-width: 992px) {
+	html {
+		overflow-y: auto !important;
+	}
 	.navbar .navbar-toggler {
 		display: none;
 	}

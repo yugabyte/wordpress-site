@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.52
+* Version: 1.0.54
 */
 
 /* #region Default */
@@ -24,8 +24,8 @@ html {
 	display: none !important;
 }
 
-.overflow-hidden {
-	overflow: hidden !important;
+.overflow-y-hidden {
+	overflow-y: hidden;
 }
 
 body {
@@ -342,6 +342,10 @@ a:hover .l-to-r {
 
 .navbar .nav-link:hover {
 	color: #F75821;
+}
+
+#main-navbar ul.dropdown-menu li.menu-item:not(:last-child) {
+	border-bottom: 1px solid #E8E8E8;
 }
 
 hr {
@@ -2272,6 +2276,8 @@ section.demo-banner {
 
 #community-contribute-page .accordion-container .summary {
 	display: flex;
+	display: -webkit-flex;
+	max-height: 85px;
 	padding: 1.5rem 0;
 	cursor: pointer;
 }

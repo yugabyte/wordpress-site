@@ -44,7 +44,7 @@ function toggleNavClass() {
   }
   var mobileMenu = element.children[1];
   mobileMenu.classList.toggle('active');
-  document.querySelector('html').classList.toggle('overflow-hidden');
+  document.querySelector('html').classList.toggle('overflow-y-hidden');
 }
 
 function setCookie(uname, uvalue, exdays) {
