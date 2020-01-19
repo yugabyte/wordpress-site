@@ -28,6 +28,7 @@
 									<h2 class="hero-title-phrase"><?php the_field('hero_description_title'); ?></h2>
 									<div class="hero-subtext"><?php the_field('hero_description_subtext'); ?></div>
 									<div class="email-contact demo">
+										<!-- <?php echo do_shortcode( '[contact-form-7 id="1618" title="Demo Email"]' ); ?> -->
 										<input type="email" name="contact-email" placeholder="Enter Email" aria-required="true" aria-invalid="false" />
 										<input type="submit" value="Request Demo" class="email-submit-btn" />
 									</div>
