@@ -6,6 +6,7 @@
 
 <!-- animate on scroll -->
 <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <script>
 	AOS.init({
 		duration: 600,
@@ -132,6 +133,13 @@ function getImageLightness(imageSrc,callback) {
 
 window.onload = function () {
 	drawArcs();
+	
+	$('.logo-wall').slick({
+		dots: true,
+		infinite: true,
+		slidesToShow: 6,
+		slidesToScroll: 3
+	});
 
 	$('.action-dropdown.open, .action-dropdown.close').on('click', function () {
 		$(this).parent().siblings('ul.sub-nav-menu').toggleClass('active');
