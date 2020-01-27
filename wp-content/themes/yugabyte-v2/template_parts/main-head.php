@@ -31,9 +31,8 @@ Site By TheSpider.com | Custom web design + development
 <?php } ?>
 
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css" type="text/css" />
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?ver=1.0.54" type="text/css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?ver=1.0.55" type="text/css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/responsive.css?ver=1.0.29" type="text/css" />
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
