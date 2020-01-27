@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.54
+* Version: 1.0.55
 */
 
 /* #region Default */
@@ -5119,6 +5119,16 @@ span.wpcf7-not-valid-tip {
 	border-top: 1px solid #e8e8e8;
 	padding: 1rem 2rem;
 	margin-bottom: 3.125rem;
+}
+
+.events-page .event-list .filters {
+	display: flex;
+	margin-bottom: 10px;
+}
+
+.events-page .event-list .filters select {
+	margin: 0 15px;
+	padding: 2px;
 }
 
 .events-page .event-list .item-container {

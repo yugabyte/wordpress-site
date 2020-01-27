@@ -23,25 +23,42 @@
                     </div>
             </section>
             <div class="container">
-                <ul class="event-list">
-                <?php if(have_rows('events_content_repeater')): ?>                 
-                    <?php while(have_rows('events_content_repeater')) : the_row(); ?>
-                        <li class="item-container">
-                            <div class="image-wrapper">
-                                <a class="conference-image" style="background-image: url('<?php the_sub_field('conference_image'); ?>')" rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>"></a>
-                            </div>
-                            <div>
-                                <a class="event-name brand-primary" rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>"><?php the_sub_field('event_name'); ?></a>
-                                <div class="event-info"> 
-                                    <span class="event-type"><?php the_sub_field('type'); ?></span>
-                                    <span class="event-dates"><?php the_sub_field('dates'); ?></span>
-                                    <span class="event-location"><?php the_sub_field('location'); ?></span>
+                <?php if(have_rows('events_content_repeater')): ?>
+                    <?php $options = ['None'];
+                        foreach( get_field('events_content_repeater') as &$value) {
+                            if (!in_array($value["type"], $options)) {
+                                array_push($options, $value["type"]);
+                            }
+                        } ?>
+                    <div class="event-list">
+                        <div class="filters">
+                            <span>Filter by event type</span>
+                            <select id="event-type-filter">
+                                <?php foreach ($options as $type): array_map('htmlentities', $type); ?>
+                                    <option value="<?php echo $type ?>"><?php echo $type ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
+                        <ul>
+                        <?php while(have_rows('events_content_repeater')) : the_row(); ?>
+                            <li class="item-container" data-event-type="<?php the_sub_field('type'); ?>">
+                                <div class="image-wrapper">
+                                    <a class="conference-image" style="background-image: url('<?php the_sub_field('conference_image'); ?>')" rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>"></a>
                                 </div>
-                                <div class="event-description"><?php the_sub_field('description'); ?></div>
-                            </div>
-                        </li>
-                    <?php endwhile; endif; ?>
-                </ul>
+                                <div>
+                                    <a class="event-name brand-primary" rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>"><?php the_sub_field('event_name'); ?></a>
+                                    <div class="event-info"> 
+                                        <span class="event-type"><?php the_sub_field('type'); ?></span>
+                                        <span class="event-dates"><?php the_sub_field('dates'); ?></span>
+                                        <span class="event-location"><?php the_sub_field('location'); ?></span>
+                                    </div>
+                                    <div class="event-description"><?php the_sub_field('description'); ?></div>
+                                </div>
+                            </li>
+                        <?php endwhile; ?>
+                        </ul>
+                    </div>
+                <?php endif; ?>
             </div>
             <section class="footer-cta">
 				<div class="container">
