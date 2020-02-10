@@ -1,7 +1,19 @@
+<?php
+
+// use php header function to set new http vary header value, 
+// for the second parameter, true means replace the previous header, false means add a second header.
+header('Strict-Transport-Security:max-age=31536000', true);
+header('x-frame-options:SAMEORIGIN', true);
+header('Referrer-Policy:same-origin', true);
+header('X-Content-Type-Options:nosniff', true);
+header('Content-Security-Policy: script-src \'self\' https:', true);
+header('Feature-Policy: vibrate \'self\'; sync-xhr \'self\'', true);
+header_remove("X-Powered-By");
+?>
+
 <meta charset="utf-8">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 <title><?php single_post_title(); echo ' | ';  bloginfo( 'name' ); ?></title>
-<meta name="description" content="">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="shortcut icon" href="<?php echo get_stylesheet_directory_uri(); ?>/images/favicon.png" />
 
