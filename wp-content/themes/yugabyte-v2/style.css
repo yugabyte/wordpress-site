@@ -5123,6 +5123,7 @@ span.wpcf7-not-valid-tip {
 
 .events-page .event-list .filters {
 	display: flex;
+	margin-top: 5px;
 	margin-bottom: 10px;
 }
 
@@ -5165,7 +5166,6 @@ span.wpcf7-not-valid-tip {
 }
 
 .events-page .event-list .event-info {
-	display: flex;
 	font-size: 14px;
 	margin: 10px 0 20px;
 }

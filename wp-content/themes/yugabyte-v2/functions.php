@@ -141,7 +141,18 @@ function userIsAuthorizedToDownload() {
 	die();
 }
 
+function addSecurityHeaders() {
+	// use php header function to set new http vary header value, 
+	// for the second parameter, true means replace the previous header, false means add a second header.
+	header('Strict-Transport-Security: max-age=31536000', true);
+	header('x-frame-options: SAMEORIGIN', true);
+	header('Referrer-Policy: same-origin', true);
+	header('X-Content-Type-Options: nosniff', true);
+	header('Content-Security-Policy: script-src \'self\' \'unsafe-inline\' https:', true);
+	header('Feature-Policy: vibrate \'self\'; sync-xhr \'self\'', true);
+}
+
 add_action( 'wp_ajax_userIsAuthorizedToDownload', 'userIsAuthorizedToDownload');
 add_action( 'wp_ajax_nopriv_userIsAuthorizedToDownload', 'userIsAuthorizedToDownload' );
-
+add_action( 'send_headers', 'addSecurityHeaders' );
 ?>
