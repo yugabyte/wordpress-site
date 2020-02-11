@@ -380,6 +380,9 @@
 		flex: 0 0 50%;
 		margin-bottom: 20px;
 	}
+	.banner-section img {
+		margin-left: 0;
+	}
 }
 
 @media only screen and (max-width: 768px) {
@@ -687,6 +690,20 @@
 	.iub_content .box_primary {
 		min-width: 450px;
 	}
+	.events-page > .container {
+		max-width: unset;
+	}
+	.events-page .banner-section > .row {
+		display: block;
+	}
+	.events-page .banner-section .col-6 {
+		max-width: unset;
+		flex: unset;
+		text-align: center;
+	}
+	.events-page .banner-section .header-image {
+		margin-top: 20px;
+	}
 }
 
 @media only screen and (max-width: 576px) {
@@ -770,6 +787,12 @@
 	}
 	.versus .vc_section > .vc_row {
 		margin: 0;
+	}
+	.events-page .event-list {
+		padding: 1rem 0;
+	}	
+	.events-page .event-list .item-container {
+		display: block;
 	}
 }
 

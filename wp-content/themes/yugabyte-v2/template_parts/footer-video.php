@@ -5,7 +5,7 @@
                 <div class="logo-white">
                     <img width="50px" height="30px" alt="YugabyteDB logo" src="<?php the_field('yb_logo_white', 1630); ?>" />
                     <div class="copyright">
-                        <div style="margin-bottom: 3px;">© 2019 YugaByte, Inc.</div>
+                        <div style="margin-bottom: 3px;">© <?php echo date("Y"); ?> YugaByte, Inc.</div>
                         <a href="<?php the_field('privacy_policy_url', 1630); ?>">Privacy Policy</a>
                     </div>
                 </div>
