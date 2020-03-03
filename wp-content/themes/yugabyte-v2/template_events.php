@@ -64,7 +64,9 @@
 				<div class="container">
 					<div class="contributor-footnote">
                         <?php $cta = get_field('events_cta'); ?>
-						<div class="more-info email-info-text" style="font-size: 32px; line-height: 42px;"><?php echo $cta['text'] ?></div>
+                        <div class="more-info email-info-text" style="font-size: 32px; line-height: 42px; color: white; text-align: center;">
+                            <?php echo $cta['text'] ?>
+                        </div>
 						<div class="button-container">
 							<a href="<?php echo $cta['email_url']; ?>" class="email-cta button">
 								<?php echo $cta['email_text']; ?>

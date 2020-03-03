@@ -130,8 +130,33 @@ function getImageLightness(imageSrc,callback) {
     }
 }
 
+window.onresize = formatLogoWall;
+
+// Adding logo slider
+function formatLogoWall() {
+	var $logoWall = $('.logo-wall');
+	if (window.innerWidth > 1000) {
+		if (!$logoWall.hasClass('slick-slider')) {
+			$logoWall.slick({
+				slidesToShow: 7,
+				slidesToScroll: 2,
+				autoplay: true,
+				autoplaySpeed: 5000,
+			});
+		}		
+	} else {
+		if ($logoWall.hasClass('slick-slider')) {
+			$logoWall.slick('unslick');
+		}
+	}
+}
+
 window.onload = function () {
 	drawArcs();
+
+	if (window.innerWidth > 1000) {
+		formatLogoWall();
+	}
 
 	$('.action-dropdown.open, .action-dropdown.close').on('click', function () {
 		$(this).parent().siblings('ul.sub-nav-menu').toggleClass('active');

@@ -116,7 +116,7 @@
                     </a>
 					<div class="row">
 						<div class="col">
-                            <div class="hero-title"><?php the_field('hero_statement'); ?></div>
+                            <h1 class="hero-title"><?php the_field('hero_statement'); ?></h1>
                             <div class="yugabyte-purpose">
                                 <?php the_field('yugabyte_purpose'); ?>
                             </div>
@@ -134,7 +134,9 @@
                         <div class="col">
                             <div class="hero-image-wrapper">
                                 <img class="hero-image" src="<?php the_field('hero_img'); ?>" />
-                                <img class="play-btn" src="<?php the_field('play_button'); ?>" />
+                                <?php if(get_field('evaluation_table')) { ?>
+                                    <img class="play-btn" src="<?php the_field('play_button'); ?>" />
+                                <?php } ?>
                             </div>
                         </div>
                         <div class="subtitle-mobile">
@@ -154,10 +156,10 @@
 			<section class="customer-intro">
 				<div class="container case-study-page">
 					<div class="row">
-						<div class="stacked-images">
+						<div class="stacked-images col-6">
                             <img src="<?php the_field('company_image_1'); ?>" />
                         </div>
-						<div class="company-container">
+						<div class="company-container col-6">
                             <div class="company-title"><?php the_field('company_info_header'); ?></div>
                             <div class="company-info-details"><?php the_field('company_info_details'); ?></div>
                         </div>
@@ -250,7 +252,7 @@
                     <?php } ?>
                 </div>
 			</section>
-
+            <?php if (get_field('show_cardview')) { ?>
 			<section class="testimonials">
                 <div class="diamond-motif" id="bg-diamond-4-1">
                     <div>
@@ -292,7 +294,7 @@
 					</div>
 				</div>
 			</section>
-
+            <?php } ?>
 			<section class="solutions">
                 <div class="diamond-motif" id="bg-diamond-5-1">
                     <div>
@@ -455,41 +457,59 @@
                     </div>
                 </div>
 				<div class="container case-study-page">
-                    <h1><?php the_field('solution_title'); ?></h1>
-                    <div class="visual-specs row">
-                        <?php if(have_rows('implementation_details')) { ?>
+                    <?php if(have_rows('implementation_details')) { ?>
+                        <h1><?php the_field('solution_title'); ?></h1>
+                        <div class="visual-specs row">
                             <?php while(have_rows('implementation_details')) : the_row(); ?>
-	        					<div class="col-lg-4 spec-container">
+                                <div class="col-lg-4 spec-container">
                                     <img src="<?php the_sub_field('details_icon'); ?>" />
                                     <div><?php the_sub_field('details_spec'); ?></div>
                                 </div>
                             <?php endwhile; ?>
-						<?php } ?>
-                    </div>
+                        </div>
+                    <?php } ?>
                     
-                    <h2><?php the_field('technical_header'); ?></h2>
-                    <div class="tech-specs row">
-                        <?php if(have_rows('technical_repeater')) { ?>
+                    <?php if(have_rows('technical_repeater')) { ?>
+                        <h2><?php the_field('technical_header'); ?></h2>
+                        <div class="tech-specs row">                    
                             <?php while(have_rows('technical_repeater')) : the_row(); ?>
-	        					<div class="col-lg-2 stat-block">
+                                <div class="col-lg-2 stat-block">
                                     <div class="stat-number"><?php the_sub_field('stat_number'); ?></div>
                                     <div class="stat-unit"><?php the_sub_field('stat_unit'); ?></div>
                                 </div>
                             <?php endwhile; ?>
-                        <?php } ?>
-                    </div>
-                    
-                    <h2><?php the_field('business_header'); ?></h2>
-                    <div class="business-value-props">
-                        <?php if(have_rows('business_repeater')) { ?>
+                        </div>
+                    <?php } ?>
+
+                    <?php if(have_rows('business_repeater')) { ?>
+                        <h2><?php the_field('business_header'); ?></h2>
+                        <div class="business-value-props">
                             <?php while(have_rows('business_repeater')) : the_row(); ?>
-	        					<div class="value-prop">
+                                <div class="value-prop">
                                     <?php the_sub_field('business_value_item'); ?>
                                     <div class="left-bg-col"></div>
                                 </div>
+                            <?php endwhile; ?>        
+                        </div>
+                    <?php } ?>
+
+                    <?php if (!get_field('show_cardview')) { ?>
+                        <?php if(have_rows('testimonials')) { ?>
+                            <?php while(have_rows('testimonials')) : the_row(); ?>
+                            <div class="quote-spotlight quote-container">
+                                <div class="quote"><?php the_sub_field('advocater_quote'); ?></div>
+                                <div class="quoter-info">
+                                    <img class="profile-picture" src="<?php the_sub_field('profile_picture'); ?>" />
+                                    <div class="customer-info">
+                                        <div class="name"><?php the_sub_field('customer_name'); ?></div>
+                                        <div class="position"><?php the_sub_field('customer_position'); ?></div>
+                                    </div>
+                                </div>
+                                <div class="left-bg-col"></div>
+                            </div>
                             <?php endwhile; ?>
                         <?php } ?>
-                    </div>
+                    <?php } ?>
                 </div>
 			</section>
         </div>
@@ -507,23 +527,37 @@
             <div class="footer-video">
                 <div class="container case-study-page">
                     <div class="row">
-                        <div class="col-lg-6 video-wrapper">
-                            <div class="demo-video">
-                                <?php the_field('demo_video'); ?>
-                                <img class="play-btn" src="<?php the_field('play_button'); ?>" />
+                        <?php if(get_field('demo_video')) { ?>
+                            <div class="col-lg-6 video-wrapper">
+                                <div class="demo-video">
+                                    <?php the_field('demo_video'); ?>
+                                    <img class="play-btn" src="<?php the_field('play_button'); ?>" />
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-lg-6 text-wrapper">
-                            <div class="main-title"><?php the_field('main_title'); ?></div>
-                            <div class="row btn-wrapper">
-                                <a class="secondary-btn btn" href="<?php the_field('button_secondary_url'); ?>" download>
-                                    <?php the_field('button_secondary_text'); ?>
-                                </a>
-                                <a class="primary-btn btn" href="<?php the_field('button_primary_url'); ?>">
-                                    <?php the_field('button_primary_text'); ?>
-                                </a>
+                            <div class="col-lg-6 text-wrapper">
+                                <div class="main-title"><?php the_field('main_title'); ?></div>
+                                <div class="row btn-wrapper">
+                                    <a class="secondary-btn btn" href="<?php the_field('button_secondary_url'); ?>" download>
+                                        <?php the_field('button_secondary_text'); ?>
+                                    </a>
+                                    <a class="primary-btn btn" href="<?php the_field('button_primary_url'); ?>">
+                                        <?php the_field('button_primary_text'); ?>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        <?php } else { ?>
+                            <div class="text-wrapper">
+                                <div class="main-title centered"><?php the_field('main_title'); ?></div>
+                                <div class="row btn-wrapper centered">
+                                    <a class="secondary-btn btn" href="<?php the_field('button_secondary_url'); ?>" download>
+                                        <?php the_field('button_secondary_text'); ?>
+                                    </a>
+                                    <a class="primary-btn btn" href="<?php the_field('button_primary_url'); ?>">
+                                        <?php the_field('button_primary_text'); ?>
+                                    </a>
+                                </div>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

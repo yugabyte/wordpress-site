@@ -119,6 +119,16 @@
 		height: auto;
 		max-width: 100%;
 	}
+	.customer-intro .stacked-images.col-6 {
+		flex: unset;
+		max-width: unset;
+		margin-bottom: 30px;
+	}
+	.customer-intro .company-container {
+		flex: unset;
+		max-width: unset;
+		width: auto;
+	}
 	.home .customers .customer-holder {
 		margin-bottom: 35px;
 	}
@@ -376,6 +386,10 @@
 		text-align: center;
 		border-bottom: none;
 	}
+	.container.case-study-page {
+		max-width: 850px;
+		padding: 0 15px;
+	}
 	#community-contribute-page .hero-banner .item {
 		flex: 0 0 50%;
 		margin-bottom: 20px;
@@ -390,12 +404,16 @@
 		margin: 0 1.25rem;
 		padding: 0;
 	}
+	.container.case-study-page {
+		max-width: 650px;
+	}
 	.homepage-hero .banner-link b {
 		display: block;
 	}
 	.homepage-hero .logo-wall { 
 		margin-left: 0;
 		margin-right: 0;
+		flex-wrap: wrap;
 	}
 	.hero-title-phrase {
 		font-size: 24px;
@@ -609,6 +627,9 @@
 		padding: 17px 10px 0;
 	}
 
+	.banner-section {
+		padding: 4rem 0 3.125rem;
+	}
 	.success-stories .banner-section .header-text {
 		display: block;
 		-ms-flex: unset;
@@ -618,7 +639,7 @@
 	}
 
 	.success-stories .banner-section .header-image {
-		margin: 20px auto 0;
+		margin: 50px auto 0;
 		max-width: unset;
 	}
 
@@ -693,20 +714,39 @@
 	.events-page > .container {
 		max-width: unset;
 	}
-	.events-page .banner-section > .row {
+	.banner-section .row {
 		display: block;
 	}
-	.events-page .banner-section .col-6 {
+	.banner-section .col-6.header-text {
 		max-width: unset;
 		flex: unset;
 		text-align: center;
 	}
+
 	.events-page .banner-section .header-image {
 		margin-top: 20px;
+	}
+	.careers .banner-section .header-text,
+	.careers .banner-section .header-image {
+		margin: 0 auto 30px;
+		max-width: unset;
+		flex: unset;
+		text-align: center;	
+	}
+
+	#yugabyte-cloud .banner-section .header-image {
+		margin-top: 30px;
+		max-width: unset;
+		flex: unset;
+		text-align: center;	
 	}
 }
 
 @media only screen and (max-width: 576px) {
+	.careers .perks-section .table-view .item {
+		flex: 0 1 50%;
+		max-width: 50%;
+	}
 	.it-blocks-holder .block .copy ul {
 		padding-left: 20px;
 	}
@@ -810,6 +850,9 @@
 	.global-banner a {
 		font-size: 16px;
 		padding: 0 5px;
+	}
+	.banner-section img {
+		width: 100%;
 	}
 	.footer-cta .client-holder .image-container img {
 		width: 8vw;
@@ -1013,10 +1056,6 @@
 @media (min-width: 1400px) {
 	.home .customers .customer-testimonial {
 		margin-bottom: 125px;
-	}
-
-	.homepage-hero .logo-wall .logo {
-		margin: 0;
 	}
 }
 

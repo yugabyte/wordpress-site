@@ -6,6 +6,8 @@
 <html>
 	<head>
 		<?php include(locate_template('template_parts/main-head.php')); ?>
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+		<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
 	</head>
 
 	<body>
@@ -216,6 +218,7 @@
 		<?php include(locate_template('template_parts/footer-cta.php')); ?>
 
 		<?php include(locate_template('template_parts/main-footer.php')); ?>
-		<?php include(locate_template('template_parts/main-scripts.php')); ?>	
+		<?php include(locate_template('template_parts/main-scripts.php')); ?>
+		<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>	
 	</body>
 </html>
