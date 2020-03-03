@@ -17,10 +17,15 @@
                     <div class="col-6 header-text">
                         <h2 class="title"><?php the_field('hero_title'); ?></h2>
                         <div class="subtitle"><?php the_field('hero_subtitle'); ?></div>
+                        <div class="button-container">
+                            <?php $cta = get_field('contribute_cta'); ?>
+                            <a href="<?php echo $cta['email_url']; ?>" class="email-cta button">Submit your success story</a>
+                        </div>
                     </div>
                     <div class="col-6 header-image">
                         <img src="<?php the_field('banner_image'); ?>" height="200" />
                     </div>
+                </div>
             </section>
 
             <section class="company-gallery">
@@ -42,14 +47,17 @@
                             <div class="company-details hidden">
                                 <p><?php the_sub_field('company_testimonial'); ?></p>
                                 <div class="case-study-link">
+                                    <div class="shrink-btn">Show Less</div>
                                     <?php if (!empty(get_sub_field('case_study_url'))) { ?>
                                         <a class="full-story-btn" href="<?php the_sub_field('case_study_url'); ?>" target="_blank">Read Story</a>
                                     <?php } ?>
-                                    <div class="shrink-btn">Show Less</div>
                                 </div>
                             </div>
                             <div class="action-bar">
                                 <div class="expand-btn">Show More</div>
+                                <?php if (!empty(get_sub_field('case_study_url'))) { ?>
+                                    <a class="full-story-btn" href="<?php the_sub_field('case_study_url'); ?>" target="_blank">Read Story</a>
+                                <?php } ?>
                             </div>
                         </div>
                     <?php endwhile; ?>
@@ -58,8 +66,8 @@
             </section>
             <section class="footer-cta">
 				<div class="container">
-					<div class="contributor-footnote">
-                        <?php $cta = get_field('contribute_cta'); ?>
+					<div class="contributor-footnote">                        
+                        <h3 class="more-info title"><?php the_field('contribute_title'); ?></h3>
 						<div class="more-info email-info-text"><?php echo $cta['contribute_text'] ?></div>
 						<div class="button-container">
 							<a href="<?php echo $cta['email_url']; ?>" class="email-cta button">

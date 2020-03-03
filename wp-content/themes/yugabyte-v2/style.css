@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.55
+* Version: 1.0.65
 */
 
 /* #region Default */
@@ -744,16 +744,34 @@ a.banner-link:hover span {
 .homepage-hero .logo-wall {
 	margin-top: 5.25rem;
 	display: flex;
+	/* 
 	justify-content: space-between;
-    flex-wrap: wrap;
+	flex-wrap: wrap;
+	align-items: center;
+	*/
     margin-left: -15px;
     margin-right: -15px;
-    align-items: center;
+
+}
+
+.logo-wall .slick-prev:before, .logo-wall .slick-next:before {
+	color: #322965 !important;
+}
+
+.slick-slider .slick-track, .slick-slider .slick-list {
+	display: flex;
+	align-items: center;
 }
 
 .homepage-hero .logo-wall .logo {
 	text-align: center;
 	margin: 15px;
+}
+
+.homepage-hero .logo-wall .logo > img {
+	max-height: 56px;
+	height: auto;
+	width: inherit;
 }
 
 .container.community-metrics {
@@ -1363,25 +1381,34 @@ section.demo-banner {
 
 /* Success Stories Page */
 .banner-section {
-	background: #322965;
-	color: white;
-    padding: 7rem 0 5rem;
+    padding: 10rem 0 3.125rem;
     text-align: left;
 }
 
 .banner-section .row {
 	margin: 0 auto;
-    max-width: 980px;
+    max-width: 1200px;
 }
 
 .banner-section .title {
-	font-size: 28px;
-	line-height: 38px;
-	margin: 2rem 0;
+	margin: 4rem 0 1.25rem;
+	color: #322965;
+	font-size: 40px;
+	line-height: 52px;
+	font-weight: 400;
 }
-
+.banner-section .subtitle {
+	color: #546371;
+	font-size: 20px;
+	line-height: 28px;
+}
+.banner-section .button-container {
+	margin-top: 35px;
+}
 .banner-section img {
 	margin-left: 50px;
+	max-height: 334px;
+	height: auto;
 }
 
 .success-stories .company-gallery .table-view {
@@ -1391,20 +1418,35 @@ section.demo-banner {
     justify-content: center;
 	flex-wrap: wrap;
 	margin: 0 auto;
-	max-width: 1080px;
+	max-width: 1200px;
+}
+
+.success-stories .footer-cta {
+	background: #ffffff;
+	color: #546371;
+	font-size: 20px;
+	line-height: 28px;
+	text-align: center;
+}
+
+.success-stories .footer-cta .more-info.title {
+	color: #322965;
+	font-weight: 400;
+	font-size: 40px;
+	line-height: 52px;
 }
 
 .company-gallery .card {
 	position: relative;
-	padding: 1.5rem;
+	padding: 3.125rem;
     background: #fff;
     border: 1px solid #B5BCC1;
     border-radius: 10px;
 	margin: 0 13px 30px 13px;
 	display: inline-block;
-	max-width: 300px;
 	min-height: 320px;
-	flex: 0 0 30%;
+	flex: 0 0 31%;
+
 }
 
 .company-gallery .card img {
@@ -1415,11 +1457,6 @@ section.demo-banner {
 .company-gallery .card img[data-name="Kroger"] {
 	height: 80px;
 	margin: 20px 0 0;
-}
-
-.company-gallery .card img[data-name="Plume"] {
-	margin: 0;
-    height: 100px;
 }
 
 .company-gallery .company-details, .company-gallery .testimonial-quote {
@@ -1436,7 +1473,7 @@ section.demo-banner {
 .company-gallery .action-bar {
 	margin: 20px 0 0 -10px;
 	display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 
 .expand-btn, .shrink-btn, .full-story-btn {
@@ -1450,18 +1487,23 @@ section.demo-banner {
 	cursor: pointer;
 	text-transform: uppercase;
 	width: fit-content;
+	margin: auto;
 }
 
-.expand-btn:hover, .full-story-btn:hover {
+.full-story-btn {
+	color: #FF7A4B;	
+}
+
+.expand-btn:hover, .shrink-btn:hover {
 	color: #322965;
 	text-decoration: none;
 	background-color: #faf7ff;
 }
 
-.shrink-btn:hover {
-	color: #322965;
+.full-story-btn:hover {
+	color: #FF7A4B;
 	text-decoration: none;
-	background-color: #f5f5f5;
+	background-color: #fff0d4;
 }
 
 .company-gallery .header-container {
@@ -2342,6 +2384,13 @@ section.demo-banner {
 	letter-spacing: 0.3px;
 }
 
+#community-contribute-page .contributor-subtext {
+	color: #546371;
+	font-size: 17px;
+	letter-spacing: 0.3px;
+	line-height: 27px;
+}
+
 #community-contribute-page .contributor-program .center-container {
 	justify-content: space-between;
 }
@@ -2390,13 +2439,18 @@ section.demo-banner {
 	padding-bottom: 2rem;
 }
 
-.contributor-footnote .more-info.email-info-text {
+#community-contribute-page .contributor-footnote .more-info.email-info-text {
 	color: #FFFFFF;
-	font-family: 'Rubik';
+	font-family: Rubik;
 	font-size: 42px;
 	line-height: 58px;
 	text-align: center;
-	margin-bottom: 30px;
+}
+
+.contributor-footnote .more-info.email-info-text {
+	font-size: 20px;
+	line-height: 28px;
+	margin: 12px 0 20px;
 }
 
 .contributor-footnote .button-container .email-cta.button {
@@ -2838,6 +2892,7 @@ section.demo-banner {
 .container.case-study-page {
 	max-width: 1078px;
 	margin: 0 auto;
+	padding: 0 15px;
 }
 
 .case-study-page .yugabyte-branding {
@@ -2846,10 +2901,7 @@ section.demo-banner {
 
 .case-study .hero-title {
 	margin-top: 2.5rem;
-}
-
-.case-study .hero-title {
-	font-size: 26px;
+	font-size: 28px;
 	line-height: 44px;
 	font-weight: 300;
 }
@@ -2914,12 +2966,12 @@ section.demo-banner {
 .customer-intro .stacked-images {
 	padding-right: 70px;
 	position: relative;
+	text-align: center;
 }
 
 .customer-intro .stacked-images img {
 	height: auto;
 	max-width: 400px;
-	width: 100%;
 }
 
 .customer-intro .company-container {
@@ -3055,18 +3107,18 @@ section.testimonials {
 section.testimonials .row {
 	padding: 2rem 0;
 }
-section.testimonials .quote-container {
+ .quote-container {
 	position: relative;
 	padding: 2rem;
 	font-size: 13px;
 	font-weight: 300;
 }
 
-section.testimonials .quoter-info .name{
+.quoter-info .name{
 	font-weight: 700;
 }
 
-section.testimonials .quote-containerp:first-child {
+.quote-container:first-child {
 	margin-right: 4rem;
 }
 
@@ -3075,7 +3127,7 @@ section.testimonials .quote-containerp:first-child {
 	position: inherit;
 }
 
-.testimonials img.profile-picture {
+.quoter-info .profile-picture {
 	width: 80px;
 	height: 80px;
 	border-radius: 100%;
@@ -3083,7 +3135,7 @@ section.testimonials .quote-containerp:first-child {
 	display: inline-block;
 }
 
-.testimonials .quoter-info  .customer-info {
+.quoter-info  .customer-info {
 	vertical-align: middle;
 	display: inline-block;
 }
@@ -3100,23 +3152,25 @@ section.testimonials .quote-containerp:first-child {
 
 /* Solutions and Implementation */
 
-.solutions {
+section.solutions {
 	background: #fff;
 	position: relative;
+	padding: 0 0 3.125rem;
 }
 
-.solutions h1 {
+section.solutions h1 {
 	color: #322965;
 	font-size: 58px;
 	font-weight: 500;
 	line-height: 70px;
 	text-align: center;
 	z-index: 100;
+	padding-top: 4.25rem;
 	position: relative;
 }
 
 .solutions .visual-specs {
-	padding: 2rem 0 2.5rem;
+	padding: 2rem 0 0;
 	justify-content: space-evenly;
 }
 
@@ -3147,10 +3201,11 @@ section.testimonials .quote-containerp:first-child {
 	text-align: center;
 	color: #FF6E42;
 	position: relative;
+	padding-top: 6.25rem;
 }
 
 .solutions .tech-specs {
-	margin: 2.5rem 0 6.25rem 0;
+	margin: 2.5rem 0 0;
 	padding: 0 4rem;
 	display: flex;
 	justify-content: space-between;
@@ -3219,6 +3274,35 @@ section.testimonials .quote-containerp:first-child {
 	font-weight: 600;
 }
 
+.case-study-page .quote-spotlight {
+	max-width: 852px;
+	margin: 4.375rem auto 2rem;
+	box-sizing: border-box;  
+	border: 1px solid #EDECEC;
+	border-radius: 8px;
+	background-color: #F9FAFC;
+	padding: 65px 74px 65px 113px;
+	position: relative;
+}
+
+.case-study-page .quote-spotlight .profile-picture {
+	width: 72px;
+	height: 72px;
+}
+
+.case-study-page .quote-spotlight .quote {
+	line-height: 26px;
+	color: #546371;
+	margin-bottom: 20px;
+	font-size: 16px;
+}
+
+.case-study-page .quote-spotlight .customer-info {
+	color: #546371;
+	font-size: 16px;
+	line-height: 26px;
+}
+
 /* New Footer Minimal Design */
 
 footer.footer-minimal {
@@ -3262,8 +3346,15 @@ footer.footer-minimal {
 	margin-bottom: 30px;
 }
 
+.footer-video .main-title.centered {
+	text-align: center;
+}
+
 .footer-video .btn-wrapper {
 	margin: 0;
+}
+.footer-video .btn-wrapper.centered {
+	justify-content: center;
 }
 
 .footer-video .text-wrapper .btn {
@@ -3547,7 +3638,7 @@ footer.footer-minimal {
 	}
 }
 
-@media (max-width: 500px) {
+@media (max-width: 625px) {
 	.container.case-study-page {
 	    padding-left: 20px;
     	padding-right: 20px;
@@ -3635,7 +3726,8 @@ footer.footer-minimal {
 	}
 	
 	.customer-intro .stacked-images {
-		padding-right: 0;
+		padding: 0;
+		margin: 0 auto;
 	}
 		
 	.customer-intro .company-container {
@@ -3713,6 +3805,10 @@ footer.footer-minimal {
 	.solutions .business-value-props .value-prop {
 		flex-basis: 100%;
 		max-width: 100%;
+	}
+	
+	.case-study-page .quote-spotlight {
+		padding: 50px;
 	}
 	
 	#video-modal .modal-content iframe {
@@ -5144,8 +5240,8 @@ span.wpcf7-not-valid-tip {
 }
 
 .events-page .item-container > .image-wrapper {
-	height: 150px;
-	flex: 0 0 250px;
+	height: 144px;
+	flex: 0 0 256px;
 	margin-right: 30px;
 }
 
@@ -5190,4 +5286,161 @@ span.wpcf7-not-valid-tip {
 .events-page .event-description {
 	font-size: 15px;
 	border-bottom: 2px solid #f1f1f1;
+}
+
+.perks-section {
+	background: #ffffff;
+	text-align: center;
+}
+
+.careers .banner-section .row {
+	margin-bottom: 3.125rem;
+}
+
+.careers .perks-section h3,
+.careers .jobs-section h3 {
+	color: #322965;
+	font-size: 28px;
+	font-weight: 500;
+	line-height: 36px;
+	margin-top: 3.125rem;
+	text-align: center;
+}
+
+.careers .perks-section .table-view {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	margin: 6.25rem auto 3.125rem;
+} 
+
+.careers .perks-section .table-view .item {
+	flex: 0 1 30%;
+	max-width: 32%;
+	padding: 15px;
+	margin-bottom: 3.125rem; 
+}
+
+.careers .perks-section .perk-container {
+	width: 150px;
+	margin: 0 auto;
+}
+
+.careers .perks-section .perk-container .perk-icon {
+	height: 45px;
+}
+
+.careers .perks-section .perk-container .perk-item {
+	margin-top: 15px;
+}
+
+.jobs-section .description {
+	color: #546371;
+	font-size: 17px;
+	letter-spacing: 0.3px;
+	line-height: 27px;
+	text-align: center;
+	margin: 12px 0 3.125rem;
+}
+
+.jobs-section .job-list {
+	list-style: none;
+	max-width: 600px;
+	margin: 0 auto 1.25rem;
+	padding: 0;	
+}
+
+.jobs-section .job-list li {
+	margin-bottom: 30px; 
+}
+
+.jobs-section .job-list .title {
+	color: #FF6E42;
+	font-size: 18px;
+	font-weight: 500;
+	letter-spacing: 0.32px;
+	line-height: 27px;
+	margin: 0;
+}
+
+.jobs-section .job-info span {
+	color: #546371;
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.jobs-section .job-info span strong {
+	font-weight: 500;
+}
+
+.careers .footer-cta {
+	background: #ffffff;
+}
+
+.careers .footer-cta {
+	background: #ffffff;
+}
+
+.careers .footer-cta  .cta-phrase {
+	color: #322965;
+	font-size: 32px;
+	line-height: 40px;
+	font-weight: 300;
+	max-width: 1098px;
+	text-align: center;
+    margin: 0 auto;
+}
+
+.careers .footer-cta  .cta-phrase > a {
+	color: #FF6E42;
+	font-weight: 500;
+}
+
+.cloud-features .title {
+	text-align: center;
+	font-size: 20px;
+	line-height: 30px;
+}
+
+.cloud-features .title {
+	text-align: center;
+	font-size: 20px;
+	line-height: 30px;
+}
+
+.cloud-features .bullets {
+	list-style: none;
+	padding: 0;
+	margin: 0 auto;
+	color: #546371;
+}
+
+.cloud-features .bullets-checkbox {
+	width: 350px;
+    margin: 0 auto;
+}
+
+.cloud-features .bullets li {
+	display: -ms-flexbox; 
+	display: -webkit-flex;
+	display: flex;  	
+}
+
+.cloud-features .bullets .green-check {
+	margin: 4px 8px 0 0;
+}
+
+.cloud-features .bullets .feature-item {
+	display: inline-block;
+}
+
+.cloud-alt-link {
+	font-size: 14px;
+	line-height: 24px;	
+	margin-top: 30px;
+}
+
+.cloud-alt-link a {
+	color: #ff6e42;
+	font-weight: 500;
 }
