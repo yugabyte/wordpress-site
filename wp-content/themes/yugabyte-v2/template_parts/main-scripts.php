@@ -136,7 +136,7 @@ window.onresize = formatLogoWall;
 function formatLogoWall() {
 	var $logoWall = $('.logo-wall');
 	if (window.innerWidth > 1000) {
-		if (!$logoWall.hasClass('slick-slider')) {
+		if ($logoWall.length && !$logoWall.hasClass('slick-slider')) {
 			$logoWall.slick({
 				slidesToShow: 7,
 				slidesToScroll: 2,
