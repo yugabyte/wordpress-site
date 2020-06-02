@@ -134,7 +134,7 @@
                         <div class="col">
                             <div class="hero-image-wrapper">
                                 <img class="hero-image" src="<?php the_field('hero_img'); ?>" />
-                                <?php if(get_field('evaluation_table')) { ?>
+                                <?php if(get_field('testimonial_video_link')) { ?>
                                     <img class="play-btn" src="<?php the_field('play_button'); ?>" />
                                 <?php } ?>
                             </div>
@@ -252,7 +252,7 @@
                     <?php } ?>
                 </div>
 			</section>
-            <?php if (get_field('show_cardview')) { ?>
+            <?php if (get_field('show_cardview') === true) { ?>            
 			<section class="testimonials">
                 <div class="diamond-motif" id="bg-diamond-4-1">
                     <div>
@@ -493,7 +493,7 @@
                         </div>
                     <?php } ?>
 
-                    <?php if (!get_field('show_cardview')) { ?>
+                    <?php if (get_field('show_cardview') !== true) { ?>
                         <?php if(have_rows('testimonials')) { ?>
                             <?php while(have_rows('testimonials')) : the_row(); ?>
                             <div class="quote-spotlight quote-container">
@@ -515,13 +515,11 @@
         </div>
         <!-- The Modal -->
         <div id="video-modal" class="modal">
-
             <!-- Modal content -->
             <div class="modal-content">
             <span class="close">&times;</span>
             <?php the_field('demo_video'); ?>
             </div>
-
         </div>
         <footer class="footer-minimal">
             <div class="footer-video">

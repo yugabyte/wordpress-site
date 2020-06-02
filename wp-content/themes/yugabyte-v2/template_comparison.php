@@ -16,7 +16,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col">
-							<div class="title"><?php the_field('hero_title'); ?></div>
+							<h1 class="title"><?php the_field('hero_title'); ?></h1>
 							<div class="subtitle"><?php the_field('hero_subtitle'); ?></div>
 						</div>
 					</div>

@@ -137,12 +137,19 @@ function formatLogoWall() {
 	var $logoWall = $('.logo-wall');
 	if (window.innerWidth > 1000) {
 		if ($logoWall.length && !$logoWall.hasClass('slick-slider')) {
-			$logoWall.slick({
-				slidesToShow: 7,
-				slidesToScroll: 2,
-				autoplay: true,
-				autoplaySpeed: 5000,
-			});
+			if ($logoWall.parents('.home').length) {
+				$logoWall.slick({
+					slidesToShow: 8,
+					slidesToScroll: 2,
+					autoplay: true,
+					autoplaySpeed: 5000,
+				});
+			} else {
+				$logoWall.slick({
+					slidesToShow: 5,
+					slidesToScroll: 2
+				});
+			}
 		}		
 	} else {
 		if ($logoWall.hasClass('slick-slider')) {
@@ -168,7 +175,13 @@ window.onload = function () {
 	$("#menu-main-menu .nav-link").hover(function () {
 		var paddingSize = $(this).css('padding-left').substring(0, $(this).css('padding-left').length - 2);
 		var offsetLeft = $(this).offset().left - $(this).parent().parent().offset().left + parseInt(paddingSize);
-		$navSlidingBar.css('left', offsetLeft);
+		$navSlidingBar.css('left', offsetLeft);		
+	}, function () {
+		// Force bootstrap to close the dropdown menu when hover out
+		var $childDropdown = $(this).siblings('.dropdown-menu.show');
+		if ($childDropdown.length) {
+			$childDropdown.removeClass('show');
+		}
 	});
 
 	$(".feature-list-options li").hover(function onFeatureHover() {
@@ -200,6 +213,32 @@ window.onload = function () {
 		var contactEmail = encodeURI($(this).prev()[0].value);
 		document.location.href = `/contact-sales?contact-email=${contactEmail}&type=${type.join(',')}`;
 	});
+
+	/* Charity Page */
+	$('.vote-charity .email-vote').on('click', function() {
+		$(this).siblings('.email-submission-form').removeClass('hidden');
+		var charityUrl = $('.vote-charity .email-submission-form').attr('data-url');
+		$('.vote-charity .email-submission-form input[type="hidden"][name="choice"]').val(charityUrl);
+		$(this).addClass('hidden');
+	});
+
+	/* 451 Report Landing */
+	document.addEventListener( 'wpcf7submit', function( event ) {
+		if (event.detail.apiResponse.status == 'mail_sent') {
+			$('#research-page .form-container').addClass('is-flipped');
+			var formData = {}
+			event.detail.inputs.forEach(val => formData[val.name] = val.value);
+			var params = new URLSearchParams(formData);
+			fetch('https://yugabyte-form-submission.herokuapp.com/report/download', {
+				method: 'POST', 
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+					'X-AUTH-TOKEN': '84c2c09d-2f20-48a5-b5e9-0068a95e97de'
+				},
+				body: params.toString()
+			});
+		}
+	}, false );
 
 	/* Contact Us */
 	var urlParams = new URLSearchParams(window.location.search);
@@ -257,6 +296,13 @@ window.onload = function () {
       $('#video-modal iframe').attr('src', modalSrc);
   	});
 
+	$(".comparison .graph-sequence img").on('click', function(e) {
+		if (window.innerWidth > 576) {
+			$modal.css('display', "block");
+			$("#video-modal .modal-content .image-container").html(e.currentTarget.outerHTML);
+		}
+	});
+
 
     $('#video-modal .close').on('click', function() {
         $modal.css('display', "none");
@@ -273,7 +319,7 @@ window.onload = function () {
 
 	// Mute video and hide controls
 	if ($(".demo-video iframe")[0]) {
-		$(".demo-video iframe")[0].src += "&muted=1&controls=0";
+		$(".demo-video iframe")[0].src += "&controls=0";
 	}
 
 	// Click handler
@@ -281,6 +327,7 @@ window.onload = function () {
 		var videoPlayer = $(".demo-video iframe")[0];
 		videoPlayer.src = videoPlayer.src.substring(0, videoPlayer.src.length - 11);
 		videoPlayer.src += "&autoplay=1";
+		videoPlayer.style.opacity = 1;
 		$(".demo-video .play-btn").hide();
 		ev.preventDefault();
 	});

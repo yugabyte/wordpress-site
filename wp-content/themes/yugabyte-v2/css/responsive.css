@@ -21,6 +21,13 @@
 	}
 }
 
+@media only screen and (max-width: 1400px) {
+	.charity .banner-section img {
+		width: 100%;
+		margin-left: 0;
+	}
+}
+
 @media only screen and (max-width: 1200px) {
 	.nav {
 		padding-left: 0;
@@ -82,7 +89,7 @@
 	}
 	.versus .hero-banner .img {
 		height: 58px;
-	}
+	}	
 }
 
 @media only screen and (max-width: 992px) {
@@ -321,6 +328,68 @@
 		display: grid;
 		line-height: 32px;
 	}
+	.comparison .banner-section {
+		padding: 6rem 0;
+	}
+	.comparison .centered.container {
+		max-width: 700px;
+	}
+	.comparison .advantages .value-prop-list li {
+		display: block;
+		margin-bottom: 50px;
+	}
+
+	.comparison .advantages .content-box, .comparison .customers .content-box {
+		padding: 90px;
+	}
+	.comparison .logo-wall.fit-content {
+		margin: 50px auto;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+	.comparison .logo-wall .logo {
+		margin: 15px;
+		display: inherit;
+	}
+	.comparison .graph-sequence {
+		display: block;
+		text-align: center;
+	}
+	.comparison .graph-sequence img {
+		width: 100%;
+		height: auto;
+		max-width: 500px;
+		margin: 0 auto;
+	}
+	.comparison .banner-section .title {
+		font-size: 48px;
+	}
+	.comparison h2 {
+		font-size: 40px;
+	}
+	.comparison .advantages .section-text {
+		font-size: 24px;
+	}
+	.orange-line {
+		margin: 5px 30px;
+	}
+	.comparison .advantages .item-label {
+		font-size: 28px;
+	}
+	.comparison .advantages .item-text {
+		font-size: 18px;
+	}
+	.comparison .customers .quote p {
+		font-size: 24px;
+	}
+	.comparison .footer-cta .button {
+		padding: 10px;
+	}
+
+	.comparison .features #tablepress-4_wrapper {
+		overflow-x: scroll;
+	}
 }
 
 @media only screen and (max-width: 991px) {
@@ -396,6 +465,19 @@
 	}
 	.banner-section img {
 		margin-left: 0;
+	}
+
+	.charity .vote-charity ul.charity-list {
+		flex-direction: column;
+	}
+
+	.charity .vote-charity ul.charity-list li {
+		flex: unset;
+		margin: 0 10px 30px;
+	}
+
+	.research-page.navbar .container {
+		padding: 0 15px;
 	}
 }
 
@@ -717,7 +799,7 @@
 	.banner-section .row {
 		display: block;
 	}
-	.banner-section .col-6.header-text {
+	.banner-section .header-text {
 		max-width: unset;
 		flex: unset;
 		text-align: center;
@@ -739,6 +821,28 @@
 		max-width: unset;
 		flex: unset;
 		text-align: center;	
+	}
+	
+	.charity .col-6.header-image {
+		flex: unset;
+		max-width: unset;
+		text-align: center;
+	}
+
+	.charity .banner-section img {
+		width: auto;
+		margin: 0 auto;
+	}
+	.container.main-text {
+		display: block;
+	}
+
+	#research-page .aside {
+		margin-top: 30px;
+	}
+
+	#content-pitch {
+		margin: 0 15px 60px;
 	}
 }
 
@@ -833,6 +937,38 @@
 	}	
 	.events-page .event-list .item-container {
 		display: block;
+	}
+	.charity .banner-section img {
+		width: 100%;
+	}
+	.charity .footer-cta h3 > span {
+		margin: 0;
+	}
+	.comparison .centered.container {
+		width: 90%;
+	}
+	.comparison .advantages .description {
+		margin: 0 15px 20px 30px
+	}
+	.comparison .performance-sections h3 {
+		font-size: 22px;
+	}
+	.orange-line {
+		display: none;
+	}
+	.comparison .advantages .content-box, .comparison .customers .content-box {
+		padding: 50px 15px;
+	}
+
+	#research-page .title {
+		font-size: 40px;		
+	}
+	#research-page .hero .alert-box,
+	#research-page .hero .subtitle {
+		font-size: 24px;
+	}
+	#research-page .hero .subtitle {
+		width: auto;
 	}
 }
 
@@ -976,6 +1112,10 @@
 	.enterprise .support .repeater {
 		margin: 0;
 	}
+	.events-page .banner-section .header-image {
+		flex: unset;
+		max-width: unset;
+	}
 	.iub_content li {
 		min-width: 200px;
 	}
@@ -987,6 +1127,14 @@
 	}
 	.iub_content .box_primary {
 		min-width: 250px;
+	}
+	#research-page .aside {
+		width: 100%;
+		min-width: auto;
+	}
+	#research-page .aside .form-container {
+		width: 100%;
+		padding: 48px 30px;
 	}
 }
 
@@ -1011,6 +1159,10 @@
 	}
 	.comparison .hero .title {
 		padding: 100px 8% 20px;
+	}
+	.charity h1.title, .charity .footer-cta h3,
+	.charity .register h2, .charity .vote-charity h2 {
+		font-size: 40px;
 	}
 }
 

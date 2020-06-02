@@ -15,7 +15,7 @@
             <section class="banner-section">
                 <div class="row">
                     <div class="col-6 header-text">
-                        <h2 class="title"><?php the_field('hero_title'); ?></h2>
+                        <h1 class="title"><?php the_field('hero_title'); ?></h1>
                         <div class="subtitle"><?php the_field('hero_subtitle'); ?></div>
                     </div>
                     <div class="col-6 header-image">

@@ -16,7 +16,7 @@
 					<div class="row center-align ">
 						<div class="col-lg-12 logo-container">
 							<img src="<?php the_field('hero_logo'); ?>">
-							<div class="title"><?php the_field('hero_title'); ?></div>
+							<h1 class="title"><?php the_field('hero_title'); ?></h1>
 						</div>
 						<div class="col-lg-12 video">
 							<div class="vimeo"><iframe src="<?php the_field('hero_video_url'); ?>" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe></div>

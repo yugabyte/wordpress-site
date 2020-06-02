@@ -15,7 +15,7 @@
 		<section class="banner-section">
 			<div class="row">
 				<div class="col-6 header-text">
-					<h2 class="title"><?php the_field('hero_title'); ?></h2>
+					<h1 class="title"><?php the_field('hero_title'); ?></h1>
 					<div class="subtitle"><?php the_field('hero_subtitle'); ?></div>
 					<div class="button-container">						
 						<a href="#jobs" class="email-cta button"><?php the_field('hero_cta_button_text'); ?></a>
@@ -24,6 +24,7 @@
 				<div class="col-6 header-image">
 					<img src="<?php the_field('splash_image'); ?>" height="200" />
 				</div>
+			</div>
 		</section>
 		<section class="perks-section">
 			<div class="container">

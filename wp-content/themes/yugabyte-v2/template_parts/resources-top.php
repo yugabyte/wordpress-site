@@ -7,7 +7,7 @@ $global_section_id = 958;
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<div class="title"><?php the_field('hero_title', $global_section_id); ?></div>
+				<h1 class="title"><?php the_field('hero_title', $global_section_id); ?></h1>
 			</div>
 		</div>
 		<?php if(have_rows('hero_resources_repeater', $global_section_id)) { ?>

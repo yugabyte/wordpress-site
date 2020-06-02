@@ -14,8 +14,8 @@
 		<div class="contact ee" id="yugabyte-cloud">
 			<section class="banner-section">
 				<div class="row">
-                    <div class="col-6 header-text">
-                        <h2 class="title"><?php the_field('hero_title'); ?></h2>
+                    <div class="col-5 header-text">
+                        <h1 class="title"><?php the_field('hero_title'); ?></h1>
                         <div class="subtitle"><?php the_field('hero_subtitle'); ?></div>
                         <div class="button-container">                            
                             <a href="<?php the_field('cloud_register') ?>" class="email-cta button"><?php the_field('cloud_register_cta_text'); ?></a>					
@@ -23,8 +23,23 @@
 						<div class="cloud-alt-link">
 							<?php the_field('cloud_login_cta'); ?>
 						</div>
+						<div class="cloud-features">
+							<h4 class="title brand-primary"><?php the_field('cloud_feature_title'); ?></h4>
+							<div class="bullets-checkbox">
+								<ul class="bullets">
+									<?php if(have_rows('cloud_feature_repeater')): ?>
+										<?php while(have_rows('cloud_feature_repeater')) : the_row(); ?>
+											<li>
+												<i class="fas fa-check green-check"></i>
+												<div class="feature-item"><?php the_sub_field('text'); ?></div>
+											</li>
+										<?php endwhile; ?>
+									<?php endif; ?>
+								</ul>
+							</div>
+						</div>
                     </div>
-                    <div class="col-6 header-image">
+                    <div class="col-7 header-image">
                         <img src="<?php the_field('banner_image'); ?>" height="200" />
                     </div>
 				</div>
@@ -49,7 +64,6 @@
 					</div>
 				</div>
 			</section> -->
-
 			<section class="layers">
 				<div class="container value-prop">
 					<div class="value-header-container">
@@ -73,23 +87,47 @@
 					</div>
 				</div>
 			</section>
-			<section class="cloud-features">
+			<section class="products table-section">
 				<div class="container">
-					<h4 class="title brand-primary"><?php the_field('cloud_feature_title'); ?></h4>
-					<div class="bullets-checkbox">
-						<ul class="bullets">
-							<?php if(have_rows('cloud_feature_repeater')): ?>
-								<?php while(have_rows('cloud_feature_repeater')) : the_row(); ?>
-									<li>
-										<i class="fas fa-check green-check"></i>
-										<div class="feature-item"><?php the_sub_field('text'); ?></div>
-									</li>
-								<?php endwhile; ?>
-							<?php endif; ?>
-						</ul>
+					<div class="row">
+						<div class="col">
+							<div class="section-title"><?php the_field('products_title'); ?></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-lg-12">
+						<?php $table = get_field( 'product_comparison_table' );
+						if ( $table ) {
+							$count = 0;
+							echo '<table border="0">';
+							if ( $table['header'] ) {
+								echo '<thead>', '<tr>';
+								foreach ( $table['header'] as $th ) {
+									echo '<th>', $th['c'], '</th>';
+								}
+								echo '</tr>', '</thead>';
+							}
+							echo '<tbody>';
+							foreach ( $table['body'] as $tr ) {
+								if (!is_null($tr[0]['c']) && $tr[0]['c'] == '') {
+									echo '<tr class="break ';
+									echo $count++;
+									echo '">';
+								} else {
+									echo '<tr>';
+								}
+								foreach ( $tr as $td ) {
+									$cellValue = checkTableIcon($td['c']);
+									echo '<td>', $cellValue, '</td>';
+								}
+								echo '</tr>';
+							}
+							echo '</tbody>', '</table>';
+						} ?>
+						</div>
 					</div>
 				</div>
-			</section>
+			</section>			
 		</div>
 
 		<?php include(locate_template('template_parts/more-orange.php')); ?>
