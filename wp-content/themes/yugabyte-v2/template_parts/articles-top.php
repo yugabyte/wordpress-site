@@ -7,7 +7,7 @@ $global_section_id = 1203;
 	<div class="container">
 		<div class="row">
 			<div class="col">
-				<div class="title"><?php the_field('hero_title', $global_section_id); ?></div>
+				<h1 class="title"><?php the_field('hero_title', $global_section_id); ?></h1>
 			</div>
 		</div>
 	</div>

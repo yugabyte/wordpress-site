@@ -15,7 +15,7 @@
 				<div class="container">
 					<div class="row center-align ">
 						<div class="col-lg-12 logo-container">
-							<div class="title"><?php the_field('hero_title'); ?></div>
+							<h1 class="title"><?php the_field('hero_title'); ?></h1>
 							<div class="subtitle"><?php the_field('hero_subtitle'); ?></div>
 							<img src="<?php the_field('hero_image'); ?>">
 							<div class="button-container">

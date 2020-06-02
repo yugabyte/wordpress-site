@@ -25,12 +25,11 @@
 										<b>News</b><?php the_field('banner_link_text'); ?><span>→</span>
 									</a>
 								</div>
-							
+								<?php echo do_shortcode( '[contact-form-7 id="2021" title="Charity Checkbox"]' ); ?>
 								<div>
-									<h2 class="hero-title-phrase"><?php the_field('hero_description_title'); ?></h2>
+									<h1 class="hero-title-phrase"><?php the_field('hero_description_title'); ?></h1>
 									<div class="hero-subtext"><?php the_field('hero_description_subtext'); ?></div>
 									<div class="email-contact demo">
-										<!-- <?php echo do_shortcode( '[contact-form-7 id="1618" title="Demo Email"]' ); ?> -->
 										<input type="email" name="contact-email" placeholder="Enter Email" aria-required="true" aria-invalid="false" />
 										<input type="submit" value="Request Demo" class="email-submit-btn" />
 									</div>

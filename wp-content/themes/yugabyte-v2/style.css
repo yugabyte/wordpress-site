@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.65
+* Version: 1.0.86
 */
 
 /* #region Default */
@@ -37,7 +37,11 @@ section {
 }
 
 .text-red {
-	color: #f42c2d;
+	color: #E72133;
+}
+
+.text-green {
+	color: #47A152;
 }
 
 .secondary-grey {
@@ -852,6 +856,15 @@ a.banner-link:hover span {
 	text-align: center;
 }
 
+/* Override default bottomright location */
+body:not(#contact-sales) .grecaptcha-badge {
+	display: none;
+}
+
+.grecaptcha-badge {
+	bottom: 112px !important;
+}
+
 .homepage-hero .repeater-container {
 	width: 1320px;
 	display: flex;
@@ -1391,7 +1404,7 @@ section.demo-banner {
 }
 
 .banner-section .title {
-	margin: 4rem 0 1.25rem;
+	margin: 1.25rem 0;
 	color: #322965;
 	font-size: 40px;
 	line-height: 52px;
@@ -1405,10 +1418,17 @@ section.demo-banner {
 .banner-section .button-container {
 	margin-top: 35px;
 }
+
 .banner-section img {
 	margin-left: 50px;
 	max-height: 334px;
 	height: auto;
+}
+
+#yugabyte-cloud .banner-section img {
+	max-height: 500px;
+	margin-left: 0;
+	max-width: 100%;
 }
 
 .success-stories .company-gallery .table-view {
@@ -2499,34 +2519,41 @@ section.demo-banner {
 }
 
 .community .table-section table tbody,
-.versus table tbody {
+.versus table tbody,
+.ee .table-section table tbody {
 	color: #202951;
 }
 
-.community .table-section .sub-head td {
+.community .table-section .sub-head td,
+.ee .table-section .sub-head td {
 	background-color: #e8e8e8;
 	cursor: pointer;
 }
-.community .table-section .sub-head td:first-child {
+.community .table-section .sub-head td:first-child,
+.ee .table-section .sub-head td:first-child {
 	display: flex;
 	justify-content: space-between;
 }
-.community .table-section .sub-head span {
+.community .table-section .sub-head span,
+.ee .table-section .sub-head span {
 	color: #F75821;
 	font-size: 28px;
 	font-weight: bold;
 	float: right;
 }
 .community .table-section table tbody tr td,
+.ee .table-section table tbody tr td,
 .versus table tbody tr td {
 	text-align: left;
 	font-size: 15px;
 	line-height: 20px;
 }
-.community .table-section table tbody tr td:not(:first-child) {
+.community .table-section table tbody tr td:not(:first-child),
+.ee .table-section table tbody tr td:not(:first-child) {
 	max-width: 260px;
 }
 .community .table-section table tbody tr td strong,
+.ee .table-section table tbody tr td strong,
 .versus table tbody tr td strong {
 	font-size: 18px;
 	font-weight: bold;
@@ -2853,7 +2880,7 @@ section.demo-banner {
 .case-study {
 	padding-top: 1rem;
 	background-color: #F4F7FA;
-	color: #322965;
+	color: #546371;
 	width: 100%;
 }
 
@@ -2881,6 +2908,11 @@ section.demo-banner {
 	width: 92px;
 }
 
+.footer-video .video-header {
+	margin-bottom: 1.25rem;
+	font-size: 48px;
+}
+
 .footer-video .play-btn {	
 	position: absolute;
 	left: calc(50% - 32px);
@@ -2904,6 +2936,7 @@ section.demo-banner {
 	font-size: 28px;
 	line-height: 44px;
 	font-weight: 300;
+	color: #322965;
 }
 
 .case-study .hero-title strong {
@@ -2980,6 +3013,7 @@ section.demo-banner {
 
 .customer-intro .company-title {
 	font-family: 'Rubik';
+	color: #322965;
 	font-weight: 300;
 	font-size: 28px;
 	line-height: 44px;
@@ -3011,6 +3045,7 @@ section.evaluation {
 
 .evaluation .section-content {
 	position: relative;
+	color: #546371
 }
 
 .evaluation .section-title.centered {
@@ -3071,7 +3106,7 @@ section.evaluation {
 
 .case-study .tablepress .column-1 .winner-badge {
 	position: absolute;
-    left: -38px;
+    left: -23px;
     transform: rotate(-10deg) translateY(-7px);
 }
 
@@ -3193,6 +3228,7 @@ section.solutions h1 {
 	font-size: 16px;
 	line-height: 22px;
 	margin-top: 1.5em;
+	color: #322965;
 }
 
 .solutions h2 {
@@ -3215,6 +3251,7 @@ section.solutions h1 {
 	box-sizing: border-box;
 	height: 124px;
 	border: 1px solid #EDECEC;
+	box-shadow: 0 2px 12px rgba(0,0,0,0.1);
 	border-radius: 10px;
 	background-color: #FFFFFF;
 	padding: 30px 15px;
@@ -3227,6 +3264,7 @@ section.solutions h1 {
 	font-family: 'Rubik';
 	font-size: 30px;
 	line-height: 40px;
+	font-weight: 500;
 	text-align: center;
 }
 
@@ -3235,6 +3273,7 @@ section.solutions h1 {
 	font-size: 13px;
 	line-height: 22px;
 	text-align: center;
+	color: #546371;
 }
 
 .solutions .business-value-props {
@@ -3249,6 +3288,7 @@ section.solutions h1 {
 	padding: 20px;
 	margin-bottom: 30px;
 	position: relative;
+	color: #322965;
 }
 
 .solutions .value-prop .left-bg-col {
@@ -3581,7 +3621,7 @@ footer.footer-minimal {
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   left: 0;
   top: 0;
   width: 100%;
@@ -3600,6 +3640,10 @@ footer.footer-minimal {
   width: fit-content;
 }
 
+#video-modal.image-modal .modal-content {
+	margin: 15px auto;
+}
+
 /* The Close Button */
 #video-modal .close {
   position: absolute;
@@ -3613,8 +3657,14 @@ footer.footer-minimal {
 	width: 25px;
 	border: 1px solid white;
 	font-weight: 500;
-	padding-left: 5px;
+	padding-left: 4px;
 	font-size: 23px;
+	line-height: 0.9;
+}
+
+#video-modal .image-container > img {
+	max-height: calc(100vh - 30px);
+    width: auto;
 }
 
 .close:hover,
@@ -3733,11 +3783,6 @@ footer.footer-minimal {
 	.customer-intro .company-container {
 		width: 100%;
 		margin-top: 3.75rem;
-	}
-	
-	.customer-intro .company-title {
-		font-size: 18px;
-		line-height: 28px;
 	}
 	
 	section.evaluation {
@@ -4453,7 +4498,8 @@ footer.footer-minimal {
 }
 
 .text-heavy .content h2,
-.versus .vc_section h2 {
+.versus .vc_section h2,
+.comparison .form-download h2 {
 	color: #F75821;
 	font-size: 32px;
 	font-weight: 500;
@@ -5200,7 +5246,8 @@ span.wpcf7-not-valid-tip {
 .versus .vc_section table tbody tr td {
 	text-align: center;
 }
-.versus .wpcf7 {
+.versus .wpcf7,
+.comparison .form-download .wpcf7 {
 	max-width: 520px;
 	margin: auto;
 }
@@ -5242,7 +5289,7 @@ span.wpcf7-not-valid-tip {
 .events-page .item-container > .image-wrapper {
 	height: 144px;
 	flex: 0 0 256px;
-	margin-right: 30px;
+	margin: 0 30px 10px 0;
 }
 
 .events-page .event-list .conference-image {
@@ -5286,6 +5333,7 @@ span.wpcf7-not-valid-tip {
 .events-page .event-description {
 	font-size: 15px;
 	border-bottom: 2px solid #f1f1f1;
+	min-height: 75px;
 }
 
 .perks-section {
@@ -5396,14 +5444,12 @@ span.wpcf7-not-valid-tip {
 	font-weight: 500;
 }
 
-.cloud-features .title {
-	text-align: center;
-	font-size: 20px;
-	line-height: 30px;
+.cloud-features {
+	padding-bottom: 4rem;
 }
 
 .cloud-features .title {
-	text-align: center;
+	text-align: left;
 	font-size: 20px;
 	line-height: 30px;
 }
@@ -5416,14 +5462,14 @@ span.wpcf7-not-valid-tip {
 }
 
 .cloud-features .bullets-checkbox {
-	width: 350px;
-    margin: 0 auto;
+	width: 400px;
 }
 
 .cloud-features .bullets li {
 	display: -ms-flexbox; 
 	display: -webkit-flex;
-	display: flex;  	
+	display: flex;
+	width: 350px;
 }
 
 .cloud-features .bullets .green-check {
@@ -5432,6 +5478,7 @@ span.wpcf7-not-valid-tip {
 
 .cloud-features .bullets .feature-item {
 	display: inline-block;
+	text-align: left;
 }
 
 .cloud-alt-link {
@@ -5443,4 +5490,691 @@ span.wpcf7-not-valid-tip {
 .cloud-alt-link a {
 	color: #ff6e42;
 	font-weight: 500;
+}
+
+/* Charity Giving page */
+.charity {
+	background: #fff;
+}
+
+.charity .banner-section {
+	margin-top: 38px;
+	background-size: 100% 100%;
+	padding: 95px 0 70px;
+}
+
+.charity .col-6.header-text {
+	padding: 0;
+}
+
+.charity .col-6.header-image img {
+    max-width: 100%;
+}
+
+.charity h1.title {
+	font-size: 55px;
+	color: #707070;
+}
+
+.charity .subtitle {
+	font-size: 18px;
+	font-family: 'Rubik';
+}
+
+.charity .register {
+	background: #FF6E42;
+	color: white;
+	text-align: center;
+	padding: 59px 0 87px;
+}
+
+.charity .register h2 {
+	font-size: 56px;
+	font-weight: 300;
+}
+
+.charity .register .section-text {
+	font-family: 'Rubik';
+	font-size: 20px;
+	margin: 23px 0 38px;
+}
+
+.charity .register .register-cta {
+	background: #FFFFFF;
+	color: #707070;
+	border-radius: 12px;
+	padding: 15px 50px 19px;
+	font-size: 20px;
+	font-weight: 500;
+	font-family: 'Rubik';
+	letter-spacing: 0.2px;
+}
+
+.charity .vote-charity {
+	text-align: center;
+	color: #707070;
+	padding: 50px 0 0;
+}
+
+.charity .vote-charity h2 {
+	font-size: 54px;
+	font-weight: 300;
+}
+
+.charity .vote-charity .description {
+	font-family: 'Rubik';
+	font-size: 20px;
+	margin-top: 20px;
+}
+
+.charity .vote-charity ul.charity-list {
+	margin-top: 50px;
+	list-style: none;
+	display: flex;
+	justify-content: space-between;
+	padding: 0;
+}
+
+.charity .vote-charity ul.charity-list li {
+	margin: 0 10px;
+	flex: 0 0 33%;
+}
+
+.charity .circle-logo {
+	background: #FFFFFF;
+	box-shadow: 0px 0px 50px #00000029;
+	width: 239px;
+	height: 239px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	margin: 0 auto;
+}
+
+.charity .circle-logo img {
+	width: auto;
+    max-width: 200px;
+    height: auto;
+	margin: 0 auto;
+}
+
+.charity .charity-list .email-vote {
+	border: 1px solid #FF6E42;
+	border-radius: 12px;
+	font-family: 'Rubik';
+	font-size: 16px;
+    font-weight: 500;
+    color: #707070;
+	padding: 8px 23px 9px;
+	margin: 50px auto 0;
+	cursor: pointer;
+	width: 250px;
+}
+
+.charity .footer-cta {
+	text-align: center;
+}
+
+.charity .footer-cta h3 {
+	font-family: 'Fira Mono', sans-serif;
+	font-size: 55px;
+	color: #707070;	
+}
+
+.charity .footer-cta h3 > span {
+	color: #FF6E42;
+	margin: 0 15px;
+}
+
+.charity .footer-cta .message-text {
+	font-size: 20px;
+	font-family: 'Rubik';
+	margin-top: 20px;
+	color: #707070;
+}
+
+.charity .email-submission-form {
+	border: 1px solid #FF6E42;
+	border-radius: 12px;
+	font-family: 'Rubik';
+	font-size: 16px;
+    font-weight: 500;
+    color: #707070;
+	margin: 50px auto 0;
+	width: 250px;
+}
+
+.charity .email-submission-form form.wpcf7-form {
+	display: flex;
+	position: relative;
+}
+
+.charity .email-submission-form form.wpcf7-form p {
+	margin: 0;
+}
+
+.charity .email-submission-form input[type="email"] {
+	border: none;
+	outline: none;
+	padding: 8px 10px 9px 18px;
+	border-radius: 12px;
+	width: 167px;
+}
+
+.charity .email-submission-form .wpcf7-submit {
+	background: #FF6E42;
+    color: white;
+    height: 100%;
+	cursor: pointer;
+	border-top-right-radius: 12px;
+	border-bottom-right-radius: 12px;
+	padding: 0 15px;
+	outline: none;
+	border: none;
+    margin-right: -2px;
+}
+
+.charity .email-submission-form .ajax-loader {
+	display: none;
+}
+
+.charity .email-submission-form .wpcf7-response-output {
+	position: absolute;
+    top: 100%;
+    margin: 20px 0;
+}
+
+/* Cockroach Comparison page */
+.comparison .banner-section {
+	background-size: cover;
+	margin-top: 37px;
+	text-align: center;
+	color: #ffffff;
+	padding: 9.5rem 0 9.5rem;
+}
+
+.comparison .centered.container {
+	max-width: 875px;
+	margin: 0 auto;
+}
+
+.comparison .banner-section .title {
+	font-size: 60px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	color: inherit;
+}
+
+.comparison .banner-section .subtitle {
+	font-size: 22px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	color: inherit;
+}
+
+.comparison .advantages {
+	padding: 70px 0 30px;
+}
+
+.comparison h2 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	font-size: 55px;
+	text-align: center;
+	color: #000041;
+}
+
+.orange-line {
+	height: 2px;
+	width: 70px;
+	background: #FF6E42;
+	display: inline-block;
+	margin: 9px 30px;
+}
+
+.comparison ul {
+	margin: 0; 
+	padding: 0;
+	list-style: none;
+}
+
+.comparison .advantages .section-text {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	font-size: 30px;
+	text-align: center;
+	margin-bottom: 60px;
+}
+
+.comparison .advantages .value-prop-list li {
+	display: flex;
+}
+
+.comparison .advantages .value-prop-list .icon {
+	width: 130px;
+	height: 130px;
+	object-fit: contain;
+	margin-bottom: 20px;
+}
+
+.comparison .advantages .item-label {
+	color: #000041;
+	font-size: 32px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	margin-bottom: 20px;
+}
+
+.comparison .learn-more-link {
+	color: #000041;
+	font-weight: 500;
+}
+
+.comparison .advantages .item-text {
+	font-size: 20px;
+	color: #141920;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.comparison .advantages .description {
+	text-align: left;
+	margin: 0 15px 20px 50px;
+}
+
+.comparison .advantages .content-box,
+.comparison .customers .content-box {
+	background: #F2F3F8;
+	padding: 90px 150px;
+	text-align: center;
+}
+
+.comparison .customers .quote p {
+	font-family: 'Inter';
+	font-size: 30px;
+	font-style: italic;
+	color: #313133;
+	line-height: 1.5;
+	text-align: center;
+	font-weight: 400;
+}
+
+.comparison .customers .quote b {
+	font-weight: 700;
+}
+
+.comparison .customers .quote-image {
+	text-align: center;
+    font-size: 160px;
+	color: #FF6E42;
+	font-family: 'Source Sans Pro', serif;
+	font-weight: 700;
+	line-height: 1;
+	height: 120px;
+}
+
+.comparison .logo-wall.fit-content {
+	margin: 80px auto;
+}
+
+.comparison .logo-wall.fit-content img {
+	margin: 0 auto;
+}
+
+.comparison .button {
+	background: #FF6E42;
+	color: #ffffff;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 500;
+	font-size: 30px;
+	border-radius: 7px;
+	padding: 10px 30px;
+}
+
+.comparison .button .link-icon {
+	margin-left: 10px;
+}
+
+.comparison section {
+	border: none !important;
+}
+
+.comparison .performance-sections > li {
+	width: fit-content;
+    margin: 0 auto;
+}
+
+.comparison .performance-sections h3 {
+	border: 0.5px solid #707070;
+	color: #ffffff;
+	background: #000041;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 500;
+	font-size: 30px;
+	text-align: center;
+	padding: 10px 0;
+	margin: 50px 0 0;
+}
+
+.comparison .graph-sequence {
+	display: flex;
+	justify-content: center;
+}
+
+.comparison .graph-sequence img {
+	max-width: 370px;
+	flex: 0 0 33.33%;
+    cursor: pointer;
+}
+
+.comparison .graph-sequence img:hover {
+	opacity: 0.6;
+}
+
+.comparison .performance .note {
+	color: #141920;
+	margin: 20px 0 0;
+	text-align: center;
+	font-size: 20px;
+	font-family: inherit;
+}
+
+.comparison .customers {
+	padding: 20px 0;
+}
+
+.comparison .features h2 {
+	font-size: 50px;
+}
+.comparison .features .feature-subtitle {
+	margin: 20px auto 30px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 30px;
+	color: #141920;
+	text-align: center;
+}
+
+.comparison .features table th,
+.comparison .features table td {
+	border: 1px solid #8f95a4 !important;
+	padding: 8px 30px;
+	font-weight: 500;
+}
+
+.comparison .features table thead th {
+	background: #e1e3ef;
+	color: #000E2F;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 20px;
+	font-weight: 700;
+}
+
+.comparison .features table td code {
+	color: #000E2F;
+    font-size: inherit;
+}
+
+.comparison .features .table-note {
+	padding: 0 30px;
+	font-style: italic;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.comparison .footer-cta.dark {
+	background: #000041;
+	color: #ffffff;
+	text-align: center;
+	padding: 70px 0;
+}
+
+.comparison .footer-cta.dark h2 {
+	color: #ffffff;
+}
+
+.comparison .footer-cta .message-text {
+	font-size: 22px;
+	font-family: 'Source Sans Pro', sans-serif;
+	margin-bottom: 30px;
+}
+
+.comparison .footer-cta .button {
+	display: block;
+	border: none;
+	width: 239px;
+	margin: 0 auto;
+}
+
+.comparison .form-download label {
+	display: block;
+	text-align: center;
+}
+
+#research-page .navbar {
+	background: unset;
+	border-bottom: unset;
+}
+
+#research-page .hero {
+	width: 100%;
+	height: auto;
+	background-size: cover;
+	background-position: right bottom;
+    width: 100%;
+    padding: 12rem 0 6rem;
+}
+
+#research-page .title {
+	font-size: 75px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 600;
+	color: #ffffff;
+}
+
+#research-page .hero .alert-box,
+#research-page .hero .subtitle {
+	color: #ffffff;
+	font-size: 30px;
+	font-weight: 600;
+	text-align: left;
+	width: 90%;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+#research-page .hero .subtitle {
+	font-weight: 400;
+}
+
+#research-page .hero .alert-box {
+	border: 2px solid #FF6E42;
+	padding: 10px 20px;
+	margin-bottom: 20px;
+	width: fit-content;
+}
+
+#research-page .yugabyte-branding {
+	margin-top: 45px;
+}
+
+#research-page .yugabyte-branding img {
+	height: 38px;
+}
+
+#research-page .content {
+	padding: 3.125rem 0 0;
+	background: #ffffff;
+}
+
+#research-page #content-pitch strong {
+	font-weight: 700;
+}
+
+#research-page .aside {
+	margin-top: -17%;
+	min-width: 440px;
+	background: #F2F3F8;
+}
+
+#research-page .aside h2 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #ffffff;
+	padding: 15px 55px;
+	text-align: left;
+	background: #FF6E42;
+	margin: 0;
+}
+
+#research-page .aside .form-container {
+	padding: 48px 60px;
+	height: 100%;
+}
+
+#research-page .aside .preview {
+	height: 194px;
+	overflow: hidden;
+	text-align: left;
+}
+
+#research-page .aside .preview img {
+	min-height: 100%;
+	width: 243px;
+}
+
+#research-page .aside input,
+#research-page .aside label {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
+	font-size: 22px;
+}
+
+.container.main-text {
+	display: flex;
+}
+
+#content-pitch {
+	margin: 0 60px 60px 0;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 22px;	
+	line-height: 32px;
+}
+
+#content-pitch ul {
+	list-style: none;
+	padding-inline-start: 30px;
+}
+
+#content-pitch p {
+	margin-bottom: 30px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 22px;
+	font-weight: 400;
+}
+
+
+#content-pitch li {
+	margin-bottom: 20px;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 22px;
+	font-weight: 400;
+}
+
+#content-pitch li svg {
+	margin-left: -24px;
+	margin-right: 10px;
+	color: #FF6E42;
+	transform: scaleX(1.5);
+}
+
+.download-form {
+	padding-top: 50px;
+}
+
+.download-form .wpcf7-submit {
+	background: #FF6E42;
+	color: #ffffff;
+	border-radius: 7px;
+	font-weight: 500;
+	font-size: 30px;
+	font-family: 'Source Sans Pro', sans-serif;
+	padding: 7px 35px;
+	margin-top: 32px;
+}
+
+#research-page .form-container {
+	transition: transform 1s;
+	transform-style: preserve-3d;
+	cursor: pointer;
+	/* position: absolute; */
+	position: relative;
+	width: 440px;
+}
+  
+.form-container.is-flipped {
+	transform: rotateY(180deg);
+}
+  
+.card__face {
+	line-height: 36px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 22px;
+	font-family: 'Source Sans Pro', sans-serif;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+	position: absolute;
+}
+
+.card__face--front, .is-flipped .card__face--back {
+	position: relative;
+}
+
+.card__face--back {
+	transform: rotateY(180deg);
+}
+
+.download-form .wpcf7-form p {
+	text-align: left;
+}
+
+.download-form .wpcf7-form input.wpcf7-text {
+	width: 100%;
+}
+
+.aside .form-container.is-flipped .card__face.card__face--front {
+	display:  none;
+}
+
+#research-page footer {
+	background: #F9FAFC;
+	height: 131px;
+	position: static;
+	bottom: 0;
+	display: flex;
+    justify-content: center;
+	align-items: center;
+
+}
+
+#research-page footer .copyright {
+	font-size: 18px;
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #332A66;
+}
+
+#research-page footer .links {
+	margin-left: 40px;
+}
+
+#research-page footer .links a {
+	color: #332A66 !important;
+	font-family: 'Source Sans Pro', sans-serif;
+	font-size: 18px;
+	margin: 0 15px;
+}
+
+#research-page .vertical-line {
+	background: #332A66;
+	width: 1px;
+	height: 24px;
+	margin: 0 10px;
 }
