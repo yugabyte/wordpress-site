@@ -515,11 +515,13 @@
         </div>
         <!-- The Modal -->
         <div id="video-modal" class="modal">
+
             <!-- Modal content -->
             <div class="modal-content">
             <span class="close">&times;</span>
             <?php the_field('demo_video'); ?>
             </div>
+
         </div>
         <footer class="footer-minimal">
             <div class="footer-video">

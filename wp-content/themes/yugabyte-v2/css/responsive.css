@@ -479,6 +479,10 @@
 	.research-page.navbar .container {
 		padding: 0 15px;
 	}
+
+	.footer-cta .client-holder .image-container {
+		width: 25%;	
+	}
 }
 
 @media only screen and (max-width: 768px) {
@@ -611,15 +615,12 @@
 	.contact-form .map,
 	.contact-form .address {
 		padding: 20px;
-	}
+	}	
 	.footer-cta .button,
 	.footer-cta .button.secondary {
 		float: unset;
 		margin: auto;
 		margin-bottom: 20px;
-	}
-	.footer-cta {
-		background-image: linear-gradient(to bottom left, #FF6E42, #322965);
 	}
 	.footer-cta .mobile-cta-links {
 		display: block;
@@ -990,8 +991,11 @@
 	.banner-section img {
 		width: 100%;
 	}
+	.footer-cta .client-holder .image-container {
+		width: 50%;
+	}
 	.footer-cta .client-holder .image-container img {
-		width: 8vw;
+		width: 15vw;
 	}
 	.main-footer .footer-social a {
 		margin-right: 6%;

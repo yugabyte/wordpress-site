@@ -48,7 +48,7 @@
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Slack" href="http://yugabyte.com/slack" class="dropdown-item">Slack</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1540 nav-item"><a title="GitHub" href="https://github.com/YugaByte/yugabyte-db" class="dropdown-item">GitHub</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1638" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1639 nav-item"><a title="Events" href="https://yugabyte.com/events" class="dropdown-item">Events</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1582" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1582 nav-item"><a title="Videos" href="https://vimeo.com/yugabyte" class="dropdown-item">Videos</a></li>
+						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1582" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1582 nav-item"><a title="Content Library" href="/content-library" class="dropdown-item">Content Library</a></li>
 					</ul>
 				</li>
 				<hr />
@@ -135,7 +135,7 @@
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Slack" href="http://yugabyte.com/slack" class="dropdown-item">Slack</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1540 nav-item"><a title="GitHub" href="https://github.com/YugaByte/yugabyte-db" class="dropdown-item">GitHub</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1638" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1639 nav-item"><a title="Events" href="https://yugabyte.com/events" class="dropdown-item">Events</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1582" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1582 nav-item"><a title="Videos" href="https://vimeo.com/yugabyte" class="dropdown-item">Videos</a></li>
+						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1582" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1582 nav-item"><a title="Content Library" href="/content-library" class="dropdown-item">Content Library</a></li>
 					</ul>
 				</li>
 			</ul>

@@ -6,7 +6,6 @@
 <html>
 	<head>
 		<?php include(locate_template('template_parts/main-head.php')); ?>
-        <meta name="robots" content="noindex" />
 	</head>
 
 	<body id="research-page">
@@ -41,11 +40,11 @@
                                 <img  src="<?php the_field('report_preview'); ?>" />
                             </div>
                             <div class="download-form">
-                                <?php echo do_shortcode( '[contact-form-7 id="2507" title="Download Report"]' ); ?>
+                                <?php echo do_shortcode(get_field('form_shortcode')) ?>
                             </div>
                         </div>
                         <div class="card__face card__face--back">
-                            Thank you for submitting. You will receive an email to download the document.
+                            <?php the_field('success_message'); ?>
                         </div>
                     </div>
                 </div>

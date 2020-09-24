@@ -216,27 +216,47 @@ window.onload = function () {
 
 	/* Charity Page */
 	$('.vote-charity .email-vote').on('click', function() {
-		$(this).siblings('.email-submission-form').removeClass('hidden');
-		var charityUrl = $('.vote-charity .email-submission-form').attr('data-url');
-		$('.vote-charity .email-submission-form input[type="hidden"][name="choice"]').val(charityUrl);
+		var submissionForm = $(this).siblings('.email-submission-form')
+		submissionForm.removeClass('hidden');
+		var charityUrl = submissionForm.attr('data-url');
+		submissionForm.find('input[type="hidden"][name="choice"]').val(charityUrl);
 		$(this).addClass('hidden');
 	});
 
 	/* 451 Report Landing */
+	var SERVICE_URL = 'https://yugabyte-form-submission.herokuapp.com';
+	var SERVICE_AUTH_TOKEN = '84c2c09d-2f20-48a5-b5e9-0068a95e97de';
 	document.addEventListener( 'wpcf7submit', function( event ) {
 		if (event.detail.apiResponse.status == 'mail_sent') {
-			$('#research-page .form-container').addClass('is-flipped');
-			var formData = {}
-			event.detail.inputs.forEach(val => formData[val.name] = val.value);
-			var params = new URLSearchParams(formData);
-			fetch('https://yugabyte-form-submission.herokuapp.com/report/download', {
-				method: 'POST', 
-				headers: {
-					'Content-Type': 'application/x-www-form-urlencoded',
-					'X-AUTH-TOKEN': '84c2c09d-2f20-48a5-b5e9-0068a95e97de'
-				},
-				body: params.toString()
-			});
+			var formBox = $('#research-page .form-container');
+			if (formBox.length) {
+				formBox.addClass('is-flipped');
+				var formData = {}
+				event.detail.inputs.forEach(val => formData[val.name] = val.value);
+				var params = new URLSearchParams(formData);
+				var url = '';
+				if (window.location.pathname.match(/virtual-tech-talk/)) {
+					url = `${SERVICE_URL}/virtual-tech-talk/registration`;
+				} else if (window.location.pathname.match(/dzone-database-report-2020/)) {
+					url = `${SERVICE_URL}/dzone-report/download`;
+				} else if (window.location.pathname.match(/451-report-distributed-sql/)) {
+					url = `${SERVICE_URL}/report/download`;
+				} else if (window.location.pathname.match(/oreilly-sql-cookbook/)) {
+					url = `${SERVICE_URL}/oreilly-book/download`;
+				} else if (window.location.pathname.match(/dzone-refcard-distributedsql-2020/)) {
+					url = `${SERVICE_URL}/dzone-refcard/download`;
+				}
+				if (url) {
+					fetch(url, {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/x-www-form-urlencoded',
+							'X-AUTH-TOKEN': SERVICE_AUTH_TOKEN
+						},
+						body: params.toString()
+					});
+				}
+			}
 		}
 	}, false );
 
@@ -290,7 +310,7 @@ window.onload = function () {
 	/* Case Study Page */
     var $modal = $("#video-modal");
     var modalSrc = $('#video-modal iframe').attr('src');
-    
+
     $(".hero .hero-image-wrapper").on('click', function(e) {
       $modal.css('display', "block");
       $('#video-modal iframe').attr('src', modalSrc);
@@ -341,6 +361,124 @@ window.onload = function () {
 			$(".events-page .event-list li.item-container").addClass('hidden');
 			$(`.events-page .event-list li.item-container[data-event-type='${term}']`).removeClass('hidden');
 		}
-	})
+	});
+
+	// primitive search over content library items available on current page
+	$('.content-library-search__input').on('keyup', function(event) {
+		var query = event.target.value.trim().toLowerCase();
+		if (query) {
+			$('.content-library-tile')
+				.hide()
+				.filter(function() {
+					return $('.content-library-tile__text', this).text().toLowerCase().includes(query);
+				})
+				.show();
+		} else {
+			$('.content-library-tile').show();
+		}
+	});
+
+	// dropdown-like filters for content library mobile view
+	$('.content-library-filters__title--mobile').on('click', function() {
+		$('.content-library-filters__container').toggle();
+		$('.content-library-filters__chevron').toggleClass('content-library-filters__chevron--rotated');
+	});
+
+	$('.content-library-list__scroll-top').on('click', function() {
+		window.scrollTo(0, 0);
+	});
+
+	// scroll top button for content library page at mobile view
+	if (window.location.href.includes('/content-library/?type=')) {
+		window.document.querySelector('.content-library-search').scrollIntoView();
+	}
+
+	// kubecon swag page - learn more toggler
+	$('.kubecon-page').click(function(event) {
+		$('.kubecon-options__learn-more')
+			.not(event.target)
+			.find('> .kubecon-options__learn-more__tooltip')
+			.hide();
+		$(event.target)
+			.find('> .kubecon-options__learn-more__tooltip')
+			.toggle();
+	});
+
+	(function () {
+		function updateSwagNumbers() {
+			const url = `${SERVICE_URL}/kubecon/donations`;
+			const params = {
+				mode: 'cors',
+				headers: {
+					'X-AUTH-TOKEN': SERVICE_AUTH_TOKEN
+				}
+			};
+			
+			fetch(url, params)
+				.then((resp) => resp.json())
+				.then((data) => {
+					const total = Object.values(data).reduce((a, b) => Number(a) + Number(b), 0);
+
+					for (const [key, value] of Object.entries(data)) {
+						const progressbarElem = $(`.kubecon-options__progressbar[data-name="${key}"]`);
+						const progressbarValueElem = $('.kubecon-options__progressbar__value', progressbarElem);
+						const offset = Number(progressbarValueElem.attr('data-initial'));
+						const spaceAvailable = progressbarElem.height() - offset;
+						const newHeight = offset + (spaceAvailable * Number(value) / total);
+
+						progressbarValueElem.css('height', newHeight);
+					}
+				});
+		}
+		updateSwagNumbers();
+
+		$('.kubecon-options__select').click(function(event) {
+			// exit if already selected option has been clicked
+			if ($('.kubecon-options__select__btn-selected--visible', this).length) return;
+
+			// reset all selections
+			$('.kubecon-options__select__btn-default').show();
+			$('.kubecon-options__select__btn-selected').removeClass('kubecon-options__select__btn-selected--visible');
+
+			// select current
+			$('.kubecon-options__select__btn-default', this).hide();
+			$('.kubecon-options__select__btn-selected', this).addClass('kubecon-options__select__btn-selected--visible');
+
+			// update hidden form field
+			$('#kubecon-charity-selection').val(this.attributes['data-name'].value);
+		});
+
+		document.addEventListener('wpcf7mailsent', function(event) {
+			$('.kubecon-form__form-wrapper').hide();
+			$('.kubecon-form__after-submit').show();
+			$('.kubecon-options__select').addClass('kubecon-options__select--disabled');
+
+			const urlencoded = new URLSearchParams();
+			const fields = ['firstName', 'lastName', 'company', 'email', 'charity'];
+			event.detail.inputs.forEach(input => {
+				if (fields.includes(input.name)) {
+					urlencoded.append(input.name, input.value);
+				}
+			});
+
+			const url = `${SERVICE_URL}/kubecon/donations`;
+			const params = {
+				method: 'POST',
+				mode: 'cors',
+				headers: {
+					'Content-Type': 'application/x-www-form-urlencoded',
+					'X-AUTH-TOKEN': SERVICE_AUTH_TOKEN
+				},
+				body: urlencoded.toString()
+			};
+
+			fetch(url, params).then((resp) => {	
+				updateSwagNumbers();
+			});
+		}, false);
+
+	})();
+
+
 }
 </script>
