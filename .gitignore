@@ -6,6 +6,8 @@
 *.swp
 Thumbs.db
 
+.vscode/
+
 # wordpress specific
 wp-config.php
 wp-content/uploads/
