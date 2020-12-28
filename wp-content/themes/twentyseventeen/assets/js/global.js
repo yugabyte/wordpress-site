@@ -208,7 +208,6 @@
 
 		adjustHeaderHeight();
 		setQuotesIcon();
-		belowEntryMetaClass( 'blockquote.alignleft, blockquote.alignright' );
 		if ( true === supportsInlineSVG() ) {
 			document.documentElement.className = document.documentElement.className.replace( /(\s*)no-svg(\s*)/, '$1svg$2' );
 		}

@@ -1,44 +1,99 @@
-﻿=== iubenda Cookie Solution for GDPR ===
+﻿=== iubenda - Cookie and Consent Solution for the GDPR & ePrivacy ===
 Contributors: iubenda
 Donate link:
-Tags: cookies, cookie law, cookie policy, cookie banner, cookie block, privacy policy, cookie consent, privacy
+Tags: cookies, cookie law, cookie policy, cookie banner, privacy policy, cookie consent, privacy, gdpr, eprivacy
 Requires at least: 4.0
 Requires PHP: 5.2.4
-Tested up to: 4.9.8
-Stable tag: 1.15.3
+Tested up to: 5.3.2
+Stable tag: 2.3.0
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 
-iubenda Cookie Solution allows you to make your website GDPR compliant and manage all aspects of cookie law on WP, particularly fit for Italy.
+An All-in-One approach developed by iubenda, which includes functionalities of two powerful solutions that help to make your website GDPR and ePrivacy compliant.
 
 == Description ==
 
-This plugin is an All-in-One approach developed by iubenda that helps to make your website GDPR compliant by generating the privacy policy text, the cookie banner and the blocking management of cookies.
+This plugin is an All-in-One approach developed by iubenda, which includes functionalities of two powerful solutions (see below) that help to make your website GDPR and ePrivacy compliant. The plugin lets you automate the implementation of ePrivacy (Cookie Law) and GDPR requirements by providing a fully customizable cookie banner, blocking scripts, and by managing all aspects of cookie consent. It also allows you to record, review, and maintain comprehensive GDPR records of consent for your web-forms.
 
-This plugin works with the iubenda Cookie Law Solution and allows to block the most common widgets and third party cookies to comply with Cookie Laws, particularly with the Italian cookie law implementation in mind.
+== Cookie Solution ==
+
+This plugin drastically reduces the need for direct interventions in the code of the site by integrating with iubenda’s Cookie Solution. It provides a fully customizable cookie banner, dynamically generates a cookie policy to [match the services in use on your site](https://www.iubenda.com/en/help/19004-how-to-use-the-site-scanner-from-within-the-generator),  and, fully manages cookie-related consent – including the blocking of the most common widgets and third-party cookies before consent is received – in order to comply with the GDPR and ePrivacy. 
+
+**Key features:**
 
 * The plugin automatically inserts the iubenda code in the head of every page of the site
-* It allows to manually block all the remaining resources, without the need of direct intervention on the code
-* It handles the display of cookie banners and cookie policy, saving user preferences about the use of cookies
-* It displays a clean page (without banner) to users who have already provided their consent
-* It detects bots/spiders and serves them a clean page
+* Allows you to automatically or manually block scripts that can install cookies prior to consent, without the need of direct intervention on the code
+* Allows you to autodetect and limit prior-blocking and cookie consent requests only to users from the EU – where this is a legal requirement – while running cookies scripts normally in regions where you are still legally allowed to do so.
+* Asynchronously re-activates cookie scripts once consent is collected.
+* Handles the display of the cookie banner and cookie policy, allowing you to fully customize the banner to match the look and colors of your site if needed
+* California Consumer Privacy Act [(CCPA) Support](https://www.iubenda.com/en/help/21165-ccpa-how-to-add-a-notice-of-collection-and-a-do-not-sell-link)
+* Saves user preferences about the use of cookies and displays a clean page (without banner) to users who have already provided their consent
+* Integrates with IAB’s [Transparency and Consent Framework](https://www.iubenda.com/en/help/7440-enable-preference-management-iab-framework#revenue) (TCF)
+* Allows you to provide you users with granular, per-category preference control (e.g. basic functionalities, experience enhancement, targeting & advertising)
+* Compatible with Google's Accelerated Mobile Pages (AMP)
+* Features an easy-to-use interface for entering custom scripts and iframes
+* Detects bots/spiders and serves them a clean page so that your SEO efforts are never compromised
 
 **The plugin is currently capable of automatically detecting and blocking the following scripts:**
 
-* Facebook widgets
-* Twitter widgets
-* Google+ widgets
+* Google Analytics
+* Google Maps
 * Google AdSense
-* YouTube widgets
-* AddThis widgets
+* Google ReCaptcha
+* Google Site Search
+* Google Tag Manager
+* Google oAuth
+* Google+ widgets
+* Twitter widgets
+* Facebook widgets
+* Facebook Comments
+* YouTube
+* Vimeo
+* Linkedin widgets
 * ShareThis widgets
-* Google Maps widgets
+* Instagram widgets
+* AddThis widgets
+* Pinterest widgets
+* PayPal widgets
+* Disqus
+* Optimizely
+* Neodata
+* Criteo
+* Outbrain
+* Headway
+* Codepen
+* Freshchat
+* Uservoice
+* AdRoll
+* Olark
+* Segment
+* Kissmetrics
+* Mixpanel
+* Pingdom
+* Bing
+* Elevio
+
+== Consent Solution ==
+
+Maintaining valid records of consent is a vital part of privacy compliance in general, and it is specifically required under the GDPR. These records should include a userid, timestamp, consent proof, record of the consenting action, and the legal documents available to the user at the time of consent, among other things. This plugin **is THE most complete solution for recording, sorting and maintaining GDPR records of consent**. The plugin also boasts built-in compatibility with WordPress comment form, Contact Form 7 and WP Forms plugins for your convenience, but can be manually integrated with any type of web-form and can even store consent proofs for consents collected offline (e.g in-store sign-ups) via WP media upload.  
+
+**Key features:**
+
+* The plugin detects and identifies all supported forms that are embedded in the website
+* It’s auto-compatible with and allows super easy mapping of Contact Form 7, WP Forms, WordPress comment and WooCommerce checkout forms
+* It allows manual integration with any type of web-form
+* For each consent, track the form/wording the user was prompted with
+* Flexibly upload any form of proof of consent or legal notice, including a PDF if consent was collected offline
+* It provides a high granularity: map individual form fields, exclude fields (like password inputs), add legal notices available at the time of consent collection, indicate double opt-in, set preferences and more
+* REST HTTP API and JS SDK, to give you total control and how and when consent is stored
+* Store multiple preferences for each user (e.g. if you have multiple newsletters or opt-ins)
+* Features an easy-to-use interface for entering custom scripts and iframes
+* It provides API input field for quick and easy activation
 
 **Some background information**
 
-If you have European users you will know the problem: you need to obtain consent for the usage of many types of cookies and you need to manage that consent somehow. Now even Google forces cookie consent onto users of Google AdSense, DoubleClick for Publishers, and DoubleClick Ad Exchange (and even Google Analytics in some cases). Time to get started with a cookie banner.
-
-iubenda and the Cookie Law Solution extension for WordPress help remove these complex tasks with a couple of clicks. This extension works with the iubenda Cookie Law Solution, displays a cookie banner in 8 languages and saves consent for returning users.
+If you potentially have any European users, you must comply with laws like the [GDPR](https://www.iubenda.com/en/help/5428-gdpr-guide#consent) and [ePrivacy](https://www.iubenda.com/en/help/6293-cookie-consent-management-faq). These laws are precise in their requirements and technical implementation can be pretty complicated. We've tried to make this process as painless as possible for website and app owners with our suite of compliance software solutions.
+Our Cookie and Consent Solution plugin for WordPress simplifies and manages these compliance requirements within a few clicks. This extension works with the iubenda [Cookie Solution](https://www.iubenda.com/en/cookie-solution) and [Consent Solution](https://www.iubenda.com/en/consent-solution).
 
 **Which languages does iubenda work in currently?**
 
@@ -51,70 +106,132 @@ iubenda and the Cookie Law Solution extension for WordPress help remove these co
 * Dutch
 * Russian
 
-**Manual Usage**
-
-How to make the plugin manually work for a Facebook button?
-
-    <!--IUB-COOKIE-BLOCK-START-->
-    <script>
-    (function(d, s, id) {
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) return;
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3&appId=808061959224601";
-     fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));
-    </script>
-    <!--IUB-COOKIE-BLOCK-END-->
-
-If there are HTML / IMG / IFRAME elements, you need to proceed in this way:
-
-    <!--IUB-COOKIE-BLOCK-START-->
-          <iframe src="...
-          <img src="...
-    <!--IUB-COOKIE-BLOCK-END-->
-
-Inside a post/page content there's a shortcode available:
-
-    [iub-cookie-policy]
-    [/iub-cookie-policy]
-
-In case of continued browsing, the preferences of your users for the use of cookies will be set on "OK" to clear the banner and unlock the cookies. Moreover, banners and the blocking codes will not be delivered to subsequent visits by users who have already given their consent (and such preference will be updated at each subsequent visit for the future).
-
 == Installation ==
 
-- Search in your WordPress plugins admin panel for "iubenda Cookie Solution", install it;
-- Once the plugin is installed and activated, go to the Admin Panel -> iubenda menu where you will be asked to paste the code into tht field that gets generated from your Iubenda account dashboard when you activate the cookie law kit for your privacy policy. For more information on how to activate the cookie law kit, see this article: https://www.iubenda.com/it/help/posts/680;
-- At this point the plugin will begin to show the banner on which displays your cookie policy (link) to users who visit the site for the first time. No need for other configurations;
-- Furthermore, the plugin automatically recognizes and blocks cookies that get installed via the YouTube video player and social widgets - such as the Facebook Like Box - on your site. **Important note** the scripts for Facebook, Twitter, G+, and YouTube iframe only get blocked automatically when generated from the server side (therefore processed by PHP via WordPress). Scripts that are added to the page via Javascript after page load cannot be blocked automatically;
-- If you'd like to manually block a specific script "wrap" it eith the following HTML comments:
-
-      `<!--IUB-COOKIE-BLOCK-START-->
-      <!--IUB-COOKIE-BLOCK-END-->`
-- In case you're querying WordPress via API, you can disable our plugin by using the iub_no_parse=true URL parameter, like this: www.example.com/api/get_recent_posts?iub_no_parse=true.
+* Search in your WordPress plugins admin panel for “iubenda Cookie and Consent Solution”, install it;
+* Once the plugin is installed and activated, go to the Admin Panel → iubenda menu where you can select either the Cookie Solution or Consent Solution (depending on which you’d like to set up first). 
+* **For the Cookie Solution**, you will be asked to paste your script into that field – the script is generated from your iubenda account dashboard when you activate the solution. For more information on how to activate the Cookie Solution, see this article (https://www.iubenda.com/en/help/1177-cookie-solution-getting-started#banner).
+* At this point the plugin will begin to show your banner on which displays the legal text, the consent options and your cookie policy (link) to users who visit the site for the first time. No need for other configurations;
+* Furthermore, the plugin automatically recognizes and blocks cookies that get installed via an extensive list of services such as the YouTube video player, social widgets (e.g the Facebook Like Box) etc. on your site. The full list is included in the “details” above. 
+* Important note: Scripts can only be automatically blocked when generated from the server side (therefore processed by PHP via WordPress). Scripts that are added to the page via Javascript after page load must be blocked manually. Thankfully, this is fairly easy to do via the Custom Scripts field in the plugin console. Simply enter the custom script or iframe sources you'd like to block within the field, and click on the save changes button. You can find details, examples and further information [here](https://www.iubenda.com/en/help/1215-cookie-solution-wordpress-plugin-installation-guide#blocking-custom-scripts).
+* If you’d like to manually block a specific script using a manual “wrap” method, you can use the following:
+`<!--IUB-COOKIE-BLOCK-START-->
+ <iframe src="...
+ <img src="...
+<!--IUB-COOKIE-BLOCK-END-->`
+* For elements installed directly within WordPress posts (as opposed to elements integrated at the template level – example footer.php) there are shortcodes available:
+`[iub-cookie-policy]
+[/iub-cookie-policy]`
+* In case you’re querying WordPress via API, you can disable our plugin by using the iub_no_parse=true URL parameter, like this: www.example.com/api/get_recent_posts?iub_no_parse=true (http://www.example.com/api/get_recent_posts?iub_no_parse=true).
+* **For the Consent Solution**, you will need to paste in your Consent Solution API key. Once you’ve activated the Consent Solution in your iubenda dashboard, you can find your public API key in your dashboard (https://www.iubenda.com/en/dashboard) at [Your website] > Consent Solution > Embed).
 
 == Frequently Asked Questions ==
 
 **Where can I find help?**
-You can find a dedicated support forum thread here [Uservoice forum](http://support.iubenda.com/forums/314835-general/suggestions/9670701-discussion-regarding-the-iubenda-cookie-law-soluti) or we're happy to answer at info@iubenda.com.
+You can find a dedicated support forum thread here [Uservoice forum](https://support.iubenda.com/support/discussions/forums/42000118028) or we're happy to answer at info@iubenda.com.
 
 **Do you have more guidance, or a demo?**
-Yes, right here: https://www.iubenda.com/en/help/posts/1177
+Here’s a [quick video](https://iubenda.wistia.com/medias/02ie8av6kt) on what the cookie banner looks like and how you can configure it. More details on how to fully set up the Cookie Solution for wordpress [here](https://www.iubenda.com/en/help/1215-cookie-solution-wordpress-plugin-installation-guide).
+
+Here’s a [quick look](https://iubenda.wistia.com/medias/fsbr465bku) at the Consent Solution dashboard. More details on how to fully set up the Consent Solution for wordpress [here](https://www.iubenda.com/en/help/13083-consent-solution-wordpress-contact-form-7) .
 
 **Bug reports**
-The best way you can help us is by providing as much information as possible, including the use of wp_debug https://codex.wordpress.org/Debugging_in_WordPress.
-We will be very happy to receive feedback here: [Uservoice forum](http://support.iubenda.com/forums/314835-general/suggestions/9670701-discussion-regarding-the-iubenda-cookie-law-soluti)
+The best way you can help us is by providing as much information as possible, including the use of [wp_debug](https://wordpress.org/support/article/debugging-in-wordpress/).
+We will be very happy to receive feedback here: [Uservoice forum](https://support.iubenda.com/support/discussions/forums/42000115771)
 
 == Screenshots ==
 
-1. This screen shot shows the default banner on top of our test site testkada4.altervista.org/cookie-test/example2.html
-2. When clicking on the cookie policy link, the user gets a view of the entire cookie policy, where they ultimately can give their consent
-3. It's as simple as copy-pasting the code from iubenda into the plugin form.
+1. It's as simple as copy-pasting the code from iubenda into the plugin form.
+2. Simply enter you API key and click on autodetect to see all forms eligible for mapping.
+3. The visual configurator lets you fully customize the look and feel of your banner, wording, and consent collection options.
+4. When clicking on the cookie policy link, the user gets a view of the entire cookie policy, where they ultimately can give their consent.
+5. IAB Transparency and consent framework integrated.
+6. IAB Transparency and consent framework integrated.
 
 == Changelog ==
 
+= 2.3.0 =
+* Fix: Multiple consent forms per page support
+* Fix: WP Forms checkbox field compatibility 
+* Tweak: AMP consent geolocation support
+
+= 2.2.0 =
+* Fix: Undefined notice during plugin update
+
+= 2.1.0 =
+* New: Per-purpose script blocking support
+* New: "Reject" button support
+* New: Google AMP compatibility option
+* Tweak: Improved regular expression on per-purpose feature detection
+* Fix: Safari unrecognized expression on CSS wildcards
+
+= 2.1.4-beta =
+* New: Multilingual support from AMP
+
+= 2.1.3-beta =
+* Tweak: Block tracking code from WP AMP plugins
+
+= 2.1.2-beta =
+* New: Google AMP compatibility option
+
+= 2.1.1-beta =
+* Tweak: Improved regular expression on per-purpose feature detection
+* Fix: Safari unrecognized expression on CSS wildcards
+
+= 2.1.0-beta =
+* New: Per-purpose script blocking support
+* New: "Reject" button support
+
+= 2.0.2 =
+* Fix: initialize iubenda CS on POST requests not working
+* Tweak: iubenda generic menu icon switched to iubenda logo
+
+= 2.0.1 =
+* New: Jetpack tracking blocking support
+* Fix: add_submenu_page and add_menu_page called incorrectly in WP 5.3
+
+= 2.0.0 =
+* New: Introducing iubenda Consent Solution integration
+* Tweak: Simple HTML Dom update to 1.9
+
+= 2.0.3-beta =
+* New: Introducing WooCommerce checkout form field mapping compatibility
+
+= 2.0.2-beta =
+* New: Introducing wildcard support for scripts and iframes
+
+= 2.0.1-beta =
+* New: Option to initialize iubenda CS on POST requests
+* Tweak: Update Cookie Solution and Consent Solution copy
+
+= 2.0-beta =
+* New: Introducing iubenda Consent Solution integration
+* Tweak: Simple HTML Dom update to 1.9
+
+= 1.15.8 =
+* New: Introducing a way to skip specific script parsing
+* Fix: Google ReCaptcha with Contact Form 7 initialization issue
+* Fix: Improved handling of iubenda script HTML
+* Tweak: Support links update
+
+= 1.15.7 =
+* Fix: Google ReCaptcha loading issue with Contact Form 7
+* Tweak: Improved Youtube and Google Maps script blocking
+
+= 1.15.6 =
+* Fix: iubenda script tags removed when Jetpack is active
+
+= 1.15.5 =
+* Fix: Skip parsing engine when scripts blocking is disabled 
+* Tweak: Update iubenda logo
+
+= 1.15.4 =
+* New: Option to block custom scripts and iframes
+* Tweak: Update and extend the list of blocked scripts including Google Site Search, Google oAuth, Linkedin widgets, PayPal widgets, Freshchat, Uservoice
+, AdRoll, Olark, Segment, Kissmetrics, Mixpanel, Pingdom, Bing and Elevio
+
 = 1.15.3 =
-* Tweak: Update and extend the list of blocked scripts
+* Tweak: Update and extend the list of blocked scripts including Pinterest, AddThis, Disqus, Optimizely, Neodata, Criteo, Outbrain, Headway and Codepen
 
 = 1.15.2 =
 * Tweak: Update and unify iubenda parsing engine
@@ -308,5 +425,7 @@ We will be very happy to receive feedback here: [Uservoice forum](http://support
 
 == Upgrade Notice ==
 
-= 1.15.3 =
-* Tweak: Update and extend the list of blocked scripts
+= 2.3.0 =
+* Fix: Multiple consent forms per page support
+* Fix: WP Forms checkbox field compatibility 
+* Tweak: AMP consent geolocation support

@@ -4,7 +4,7 @@
 ** Akismet API: http://akismet.com/development/api/
 **/
 
-add_filter( 'wpcf7_spam', 'wpcf7_akismet' );
+add_filter( 'wpcf7_spam', 'wpcf7_akismet', 10, 1 );
 
 function wpcf7_akismet( $spam ) {
 	if ( $spam ) {
@@ -48,7 +48,20 @@ function wpcf7_akismet( $spam ) {
 		}
 	}
 
-	return wpcf7_akismet_comment_check( $c );
+	if ( wpcf7_akismet_comment_check( $c ) ) {
+		$spam = true;
+
+		$submission = WPCF7_Submission::get_instance();
+
+		$submission->add_spam_log( array(
+			'agent' => 'akismet',
+			'reason' => __( "Akismet returns a spam response.", 'contact-form-7' ),
+		) );
+	} else {
+		$spam = false;
+	}
+
+	return $spam;
 }
 
 function wpcf7_akismet_is_available() {
@@ -70,7 +83,8 @@ function wpcf7_akismet_submitted_params() {
 	$has_akismet_option = false;
 
 	foreach ( (array) $_POST as $key => $val ) {
-		if ( '_wpcf7' == substr( $key, 0, 6 ) || '_wpnonce' == $key ) {
+		if ( '_wpcf7' == substr( $key, 0, 6 )
+		or '_wpnonce' == $key ) {
 			continue;
 		}
 

@@ -1,3 +1,13 @@
+#redirect-panel .banner-wrap {
+    position: relative;
+    padding: 15px 40px;
+    border: 1px solid #ddd;
+}
+#redirect-panel .banner-wrap img {
+    display: block;
+    max-width: 100%;
+    margin: auto;
+}
 #redirect-panel .field-wrap {
     margin-bottom: 10px;
 }
@@ -51,4 +61,23 @@
     color: #a94442;
     border-color: #ebccd1;
     background-color: #f2dede;
+}
+#redirect-panel .get-pro-wrap {
+    direction: ltr;
+    text-align: center;
+}
+#redirect-panel .get-pro-wrap .get-pro {
+    display: inline-block;
+    padding: 15px;
+    color: #8a6d3b;
+    border: 1px solid #ddd;
+    background-color: #fff;
+}
+#redirect-panel .get-pro-wrap .get-pro .dashicons-star-filled {
+    color: #e7c201;
+}
+#redirect-panel .get-pro-wrap .get-pro a {
+    position: relative;
+    top: 2px;
+    margin: 0 8px;
 }

@@ -6,12 +6,16 @@
  */
 
 /**
- * Represents the link column count. This class contains the count for each post id on the current page .
+ * Represents the link column count. This class contains the count for each post id on the current page.
  */
 class WPSEO_Link_Column_Count {
 
-	/** @var array */
-	protected $count = array();
+	/**
+	 * The link counts for each post id on the current page.
+	 *
+	 * @var array
+	 */
+	protected $count = [];
 
 	/**
 	 * Sets the counts for the set target field.
@@ -56,7 +60,8 @@ class WPSEO_Link_Column_Count {
 		$storage = new WPSEO_Meta_Storage();
 
 		$results = $wpdb->get_results(
-			$wpdb->prepare( '
+			$wpdb->prepare(
+				'
 				SELECT internal_link_count, incoming_link_count, object_id
 				FROM ' . $storage->get_table_name() . '
 				WHERE object_id IN (' . implode( ',', array_fill( 0, count( $post_ids ), '%d' ) ) . ')',
@@ -65,21 +70,21 @@ class WPSEO_Link_Column_Count {
 			ARRAY_A
 		);
 
-		$output = array();
+		$output = [];
 		foreach ( $results as $result ) {
-			$output[ (int) $result['object_id'] ] = array(
+			$output[ (int) $result['object_id'] ] = [
 				'internal_link_count' => $result['internal_link_count'],
 				'incoming_link_count' => (int) $result['incoming_link_count'],
-			);
+			];
 		}
 
 		// Set unfound items to zero.
 		foreach ( $post_ids as $post_id ) {
 			if ( ! array_key_exists( $post_id, $output ) ) {
-				$output[ $post_id ] = array(
+				$output[ $post_id ] = [
 					'internal_link_count' => null,
 					'incoming_link_count' => 0,
-				);
+				];
 			}
 		}
 

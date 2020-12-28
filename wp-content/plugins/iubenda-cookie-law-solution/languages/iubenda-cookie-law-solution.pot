@@ -2,165 +2,231 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Iubenda Cookie Solution\n"
-"POT-Creation-Date: 2018-09-25 13:30+0200\n"
+"POT-Creation-Date: 2020-02-06 13:33+0100\n"
 "PO-Revision-Date: 2015-08-12 10:36+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.1.1\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-KeywordsList: __\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: iubenda_cookie_solution.php:502
+#: includes/amp.php:126
+msgid "Loading"
+msgstr ""
+
+#: includes/amp.php:258
+msgid "AMP Cookie Consent"
+msgstr ""
+
+#: includes/forms-list-table.php:92
+msgid "Form Title"
+msgstr ""
+
+#: includes/forms-list-table.php:93
+msgid "Form ID"
+msgstr ""
+
+#: includes/forms-list-table.php:94
+msgid "Form Source"
+msgstr ""
+
+#: includes/forms-list-table.php:95
+msgid "Fields"
+msgstr ""
+
+#: includes/forms-list-table.php:96
+msgid "Date"
+msgstr ""
+
+#: includes/forms-list-table.php:165
+msgid "Edit"
+msgstr ""
+
+#: includes/forms-list-table.php:166
+msgid "Delete"
+msgstr ""
+
+#: includes/forms-list-table.php:277
+msgid "Filter"
+msgstr ""
+
+#: includes/forms-list-table.php:294
+msgid "Filter by source"
+msgstr ""
+
+#: includes/forms-list-table.php:296
+msgid "All form sources"
+msgstr ""
+
+#: includes/forms-list-table.php:364
+msgid "No forms found."
+msgstr ""
+
+#: includes/forms.php:149 includes/settings.php:138
+msgid "Forms"
+msgstr ""
+
+#: includes/forms.php:150
+msgid "Form"
+msgstr ""
+
+#: includes/forms.php:566 includes/forms.php:580
+msgid "First name"
+msgstr ""
+
+#: includes/forms.php:572 includes/forms.php:592
+msgid "Last name"
+msgstr ""
+
+#: includes/forms.php:586
+msgid "Middle name"
+msgstr ""
+
+#: includes/settings.php:43 includes/settings.php:44 includes/settings.php:45
+#: includes/settings.php:46 includes/settings.php:47
+msgid "string"
+msgstr ""
+
+#: includes/settings.php:59 includes/settings.php:183
+msgid "Cookie Solution"
+msgstr ""
+
+#: includes/settings.php:65 includes/settings.php:184
+msgid "Consent Solution"
+msgstr ""
+
+#: includes/settings.php:73
+msgid "Not set"
+msgstr ""
+
+#: includes/settings.php:74
+msgid "Strictly necessary"
+msgstr ""
+
+#: includes/settings.php:75
+msgid "Basic interactions & functionalities"
+msgstr ""
+
+#: includes/settings.php:76
+msgid "Experience enhancement"
+msgstr ""
+
+#: includes/settings.php:77
+msgid "Analytics"
+msgstr ""
+
+#: includes/settings.php:78
+msgid "Targeting & Advertising"
+msgstr ""
+
+#: includes/settings.php:125
 msgid "Code"
 msgstr ""
 
-#: iubenda_cookie_solution.php:503
-msgid "Scripts blocking"
+#: includes/settings.php:126
+msgid "Google AMP"
 msgstr ""
 
-#: iubenda_cookie_solution.php:504
+#: includes/settings.php:127
+msgid "Script blocking"
+msgstr ""
+
+#: includes/settings.php:128
+msgid "Custom scripts"
+msgstr ""
+
+#: includes/settings.php:129
 msgid "Content type"
 msgstr ""
 
-#: iubenda_cookie_solution.php:505
+#: includes/settings.php:130
 msgid "RSS feed"
 msgstr ""
 
-#: iubenda_cookie_solution.php:506
+#: includes/settings.php:131
+msgid "POST requests"
+msgstr ""
+
+#: includes/settings.php:132
 msgid "Menu position"
 msgstr ""
 
-#: iubenda_cookie_solution.php:507
+#: includes/settings.php:133
 msgid "Deactivation"
 msgstr ""
 
-#: iubenda_cookie_solution.php:557
-#, php-format
-msgid "Enter the iubenda code for %s."
+#: includes/settings.php:139
+msgid "Public Api Key"
 msgstr ""
 
-#: iubenda_cookie_solution.php:568
-msgid "Enter the iubenda code."
+#: includes/settings.php:142 includes/settings.php:146
+msgid "Field Mapping"
 msgstr ""
 
-#: iubenda_cookie_solution.php:581
-msgid "Automatically block scripts detected by the plugin."
+#: includes/settings.php:206
+msgid "Are you sure you want to delete this form?"
 msgstr ""
 
-#: iubenda_cookie_solution.php:582
-#, php-format
-msgid ""
-"see <a href=\"%s\" target=\"_blank\">our documentation</a> for the list of "
-"detected scripts."
-msgstr ""
-
-#: iubenda_cookie_solution.php:585
-msgid "Primary"
-msgstr ""
-
-#: iubenda_cookie_solution.php:586
-msgid "Secondary"
-msgstr ""
-
-#: iubenda_cookie_solution.php:587
-msgid "Select parsing engine."
-msgstr ""
-
-#: iubenda_cookie_solution.php:590
-msgid ""
-"Leave scripts untouched on the page if the user has already given consent"
-msgstr ""
-
-#: iubenda_cookie_solution.php:591
-msgid ""
-"improves performance, highly recommended, to be deactivated only if your "
-"site uses a caching system"
-msgstr ""
-
-#: iubenda_cookie_solution.php:605
-msgid ""
-"Restrict the plugin to run only for requests that have \"Content-type: "
-"text / html\" (recommended)"
-msgstr ""
-
-#: iubenda_cookie_solution.php:617
-msgid "Do not run the plugin inside the RSS feed (recommended)"
-msgstr ""
-
-#: iubenda_cookie_solution.php:629
-msgid "Top menu"
-msgstr ""
-
-#: iubenda_cookie_solution.php:630
-msgid "Submenu"
-msgstr ""
-
-#: iubenda_cookie_solution.php:631
-msgid ""
-"Select whether to display iubenda in a top admin menu or the Settings "
-"submenu."
-msgstr ""
-
-#: iubenda_cookie_solution.php:643
-msgid "Delete all plugin data upon deactivation?"
-msgstr ""
-
-#: iubenda_cookie_solution.php:680
-msgid "Settings saved."
-msgstr ""
-
-#: iubenda_cookie_solution.php:691
-msgid "Settings restored to defaults."
-msgstr ""
-
-#: iubenda_cookie_solution.php:737
+#: includes/settings.php:541
 msgid "You don't have permission to access this page."
 msgstr ""
 
-#: iubenda_cookie_solution.php:746
+#: includes/settings.php:567
 msgid ""
 "This plugin is the easiest and most comprehensive way to adapt your "
-"WordPress site to the European cookie law. Upon your user's first visit, "
-"the plugin will take care of collecting their consent, of blocking the most "
-"popular among the scripts that install cookies and subsequently reactivate "
-"these scripts as soon as consent is provided. The basic settings include "
-"obtaining consent by a simple scroll action (the most effective method) and "
-"script reactivation without refreshing the page."
+"WordPress site to the ePrivacy (EU Cookie Law). Upon your users’ first "
+"visit, the plugin will take care of collecting their consent, blocking the "
+"most popular cookie-scripts and subsequently reactivating these scripts as "
+"soon as consent is provided. The basic settings include obtaining consent "
+"by a simple scroll action (the most effective method) and script "
+"reactivation without refreshing the page (asynchronous script reactivation)."
 msgstr ""
 
-#: iubenda_cookie_solution.php:749
+#: includes/settings.php:570
+msgid ""
+"Does the Cookie Solution support IAB’s Transparency and Consent Framework?"
+msgstr ""
+
+#: includes/settings.php:571
+#, php-format
+msgid ""
+"Yes it does. You can read more about it <a href=\"%s\" class=\"iubenda-url"
+"\" target=\"_blank\">here.</a>"
+msgstr ""
+
+#: includes/settings.php:574
 msgid "Would you like to know more about the cookie law?"
 msgstr ""
 
-#: iubenda_cookie_solution.php:750
+#: includes/settings.php:575
 #, php-format
 msgid ""
 "Read our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">complete "
 "guide to the cookie law.</a>"
 msgstr ""
 
-#: iubenda_cookie_solution.php:753
+#: includes/settings.php:578
 msgid "What is the full functionality of the plugin?"
 msgstr ""
 
-#: iubenda_cookie_solution.php:754
+#: includes/settings.php:579
 #, php-format
 msgid ""
 "Visit our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">plugin "
 "page.</a>"
 msgstr ""
 
-#: iubenda_cookie_solution.php:757
+#: includes/settings.php:582
 msgid "Enter the iubenda code for the Cookie Solution below."
 msgstr ""
 
-#: iubenda_cookie_solution.php:758
+#: includes/settings.php:583
 #, php-format
 msgid ""
 "In order to run the plugin, you need to enter the iubenda code that "
@@ -169,29 +235,413 @@ msgid ""
 "class=\"iubenda-url\" target=\"_blank\">this guide.</a>"
 msgstr ""
 
-#: iubenda_cookie_solution.php:769
+#: includes/settings.php:588
+msgid ""
+"Maintaining comprehensive records of consent is a vital part of privacy "
+"compliance in general but is specifically required under the GDPR. These "
+"records should include a way of identifying the user, store proof of "
+"consent, record of the consenting action, and the legal documents available "
+"to the user at the time of consent, among other things. You can read about "
+"the <a href=\"https://www.iubenda.com/en/help/5428-gdpr-guide#records-of-"
+"consent\" target=\"_blank\">full requirements here</a>."
+msgstr ""
+
+#: includes/settings.php:613
+#, php-format
+msgid ""
+"If you are using per-purpose script blocking or Reject option please "
+"disable the \"Leave scripts untouched on the page if the user has already "
+"given consent\" option. <a href=\"%s\" target=\"_self\">Disable now</a>"
+msgstr ""
+
+#: includes/settings.php:638
+msgid ""
+"AMP configuration file requires HTTPS. Make sure your SSL Certificate is "
+"configured correctly."
+msgstr ""
+
+#: includes/settings.php:660
+#, php-format
+msgid ""
+"This plugin drastically reduces the need for direct interventions in the "
+"code of the site by integrating with iubenda’s Cookie Solution. It provides "
+"a fully customizable cookie banner, dynamically generates a cookie policy "
+"<a href=\"%s\" target=\"_blank\">to match the services in use on your site</"
+"a>, and, fully manages cookie-related consent – including the blocking of "
+"the most common widgets and third-party cookies before consent is received "
+"– in order to comply with the GDPR and ePrivacy."
+msgstr ""
+
+#: includes/settings.php:662
+msgid ""
+"Maintaining valid records of consent is a vital part of privacy compliance "
+"in general, and it is specifically required under the GDPR. These records "
+"should include a userid, timestamp, consent proof, record of the consenting "
+"action, and the legal documents available to the user at the time of "
+"consent, among other things. This plugin is THE most complete solution for "
+"recording, sorting and maintaining GDPR records of consent*. The plugin "
+"also boasts built-in compatibility with WordPress comment form, Contact "
+"Form 7 and WP Forms plugins for your convenience, but can be manually "
+"integrated with any type of web-form and can even store consent proofs for "
+"consents collected offline (e.g in-store sign-ups) via WP media upload."
+msgstr ""
+
+#: includes/settings.php:680
 msgid "Reset to defaults"
 msgstr ""
 
-#: iubenda_cookie_solution.php:775
+#: includes/settings.php:692
 msgid "Need support for this plugin?"
 msgstr ""
 
-#: iubenda_cookie_solution.php:776
+#: includes/settings.php:693
 #, php-format
 msgid ""
 "Visit our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">support "
 "forum.</a>"
 msgstr ""
 
-#: iubenda_cookie_solution.php:779
-msgid "Want to try a beta version of this plugin with the latest features?"
+#: includes/settings.php:737
+#, php-format
+msgid "Enter the iubenda code for %s."
 msgstr ""
 
-#: iubenda_cookie_solution.php:780
+#: includes/settings.php:748
+msgid "Enter the iubenda code."
+msgstr ""
+
+#: includes/settings.php:775
+msgid ""
+"Provide a list of custom scripts you’d like to block and assign their "
+"purpose."
+msgstr ""
+
+#: includes/settings.php:777 includes/settings.php:784
+msgid "Enter custom script"
+msgstr ""
+
+#: includes/settings.php:777 includes/settings.php:784
+#: includes/settings.php:795 includes/settings.php:802
+#: includes/settings.php:1178 includes/settings.php:1205
+#: includes/settings.php:1246 includes/settings.php:1274
+#: includes/settings.php:1325 includes/settings.php:1341
+msgid "Remove"
+msgstr ""
+
+#: includes/settings.php:793
+msgid ""
+"Provide a list of custom iframes you’d like to block and assign their "
+"purpose. "
+msgstr ""
+
+#: includes/settings.php:795 includes/settings.php:802
+msgid "Enter custom iframe"
+msgstr ""
+
+#: includes/settings.php:840
+msgid "Automatically block scripts detected by the plugin"
+msgstr ""
+
+#: includes/settings.php:841
 #, php-format
 msgid ""
-"Visit our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank"
-"\">documentation pages</a> and follow the instructions to install a beta "
-"version."
+"see <a href=\"%s\" target=\"_blank\">our documentation</a> for the list of "
+"detected scripts."
+msgstr ""
+
+#: includes/settings.php:844
+msgid "Primary"
+msgstr ""
+
+#: includes/settings.php:845
+msgid "Secondary"
+msgstr ""
+
+#: includes/settings.php:846
+msgid "Select parsing engine."
+msgstr ""
+
+#: includes/settings.php:849
+msgid ""
+"Leave scripts untouched on the page if the user has already given consent"
+msgstr ""
+
+#: includes/settings.php:850
+msgid ""
+"improves performance, highly recommended, to be deactivated only if your "
+"site uses a caching system or if you're collecting per-category consent."
+msgstr ""
+
+#: includes/settings.php:864
+msgid ""
+"Restrict the plugin to run only for requests that have \"Content-type: "
+"text / html\" (recommended)"
+msgstr ""
+
+#: includes/settings.php:876
+msgid "Do not run the plugin inside the RSS feed (recommended)"
+msgstr ""
+
+#: includes/settings.php:888
+msgid "Do not run the plugin on POST requests (recommended)"
+msgstr ""
+
+#: includes/settings.php:900
+msgid "Top menu"
+msgstr ""
+
+#: includes/settings.php:901
+msgid "Submenu"
+msgstr ""
+
+#: includes/settings.php:902
+msgid ""
+"Select whether to display iubenda in a top admin menu or the Settings "
+"submenu."
+msgstr ""
+
+#: includes/settings.php:914
+msgid "Enable Google AMP support."
+msgstr ""
+
+#: includes/settings.php:915
+#, php-format
+msgid ""
+"This feature enables iubenda on AMP pages via the <a href=\"%s\" target="
+"\"_blank\">AMP</a> and <a href=\"%s\" target=\"_blank\">AMP for WP</a> "
+"plugins. AMP requires specific configuration parameters and a page hosted "
+"on your domain where the configuration is loaded from. <a href=\"%s\" "
+"target=\"_blank\">Learn more on iubenda and AMP</a>."
+msgstr ""
+
+#: includes/settings.php:918
+msgid "Auto-generated configuration file"
+msgstr ""
+
+#: includes/settings.php:919
+msgid "Custom configuration file"
+msgstr ""
+
+#: includes/settings.php:920
+msgid "Select the iubenda AMP configuration file location."
+msgstr ""
+
+#: includes/settings.php:925
+msgid ""
+"No file available. Save changes to generate iubenda AMP configuration file."
+msgstr ""
+
+#: includes/settings.php:953
+msgid ""
+"If you're experiencing issues with AMP setup download the generated iubenda "
+"AMP configuration file, upload it to any SSL server and paste the file link "
+"to the field above."
+msgstr ""
+
+#: includes/settings.php:955
+#, php-format
+msgid ""
+"Seeing the AMP cookie notice when testing from Google but not when visiting "
+"your AMP pages directly? <a href=\"%s\" target=\"_blank\">Learn how to fix "
+"it</a>."
+msgstr ""
+
+#: includes/settings.php:968
+msgid "Delete all plugin data upon deactivation"
+msgstr ""
+
+#: includes/settings.php:981
+msgid "Enter your iubenda Javascript library public API key."
+msgstr ""
+
+#: includes/settings.php:997
+msgid ""
+"This section lists the forms available for field mapping. The plugin "
+"currently supports & detects: WordPress Comment, Contact Form 7, "
+"WooCommerce Checkout and WP Forms."
+msgstr ""
+
+#: includes/settings.php:1058
+#, php-format
+msgid "%s form title."
+msgstr ""
+
+#: includes/settings.php:1058
+msgid "Unknown"
+msgstr ""
+
+#: includes/settings.php:1060
+msgid "Available form fields:"
+msgstr ""
+
+#: includes/settings.php:1066
+msgid "Publish"
+msgstr ""
+
+#: includes/settings.php:1071
+msgid "Status"
+msgstr ""
+
+#: includes/settings.php:1084
+msgid "Cancel"
+msgstr ""
+
+#: includes/settings.php:1089
+msgid "Save"
+msgstr ""
+
+#: includes/settings.php:1102
+msgid "Map fields"
+msgstr ""
+
+#: includes/settings.php:1108
+msgid "Subject fields"
+msgstr ""
+
+#: includes/settings.php:1109
+msgid ""
+"Subject fields allow you to store a series of identifying values about your "
+"individual subjects/users. Please map the subject  field with the "
+"corresponding form fields where applicable."
+msgstr ""
+
+#: includes/settings.php:1114
+msgid "Subject field"
+msgstr ""
+
+#: includes/settings.php:1115 includes/settings.php:1159
+msgid "Form field"
+msgstr ""
+
+#: includes/settings.php:1121
+msgid "Autogenerated"
+msgstr ""
+
+#: includes/settings.php:1121
+msgid "None"
+msgstr ""
+
+#: includes/settings.php:1152
+msgid "Preferences fields"
+msgstr ""
+
+#: includes/settings.php:1153
+msgid ""
+"Preferences fields allow you to store a record of the various opt-ins "
+"points at which the user has agreed or given consent, such as fields for "
+"agreeing to terms and conditions, newsletter, profiling, etc. *Please "
+"create at least one preference field."
+msgstr ""
+
+#: includes/settings.php:1158
+msgid "Preferences field"
+msgstr ""
+
+#: includes/settings.php:1164 includes/settings.php:1190
+#: includes/settings.php:1315 includes/settings.php:1325
+#: includes/settings.php:1341
+msgid "Enter field name"
+msgstr ""
+
+#: includes/settings.php:1214
+msgid "Add New Preference"
+msgstr ""
+
+#: includes/settings.php:1221
+msgid "Exclude fields"
+msgstr ""
+
+#: includes/settings.php:1222
+msgid ""
+"Exclude fields allow you to create a list of fields that you would like to "
+"exclude from your Consent Solution recorded proofs (for e.g. password or "
+"other fields not related to the consent)."
+msgstr ""
+
+#: includes/settings.php:1227
+msgid "Exclude field"
+msgstr ""
+
+#: includes/settings.php:1284
+msgid "Add New Exclude"
+msgstr ""
+
+#: includes/settings.php:1294
+msgid "Legal Notices"
+msgstr ""
+
+#: includes/settings.php:1300
+msgid "Legal documents"
+msgstr ""
+
+#: includes/settings.php:1301
+msgid ""
+"In general, it’s important that you declare which legal documents are being "
+"agreed upon when each consent is collected. However, if you use iubenda for "
+"your legal documents, it is *required*  that you identify the documents by "
+"selecting them here."
+msgstr ""
+
+#: includes/settings.php:1306
+msgid "Identifier"
+msgstr ""
+
+#: includes/settings.php:1315
+msgid "Please select each legal document available on your site."
+msgstr ""
+
+#: includes/settings.php:1331
+msgid "Alternatively, you may add your own custom document identifiers."
+msgstr ""
+
+#: includes/settings.php:1350
+msgid "Add New Document"
+msgstr ""
+
+#: includes/settings.php:1471 includes/settings.php:1503
+#: includes/settings.php:1688
+msgid "Settings saved."
+msgstr ""
+
+#: includes/settings.php:1483 includes/settings.php:1508
+msgid "Settings restored to defaults."
+msgstr ""
+
+#: includes/settings.php:1543
+#, php-format
+msgid ""
+"Please enable comments cookies opt-in checkbox in the <a href=\"%s\" target="
+"\"_blank\">Discussion settings</a>."
+msgstr ""
+
+#: includes/settings.php:1563
+msgid "No forms or form changes detected."
+msgstr ""
+
+#: includes/settings.php:1623
+msgid "Form saving failed. Please fill the Subject and Preferences fields."
+msgstr ""
+
+#: includes/settings.php:1647
+msgid "Form saved successfully - form status changed to Mapped."
+msgstr ""
+
+#: includes/settings.php:1650
+msgid "Form updated successfully."
+msgstr ""
+
+#: includes/settings.php:1653
+msgid "Form saving failed."
+msgstr ""
+
+#: includes/settings.php:1670
+msgid "Form deleted successfully."
+msgstr ""
+
+#: includes/settings.php:1672
+msgid "Form delete failed."
+msgstr ""
+
+#: includes/settings.php:1748
+msgid "Dismiss this notice."
 msgstr ""

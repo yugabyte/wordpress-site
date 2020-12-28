@@ -6,7 +6,7 @@
  */
 
 /**
- * Class WPSEO_Remove_Reply_To_Com
+ * Class WPSEO_Remove_Reply_To_Com.
  *
  * @since 7.0
  */
@@ -21,8 +21,8 @@ class WPSEO_Remove_Reply_To_Com implements WPSEO_WordPress_Integration {
 	 */
 	public function register_hooks() {
 		if ( $this->clean_reply_to_com() ) {
-			add_filter( 'comment_reply_link', array( $this, 'remove_reply_to_com' ) );
-			add_action( 'template_redirect', array( $this, 'replytocom_redirect' ), 1 );
+			add_filter( 'comment_reply_link', [ $this, 'remove_reply_to_com' ] );
+			add_action( 'template_redirect', [ $this, 'replytocom_redirect' ], 1 );
 		}
 	}
 
@@ -48,8 +48,11 @@ class WPSEO_Remove_Reply_To_Com implements WPSEO_WordPress_Integration {
 	public function replytocom_redirect() {
 		if ( isset( $_GET['replytocom'] ) && is_singular() ) {
 			$url          = get_permalink( $GLOBALS['post']->ID );
-			$hash         = sanitize_text_field( $_GET['replytocom'] );
-			$query_string = remove_query_arg( 'replytocom', sanitize_text_field( $_SERVER['QUERY_STRING'] ) );
+			$hash         = sanitize_text_field( wp_unslash( $_GET['replytocom'] ) );
+			$query_string = '';
+			if ( isset( $_SERVER['QUERY_STRING'] ) ) {
+				$query_string = remove_query_arg( 'replytocom', sanitize_text_field( wp_unslash( $_SERVER['QUERY_STRING'] ) ) );
+			}
 			if ( ! empty( $query_string ) ) {
 				$url .= '?' . $query_string;
 			}

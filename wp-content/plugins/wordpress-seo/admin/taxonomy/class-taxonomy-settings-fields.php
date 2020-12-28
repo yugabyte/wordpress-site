@@ -6,16 +6,21 @@
  */
 
 /**
- * This class parses all the values for the general tab in the Yoast SEO settings metabox
+ * This class parses all the values for the general tab in the Yoast SEO settings metabox.
  */
 class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
-	/**
-	 * @var array   Options array for the no-index options, including translated labels
-	 */
-	private $no_index_options = array();
 
 	/**
-	 * @param stdClass $term The currenct taxonomy.
+	 * Options array for the no-index options, including translated labels.
+	 *
+	 * @var array
+	 */
+	private $no_index_options = [];
+
+	/**
+	 * The WPSEO_Taxonomy_Settings_Fields class constructor.
+	 *
+	 * @param stdClass $term The current taxonomy.
 	 */
 	public function __construct( $term ) {
 		parent::__construct( $term );
@@ -29,7 +34,7 @@ class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
 	 */
 	public function get() {
 		$labels = $this->get_taxonomy_labels();
-		$fields = array(
+		$fields = [
 			'noindex'   => $this->get_field_config(
 				/* translators: %s = taxonomy name. */
 				esc_html( sprintf( __( 'Allow search engines to show this %s in search results?', 'wordpress-seo' ), $labels->singular_name ) ),
@@ -48,13 +53,13 @@ class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
 				__( 'Canonical URL', 'wordpress-seo' ),
 				esc_html__( 'The canonical link is shown on the archive page for this term.', 'wordpress-seo' )
 			),
-		);
+		];
 
 		return $this->filter_hidden_fields( $fields );
 	}
 
 	/**
-	 * Translate options text strings for use in the select fields
+	 * Translate options text strings for use in the select fields.
 	 *
 	 * {@internal IMPORTANT: if you want to add a new string (option) somewhere, make sure you add
 	 * that array key to the main options definition array in the class WPSEO_Taxonomy_Meta() as well!!!!}}
@@ -69,7 +74,7 @@ class WPSEO_Taxonomy_Settings_Fields extends WPSEO_Taxonomy_Fields {
 	}
 
 	/**
-	 * Getting the data for the noindex fields
+	 * Getting the data for the noindex fields.
 	 *
 	 * @return array Array containing the no_index options.
 	 */

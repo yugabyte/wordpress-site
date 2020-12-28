@@ -1,9 +1,9 @@
-=== Contact Form 7 Redirection ===
+=== Redirection for Contact Form 7 ===
 Tags: contact form 7 redirect, contact form 7 thank you page, redirect cf7, redirect contact form 7, contact form 7 success page, cf7 redirect
 Contributors: yuvalsabar
 Requires at least: 4.7.0
-Tested up to: 5.0
-Stable tag: 1.2.9
+Tested up to: 5.2.2
+Stable tag: 1.3.5
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,9 +18,35 @@ NOTE: This plugin requires Contact Form 7 version 4.8 or later.
 
 Simply go to your form settings, choose the "Redirect Settings" tab and set the page you want to be redirected to.
 
+== Features ==
+
+* Redirect to any URL
+* Open page in a new tab
+* Run JavaScript after form submission (great for conversion management)
+* Pass fields from the form as URL query parameters
+
+* **[Pro]** Create registration forms
+* **[Pro]** Create login forms
+* **[Pro]** Add to Mailchimp list
+* **[Pro]** Conditional error managment
+* **[Pro]** Redirect rules
+* **[Pro]** Conditional logic for each action
+* **[Pro]** Manage email notifications by conditional logic
+* **[Pro]** Fire custom JavaScript events by conditional logic
+* **[Pro]** Send data to remote servers (3rd-party integration)
+* **[Pro]** Send RESTful Json/XML to remote servers
+* **[Pro]** Send RESTful POST/GET to remote servers
+* **[Pro]** Manage Facebook conversion pixels
+* **[Pro]** Manage Google Adwords conversion pixels
+* **[Pro]** Leads Manager - save leads to database
+* **[Pro]** PayPal Integration
+
+
+> Note: some features are availible only in the Pro version. Which means you need Redirection for Contact Form 7 Pro to unlock those features. You can [get Redirection for Contact Form 7 Pro here](http://querysol.com/product/contact-form-7-redirection/)!
+
 == Installation ==
 
-Installing Contact Form 7 Redirection can be done either by searching for "Contact Form 7 Redirection" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
+Installing Redirection for Contact Form 7 can be done either by searching for "Redirection for Contact Form 7" via the "Plugins > Add New" screen in your WordPress dashboard, or by using the following steps:
 
 1. Download the plugin via WordPress.org.
 2. Upload the ZIP file through the "Plugins > Add New > Upload" screen in your WordPress dashboard.
@@ -42,6 +68,26 @@ No. One of the reasons we developed this plugin, is because on_send_ok is now de
 1. Redirect Settings tab
 
 == Changelog ==
+
+= 1.3.5 =
+* Fixed a bug: Redirection Pro for Contact Form 7 message not disappearing after clicking the X button (for some users).
+
+= 1.3.4 =
+* Fixed a bug: "Changes you made may not be saved" pop-up no longer appears when no changes have been made.
+* Fixed a bug: When passing all fields as parameters, "+" sign is now replaced with "%20".
+* Minor code styling changes to fully meet WordPress standards.
+
+= 1.3.3 =
+* Fixed a bug: URL query parameters are now properly decoded.
+
+= 1.3.2 =
+* New feature: delay redirection in milliseconds.
+
+= 1.3.1 =
+* Fixed a bug in legacy browsers: the Pro message keep showing.
+
+= 1.3.0 =
+* Minor dev improvements.
 
 = 1.2.9 =
 * Fixed a bug: when passing specific fields as URL query parameters, not all the fields were passed.
@@ -70,11 +116,11 @@ No. One of the reasons we developed this plugin, is because on_send_ok is now de
 * Dev improvements.
 
 = 1.2 =
-* Added option to add script after the form has been sent successfully.
+* New feature: add script after the form has been sent successfully.
 
 = 1.0.2 =
 * Added full support for form duplication.
-* Added option to open page in a new tab.
+* New feature: open page in a new tab.
 * Added plugin class CF7_Redirect.
 
 = 1.0.0 =

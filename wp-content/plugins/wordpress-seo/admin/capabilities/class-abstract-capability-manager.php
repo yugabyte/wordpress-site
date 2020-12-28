@@ -9,15 +9,20 @@
  * Abstract Capability Manager shared code.
  */
 abstract class WPSEO_Abstract_Capability_Manager implements WPSEO_Capability_Manager {
-	/** @var array Registered capabilities */
-	protected $capabilities = array();
+
+	/**
+	 * Registered capabilities.
+	 *
+	 * @var array
+	 */
+	protected $capabilities = [];
 
 	/**
 	 * Registers a capability.
 	 *
 	 * @param string $capability Capability to register.
 	 * @param array  $roles      Roles to add the capability to.
-	 * @param bool   $overwrite        Optional. Use add or overwrite as registration method.
+	 * @param bool   $overwrite  Optional. Use add or overwrite as registration method.
 	 */
 	public function register( $capability, array $roles, $overwrite = false ) {
 		if ( $overwrite || ! isset( $this->capabilities[ $capability ] ) ) {
@@ -76,7 +81,7 @@ abstract class WPSEO_Abstract_Capability_Manager implements WPSEO_Capability_Man
 
 		// Make sure we have the expected type.
 		if ( ! is_array( $filtered ) ) {
-			return array();
+			return [];
 		}
 
 		return $filtered;

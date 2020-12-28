@@ -4,10 +4,10 @@
  *
  * @package WPSEO\Admin\Views\Taxonomies
  *
- * @var Yoast_Form $yform
+ * @uses Yoast_Form $yform Form object.
  */
 
-$remove_buttons = array( __( 'Keep', 'wordpress-seo' ), __( 'Remove', 'wordpress-seo' ) );
+$remove_buttons = [ __( 'Keep', 'wordpress-seo' ), __( 'Remove', 'wordpress-seo' ) ];
 
 $stripcategorybase_help = new WPSEO_Admin_Help_Panel(
 	'opengraph',

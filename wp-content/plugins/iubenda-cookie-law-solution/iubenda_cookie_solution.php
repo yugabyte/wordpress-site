@@ -1,25 +1,25 @@
 <?php
 /*
-Plugin Name: iubenda Cookie Solution for GDPR
-Plugin URI: https://www.iubenda.com
-Description: iubenda Cookie Solution allows you to make your website GDPR compliant and manage all aspects of cookie law on WP.
-Version: 1.15.3
-Author: iubenda
-Author URI: https://www.iubenda.com
-License: MIT License
-License URI: http://opensource.org/licenses/MIT
-Text Domain: iubenda-cookie-law-solution
-Domain Path: /languages
+  Plugin Name: Cookie and Consent Solution for the GDPR & ePrivacy
+  Plugin URI: https://www.iubenda.com
+  Description: An All-in-One approach developed by iubenda, which includes functionalities of two powerful solutions that help to make your website GDPR and ePrivacy compliant.
+  Version: 2.3.0
+  Author: iubenda
+  Author URI: https://www.iubenda.com
+  License: MIT License
+  License URI: http://opensource.org/licenses/MIT
+  Text Domain: iubenda
+  Domain Path: /languages
 
-ibenda Cookie Solution
-Copyright (C) 2018, iubenda s.r.l
+  Cookie and Consent Solution for the GDPR & ePrivacy
+  Copyright (C) 2018-2020, iubenda s.r.l
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+  The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-*/
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+ */
 
 // exit if accessed directly
 if ( ! defined( 'ABSPATH' ) )
@@ -28,35 +28,91 @@ if ( ! defined( 'ABSPATH' ) )
 // define contants
 define( 'IUB_DEBUG', false );
 
-// set plugin instance
-$iubenda_cookie_law_solution = new iubenda_Cookie_Law_Solution();
-
 /**
- * iubenda_Cookie_Law_Solution final class.
+ * iubenda final class.
  *
- * @class iubenda_Cookie_Law_Solution
- * @version	1.15.2
+ * @class iubenda
+ * @version	2.3.0
  */
-class iubenda_Cookie_Law_Solution {
+class iubenda {
 
-	public $options;
+	private static $instance;
+	public $options = array();
 	public $defaults = array(
-		'parse'			 => false, // iubenda_parse
-		'skip_parsing'	 => true, // skip_parsing
-		'ctype'			 => true, // iubenda_ctype
-		'parse'			 => false, // iubenda_parse
-		'parser_engine'	 => 'new', // parser_engine
-		'output_feed'	 => true, // iubenda_output_feed
-		'code_default'	 => false, // iubenda-code-default,
-		'menu_position'	 => 'topmenu',
-		'deactivation'	 => false
+		'cs' => array(
+			'parse'				=> false, // iubenda_parse
+			'skip_parsing'		=> true, // skip_parsing
+			'ctype'				=> true, // iubenda_ctype
+			'parse'				=> false, // iubenda_parse
+			'parser_engine'		=> 'new', // parser_engine
+			'output_feed'		=> true, // iubenda_output_feed
+			'output_post'		=> true,
+			'code_default'		=> false, // iubenda-code-default,
+			'menu_position'		=> 'topmenu',
+			'amp_support'		=> false,
+			'amp_source'		=> 'local',
+			'amp_template_done' => false,
+			'amp_template'		=> '',
+			'custom_scripts'	=> array(),
+			'custom_iframes'	=> array(),
+			'deactivation'		=> false
+		),
+		'cons' => array(
+			'public_api_key' => '',
+		)
 	);
-	public $version = '1.15.3';
+	public $base_url;
+	public $version = '2.3.0';
+	public $activation = array(
+		'update_version'	=> 0,
+		'update_notice'		=> true,
+		'update_date'		=> '',
+		'update_delay_date'	=> 0
+	);
 	public $no_html = false;
-	public $links = array();
 	public $multilang = false;
 	public $languages = array();
 	public $lang_default = '';
+	public $lang_current = '';
+
+	/**
+	 * Disable object clone.
+	 */
+	private function __clone() {
+
+	}
+
+	/**
+	 * Disable unserializing of the class.
+	 */
+	private function __wakeup() {
+
+	}
+
+	/**
+	 * Main plugin instance,
+	 * Insures that only one instance of the plugin exists in memory at one time.
+	 *
+	 * @return object
+	 */
+	public static function instance() {
+		if ( ! isset( self::$instance ) && ! ( self::$instance instanceof iubenda ) ) {
+
+			self::$instance = new iubenda;
+			self::$instance->define_constants();
+
+			add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
+			add_action( 'plugins_loaded', array( self::$instance, 'init' ) );
+
+			self::$instance->includes();
+
+			self::$instance->AMP = new iubenda_AMP();
+			self::$instance->forms = new iubenda_Forms();
+			self::$instance->settings = new iubenda_Settings();
+		}
+
+		return self::$instance;
+	}
 
 	/**
 	 * Class constructor.
@@ -66,28 +122,78 @@ class iubenda_Cookie_Law_Solution {
 		register_deactivation_hook( __FILE__, array( $this, 'deactivation' ) );
 
 		// settings
-		$this->options = array_merge( $this->defaults, (array) get_option( 'iubenda_cookie_law_solution', $this->defaults ) );
+		$cs_options = (array) get_option( 'iubenda_cookie_law_solution', $this->defaults['cs'] );
+		$cons_options = (array) get_option( 'iubenda_consent_solution', $this->defaults['cons'] );
+		
+		// activate AMP if not available before
+		if ( function_exists( 'is_amp_endpoint' ) || function_exists( 'ampforwp_is_amp_endpoint' ) ) {
+			if ( ! isset( $cs_options['amp_support'] ) )
+				$this->defaults['cs']['amp_support'] = true;
+		}
+		
+		$this->options['cs'] = array_merge( $this->defaults['cs'], $cs_options );
+		$this->options['cons'] = array_merge( $this->defaults['cons'], $cons_options );
+
+		$this->base_url = esc_url_raw( add_query_arg( 'page', 'iubenda', admin_url( $this->options['cs']['menu_position'] === 'submenu' ? 'options-general.php' : 'admin.php' ) ) );
+
+		// check old custom scripts
+		if ( ! empty( $this->options['cs']['custom_scripts'] ) && is_array( $this->options['cs']['custom_scripts'] ) && ! is_int( reset( $this->options['cs']['custom_scripts'] ) ) ) {
+			$data = array();
+
+			foreach ( $this->options['cs']['custom_scripts'] as $script ) {
+				$data[$script] = 0;
+			}
+
+			$this->options['cs']['custom_scripts'] = $data;
+		}
+
+		// check old custom iframes
+		if ( ! empty( $this->options['cs']['custom_iframes'] ) && is_array( $this->options['cs']['custom_iframes'] ) && ! is_int( reset( $this->options['cs']['custom_iframes'] ) ) ) {
+			$data = array();
+
+			foreach ( $this->options['cs']['custom_iframes'] as $iframe ) {
+				$data[$iframe] = 0;
+			}
+
+			$this->options['cs']['custom_iframes'] = $data;
+		}
 
 		// actions
-		add_action( 'admin_init', array( $this, 'register_options' ) );
-		add_action( 'admin_init', array( $this, 'update_plugin' ), 9 );
-		add_action( 'admin_init', array( $this, 'admin_page_redirect' ), 20 );
-		add_action( 'admin_menu', array( $this, 'admin_menu_options' ) );
-		add_action( 'admin_notices', array( $this, 'settings_errors' ) );
-		// add_action( 'admin_menu', array( $this, 'save_options' ), 9 );
-		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ) );
-		add_action( 'plugins_loaded', array( $this, 'init' ) );
 		add_action( 'after_setup_theme', array( $this, 'register_shortcode' ) );
-		add_action( 'admin_enqueue_scripts', array( $this, 'admin_enqueue_scripts' ) );
-		add_action( 'admin_print_styles', array( $this, 'admin_print_styles' ) );
-		add_action( 'wp_head', array( $this, 'wp_head' ), 99 );
+		add_action( 'wp_head', array( $this, 'wp_head_cs' ), 0 );
+		add_action( 'wp_head', array( $this, 'wp_head_cons' ), 1 );
 		add_action( 'template_redirect', array( $this, 'output_start' ), 0 );
 		add_action( 'shutdown', array( $this, 'output_end' ), 100 );
+		add_action( 'template_redirect', array( $this, 'disable_jetpack_tracking' ) );
+		add_action( 'admin_init', array( $this, 'maybe_do_upgrade' ) );
+		add_action( 'upgrader_process_complete', array( $this, 'upgrade' ), 10, 2 );
+	}
+
+	/**
+	 * Setup plugin constants.
+	 *
+	 * @return void
+	 */
+	private function define_constants() {
+		define( 'IUBENDA_PLUGIN_URL', plugins_url( '', __FILE__ ) );
+		define( 'IUBENDA_PLUGIN_REL_PATH', dirname( plugin_basename( __FILE__ ) ) . '/' );
+		define( 'IUBENDA_PLUGIN_PATH', plugin_dir_path( __FILE__ ) );
+	}
+
+	/**
+	 * Include required files.
+	 *
+	 * @return void
+	 */
+	private function includes() {
+		include_once( IUBENDA_PLUGIN_PATH . 'includes/settings.php' );
+		include_once( IUBENDA_PLUGIN_PATH . 'includes/forms.php' );
+		include_once( IUBENDA_PLUGIN_PATH . 'includes/amp.php' );
 	}
 
 	/**
 	 * Initialize plugin.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function init() {
@@ -108,8 +214,10 @@ class iubenda_Cookie_Law_Solution {
 
 			// get default language
 			$this->lang_default = pll_default_language();
+			// get current language
+			$this->lang_current = pll_current_language();
 
-		// WPML support
+			// WPML support
 		} elseif ( is_plugin_active( 'sitepress-multilingual-cms/sitepress.php' ) && class_exists( 'SitePress' ) ) {
 			$this->multilang = true;
 
@@ -125,151 +233,61 @@ class iubenda_Cookie_Law_Solution {
 
 			// get default language
 			$this->lang_default = $sitepress->get_default_language();
+			// get current language
+			$this->lang_current = $sitepress->get_current_language();
 		}
 
 		// load iubenda parser
-		require_once( dirname( __FILE__ ) . '/iubenda-cookie-class/iubenda.class.php' );
-		
-		$links = array(
-			'en' => array(
-				'guide'	=> 'https://www.iubenda.com/en/iubenda-cookie-law-solution',
-				'plugin_page' => 'https://www.iubenda.com/en/help/posts/1215',
-				'generating_code' => 'https://www.iubenda.com/en/help/posts/1177',
-				'support_forum' => 'https://support.iubenda.com/forums/314835-general/suggestions/9670701-discussion-regarding-the-iubenda-cookie-law-soluti',
-				'documentation' => 'https://www.iubenda.com/en/help/posts/1215'
-			),
-			'it' => array(
-				'guide'	=> 'https://www.iubenda.com/it/soluzione-cookie-law',
-				'plugin_page' => 'https://www.iubenda.com/it/help/posts/810',
-				'generating_code' => 'https://www.iubenda.com/it/help/posts/680',
-				'support_forum' => 'https://support.iubenda.com/forums/314835-general/suggestions/9670701-discussion-regarding-the-iubenda-cookie-law-soluti',
-				'documentation' => 'https://www.iubenda.com/it/help/posts/810',
-			)
-		);
-		
-		$locale = explode( '_', get_locale() );
-		$locale_code = $locale[0];
-		
-		// assign links
-		$this->links = in_array( $locale_code, array_keys( $links ) ) ? $links[$locale_code] : $links['en'];
+		include_once( dirname( __FILE__ ) . '/iubenda-cookie-class/iubenda.class.php' );
 	}
 
 	/**
 	 * Plugin activation.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function activation() {
-		add_option( 'iubenda_cookie_law_solution', $this->options, '', 'no' );
+		set_transient( 'iub_activation_completed', 1, 3600 );
+
+		add_option( 'iubenda_cookie_law_solution', $this->options['cs'], '', 'no' );
+		add_option( 'iubenda_cookie_law_solution', $this->options['cons'], '', 'no' );
 		add_option( 'iubenda_cookie_law_version', $this->version, '', 'no' );
+		add_option( 'iubenda_activation_data', $this->activation, '', 'no' );
 	}
 
 	/**
 	 * Plugin deactivation.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function deactivation() {
 		// remove options from database?
-		if ( $this->options['deactivation'] ) {
+		if ( $this->options['cs']['deactivation'] ) {
 			delete_option( 'iubenda_cookie_law_solution' );
+			delete_option( 'iubenda_consent_solution' );
 			delete_option( 'iubenda_cookie_law_version' );
+			delete_option( 'iubenda_activation_data' );
 		}
 	}
 
 	/**
-	 * Plugin options migration for versions < 1.14.0
-	 * 
+	 * Plugin upgrae.
+	 *
 	 * @return void
 	 */
-	public function update_plugin() {
-		if ( ! current_user_can( 'install_plugins' ) )
-			return;
+	public function upgrade( $upgrader_object, $options ) {
+		// the path to our plugin's main file
+		$our_plugin = plugin_basename( __FILE__ );
 
-		$db_version = get_option( 'iubenda_cookie_law_version' );
-		$db_version = ! $db_version ? '1.13.0' : $db_version;
-
-		if ( $db_version != false ) {
-			if ( version_compare( $db_version, '1.14.0', '<' ) ) {
-				$options = array();
-
-				$old_new = array(
-					'iubenda_parse'			 => 'parse',
-					'skip_parsing'			 => 'skip_parsing',
-					'iubenda_ctype'			 => 'ctype',
-					'iubenda_parse'			 => 'parse',
-					'parser_engine'			 => 'parser_engine',
-					'iubenda_output_feed'	 => 'output_feed',
-					'iubenda-code-default'	 => 'code_default',
-					'default_skip_parsing'	 => '',
-					'default_iubendactype'	 => '',
-					'default_iubendaparse'	 => '',
-					'default_parser_engine'	 => '',
-					'iub_code'				 => '',
-				);
-
-				foreach ( $old_new as $old => $new ) {
-					if ( $new ) {
-						$options[$new] = get_option( $old );
-					}
-					delete_option( $old );
+		// if an update has taken place and the updated type is plugins and the plugins element exists
+		if ( $options['action'] == 'update' && $options['type'] == 'plugin' && isset( $options['plugins'] ) ) {
+			// iterate through the plugins being updated and check if ours is there
+			foreach ( $options['plugins'] as $plugin ) {
+				if ( $plugin == $our_plugin ) {
+					// set a transient to record that our plugin has just been updated
+					set_transient( 'iub_upgrade_completed', 1, 3600 );
 				}
-
-				// multilang support
-				if ( ! empty( $this->languages ) ) {
-					foreach ( $this->languages as $lang ) {
-						$code = get_option( 'iubenda-code-' . $lang );
-
-						if ( ! empty( $code ) ) {
-							$options['code_' . $lang] = $code;
-
-							delete_option( 'iubenda-code-' . $lang );
-						}
-					}
-				}
-
-				add_option( 'iubenda_cookie_law_solution', $options, '', 'no' );
-				add_option( 'iubenda_cookie_law_version', $this->version, '', 'no' );
 			}
-		}
-	}
-
-	/**
-	 * Register shortcode function.
-	 *
-	 * @return void
-	 */
-	public function register_shortcode() {
-		add_shortcode( 'iub-cookie-policy', array( $this, 'shortcode' ) );
-	}
-
-	/**
-	 * Handle shortcode function.
-	 * 
-	 * @param array $atts
-	 * @param mixed $content
-	 * @return mixed
-	 */
-	public function shortcode( $atts, $content = '' ) {
-		return '<!--IUB-COOKIE-BLOCK-START-->' . do_shortcode( $content ) . '<!--IUB-COOKIE-BLOCK-END-->';
-	}
-
-	/**
-	 * Add submenu.
-	 *
-	 * @return void
-	 */
-	public function admin_menu_options() {
-		if ( $this->options['menu_position'] === 'submenu' ) {
-			// sub menu
-			add_submenu_page(
-				'options-general.php', 'iubenda', 'iubenda', apply_filters( 'iubenda_cookie_law_cap', 'manage_options' ), 'iubenda-cookie-law-solution', array( $this, 'options_page' ), 'none' 
-			);
-		} else {
-			// top menu
-			add_menu_page(
-				'iubenda', 'iubenda', apply_filters( 'iubenda_cookie_law_cap', 'manage_options' ), 'iubenda-cookie-law-solution', array( $this, 'options_page' ), 'none' 
-			);
 		}
 	}
 
@@ -279,85 +297,51 @@ class iubenda_Cookie_Law_Solution {
 	 * @return void
 	 */
 	public function load_textdomain() {
-		load_plugin_textdomain( 'iubenda-cookie-law-solution', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+		load_plugin_textdomain( 'iubenda', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 	}
 
 	/**
-	 * Load admin scripts and styles.
-	 * 
-	 * @param string $page
+	 * Register shortcode function.
+	 *
 	 * @return void
 	 */
-	public function admin_enqueue_scripts( $page ) {
-		if ( ! in_array( $page, array( 'toplevel_page_iubenda-cookie-law-solution', 'settings_page_iubenda-cookie-law-solution' ) ) )
-			return;
-
-		wp_enqueue_script(
-		'iubenda-admin', plugins_url( 'js/admin.js', __FILE__ ), array( 'jquery' )
-		);
-
-		wp_enqueue_style( 'iubenda-admin', plugins_url( 'css/admin.css', __FILE__ ) );
+	public function register_shortcode() {
+		add_shortcode( 'iub-cookie-policy', array( $this, 'block_shortcode' ) );
+		add_shortcode( 'iub-cookie-block', array( $this, 'block_shortcode' ) );
+		add_shortcode( 'iub-cookie-skip', array( $this, 'skip_shortcode' ) );
 	}
 
 	/**
-	 * Load admin style inline, for menu icon only.
-	 * 
+	 * Handle block shortcode function.
+	 *
+	 * @param array $atts
+	 * @param mixed $content
 	 * @return mixed
 	 */
-	public function admin_print_styles() {
-		echo '
-		<style>
-			a.toplevel_page_iubenda-cookie-law-solution .wp-menu-image {
-				background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDkuNDE4IiBoZWlnaHQ9IjI3My4wMTgiIHZpZXdCb3g9IjAgMCAxMDkuNDE4IDI3My4wMTgiPjxwYXRoIGZpbGwtcnVsZT0iZXZlbm9kZCIgY2xpcC1ydWxlPSJldmVub2RkIiBmaWxsPSIjRkZGIiBkPSJNMTA5LjQxOCA1NC41M0MxMDkuNDE4IDI0LjQwNCA4NC45MzYgMCA1NC43MDggMCAyNC40ODYgMCAwIDI0LjQwNCAwIDU0LjUzYzAgMTQuNzY1IDUuOSAyOC4xNCAxNS40ODcgMzcuOTUzTDQuMTI0IDI3My4wMThoMTAzLjg3TDk2LjQ3NyA4OS43MzJjOC4wODYtOS41MDQgMTIuOTQtMjEuNzgyIDEyLjk0LTM1LjIwMnptLTY1LjM2LTkuOTAzQzQ3LjAwNyA0MS42OCA1MC42MyA0MC4yIDU0LjkzIDQwLjJjNC4yIDAgNy43NzMgMS40OCAxMC43MjUgNC40MjcgMi45NDggMi45NDggNC40MjQgNi41MjIgNC40MjQgMTAuNzI0IDAgNC4xOTctMS40NzYgNy43OTUtNC40MjQgMTAuNzk1LTIuOTUyIDMtNi41MjQgNC40OTgtMTAuNzI0IDQuNDk4LTQuMTk4IDAtNy44LTEuNDk4LTEwLjc5Ny00LjQ5OC0zLTMtNC41LTYuNi00LjUtMTAuNzk0LS4wMDItNC4yIDEuNDczLTcuNzc0IDQuNDI2LTEwLjcyM3ptNDQuMTY1IDIwOC44M0gyMS40ODZ2LTUuNDAyYzYuNyAwIDExLjItLjY0NiAxMy40OTgtMS45NDYgMi4yOTgtMS4yOTUgNC4xMjUtMy40NSA1LjQ3NS02LjQ0NyAxLjM0Ni0zIDIuMDIzLTguNzQ3IDIuMDIzLTE3LjI0N3YtNTIuOTQzYzAtMTQuODk4LS40NTMtMjQuNTQtMS4zNTItMjguOTQ0LS42OTgtMy4xOTYtMS43OTctNS40Mi0zLjMtNi42Ny0xLjQ5NS0xLjI1LTMuNTQ4LTEuODc0LTYuMTQ3LTEuODc0LTIuNzk4IDAtNi4yLjc1LTEwLjE5NyAyLjI1bC0yLjEwMi01LjQgNDEuMzk0LTE2Ljc5N2g2LjZ2MTEwLjM3N2MwIDguNTk4LjYyNCAxNC4zMiAxLjg3NSAxNy4xNyAxLjI1IDIuODQ4IDMuMDk2IDQuOTc0IDUuNTQ4IDYuMzc0IDIuNDUgMS40MDMgNi45MjYgMi4wOTcgMTMuNDIzIDIuMDk3djUuNHoiLz48L3N2Zz4=);
-				background-position: center center;
-				background-repeat: no-repeat;
-				background-size: 7px auto;
-			}
-		</style>
-		';
-	}
-	
-	/**
-	 * Redirect to the correct urle after switching menu position.
-	 * 
-	 * @global string $pagenow
-	 * @return void
-	 */
-	public function admin_page_redirect() {
-		if ( ! empty( $_GET['settings-updated'] ) && ! empty( $_GET['page'] ) && in_array( $_GET['page'], array( 'iubenda-cookie-law-solution' ) ) ) {
-			global $pagenow;
-			
-			// no redirect by default
-			$redirect_to = false;
-			
-			if ( $this->options['menu_position'] === 'submenu' && $pagenow === 'admin.php' ) {
-				// sub menu
-				$redirect_to = admin_url( 'options-general.php?page=iubenda-cookie-law-solution' );
-			} elseif ( $this->options['menu_position'] === 'topmenu' && $pagenow === 'options-general.php' ) {
-				// top menu
-				$redirect_to = admin_url( 'admin.php?page=iubenda-cookie-law-solution' );
-			}
-			
-			if ( $redirect_to ) {
-				// make sure it's current host location
-				wp_safe_redirect( add_query_arg( 'settings-updated', true, $redirect_to ) );
-				exit;
-			}	
-		}
+	public function block_shortcode( $atts, $content = '' ) {
+		return '<!--IUB-COOKIE-BLOCK-START-->' . do_shortcode( $content ) . '<!--IUB-COOKIE-BLOCK-END-->';
 	}
 
 	/**
-	 * Add wp_head content.
-	 * 
-	 * @return void
+	 * Handle skip shortcode function.
+	 *
+	 * @param array $atts
+	 * @param mixed $content
+	 * @return mixed
 	 */
-	public function wp_head() {
-		// break on admin side
-		if ( is_admin() )
-			return;
+	public function skip_shortcode( $atts, $content = '' ) {
+		return '<!--IUB-COOKIE-BLOCK-SKIP-START-->' . do_shortcode( $content ) . '<!--IUB-COOKIE-BLOCK-SKIP-END-->';
+	}
+
+	/**
+	 * Add wp_head cookie soution content.
+	 *
+	 * @return mixed
+	 */
+	public function wp_head_cs() {
 
 		// check content type
-		if ( (bool) $this->options['ctype'] == true ) {
+		if ( (bool) $this->options['cs']['ctype'] == true ) {
 			$iub_headers = headers_list();
 			$destroy = true;
 
@@ -373,47 +357,86 @@ class iubenda_Cookie_Law_Solution {
 		}
 
 		// is post or not html content type?
-		if ( $_POST || $this->no_html )
+		if ( ( $_POST && $this->options['cs']['output_post'] ) || $this->no_html )
 			return;
 
 		// initial head output
-		$iubenda_code = "";
+		$iubenda_code = '';
 
-		if ( $this->multilang === true && defined( 'ICL_LANGUAGE_CODE' ) && isset( $this->options['code_' . ICL_LANGUAGE_CODE] ) ) {
-			$iubenda_code .= $this->options['code_' . ICL_LANGUAGE_CODE];
+		if ( $this->multilang === true && defined( 'ICL_LANGUAGE_CODE' ) && isset( $this->options['cs']['code_' . ICL_LANGUAGE_CODE] ) ) {
+			$iubenda_code .= $this->options['cs']['code_' . ICL_LANGUAGE_CODE];
 
 			// no code for current language, use default
-			if ( ! $iubenda_code ) {
-				$iubenda_code .= $this->options['code_default'];
-			}
+			if ( ! $iubenda_code )
+				$iubenda_code .= $this->options['cs']['code_default'];
 		} else
-			$iubenda_code .= $this->options['code_default'];
+			$iubenda_code .= $this->options['cs']['code_default'];
 
-		$iubenda_code .= "\n
-		<script>
-			var iCallback = function() {};
-	
-			if ( typeof _iub.csConfiguration != 'undefined' ) {
-				if ( 'callback' in _iub.csConfiguration ) {
-					if ( 'onConsentGiven' in _iub.csConfiguration.callback )
-						iCallback = _iub.csConfiguration.callback.onConsentGiven;
-		
-					_iub.csConfiguration.callback.onConsentGiven = function() {
-						iCallback();
-	
-						/* separator */	   
-						jQuery('noscript._no_script_iub').each(function (a, b) { var el = jQuery(b); el.after(el.html()); });
+		$iubenda_code = $this->parse_code( $iubenda_code, true );
+
+		if ( $iubenda_code !== '' ) {
+			$iubenda_code .= "\n
+			<script>
+				var iCallback = function() {};
+				var _iub = _iub || {};
+
+				if ( typeof _iub.csConfiguration != 'undefined' ) {
+					if ( 'callback' in _iub.csConfiguration ) {
+						if ( 'onConsentGiven' in _iub.csConfiguration.callback )
+							iCallback = _iub.csConfiguration.callback.onConsentGiven;
+
+						_iub.csConfiguration.callback.onConsentGiven = function() {
+							iCallback();
+
+							/* separator */
+							jQuery('noscript._no_script_iub').each(function (a, b) { var el = jQuery(b); el.after(el.html()); });
+						}
 					}
 				}
-			}
-		</script>";
+			</script>";
 
-		echo $iubenda_code;
+			echo '<!--IUB-COOKIE-SKIP-START-->' . $iubenda_code . '<!--IUB-COOKIE-SKIP-END-->';
+		}
+	}
+
+	/**
+	 * Add wp_head consent solution content.
+	 *
+	 * @return mixed
+	 */
+	public function wp_head_cons() {
+		if ( ! empty( $this->options['cons']['public_api_key'] ) ) {
+
+			$parameters = apply_filters( 'iubenda_cons_init_parameters', array(
+				'log_level'			 => 'error',
+				'logger'			 => 'console',
+				'send_from_local'	 => true
+			) );
+
+			echo '<!-- Library initialization -->
+			<script type="text/javascript">
+				var _iub = _iub || { };
+
+				_iub.cons_instructions = _iub.cons_instructions || [ ];
+				_iub.cons_instructions.push(
+					[ "init", {
+							api_key: "' . $this->options['cons']['public_api_key'] . '",
+							log_level: "' . $parameters['log_level'] . '",
+							logger: "' . ( ! empty( $parameters['logger'] ) && in_array( $parameters['logger'], array( 'console', 'none' ) ) ? $parameters['logger'] : 'console' ) . '",
+							sendFromLocalStorageAtLoad: ' . ( (bool) ( $parameters['send_from_local'] ) ? 'true' : 'false' ) . '
+						}, function ( ) {
+							// console.log( "init callBack" );
+						}
+					]
+				);
+			</script>
+			<script type="text/javascript" src="//cdn.iubenda.com/cons/iubenda_cons.js" async></script>';
+		}
 	}
 
 	/**
 	 * Initialize html output.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function output_start() {
@@ -423,7 +446,7 @@ class iubenda_Cookie_Law_Solution {
 
 	/**
 	 * Finish html output.
-	 * 
+	 *
 	 * @return void
 	 */
 	public function output_end() {
@@ -433,26 +456,24 @@ class iubenda_Cookie_Law_Solution {
 
 	/**
 	 * Handle final html output.
-	 * 
+	 *
 	 * @param mixed $output
 	 * @return mixed
 	 */
 	public function output_callback( $output ) {
-		// break on ajax, xmlrpc or iub_no_parse request
+		// check whether to run parser or not
+		// bail on ajax, xmlrpc or iub_no_parse request
 		if (
-			( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) 
-			|| ( defined( 'DOING_AJAX' ) && DOING_AJAX ) 
-			|| isset( $_SERVER["HTTP_X_REQUESTED_WITH"] ) 
-			|| isset( $_GET['iub_no_parse'] ) 
+		( defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST ) || ( defined( 'DOING_AJAX' ) && DOING_AJAX ) || isset( $_SERVER["HTTP_X_REQUESTED_WITH"] ) || isset( $_GET['iub_no_parse'] )
 		)
 			return $output;
 
-		// break on admin side
+		// bail on admin side
 		if ( is_admin() )
 			return $output;
 
-		// break on rss feed
-		if ( is_feed() && $this->options['output_feed'] )
+		// bail on rss feed
+		if ( is_feed() && $this->options['cs']['output_feed'] )
 			return $output;
 
 		if ( strpos( $output, "<html" ) === false )
@@ -460,25 +481,59 @@ class iubenda_Cookie_Law_Solution {
 		elseif ( strpos( $output, "<html" ) > 200 )
 			return $output;
 
-		// check whether to run parser or not
-		if ( ! $this->options['parse'] || ( iubendaParser::consent_given() && $this->options['skip_parsing'] ) || iubendaParser::bot_detected() || $_POST || $this->no_html )
+		// bail if skripts blocking disabled
+		if ( ! $this->options['cs']['parse'] )
 			return $output;
+
+		// bail if consent given and skip parsing enabled
+		if ( iubendaParser::consent_given() && $this->options['cs']['skip_parsing'] )
+			return $output;
+
+		// bail on POST request
+		if ( $_POST && $this->options['cs']['output_post'] )
+			return $output;
+
+		// bail if bot detectd, no html in output or it's a post request
+		if ( iubendaParser::bot_detected() || $this->no_html )
+			return $output;
+
+		// google recaptcha v3 compatibility
+		if ( class_exists( 'WPCF7' ) && (int) WPCF7::get_option( 'iqfix_recaptcha' ) === 0 && ! iubendaParser::consent_given() )
+			$this->options['cs']['custom_scripts']['grecaptcha'] = 2;
+
+		// Jetpack compatibility
+		if ( class_exists( 'Jetpack' ) )
+			$this->options['cs']['custom_scripts']['stats.wp.com'] = 5;
 
 		$startime = microtime( true );
 		$output = apply_filters( 'iubenda_initial_output', $output );
 
+		// prepare scripts and iframes
+		$scripts = $this->prepare_custom_data( $this->options['cs']['custom_scripts'] );
+		$iframes = $this->prepare_custom_data( $this->options['cs']['custom_iframes'] );
+
 		// experimental class
-		if ( $this->options['parser_engine'] == 'new' ) {
-			$iubenda = new iubendaParser( mb_convert_encoding( $output, 'HTML-ENTITIES', 'UTF-8' ), array( 'type' => 'faster' ) );
+		if ( $this->options['cs']['parser_engine'] == 'new' ) {
+			$iubenda = new iubendaParser( mb_convert_encoding( $output, 'HTML-ENTITIES', 'UTF-8' ), array(
+				'type' => 'faster',
+				'amp' => $this->options['cs']['amp_support'],
+				'scripts' => $scripts,
+				'iframes' => $iframes
+			) );
 
 			// render output
 			$output = $iubenda->parse();
 
 			// append signature
 			$output .= '<!-- Parsed with iubenda experimental class in ' . round( microtime( true ) - $startime, 4 ) . ' sec. -->';
-		// default class
+			// default class
 		} else {
-			$iubenda = new iubendaParser( $output, array( 'type' => 'page' ) );
+			$iubenda = new iubendaParser( $output, array(
+				'type' => 'page',
+				'amp' => $this->options['cs']['amp_support'],
+				'scripts' => $scripts,
+				'iframes' => $iframes
+			) );
 
 			// render output
 			$output = $iubenda->parse();
@@ -491,299 +546,285 @@ class iubenda_Cookie_Law_Solution {
 	}
 
 	/**
-	 * Register plugin options.
+	 * Prepare scripts/iframes.
+	 *
+	 * @param array $data
+	 * @return array
+	 */
+	public function prepare_custom_data( $data ) {
+		$newdata = array();
+
+		foreach ( $data as $script => $type ) {
+			if ( ! array_key_exists( $type, $newdata ) )
+				$newdata[$type] = array();
+
+			$newdata[$type][] = $script;
+		}
+
+		return $newdata;
+	}
+
+	/**
+	 * Parse iubenda code.
+	 *
+	 * @param string $source
+	 * @param bool $display
+	 * @return string
+	 */
+	public function parse_code( $source, $display = false ) {
+		// return $source;
+		$source = trim( $source );
+
+		preg_match_all( '/(\"(?:html|content)\"(?:\s+)?\:(?:\s+)?)\"((?:.*?)(?:[^\\\\]))\"/s', $source, $matches );
+
+		// found subgroup?
+		if ( ! empty( $matches[1] ) && ! empty( $matches[2] ) ) {
+			foreach ( $matches[2] as $no => $match ) {
+				$source = str_replace( $matches[0][$no], $matches[1][$no] . '[[IUBENDA_TAG_START]]' . $match . '[[IUBENDA_TAG_END]]', $source );
+			}
+
+			// kses it
+			$source = wp_kses( $source, $this->get_allowed_html() );
+
+			preg_match_all( '/\[\[IUBENDA_TAG_START\]\](.*?)\[\[IUBENDA_TAG_END\]\]/s', $source, $matches_tags );
+
+			if ( ! empty( $matches_tags[1] ) ) {
+				foreach ( $matches_tags[1] as $no => $match ) {
+					$source = str_replace( $matches_tags[0][$no], '"' . ( $display ? str_replace( '</', '<\/', $matches[2][$no] ) : $matches[2][$no] ) . '"', $source );
+				}
+			}
+		}
+
+		return $source;
+	}
+
+	/**
+	 * Disable Jetpack tracking on AMO cached pages.
 	 *
 	 * @return void
 	 */
-	public function register_options() {
-		register_setting( 'iubenda_cookie_law_solution', 'iubenda_cookie_law_solution', array( $this, 'save_options' ) );
+	public function disable_jetpack_tracking() {
+		// bail no Jetpack active
+		if ( ! class_exists( 'Jetpack' ) )
+			return;
 
-		add_settings_section( 'iubenda_cookie_law_solution', '', '', 'iubenda_cookie_law_solution' );
-		add_settings_field( 'iub_code', __( 'Code', 'iubenda-cookie-law-solution' ), array( $this, 'iub_code' ), 'iubenda_cookie_law_solution', 'iubenda_cookie_law_solution' );
-		add_settings_field( 'iub_parse', __( 'Scripts blocking', 'iubenda-cookie-law-solution' ), array( $this, 'iub_parse' ), 'iubenda_cookie_law_solution', 'iubenda_cookie_law_solution' );
-		add_settings_field( 'iub_ctype', __( 'Content type', 'iubenda-cookie-law-solution' ), array( $this, 'iub_ctype' ), 'iubenda_cookie_law_solution', 'iubenda_cookie_law_solution' );
-		add_settings_field( 'iub_output_feed', __( 'RSS feed', 'iubenda-cookie-law-solution' ), array( $this, 'iub_output_feed' ), 'iubenda_cookie_law_solution', 'iubenda_cookie_law_solution' );
-		add_settings_field( 'iub_menu_position', __( 'Menu position', 'iubenda-cookie-law-solution' ), array( $this, 'iub_menu_position' ), 'iubenda_cookie_law_solution', 'iubenda_cookie_law_solution' );
-		add_settings_field( 'iub_deactivation', __( 'Deactivation', 'iubenda-cookie-law-solution' ), array( $this, 'iub_deactivation' ), 'iubenda_cookie_law_solution', 'iubenda_cookie_law_solution' );
+		// disable if it's not AMP cached request
+		if ( ! class_exists( 'Jetpack_AMP_Support' ) || ! Jetpack_AMP_Support::is_amp_request() )
+			return;
+
+		// if ( is_feed() || is_robots() || is_trackback() || is_preview() || jetpack_is_dnt_enabled() )
+		// bail if skripts blocking disabled
+		if ( ! $this->options['cs']['parse'] )
+			return;
+
+		// bail if consent given and skip parsing enabled
+		if ( iubendaParser::consent_given() && $this->options['cs']['skip_parsing'] )
+			return;
+
+		remove_action( 'wp_head', 'stats_add_shutdown_action' );
+		remove_action( 'wp_footer', 'stats_footer', 101 );
 	}
 
 	/**
-	 * Display errors and notices.
-	 * 
-	 * @global string $pagenow
-	 */
-	public function settings_errors() {
-		global $pagenow;
-		
-		// force display notices in top menu settings page
-		if ( $pagenow != 'options-general.php' )
-			settings_errors( 'iub_settings_errors' );
-	}
-
-	/**
-	 * Code option.
-	 * 
-	 * @return mixed
-	 */
-	public function iub_code() {
-		// multilang support
-		if ( $this->multilang && ! empty( $this->languages ) ) {
-			echo '
-			<div id="contextual-help-wrap" class="hidden" tabindex="-1" style="display: block;">
-				<div id="contextual-help-back"></div>
-				<div id="contextual-help-columns">
-					<div class="contextual-help-tabs">
-						<ul>';
-			foreach ( $this->languages as $lang_id => $lang_name ) {
-				echo '
-							<li id="tab-link-overview" class="' . ( $this->lang_default == $lang_id ? 'active' : '' ) . '">
-								<a href="#tab-panel-' . $lang_id . '" aria-controls="tab-panel-' . $lang_id . '">' . $lang_name . '</a>
-							</li>';
-			}
-			echo '
-						</ul>
-					</div>
-
-					<div class="contextual-help-tabs-wrap">';
-						foreach ( $this->languages as $lang_id => $lang_name ) {
-							// get code for the language
-							$code = ! empty( $this->options['code_' . $lang_id] ) ? html_entity_decode( trim( wp_kses( $this->options['code_' . $lang_id], $this->get_allowed_html() ) ) ) : '';
-							// handle default, if empty
-							$code = empty( $code ) && $lang_id == $this->lang_default ? html_entity_decode( trim( wp_kses( $this->options['code_default'], $this->get_allowed_html() ) ) ) : $code;
-							
-							echo '
-							<div id="tab-panel-' . $lang_id . '" class="help-tab-content' . ( $this->lang_default == $lang_id ? ' active' : '' ) . '">
-								<textarea name="iubenda_cookie_law_solution[code_' . $lang_id . ']" class="large-text" cols="50" rows="10">' . $code . '</textarea>
-								<p class="description">' . sprintf( __( 'Enter the iubenda code for %s.', 'iubenda-cookie-law-solution' ), $lang_name ) . '</p>
-							</div>';
-						}
-			echo '
-					</div>
-				</div>
-			</div>';
-		} else {
-			echo '
-			<div id="iub_code_default">
-				<textarea name="iubenda_cookie_law_solution[code_default]" class="large-text" cols="50" rows="10">' . html_entity_decode( trim( wp_kses( $this->options['code_default'], $this->get_allowed_html() ) ) ) . '</textarea>
-				<p class="description">' . __( 'Enter the iubenda code.', 'iubenda-cookie-law-solution' ) . '</p>
-			</div>';
-		}
-	}
-
-	/**
-	 * Parsing option.
-	 * 
-	 * @return mixed
-	 */
-	public function iub_parse() {
-		echo '
-		<div id="iub_parse_container">
-			<label><input id="iub_parse" type="checkbox" name="iubenda_cookie_law_solution[parse]" value="1" ' . checked( true, (bool) $this->options['parse'], false ) . '/>' . __( 'Automatically block scripts detected by the plugin.', 'iubenda-cookie-law-solution' ) . '</label>
-			<p class="description">' . '(' . sprintf( __( "see <a href=\"%s\" target=\"_blank\">our documentation</a> for the list of detected scripts.", 'iubenda-cookie-law-solution' ), $this->links['documentation'] ) . ')' . '</p>
-			<div id="iub_parser_engine_container"' . ( $this->options['parse'] === false ? ' style="display: none;"' : '' ) . '>
-				<div>
-					<label><input id="iub_parser_engine-new" type="radio" name="iubenda_cookie_law_solution[parser_engine]" value="new" ' . checked( 'new', $this->options['parser_engine'], false ) . ' />' . __( 'Primary', 'iubenda-cookie-law-solution' ) . '</label>
-					<label><input id="iub_parser_engine-default" type="radio" name="iubenda_cookie_law_solution[parser_engine]" value="default" ' . checked( 'default', $this->options['parser_engine'], false ) . ' />' . __( 'Secondary', 'iubenda-cookie-law-solution' ) . '</label>
-					<p class="description">' . __( 'Select parsing engine.', 'iubenda-cookie-law-solution' ) . '</p>
-				</div>
-				<div>
-					<label><input id="iub_skip_parsing" type="checkbox" name="iubenda_cookie_law_solution[skip_parsing]" value="1" ' . checked( true, (bool) $this->options['skip_parsing'], false ) . '/>' . __( 'Leave scripts untouched on the page if the user has already given consent', 'iubenda-cookie-law-solution' ) . '</label>
-					<p class="description">(' . __( "improves performance, highly recommended, to be deactivated only if your site uses a caching system", 'iubenda-cookie-law-solution' ) . ')</p>
-				</div>
-			</div>
-		</div>';
-	}
-
-	/**
-	 * Ctype option.
-	 * 
-	 * @return mixed
-	 */
-	public function iub_ctype() {
-		echo '
-		<div id="iub_ctype_container">
-			<label><input id="iub_ctype" type="checkbox" name="iubenda_cookie_law_solution[ctype]" value="1" ' . checked( true, (bool) $this->options['ctype'], false ) . '/>' . __( 'Restrict the plugin to run only for requests that have "Content-type: text / html" (recommended)', 'iubenda-cookie-law-solution' ) . '</label>
-		</div>';
-	}
-
-	/**
-	 * RSS feed option.
-	 * 
-	 * @return mixed
-	 */
-	public function iub_output_feed() {
-		echo '
-		<div id="iub_output_feed_container">
-			<label><input id="iub_ctype" type="checkbox" name="iubenda_cookie_law_solution[output_feed]" value="1" ' . checked( true, (bool) $this->options['output_feed'], false ) . '/>' . __( 'Do not run the plugin inside the RSS feed (recommended)', 'iubenda-cookie-law-solution' ) . '</label>
-		</div>';
-	}
-	
-	/**
-	 * Menu option.
-	 * 
-	 * @return mixed
-	 */
-	public function iub_menu_position() {
-		echo '
-		<div id="iub_menu_position_container">
-			<label><input id="iub_menu_position-topmenu" type="radio" name="iubenda_cookie_law_solution[menu_position]" value="topmenu" ' . checked( 'topmenu', $this->options['menu_position'], false ) . ' />' . __( 'Top menu', 'iubenda-cookie-law-solution' ) . '</label>
-			<label><input id="iub_menu_position-submenu" type="radio" name="iubenda_cookie_law_solution[menu_position]" value="submenu" ' . checked( 'submenu', $this->options['menu_position'], false ) . ' />' . __( 'Submenu', 'iubenda-cookie-law-solution' ) . '</label>
-			<p class="description">' . __( 'Select whether to display iubenda in a top admin menu or the Settings submenu.', 'iubenda-cookie-law-solution' ) . '</p>
-		</div>';
-	}
-
-	/**
-	 * Deactivation option.
-	 * 
-	 * @return mixed
-	 */
-	public function iub_deactivation() {
-		echo '
-		<div id="iub_deactivation_container">
-			<label><input id="iub_deactivation" type="checkbox" name="iubenda_cookie_law_solution[deactivation]" value="1" ' . checked( true, (bool) $this->options['deactivation'], false ) . '/>' . __( 'Delete all plugin data upon deactivation?', 'iubenda-cookie-law-solution' ) . '</label>
-		</div>';
-	}
-
-	/**
-	 * Save options.
-	 * 
+	 * Perform actions on plugin installation/upgrade.
+	 *
 	 * @return void
 	 */
-	public function save_options( $input ) {
-		if ( ! current_user_can( apply_filters( 'iubenda_cookie_law_cap', 'manage_options' ) ) )
-			return $input;
+	public function maybe_do_upgrade() {
+		if ( ! current_user_can( 'install_plugins' ) )
+			return;
 		
-		// save options
-		if ( isset( $_POST['save_iubenda_options'] ) ) {
-			$input['parse'] = (bool) isset( $input['parse'] );
-			$input['parser_engine'] = isset( $input['parser_engine'] ) && in_array( $input['parser_engine'], array( 'default', 'new' ) ) ? $input['parser_engine'] : $this->defaults['parser_engine'];
-			$input['skip_parsing'] = (bool) isset( $input['skip_parsing'] );
-			$input['ctype'] = (bool) isset( $input['ctype'] );
-			$input['output_feed'] = (bool) isset( $input['output_feed'] );
-			$input['menu_position'] = isset( $input['menu_position'] ) && in_array( $input['menu_position'], array( 'topmenu', 'submenu' ) ) ? $input['menu_position'] : $this->defaults['menu_position'];
-			$input['deactivation'] = (bool) isset( $input['deactivation'] );
+		// bail if no activation or upgrade transient is set
+		if ( ! get_transient( 'iub_upgrade_completed' ) && ! get_transient( 'iub_activation_completed' ) )
+			return;
 
-			// multilang support
-			if ( $this->multilang && ! empty( $this->languages ) ) {
-				foreach ( $this->languages as $lang_id => $lang_name ) {
-					$input['code_' . $lang_id] = ! empty( $input['code_' . $lang_id] ) ? wp_kses( $input['code_' . $lang_id], $this->get_allowed_html() ) : '';
-					
-					// handle default lang too
-					if ( $lang_id == $this->lang_default ) {
-						$input['code_default'] = ! empty( $input['code_' . $lang_id] ) ? wp_kses( $input['code_' . $lang_id], $this->get_allowed_html() ) : $this->options['code_default'];
-					}
-				}
-			} else {
-				$input['code_default'] = ! empty( $input['code_default'] ) ? wp_kses( $input['code_default'], $this->get_allowed_html() ) : '';
-			}
+		// delete the activation transient
+		delete_transient( 'iub_activation_completed' );
+		// delete the upgrade transient
+		delete_transient( 'iub_upgrade_completed' );
 
-			add_settings_error( 'iub_settings_errors', 'iub_settings_updated', __( 'Settings saved.', 'iubenda-cookie-law-solution' ), 'updated' );
-			// reset options
-		} elseif ( isset( $_POST['reset_iubenda_options'] ) ) {
-			$input = $this->defaults;
+		// bail if activating from network, or bulk, or within an iFrame
+		if ( is_network_admin() || isset( $_GET['activate-multi'] ) || defined( 'IFRAME_REQUEST' ) )
+			return;
 
-			// multilang support
-			if ( $this->multilang && ! empty( $this->languages ) ) {
-				foreach ( $this->languages as $lang_id => $lang_name ) {
-					$input['code_' . $lang_id] = '';
-				}
-			}
-			add_settings_error( 'iub_settings_errors', 'iub_settings_restored', __( 'Settings restored to defaults.', 'iubenda-cookie-law-solution' ), 'updated' );
+		// generate AMP template file if AMP plugins available
+		if ( function_exists( 'is_amp_endpoint' ) || function_exists( 'ampforwp_is_amp_endpoint' ) ) {
+			iubenda()->AMP->generate_amp_template();
 		}
-
-		return $input;
 	}
-	
+
+	/**
+	 * Get configuration data parsed from iubenda code
+	 * 
+	 * @param type $iubenda_code
+	 * @param type $args
+	 * @return type
+	 */
+	public function parse_configuration( $code, $args = array() ) {
+		$configuration = array();
+		$defaults = array(
+			'mode'	 => 'basic',
+			'parse' => false
+		);
+
+		// parse incoming $args into an array and merge it with $defaults
+		$args = wp_parse_args( $args, $defaults );
+
+		if ( empty( $code ) )
+			return $configuration;
+		
+		// parse code if needed
+		$parsed_code = $args['parse'] === true ? $this->parse_code( $code, true ) : $code;
+		
+		// get script
+		$parsed_script = '';
+		
+		preg_match( '/src\=(["\'])(.*?)\1/', $parsed_code, $matches );
+		
+		if ( ! empty( $matches[2] ) && wp_http_validate_url( $matches[2] ) )
+			$parsed_script = $matches[2];
+
+		// strip tags
+		$parsed_code = wp_kses( $parsed_code, array() );
+
+		// get configuration
+		preg_match( '/_iub.csConfiguration *= *{(.*?)\};/', $parsed_code, $matches );
+
+		if ( ! empty( $matches[1] ) )
+			$parsed_code = '{' . $matches[1] . '}';
+
+		// decode
+		$decoded = json_decode( $parsed_code, true );
+
+		if ( ! empty( $decoded ) && is_array( $decoded ) ) {
+			
+			$decoded['script'] = $parsed_script;
+			
+			// basic mode
+			if ( $args['mode'] === 'basic' ) {
+				if ( isset( $decoded['banner'] ) )
+					unset( $decoded['banner'] );
+				if ( isset( $decoded['callback'] ) )
+					unset( $decoded['callback'] );
+				if ( isset( $decoded['perPurposeConsent'] ) )
+					unset( $decoded['perPurposeConsent'] );
+			}
+
+			$configuration = $decoded;
+		}
+		
+		return $configuration;
+	}
+
+	/**
+	 * Domain info helper function.
+	 *
+	 * @param type $domainb
+	 * @return type
+	 */
+	public function domain( $domainb ) {
+		$bits = explode( '/', $domainb );
+		if ( $bits[0] == 'http:' || $bits[0] == 'https:' ) {
+			$domainb = $bits[2];
+		} else {
+			$domainb = $bits[0];
+		}
+		unset( $bits );
+		$bits = explode( '.', $domainb );
+		$idz = 0;
+		while ( isset( $bits[$idz] ) ) {
+			$idz += 1;
+		}
+		$idz -= 3;
+		$idy = 0;
+		while ( $idy < $idz ) {
+			unset( $bits[$idy] );
+			$idy += 1;
+		}
+		$part = array();
+		foreach ( $bits AS $bit ) {
+			$part[] = $bit;
+		}
+		unset( $bit );
+		unset( $bits );
+		unset( $domainb );
+		$domainb = '';
+
+		if ( strlen( $part[1] ) > 3 ) {
+			unset( $part[0] );
+		}
+		foreach ( $part AS $bit ) {
+			$domainb .= $bit . '.';
+		}
+		unset( $bit );
+
+		return preg_replace( '/(.*)\./', '$1', $domainb );
+	}
+
+	/**
+	 * Check if file exists helper function.
+	 *
+	 * @param type $file
+	 */
+	public function file_exists( $file ) {
+		$file_headers = @get_headers( $file );
+
+		if ( ! $file_headers || $file_headers[0] == 'HTTP/1.1 404 Not Found' ) {
+			$exists = false;
+		} else {
+			$exists = true;
+		}
+	}
+
 	/**
 	 * Get allowed iubenda script HTML.
 	 *
 	 * @return array
 	 */
 	public function get_allowed_html() {
-		return apply_filters(
-			'iub_code_allowed_html',
-			array_merge(
-				wp_kses_allowed_html( 'post' ),
-				array(
-					'script' => array(
-						'type' => array(),
-						'src' => array(),
-						'charset' => array(),
-						'async' => array()
-					),
-					'noscript' => array(),
-					'style' => array(
-						'type' => array()
-					),
-					'iframe' => array(
-						'src' => array(),
-						'height' => array(),
-						'width' => array(),
-						'frameborder' => array(),
-						'allowfullscreen' => array()
-					)
-				)
+		// Jetpack fix
+		remove_filter( 'pre_kses', array( 'Filter_Embedded_HTML_Objects', 'filter' ), 11 );
+
+		$html = array_merge(
+		wp_kses_allowed_html( 'post' ), array(
+			'script'	 => array(
+				'type'		 => array(),
+				'src'		 => array(),
+				'charset'	 => array(),
+				'async'		 => array()
+			),
+			'noscript'	 => array(),
+			'style'		 => array(
+				'type' => array()
+			),
+			'iframe'	 => array(
+				'src'				 => array(),
+				'height'			 => array(),
+				'width'				 => array(),
+				'frameborder'		 => array(),
+				'allowfullscreen'	 => array()
 			)
+		)
 		);
-	}
 
-	/**
-	 * Load admin options page.
-	 * 
-	 * @return void
-	 */
-	public function options_page() {
-		if ( ! current_user_can( apply_filters( 'iubenda_cookie_law_cap', 'manage_options' ) ) ) {
-			wp_die( __( "You don't have permission to access this page.", 'iubenda-cookie-law-solution' ) );
-		}
-		?>
-		<div class="wrap">
-			<div id="iubenda-view">
-			<?php 
-			echo '
-				<a class="iubenda-link" href="http://iubenda.com"><img id="iubenda-logo" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAG4AAAAdCAMAAAB8M6mmAAAAhFBMVEUAAAA0O0Ibr380O0Ibr380O0Ibr380O0Ibr380O0Ibr380O0I0O0Ibr380O0Ibr380O0Ibr380O0Ibr380O0Ibr380O0Ibr380O0Ibr380O0Ibr380O0Ibr380O0Ibr3/////G69+35tdTw5/U8Ofx+vdiyKd+0rep4c/i9e8otIeN17/AB1g0AAAAHnRSTlMAEBAgIDAwQEBQUGBwcICAkJCgoLCwwMDQ0ODg8PCQCZ0FAAACrklEQVR4Xr2V63LbIBCFF1OZKBCiKAohlK7kXHt5//cruyDjjFTX42l9fnhh1+yHGB0EAJu7kXS/gUto8zRmPV2Edz/OergA7ctYtV0DCKPPBCgrF7kb4rzs3incrCzpEd05LKEDolqkb4nzNr1RuF1UB8TzcE1E/CPu+7Rbxwnozn06Eddw25H0wr9XsJQh3Flyazh4HGd9hRWpf4zbfptx15fAwR53dRHcWHFSkQDKoOJ05w5M1NjBdXpvFU0WW9TlHidN73rbVtz7844PU7mIiADQOkyaccIjqQOW6DHQ/3yTxiYg2pQhqVIfMPYDYiwZHdF3gdpk3K/XadoVH6hCgbbivMcsyzSPhntiFBAcbcOj6xI/QKl7UYynciOTj9YWJ/z8scfBjIOKQ68ADC2n8+oKNc37FHuqp7xMsQGuRzHvV1U/tMVQVwm0O4oLIg+4v0CkKXNiChZxEMVmbQrN/tBjweVdygXu7g84B3N/D6AxWhYdY8ZZgDroM6QaQUfGiwXu8Tiu5UyP0e3VLHERccUIqseCuzkVJzjjMEDVAtfgCk4HdLrgbk/FQcHhMZxa4hqPLg0WuKcTce1fcPITTvMbtoIbj+MaHvWIAxQFuXqYuuLYMKH08xQeTsVpbqRrPx1h9VVxFcd+6w77PX7G+dmtC5zDILK90XAl2nUjoD7A2fJUzRK3AYCBLzc5JCwqIarNTdmHxaRg7YBR5Gl3iJOx8EyKVkjFuxO8qhky7nV6m79ALXdDLyhGxXdf0EJYjO1s9yLFN2TZjgiIngaaSt4FjPla55AWc5o+dx/P0zQ9fzCOT5EfMBU19+nygl5CkeVEaCo6gOfI76AKuewwWgnQ0NRJcNwVxirGgdSGOlkFs5SxLZFrwppaXUoZ6qD1PFWSQ8p9wl3D/9ZvoAF23RgFj1kAAAAASUVORK5CYII="/></a>
-				<p class="iubenda-text">
-					' . __( "This plugin is the easiest and most comprehensive way to adapt your WordPress site to the European cookie law. Upon your user's first visit, the plugin will take care of collecting their consent, of blocking the most popular among the scripts that install cookies and subsequently reactivate these scripts as soon as consent is provided. The basic settings include obtaining consent by a simple scroll action (the most effective method) and script reactivation without refreshing the page.", 'iubenda-cookie-law-solution' ) . '
-				</p>
-				<p class="iubenda-text">
-					<span class="iubenda-title">' . __( "Would you like to know more about the cookie law?", 'iubenda-cookie-law-solution' ) . '</span><br />
-					' . sprintf( __( "Read our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">complete guide to the cookie law.</a>", 'iubenda-cookie-law-solution' ), $this->links['guide'] ) . '
-				</p>
-				<p class="iubenda-text">	
-					<span class="iubenda-title">' . __( "What is the full functionality of the plugin?", 'iubenda-cookie-law-solution' ) . '</span><br />
-					' . sprintf( __( "Visit our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">plugin page.</a>", 'iubenda-cookie-law-solution' ), $this->links['plugin_page'] ) . '
-				</p>
-				<p class="iubenda-text">
-					<span class="iubenda-title">' . __( "Enter the iubenda code for the Cookie Solution below.", 'iubenda-cookie-law-solution' ) . '</span><br />
-					' . sprintf( __( "In order to run the plugin, you need to enter the iubenda code that activates the cookie law banner and the cookie policy in the form below. This code can be generated on www.iubenda.com, following <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">this guide.</a>", 'iubenda-cookie-law-solution' ), $this->links['generating_code'] ) . '
-				</p>';
-		?>
-				<form id="iubenda-tabs" action="options.php" method="post">
-				<?php
-				settings_fields( 'iubenda_cookie_law_solution' );
-				do_settings_sections( 'iubenda_cookie_law_solution' );
-
-				echo '	<p class="submit">';
-				submit_button( '', 'primary', 'save_iubenda_options', false );
-				echo ' ';
-				submit_button( __( 'Reset to defaults', 'iubenda-cookie-law-solution' ), 'secondary', 'reset_iubenda_options', false );
-				echo '	</p>';
-				?>
-				</form>
-					<?php echo '
-				<p class="iubenda-text">
-					<span class="iubenda-title">' . __( 'Need support for this plugin?', 'iubenda-cookie-law-solution' ) . '</span><br />
-					' . sprintf( __( "Visit our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">support forum.</a>", 'iubenda-cookie-law-solution' ), $this->links['support_forum'] ) . '
-				</p>
-				<p class="iubenda-text">
-					<span class="iubenda-title">' . __( 'Want to try a beta version of this plugin with the latest features?', 'iubenda-cookie-law-solution' ) . '</span><br />
-					' . sprintf( __( "Visit our <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">documentation pages</a> and follow the instructions to install a beta version.", 'iubenda-cookie-law-solution' ), $this->links['documentation'] ) . '
-				</p>';
-					?>
-			</div>
-			<div class="clear"></div>
-		</div>
-		<?php
+		return apply_filters( 'iub_code_allowed_html', $html );
 	}
 
 }
+
+/**
+ * Initialise iubenda Cookie Solution
+ *
+ * @return object
+ */
+function iubenda() {
+	static $instance;
+
+	// first call to instance() initializes the plugin
+	if ( $instance === null || ! ( $instance instanceof iubenda ) )
+		$instance = iubenda::instance();
+
+	return $instance;
+}
+
+$iubenda = iubenda();

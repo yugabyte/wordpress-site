@@ -35,12 +35,14 @@
                     extract($args, EXTR_SKIP);
 
                     $item_details   =   apply_filters( 'the_title', $page->post_title, $page->ID );
+                    
+                    //Deprecated, rely on pto/interface_itme_data
                     $item_details   =   apply_filters('cpto/interface_itme_data', $item_details, $page);
+                    
+                    $item_details   =   apply_filters('pto/interface_item_data', $item_details, $page);
                                     
                     $output .= $indent . '<li id="item_'.$page->ID.'"><span>'. $item_details .'</span>';
-                    
-                    
-                                    
+               
                 }
 
 

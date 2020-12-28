@@ -74,6 +74,18 @@
 										</td>
 									</tr>
 
+									<tr valign="top">
+										<!-- Option to avoid CSS file loading on frontend -->
+										<th scope="row">
+											<label for="bodhi_svgs_settings[frontend_css]"><strong><?php _e( 'Load frontend CSS?', 'svg-support' ); ?></strong></label>
+										</th>
+										<td>
+											<?php printf(
+												'<input id="bodhi_svgs_settings[frontend_css]" name="bodhi_svgs_settings[frontend_css]" type="checkbox" %2$s />', 'bodhi_svgs_settings_restrict', checked( isset( $bodhi_svgs_options['frontend_css'] ), true, false ) ); ?>
+											<?php _e( 'Yes', 'svg-support' ); ?><br /><small class="description"><?php _e('A very small piece of code that helps with displaying SVGs on the frontend in some cases.', 'svg-support' ); ?></small>
+										</td>
+									</tr>
+
 									<tr valign="top" class="svgs-simple">
 										<!-- Simple/Advanced mode selector -->
 										<th scope="row">

@@ -4,7 +4,7 @@
 
 		var t = this;
 
-		t.version = '1.2.6';
+		t.version = '1.3.9';
 
 		t.param = {};
 
@@ -96,7 +96,8 @@
 
 		t.state = {
 			'current_cell_obj': false,
-			'cell_editor_cell': false
+			'cell_editor_cell': false,
+			'cell_editor_last_keycode': false
 		};
 
 		t.init = function() {
@@ -117,6 +118,7 @@
 			t.sortable_row();
 			t.sortable_col();
 			t.ui_event_use_header();
+			t.ui_event_caption();
 			t.ui_event_new_flex_field();
 			t.ui_event_change_location_rule();
 			t.ui_event_ajax();
@@ -239,6 +241,29 @@
 			// }
 		};
 
+		t.ui_event_caption = function() {
+
+			// CAPTION: INPUT FIELD ACTIONS {
+
+				t.obj.body.on( 'change', '.acf-table-fc-opt-caption', function() {
+
+					var that = $( this ),
+						p = {};
+
+					p.obj_root = that.parents( '.acf-table-root' );
+					p.obj_table = p.obj_root.find( '.acf-table-table' );
+
+					t.data_get( p );
+					t.data_default( p );
+
+					p.data.p.ca = that.val();
+					t.update_table_data_field( p );
+
+				} );
+
+			// }
+		};
+
 		t.ui_event_new_flex_field = function() {
 
 			t.obj.body.on( 'click', '.acf-fc-popup', function() {
@@ -281,6 +306,13 @@
 						console.log( 'The tablefield value is not a valid JSON string:', decodeURIComponent( val.replace(/\+/g, '%20') ) );
 						console.log( 'The parsing error:', e );
 					}
+
+					if ( typeof p.data.p != 'object' ) {
+
+						console.log( 'The tablefield value is not a tablefield JSON string:', p.data );
+
+						p.data = false;
+					}
 				}
 
 				return p.data;
@@ -301,8 +333,9 @@
 
 					p: {
 						o: {
-							uh: 0,
+							uh: 0, // use header
 						},
+						ca: '', // caption content
 					},
 
 					// from data-colparam
@@ -450,6 +483,12 @@
 
 		t.misc_render = function( p ) {
 
+			t.init_option_use_header( p );
+			t.init_option_caption( p );
+		};
+
+		t.init_option_use_header = function( p ) {
+
 			// VARS {
 
 				var v = {};
@@ -512,6 +551,33 @@
 				// }
 
 			// }
+
+		};
+
+		t.init_option_caption = function( p ) {
+
+			if (
+				typeof p.field_options.use_caption !== 'number' ||
+				p.field_options.use_caption === 2
+			) {
+
+				return;
+			}
+
+			// VARS {
+
+				var v = {};
+
+				v.obj_caption = p.obj_root.find( '.acf-table-fc-opt-caption' );
+
+			// }
+
+			// SET CAPTION VALUE {
+
+				v.obj_caption.val( p.data.p.ca );
+
+			// }
+
 		};
 
 		t.table_add_col_event = function() {

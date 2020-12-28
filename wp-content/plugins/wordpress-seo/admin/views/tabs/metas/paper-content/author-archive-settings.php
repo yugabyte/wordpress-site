@@ -4,17 +4,15 @@
  *
  * @package WPSEO\Admin\Views\Archive
  *
- * @var Yoast_Form                               $yform
- * @var WPSEO_Admin_Recommended_Replace_Vars     $recommended_replace_vars
- * @var WPSEO_Admin_Editor_Specific_Replace_Vars $editor_specific_replace_vars
+ * @uses Yoast_Form $yform Form object.
  */
 
 $yform->toggle_switch(
 	'disable-author',
-	array(
+	[
 		'off' => __( 'Enabled', 'wordpress-seo' ),
 		'on'  => __( 'Disabled', 'wordpress-seo' ),
-	),
+	],
 	__( 'Author archives', 'wordpress-seo' )
 );
 
@@ -41,6 +39,11 @@ $yform->index_switch(
 	$author_archives_help->get_button_html() . $author_archives_help->get_panel_html()
 );
 
+?>
+
+<div id='noindex-author-noposts-wpseo-container'>
+<?php
+
 $author_archives_no_posts_help = new WPSEO_Admin_Help_Panel(
 	'noindex-author-noposts-wpseo',
 	esc_html__( 'Help on the authors without posts archive search results setting', 'wordpress-seo' ),
@@ -59,17 +62,22 @@ $yform->index_switch(
 	$author_archives_no_posts_help->get_button_html() . $author_archives_no_posts_help->get_panel_html()
 );
 
+?>
+</div>
+
+<?php
+
 $recommended_replace_vars     = new WPSEO_Admin_Recommended_Replace_Vars();
 $editor_specific_replace_vars = new WPSEO_Admin_Editor_Specific_Replace_Vars();
 $editor                       = new WPSEO_Replacevar_Editor(
 	$yform,
-	array(
+	[
 		'title'                 => 'title-author-wpseo',
 		'description'           => 'metadesc-author-wpseo',
 		'page_type_recommended' => $recommended_replace_vars->determine_for_archive( 'author' ),
 		'page_type_specific'    => $editor_specific_replace_vars->determine_for_archive( 'author' ),
 		'paper_style'           => false,
-	)
+	]
 );
 
 $editor->render();

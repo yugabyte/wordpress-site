@@ -10,7 +10,11 @@
  */
 class WPSEO_Link_Extractor {
 
-	/** @var string */
+	/**
+	 * The content to extract the links from.
+	 *
+	 * @var string
+	 */
 	protected $content;
 
 	/**
@@ -28,7 +32,7 @@ class WPSEO_Link_Extractor {
 	 * @return array All the extracted links
 	 */
 	public function extract() {
-		$links = array();
+		$links = [];
 
 		if ( strpos( $this->content, 'href' ) === false ) {
 			return $links;

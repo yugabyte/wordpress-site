@@ -9,15 +9,18 @@
  * Renders a replacement variable editor.
  */
 class WPSEO_Replacevar_Editor {
+
 	/**
-	 * @var Yoast_Form Yoast Forms instance.
+	 * Yoast Forms instance.
+	 *
+	 * @var Yoast_Form
 	 */
 	private $yform;
 
 	/**
-	 * @var array {
-	 *      The arguments required for the div to render.
+	 * The arguments required for the div to render.
 	 *
+	 * @var array {
 	 *      @type string $title                 The title field id.
 	 *      @type string $description           The description field id.
 	 *      @type string $page_type_recommended The page type for the context of the recommended replace vars.
@@ -30,7 +33,7 @@ class WPSEO_Replacevar_Editor {
 	/**
 	 * Constructs the object.
 	 *
-	 * @param Yoast_Form $yform                 Yoast forms.
+	 * @param Yoast_Form $yform     Yoast forms.
 	 * @param array      $arguments {
 	 *      The arguments that can be given.
 	 *
@@ -44,21 +47,21 @@ class WPSEO_Replacevar_Editor {
 	public function __construct( Yoast_Form $yform, $arguments ) {
 		$arguments = wp_parse_args(
 			$arguments,
-			array(
+			[
 				'paper_style' => true,
-			)
+			]
 		);
 
 		$this->validate_arguments( $arguments );
 
 		$this->yform     = $yform;
-		$this->arguments = array(
+		$this->arguments = [
 			'title'                 => (string) $arguments['title'],
 			'description'           => (string) $arguments['description'],
 			'page_type_recommended' => (string) $arguments['page_type_recommended'],
 			'page_type_specific'    => (string) $arguments['page_type_specific'],
 			'paper_style'           => (bool) $arguments['paper_style'],
-		);
+		];
 	}
 
 	/**
@@ -72,7 +75,8 @@ class WPSEO_Replacevar_Editor {
 		$this->yform->hidden( $this->arguments['title'], $this->arguments['title'] );
 		$this->yform->hidden( $this->arguments['description'], $this->arguments['description'] );
 
-		printf( '<div
+		printf(
+			'<div
 				data-react-replacevar-editor
 				data-react-replacevar-title-field-id="%1$s"
 				data-react-replacevar-metadesc-field-id="%2$s"
@@ -88,18 +92,20 @@ class WPSEO_Replacevar_Editor {
 	}
 
 	/**
+	 * Validates the replacement variable editor arguments.
+	 *
 	 * @param array $arguments The arguments to validate.
 	 *
 	 * @throws InvalidArgumentException Thrown when not all required arguments are present.
 	 */
 	protected function validate_arguments( array $arguments ) {
-		$required_arguments = array(
+		$required_arguments = [
 			'title',
 			'description',
 			'page_type_recommended',
 			'page_type_specific',
 			'paper_style',
-		);
+		];
 
 		foreach ( $required_arguments as $field_name ) {
 			if ( ! array_key_exists( $field_name, $arguments ) ) {

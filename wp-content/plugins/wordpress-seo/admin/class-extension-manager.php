@@ -10,14 +10,26 @@
  */
 class WPSEO_Extension_Manager {
 
-	/** The transient key to save the cache in */
+	/**
+	 * The transient key to save the cache in.
+	 *
+	 * @var string
+	 */
 	const TRANSIENT_CACHE_KEY = 'wpseo_license_active_extensions';
 
-	/** @var WPSEO_Extension[] */
-	protected $extensions = array();
+	/**
+	 * Holds the extensions to manage.
+	 *
+	 * @var WPSEO_Extension[]
+	 */
+	protected $extensions = [];
 
-	/** @var array List of active plugins */
-	static protected $active_extensions;
+	/**
+	 * List of active plugins.
+	 *
+	 * @var array
+	 */
+	protected static $active_extensions;
 
 	/**
 	 * Adds an extension to the manager.
@@ -105,7 +117,7 @@ class WPSEO_Extension_Manager {
 	 * @return array Array containing the active extensions.
 	 */
 	protected function retrieve_active_extensions() {
-		return (array) apply_filters( 'yoast-active-extensions', array() );
+		return (array) apply_filters( 'yoast-active-extensions', [] );
 	}
 
 	/**

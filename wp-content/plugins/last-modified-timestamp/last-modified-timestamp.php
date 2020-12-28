@@ -1,7 +1,7 @@
 <?php
 /*
 	Plugin Name: Last Modified Timestamp
-	Version: 1.0.4
+	Version: 1.0.5
 	Description: This plugin adds information to the admin interface about when each post/page was last modified (including custom post types!). Use the [last-modified] shortcode in your content!
 	Text Domain: last-modified-timestamp
 	Domain Path: /languages
@@ -69,7 +69,7 @@ class LastModifiedTimestamp
 		/**
 		 * Init actions
 		 */
-		add_action( 'admin_init',		array( $this, 'admin_actions' ), 1 );
+		add_action( 'init', array( $this, 'admin_actions' ) );
 
 		add_shortcode( 'last-modified',	array( $this, 'shortcode_handler' ) );
 	}

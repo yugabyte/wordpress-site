@@ -2,9 +2,9 @@
 Contributors: takayukister
 Donate link: https://contactform7.com/donate/
 Tags: contact, form, contact form, feedback, email, ajax, captcha, akismet, multilingual
-Requires at least: 4.8
-Tested up to: 4.9
-Stable tag: 5.0.5
+Requires at least: 4.9
+Tested up to: 5.3
+Stable tag: 5.1.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -35,6 +35,7 @@ If you activate certain features in this plugin, the contact form submitter's pe
 
 * reCAPTCHA ([Google](https://policies.google.com/?hl=en))
 * Akismet ([Automattic](https://automattic.com/privacy/))
+* Constant Contact ([Endurance International Group](https://www.endurance.com/privacy))
 
 = Recommended Plugins =
 
@@ -73,6 +74,46 @@ Do you have questions or issues with Contact Form 7? Use these support channels 
 == Changelog ==
 
 For more information, see [Releases](https://contactform7.com/category/releases/).
+
+= 5.1.6 =
+
+* CSS: removes a style rule from the stylesheet that was unnecessary and conflicting with Twenty Twenty’s rules.
+* REST API: retrieves the contact form ID explicitly from the route parameters.
+
+= 5.1.5 =
+
+* Config Validator: New test item for the unavailable_html_elements error.
+* Config Validator: New test item for the attachments_overweight error.
+
+= 5.1.4 =
+
+* reCAPTCHA: introduces the WPCF7_RECAPTCHA_SITEKEY and WPCF7_RECAPTCHA_SECRET constants.
+* reCAPTCHA: Introduces the wpcf7_recaptcha_sitekey and wpcf7_recaptcha_secret filter hooks.
+* Adds $status parameter to the wpcf7_form_response_output filter.
+* Creates a nonce only when the submitter is a logged-in user.
+* Introduces WPCF7_ContactForm::unit_tag(), a public method that returns a unit tag.
+* reCAPTCHA: gives a different spam log message for cases where the response token is empty.
+* Acceptance Checkbox: supports the label_first option in an acceptance form-tag.
+
+= 5.1.3 =
+
+* Fixes a bug making it unable to unselect an option in the Mail tab panel.
+
+= 5.1.2 =
+
+* Constant Contact: Introduces the contact list selector.
+* Constant Contact: Introduces the constant_contact additional setting.
+* reCAPTCHA: Introduces the wpcf7_recaptcha_actions and wpcf7_recaptcha_threshold filter hooks.
+
+= 5.1.1 =
+
+* reCAPTCHA: Modifies the reaction to empty response tokens.
+
+= 5.1 =
+
+* Introduces the Constant Contact integration module.
+* Updates the reCAPTCHA module to support reCAPTCHA v3.
+* Adds Dark Mode style rules.
 
 = 5.0.5 =
 
@@ -129,6 +170,10 @@ For more information, see [Releases](https://contactform7.com/category/releases/
 * New form-tag features: zero-controls-container and not-for-mail
 
 == Upgrade Notice ==
+
+= 5.1.1 =
+
+Read the [release announcement post](https://contactform7.com/category/releases/) before upgrading. There is an important notice.
 
 = 5.0.4 =
 

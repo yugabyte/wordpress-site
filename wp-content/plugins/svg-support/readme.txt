@@ -1,18 +1,22 @@
 === SVG Support ===
 Contributors: Benbodhi
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9R7JERS82EQQ
-Tags: svg, vector, css, style, mime, mime type, embed, img, inline, animation, animate, js
+Tags: svg, vector, safesvg, css, style, mime, mime type, embed, img, inline, animation, animate, js
 Requires at least: 4.8
-Tested up to: 5.0-alpha-42993
+Tested up to: 5.3.3
 Requires PHP: 5.2
-Stable tag: 2.3.15
+Stable tag: 2.3.17
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Upload SVG files to the Media Library and render SVG files inline for direct styling/animation of an SVG's internal elements using CSS/JS.
+Safely upload SVG files to the Media Library. Advanced features also allow you to render SVG files inline for direct styling/animation of an SVG's internal elements using CSS/JS.
 
 
 == Description ==
+
+**Safely upload SVG files to your media library and use them like any other image.**
+
+But SVG Support has more features!!! Read on to learn more.
 
 When using SVG images on your WordPress site, it can be hard to style elements within the SVG using CSS. **Now you can, easily!**
 
@@ -82,22 +86,13 @@ As with allowing uploads of any files, there is potential risks involved. Only a
 * I'm open to your [suggestions and feedback](mailto:wp@benbodhi.com) - Thanks for using SVG Support!
 * Tag me [@benbodhi](https://twitter.com/benbodhi) on Twitter #svgsupport
 
-*Note:* I hope you like this plugin! Please take a moment to rate it and click 'works' under compatibility with your version of WordPress.
+*Note:* I hope you like this plugin! Please take a moment to [rate it](https://wordpress.org/support/view/plugin-reviews/svg-support?filter=5#postform).
 
 
 == Translations ==
 
 You can [contribute your translation here](https://translate.wordpress.org/projects/wp-plugins/svg-support).
 New to Translating WordPress? Read through the [Translator Handbook](https://make.wordpress.org/polyglots/handbook/tools/glotpress-translate-wordpress-org/) to get started.
-
-
-== Credits ==
-
-Plugin by [Benbodhi](https://benbodhi.com/) [@benbodhi](https://twitter.com/benbodhi)
-
-Thanks to [ipokkel](https://wordpress.org/support/users/ipokkel/) for his suggestions and code contributions.
-Thanks to [laurosello](https://wordpress.org/support/users/laurosollero) for his code contribution.
-Logo By W3C, CC BY 2.5, [https://commons.wikimedia.org/w/index.php?curid=1895005](https://commons.wikimedia.org/w/index.php?curid=1895005).
 
 
 == Frequently Asked Questions ==
@@ -144,6 +139,14 @@ You need to add the mime type for svg and svgz to: "MLA Settings > Media Library
 
 
 == Changelog ==
+
+= 2.3.17 =
+* Added setting to choose whether to load frontend CSS or not.
+
+= 2.3.16 =
+* Fix for files that have the XML declaration.
+* Fix for PHP warnings from image widget.
+* Some small CSS changes to the frontend when displaying SVG media attachments.
 
 = 2.3.15 =
 * Had to roll back a recent PHP warnings fix due to it breaking some theme compatibility.
@@ -304,6 +307,12 @@ You need to add the mime type for svg and svgz to: "MLA Settings > Media Library
 
 
 == Upgrade Notice ==
+
+= 2.3.17 =
+Added a setting to choose whether to load the frontend CSS file or not. It was previously enabled by default, so you may want to flick that on after the update. This allows you to leave it out so your site has one less file to load :)
+
+= 2.3.16 =
+This update addresses upload issues, PHP warnings and some frontend CSS changes with attachment display.
 
 = 2.3.15 =
 Had to roll back a recent PHP warnings fix due to it breaking some theme compatibility.

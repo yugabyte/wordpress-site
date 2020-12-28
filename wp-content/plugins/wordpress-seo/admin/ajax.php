@@ -12,16 +12,13 @@ if ( ! defined( 'WPSEO_VERSION' ) ) {
 }
 
 /**
- * @todo this whole thing should probably be a proper class.
- */
-
-/**
- * Convenience function to JSON encode and echo results and then die
+ * Convenience function to JSON encode and echo results and then die.
  *
  * @param array $results Results array for encoding.
  */
 function wpseo_ajax_json_echo_die( $results ) {
-	echo wp_json_encode( $results );
+	// phpcs:ignore WordPress.Security.EscapeOutput -- Reason: WPSEO_Utils::format_json_encode is safe.
+	echo WPSEO_Utils::format_json_encode( $results );
 	die();
 }
 
@@ -49,7 +46,7 @@ add_action( 'wp_ajax_wpseo_set_option', 'wpseo_set_option' );
 /**
  * Since 3.2 Notifications are dismissed in the Notification Center.
  */
-add_action( 'wp_ajax_yoast_dismiss_notification', array( 'Yoast_Notification_Center', 'ajax_dismiss_notification' ) );
+add_action( 'wp_ajax_yoast_dismiss_notification', [ 'Yoast_Notification_Center', 'ajax_dismiss_notification' ] );
 
 /**
  * Function used to remove the admin notices for several purposes, dies on exit.
@@ -87,25 +84,6 @@ function wpseo_dismiss_tagline_notice() {
 add_action( 'wp_ajax_wpseo_dismiss_tagline_notice', 'wpseo_dismiss_tagline_notice' );
 
 /**
- * Used in the editor to replace vars for the snippet preview
- */
-function wpseo_ajax_replace_vars() {
-	global $post;
-	check_ajax_referer( 'wpseo-replace-vars' );
-
-	$post = get_post( intval( filter_input( INPUT_POST, 'post_id' ) ) );
-	global $wp_query;
-	$wp_query->queried_object    = $post;
-	$wp_query->queried_object_id = $post->ID;
-
-	$omit = array( 'excerpt', 'excerpt_only', 'title' );
-	echo wpseo_replace_vars( stripslashes( filter_input( INPUT_POST, 'string' ) ), $post, $omit );
-	die;
-}
-
-add_action( 'wp_ajax_wpseo_replace_vars', 'wpseo_ajax_replace_vars' );
-
-/**
  * Save an individual SEO title from the Bulk Editor.
  */
 function wpseo_save_title() {
@@ -124,7 +102,7 @@ function wpseo_save_description() {
 add_action( 'wp_ajax_wpseo_save_metadesc', 'wpseo_save_description' );
 
 /**
- * Save titles & descriptions
+ * Save titles & descriptions.
  *
  * @param string $what Type of item to save (title, description).
  */
@@ -158,12 +136,12 @@ function wpseo_upsert_meta( $post_id, $new_meta_value, $orig_meta_value, $meta_k
 	$sanitized_new_meta_value = wp_strip_all_tags( $new_meta_value );
 	$orig_meta_value          = wp_strip_all_tags( $orig_meta_value );
 
-	$upsert_results = array(
+	$upsert_results = [
 		'status'                 => 'success',
 		'post_id'                => $post_id,
 		"new_{$return_key}"      => $sanitized_new_meta_value,
 		"original_{$return_key}" => $orig_meta_value,
-	);
+	];
 
 	$the_post = get_post( $post_id );
 	if ( empty( $the_post ) ) {
@@ -246,30 +224,31 @@ function wpseo_save_all_descriptions() {
 add_action( 'wp_ajax_wpseo_save_all_descriptions', 'wpseo_save_all_descriptions' );
 
 /**
- * Utility function to save values
+ * Utility function to save values.
  *
  * @param string $what Type of item so save.
  */
 function wpseo_save_all( $what ) {
 	check_ajax_referer( 'wpseo-bulk-editor' );
 
-	// @todo the WPSEO Utils class can't filter arrays in POST yet.
-	$new_values      = $_POST['items'];
-	$original_values = $_POST['existing_items'];
-
-	$results = array();
-
-	if ( is_array( $new_values ) && $new_values !== array() ) {
-		foreach ( $new_values as $post_id => $new_value ) {
-			$original_value = $original_values[ $post_id ];
-			$results[]      = wpseo_upsert_new( $what, $post_id, $new_value, $original_value );
-		}
+	$results = [];
+	if ( ! isset( $_POST['items'], $_POST['existingItems'] ) ) {
+		wpseo_ajax_json_echo_die( $results );
 	}
+
+	$new_values      = array_map( [ 'WPSEO_Utils', 'sanitize_text_field' ], wp_unslash( (array) $_POST['items'] ) );
+	$original_values = array_map( [ 'WPSEO_Utils', 'sanitize_text_field' ], wp_unslash( (array) $_POST['existingItems'] ) );
+
+	foreach ( $new_values as $post_id => $new_value ) {
+		$original_value = $original_values[ $post_id ];
+		$results[]      = wpseo_upsert_new( $what, $post_id, $new_value, $original_value );
+	}
+
 	wpseo_ajax_json_echo_die( $results );
 }
 
 /**
- * Insert a new value
+ * Insert a new value.
  *
  * @param string $what     Item type (such as title).
  * @param int    $post_id  Post ID.
@@ -296,7 +275,8 @@ function ajax_get_keyword_usage() {
 	}
 
 	wp_die(
-		wp_json_encode( WPSEO_Meta::keyword_usage( $keyword, $post_id ) )
+		// phpcs:ignore WordPress.Security.EscapeOutput -- Reason: WPSEO_Utils::format_json_encode is safe.
+		WPSEO_Utils::format_json_encode( WPSEO_Meta::keyword_usage( $keyword, $post_id ) )
 	);
 }
 
@@ -326,7 +306,8 @@ function ajax_get_term_keyword_usage() {
 	$usage = $usage[ $keyword ];
 
 	wp_die(
-		wp_json_encode( $usage )
+		// phpcs:ignore WordPress.Security.EscapeOutput -- Reason: WPSEO_Utils::format_json_encode is safe.
+		WPSEO_Utils::format_json_encode( $usage )
 	);
 }
 
@@ -338,7 +319,7 @@ add_action( 'wp_ajax_get_term_keyword_usage', 'ajax_get_term_keyword_usage' );
  * @return void
  */
 function wpseo_register_ajax_integrations() {
-	$integrations = array( new Yoast_Network_Admin() );
+	$integrations = [ new Yoast_Network_Admin() ];
 
 	foreach ( $integrations as $integration ) {
 		$integration->register_ajax_hooks();
@@ -346,9 +327,6 @@ function wpseo_register_ajax_integrations() {
 }
 
 wpseo_register_ajax_integrations();
-
-// Crawl Issue Manager AJAX hooks.
-new WPSEO_GSC_Ajax();
 
 // SEO Score Recalculations.
 new WPSEO_Recalculate_Scores_Ajax();
@@ -365,7 +343,7 @@ new Yoast_Dismissable_Notice_Ajax( 'recalculate', Yoast_Dismissable_Notice_Ajax:
 /* ********************* DEPRECATED FUNCTIONS ********************* */
 
 /**
- * Removes stopword from the sample permalink that is generated in an AJAX request
+ * Removes stopword from the sample permalink that is generated in an AJAX request.
  *
  * @deprecated 6.3
  * @codeCoverageIgnore
@@ -400,4 +378,26 @@ function wpseo_add_fb_admin() {
 	}
 	_deprecated_function( __FUNCTION__, 'WPSEO 7.0', 'This method is deprecated.' );
 	wpseo_ajax_json_echo_die( '' );
+}
+
+/**
+ * Used in the editor to replace vars for the snippet preview.
+ *
+ * @deprecated 11.9
+ * @codeCoverageIgnore
+ */
+function wpseo_ajax_replace_vars() {
+	_deprecated_function( __METHOD__, 'WPSEO 11.9' );
+
+	global $post;
+	check_ajax_referer( 'wpseo-replace-vars' );
+
+	$post = get_post( intval( filter_input( INPUT_POST, 'post_id' ) ) );
+	global $wp_query;
+	$wp_query->queried_object    = $post;
+	$wp_query->queried_object_id = $post->ID;
+
+	$omit = [ 'excerpt', 'excerpt_only', 'title' ];
+	echo wpseo_replace_vars( stripslashes( filter_input( INPUT_POST, 'string' ) ), $post, $omit );
+	die;
 }

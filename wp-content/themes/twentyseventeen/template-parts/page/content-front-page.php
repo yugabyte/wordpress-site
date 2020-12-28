@@ -43,10 +43,10 @@
 							get_the_title()
 						)
 					);
-					?>
+				?>
 			</div><!-- .entry-content -->
 
 		</div><!-- .wrap -->
 	</div><!-- .panel-content -->
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- #post-## -->

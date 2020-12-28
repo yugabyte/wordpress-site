@@ -199,7 +199,7 @@ class acf_field_post_object extends acf_field {
 			
 			
 			// order posts by search
-			if( $is_search && empty($args['orderby']) ) {
+			if( $is_search && empty($args['orderby']) && isset($args['s']) ) {
 				
 				$posts = acf_order_by_search( $posts, $args['s'] );
 				
@@ -221,10 +221,9 @@ class acf_field_post_object extends acf_field {
 		
 		
 		// optgroup or single
-		if( count($args['post_type']) == 1 ) {
-			
+		$post_type = acf_get_array( $args['post_type'] );
+		if( count($post_type) == 1 ) {
 			$results = $results[0]['children'];
-			
 		}
 		
 		
@@ -505,7 +504,7 @@ class acf_field_post_object extends acf_field {
 		
 		
 		// convert back from array if neccessary
-		if( !$field['multiple'] && acf_is_array($value) ) {
+		if( !$field['multiple'] && is_array($value) ) {
 		
 			$value = current($value);
 			
@@ -536,44 +535,25 @@ class acf_field_post_object extends acf_field {
 	
 	function update_value( $value, $post_id, $field ) {
 		
-		// validate
+		// Bail early if no value.
 		if( empty($value) ) {
-		
 			return $value;
-			
 		}
 		
-		
-		// format
-		if( is_array($value) ) {
-			
-			// array
-			foreach( $value as $k => $v ){
-			
-				// object?
-				if( is_object($v) && isset($v->ID) ) {
-					
-					$value[ $k ] = $v->ID;
-				
-				}
-			
-			}
-			
-			
-			// save value as strings, so we can clearly search for them in SQL LIKE statements
+		// Format array of values.
+		// - ensure each value is an id.
+		// - Parse each id as string for SQL LIKE queries.
+		if( acf_is_sequential_array($value) ) {
+			$value = array_map('acf_idval', $value);
 			$value = array_map('strval', $value);
-			
-		} elseif( is_object($value) && isset($value->ID) ) {
-			
-			// object
-			$value = $value->ID;
-			
+		
+		// Parse single value for id.
+		} else {
+			$value = acf_idval( $value );
 		}
 		
-		
-		// return
+		// Return value.
 		return $value;
-		
 	}
 	
 	

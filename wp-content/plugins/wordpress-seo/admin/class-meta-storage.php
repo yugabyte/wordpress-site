@@ -10,12 +10,27 @@
  */
 class WPSEO_Meta_Storage implements WPSEO_Installable {
 
+	/**
+	 * Table name for the meta storage.
+	 *
+	 * @var string
+	 */
 	const TABLE_NAME = 'yoast_seo_meta';
 
-	/** @var WPSEO_Database_Proxy */
+	/**
+	 * Holds the database's proxy.
+	 *
+	 * @var WPSEO_Database_Proxy
+	 */
 	protected $database_proxy;
 
-	/** @var null|string Deprecated. */
+	/**
+	 * Holds the prefix of the table.
+	 *
+	 * @deprecated 7.4
+	 *
+	 * @var null|string
+	 */
 	protected $table_prefix;
 
 	/**
@@ -47,14 +62,14 @@ class WPSEO_Meta_Storage implements WPSEO_Installable {
 	 */
 	public function install() {
 		return $this->database_proxy->create_table(
-			array(
+			[
 				'object_id bigint(20) UNSIGNED NOT NULL',
 				'internal_link_count int(10) UNSIGNED NULL DEFAULT NULL',
 				'incoming_link_count int(10) UNSIGNED NULL DEFAULT NULL',
-			),
-			array(
+			],
+			[
 				'UNIQUE KEY object_id (object_id)',
-			)
+			]
 		);
 	}
 
@@ -65,7 +80,7 @@ class WPSEO_Meta_Storage implements WPSEO_Installable {
 	 * @param array $meta_data The total amount of links.
 	 */
 	public function save_meta_data( $meta_id, array $meta_data ) {
-		$where = array( 'object_id' => $meta_id );
+		$where = [ 'object_id' => $meta_id ];
 
 		$saved = $this->database_proxy->upsert(
 			array_merge( $where, $meta_data ),
@@ -78,7 +93,7 @@ class WPSEO_Meta_Storage implements WPSEO_Installable {
 	}
 
 	/**
-	 * Updates the incoming link count
+	 * Updates the incoming link count.
 	 *
 	 * @param array              $post_ids The posts to update the incoming link count for.
 	 * @param WPSEO_Link_Storage $storage  The link storage object.
@@ -97,15 +112,15 @@ class WPSEO_Meta_Storage implements WPSEO_Installable {
 
 		$results = $wpdb->get_results( $query );
 
-		$post_ids_non_zero = array();
+		$post_ids_non_zero = [];
 		foreach ( $results as $result ) {
-			$this->save_meta_data( $result->post_id, array( 'incoming_link_count' => $result->incoming ) );
+			$this->save_meta_data( $result->post_id, [ 'incoming_link_count' => $result->incoming ] );
 			$post_ids_non_zero[] = $result->post_id;
 		}
 
 		$post_ids_zero = array_diff( $post_ids, $post_ids_non_zero );
 		foreach ( $post_ids_zero as $post_id ) {
-			$this->save_meta_data( $post_id, array( 'incoming_link_count' => 0 ) );
+			$this->save_meta_data( $post_id, [ 'incoming_link_count' => 0 ] );
 		}
 	}
 }

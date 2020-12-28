@@ -15,8 +15,8 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	 */
 	public function __construct() {
 		self::translate_meta_boxes();
-		add_filter( 'wpseo_save_metaboxes', array( $this, 'save_meta_boxes' ), 10, 1 );
-		add_action( 'wpseo_save_compare_data', array( $this, 'og_data_compare' ), 10, 1 );
+		add_filter( 'wpseo_save_metaboxes', [ $this, 'save_meta_boxes' ], 10, 1 );
+		add_action( 'wpseo_save_compare_data', [ $this, 'og_data_compare' ], 10, 1 );
 	}
 
 	/**
@@ -38,33 +38,33 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 		/* translators: %1$s expands to the social network, %2$s to the recommended image size. */
 		$image_size_text = __( 'The recommended image size for %1$s is %2$s pixels.', 'wordpress-seo' );
 
-		$social_networks = array(
+		$social_networks = [
 			'opengraph' => __( 'Facebook', 'wordpress-seo' ),
 			'twitter'   => __( 'Twitter', 'wordpress-seo' ),
-		);
+		];
 
 		// Source: https://blog.bufferapp.com/ideal-image-sizes-social-media-posts.
-		$recommended_image_sizes = array(
+		$recommended_image_sizes = [
 			/* translators: %1$s expands to the image recommended width, %2$s to its height. */
 			'opengraph' => sprintf( __( '%1$s by %2$s', 'wordpress-seo' ), '1200', '630' ),
 			// Source: https://developers.facebook.com/docs/sharing/best-practices#images.
 			/* translators: %1$s expands to the image recommended width, %2$s to its height. */
 			'twitter'   => sprintf( __( '%1$s by %2$s', 'wordpress-seo' ), '1024', '512' ),
-		);
+		];
 
 		foreach ( $social_networks as $network => $label ) {
-			if ( true === WPSEO_Options::get( $network, false ) ) {
+			if ( WPSEO_Options::get( $network, false ) === true ) {
 				/* translators: %s expands to the name of a social network. */
-				self::$meta_fields['social'][ $network . '-title' ]['title']       = sprintf( __( '%s Title', 'wordpress-seo' ), $label );
-				self::$meta_fields['social'][ $network . '-title' ]['description'] = sprintf( $title_text, $label );
+				WPSEO_Meta::$meta_fields['social'][ $network . '-title' ]['title']       = sprintf( __( '%s Title', 'wordpress-seo' ), $label );
+				WPSEO_Meta::$meta_fields['social'][ $network . '-title' ]['description'] = sprintf( $title_text, $label );
 
 				/* translators: %s expands to the name of a social network. */
-				self::$meta_fields['social'][ $network . '-description' ]['title']       = sprintf( __( '%s Description', 'wordpress-seo' ), $label );
-				self::$meta_fields['social'][ $network . '-description' ]['description'] = sprintf( $description_text, $label );
+				WPSEO_Meta::$meta_fields['social'][ $network . '-description' ]['title']       = sprintf( __( '%s Description', 'wordpress-seo' ), $label );
+				WPSEO_Meta::$meta_fields['social'][ $network . '-description' ]['description'] = sprintf( $description_text, $label );
 
 				/* translators: %s expands to the name of a social network. */
-				self::$meta_fields['social'][ $network . '-image' ]['title']       = sprintf( __( '%s Image', 'wordpress-seo' ), $label );
-				self::$meta_fields['social'][ $network . '-image' ]['description'] = sprintf( $image_text, $label ) . ' ' . sprintf( $image_size_text, $label, $recommended_image_sizes[ $network ] );
+				WPSEO_Meta::$meta_fields['social'][ $network . '-image' ]['title']       = sprintf( __( '%s Image', 'wordpress-seo' ), $label );
+				WPSEO_Meta::$meta_fields['social'][ $network . '-image' ]['description'] = sprintf( $image_text, $label ) . ' ' . sprintf( $image_size_text, $label, $recommended_image_sizes[ $network ] );
 			}
 		}
 	}
@@ -72,12 +72,11 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	/**
 	 * Returns the metabox section for the social settings.
 	 *
-	 * @return WPSEO_Metabox_Tab_Section
+	 * @return WPSEO_Metabox_Collapsibles_Sections
 	 */
 	public function get_meta_section() {
-		$tabs               = array();
-		$social_meta_fields = $this->get_meta_field_defs( 'social' );
-		$single             = true;
+		$tabs               = [];
+		$social_meta_fields = WPSEO_Meta::get_meta_field_defs( 'social' );
 
 		$opengraph = WPSEO_Options::get( 'opengraph' );
 		$twitter   = WPSEO_Options::get( 'twitter' );
@@ -86,40 +85,28 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 			$single = null;
 		}
 
+		wp_nonce_field( 'yoast_free_metabox_social', 'yoast_free_metabox_social_nonce' );
+
 		if ( $opengraph === true ) {
-			$tabs[] = new WPSEO_Metabox_Form_Tab(
+			$tabs[] = new WPSEO_Metabox_Collapsible(
 				'facebook',
 				$this->get_social_tab_content( 'opengraph', $social_meta_fields ),
-				'<span class="screen-reader-text">' . __( 'Facebook / Open Graph metadata', 'wordpress-seo' ) . '</span><span class="dashicons dashicons-facebook-alt"></span>',
-				array(
-					'link_aria_label' => __( 'Facebook / Open Graph metadata', 'wordpress-seo' ),
-					'link_class'      => 'yoast-tooltip yoast-tooltip-se',
-					'single'          => $single,
-				)
+				__( 'Facebook', 'wordpress-seo' )
 			);
 		}
 
 		if ( $twitter === true ) {
-			$tabs[] = new WPSEO_Metabox_Form_Tab(
+			$tabs[] = new WPSEO_Metabox_Collapsible(
 				'twitter',
 				$this->get_social_tab_content( 'twitter', $social_meta_fields ),
-				'<span class="screen-reader-text">' . __( 'Twitter metadata', 'wordpress-seo' ) . '</span><span class="dashicons dashicons-twitter"></span>',
-				array(
-					'link_aria_label' => __( 'Twitter metadata', 'wordpress-seo' ),
-					'link_class'      => 'yoast-tooltip yoast-tooltip-se',
-					'single'          => $single,
-				)
+				__( 'Twitter', 'wordpress-seo' )
 			);
 		}
 
-		return new WPSEO_Metabox_Tab_Section(
+		return new WPSEO_Metabox_Collapsibles_Sections(
 			'social',
-			'<span class="screen-reader-text">' . __( 'Social', 'wordpress-seo' ) . '</span><span class="dashicons dashicons-share"></span>',
-			$tabs,
-			array(
-				'link_aria_label' => __( 'Social', 'wordpress-seo' ),
-				'link_class'      => 'yoast-tooltip yoast-tooltip-e',
-			)
+			'<span class="dashicons dashicons-share"></span>' . __( 'Social', 'wordpress-seo' ),
+			$tabs
 		);
 	}
 
@@ -132,12 +119,12 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	 * @return string
 	 */
 	private function get_social_tab_content( $medium, $meta_field_defs ) {
-		$field_names = array(
+		$field_names = [
 			$medium . '-title',
 			$medium . '-description',
 			$medium . '-image',
 			$medium . '-image-id',
-		);
+		];
 
 		$tab_content = $this->get_premium_notice( $medium );
 
@@ -145,7 +132,27 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 			$tab_content .= $this->do_meta_box( $meta_field_defs[ $field_name ], $field_name );
 		}
 
+		/**
+		 * If premium hide the form to show the social preview instead, we still need the fields to be output because
+		 * the values of the social preview are saved in the hidden field.
+		 */
+		$features = new WPSEO_Features();
+		if ( $features->is_premium() ) {
+			return $this->hide_form( $tab_content );
+		}
+
 		return $tab_content;
+	}
+
+	/**
+	 * Hides the given output when rendered to HTML.
+	 *
+	 * @param string $tab_content The social tab content.
+	 *
+	 * @return string The content.
+	 */
+	private function hide_form( $tab_content ) {
+		return '<div class="hidden">' . $tab_content . '</div>';
 	}
 
 	/**
@@ -163,7 +170,7 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 
 		$network_name = __( 'Facebook', 'wordpress-seo' );
 
-		if ( 'twitter' === $network ) {
+		if ( $network === 'twitter' ) {
 			$network_name = __( 'Twitter', 'wordpress-seo' );
 		}
 
@@ -190,55 +197,70 @@ class WPSEO_Social_Admin extends WPSEO_Metabox {
 	/**
 	 * Filter over the meta boxes to save, this function adds the Social meta boxes.
 	 *
-	 * @param   array $field_defs Array of metaboxes to save.
+	 * @param array $field_defs Array of metaboxes to save.
 	 *
-	 * @return  array
+	 * @return array
 	 */
 	public function save_meta_boxes( $field_defs ) {
-		return array_merge( $field_defs, $this->get_meta_field_defs( 'social' ) );
+		if ( ! isset( $_POST['yoast_free_metabox_social_nonce'] ) || ! wp_verify_nonce( $_POST['yoast_free_metabox_social_nonce'], 'yoast_free_metabox_social' ) ) {
+			return $field_defs;
+		}
+
+		return array_merge( $field_defs, WPSEO_Meta::get_meta_field_defs( 'social' ) );
 	}
 
 	/**
 	 * This method will compare opengraph fields with the posted values.
 	 *
-	 * When fields are changed, the facebook cache will be purge.
+	 * When fields are changed, the facebook cache will be purged.
 	 *
 	 * @param WP_Post $post Post instance.
 	 */
 	public function og_data_compare( $post ) {
+		if ( empty( $_POST ) ) {
+			return;
+		}
 
-		// Check if post data is available, if post_id is set and if original post_status is publish.
-		// @codingStandardsIgnoreStart
-		if (
-			! empty( $_POST ) && ! empty( $post->ID ) && $post->post_status === 'publish' &&
-			isset( $_POST['original_post_status'] ) && $_POST['original_post_status'] === 'publish'
-		) {
-			// @codingStandardsIgnoreEnd
+		if ( empty( $post->ID ) || $post->post_status !== 'publish' ) {
+			return;
+		}
 
-			$fields_to_compare = array(
-				'opengraph-title',
-				'opengraph-description',
-				'opengraph-image',
+		if ( ! isset( $_POST['yoast_free_metabox_social_nonce'] ) || ! wp_verify_nonce( $_POST['yoast_free_metabox_social_nonce'], 'yoast_free_metabox_social' ) ) {
+			return;
+		}
+
+		if ( ! isset( $_POST['original_post_status'] ) || $_POST['original_post_status'] !== 'publish' ) {
+			return;
+		}
+
+		$fields_to_compare = [
+			'opengraph-title',
+			'opengraph-description',
+			'opengraph-image',
+		];
+
+		$reset_facebook_cache = false;
+
+		foreach ( $fields_to_compare as $field_to_compare ) {
+			$old_value = WPSEO_Meta::get_value( $field_to_compare, $post->ID );
+
+			$new_value = '';
+			$post_key  = WPSEO_Meta::$form_prefix . $field_to_compare;
+			if ( isset( $_POST[ $post_key ] ) ) {
+				$new_value = sanitize_text_field( wp_unslash( $_POST[ $post_key ] ) );
+			}
+
+			if ( $old_value !== $new_value ) {
+				$reset_facebook_cache = true;
+				break;
+			}
+		}
+		unset( $old_value, $new_value );
+
+		if ( $reset_facebook_cache ) {
+			wp_remote_get(
+				'https://graph.facebook.com/?id=' . get_permalink( $post->ID ) . '&scrape=true&method=post'
 			);
-
-			$reset_facebook_cache = false;
-
-			foreach ( $fields_to_compare as $field_to_compare ) {
-				$old_value = self::get_value( $field_to_compare, $post->ID );
-				$new_value = self::get_post_value( self::$form_prefix . $field_to_compare );
-
-				if ( $old_value !== $new_value ) {
-					$reset_facebook_cache = true;
-					break;
-				}
-			}
-			unset( $field_to_compare, $old_value, $new_value );
-
-			if ( $reset_facebook_cache ) {
-				wp_remote_get(
-					'https://graph.facebook.com/?id=' . get_permalink( $post->ID ) . '&scrape=true&method=post'
-				);
-			}
 		}
 	}
 } /* End of class */

@@ -9,6 +9,7 @@
  * Class with functionality to import & clean Squirrly post metadata.
  */
 class WPSEO_Import_Squirrly extends WPSEO_Plugin_Importer {
+
 	/**
 	 * The plugin name.
 	 *
@@ -35,7 +36,7 @@ class WPSEO_Import_Squirrly extends WPSEO_Plugin_Importer {
 	 *
 	 * @var array
 	 */
-	protected $seo_field_keys = array(
+	protected $seo_field_keys = [
 		'noindex'        => 'meta-robots-noindex',
 		'nofollow'       => 'meta-robots-nofollow',
 		'title'          => 'title',
@@ -49,7 +50,7 @@ class WPSEO_Import_Squirrly extends WPSEO_Plugin_Importer {
 		'og_description' => 'opengraph-description',
 		'og_media'       => 'opengraph-image',
 		'focuskw'        => 'focuskw',
-	);
+	];
 
 	/**
 	 * WPSEO_Import_Squirrly constructor.

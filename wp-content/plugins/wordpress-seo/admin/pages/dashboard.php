@@ -22,7 +22,7 @@ if ( isset( $_GET['allow_tracking'] ) && check_admin_referer( 'wpseo_activate_tr
 	WPSEO_Options::set( 'yoast_tracking', ( $_GET['allow_tracking'] === 'yes' ) );
 
 	if ( isset( $_SERVER['HTTP_REFERER'] ) ) {
-		wp_safe_redirect( $_SERVER['HTTP_REFERER'], 307 );
+		wp_safe_redirect( wp_unslash( $_SERVER['HTTP_REFERER'] ), 307 );
 		exit;
 	}
 }
@@ -37,24 +37,21 @@ $tabs->add_tab(
 	new WPSEO_Option_Tab(
 		'dashboard',
 		__( 'Dashboard', 'wordpress-seo' ),
-		array(
-			'video_url'   => WPSEO_Shortlinker::get( 'https://yoa.st/screencast-notification-center' ),
+		[
 			'save_button' => false,
-		)
+		]
 	)
 );
 $tabs->add_tab(
 	new WPSEO_Option_Tab(
 		'features',
-		__( 'Features', 'wordpress-seo' ),
-		array( 'video_url' => WPSEO_Shortlinker::get( 'https://yoa.st/screencast-features' ) )
+		__( 'Features', 'wordpress-seo' )
 	)
 );
 $tabs->add_tab(
 	new WPSEO_Option_Tab(
 		'webmaster-tools',
-		__( 'Webmaster Tools', 'wordpress-seo' ),
-		array( 'video_url' => WPSEO_Shortlinker::get( 'https://yoa.st/screencast-general-search-console' ) )
+		__( 'Webmaster Tools', 'wordpress-seo' )
 	)
 );
 

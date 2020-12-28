@@ -25,6 +25,7 @@
 			$this->category = __( 'Layout', 'acf' ); // Basic, Content, Choice, etc
 			$this->defaults = array(
 				'use_header' => 0,
+				'use_caption' => 2,
 				// add default here to merge into your field.
 				// This makes life easy when creating the field options as you don't need to use any if( isset('') ) logic. eg:
 				//'preview_size' => 'thumbnail'
@@ -36,31 +37,39 @@
 			// settings
 			$this->settings = array(
 				'dir_url' => plugins_url( '', __FILE__ ) . '/',
-				'version' => '1.2.6',
+				'version' => '1.3.9',
 			);
 
 			// PREVENTS SAVING INVALID TABLE FIELD JSON DATA {
 
-				add_filter( 'update_post_metadata', function( $x, $object_id, $meta_key, $meta_value, $prev_value ) {
+				if (
+					! defined( 'ACF_TABLEFIELD_FILTER_POSTMETA' ) OR
+					constant( 'ACF_TABLEFIELD_FILTER_POSTMETA' ) === true
+				) {
 
-					// detecting ACF table json
-					if (
-						is_string( $meta_value ) and
-						strpos( $meta_value, '"acftf":{' ) !== false
-					) {
+					add_filter( 'update_post_metadata', function( $x, $object_id, $meta_key, $meta_value, $prev_value ) {
 
-						// is new value a valid json string
-						json_decode( $meta_value );
+						// detecting ACF table json
+						if (
+							is_string( $meta_value ) and
+							strpos( $meta_value, '"acftf":{' ) !== false
+						) {
 
-						if ( json_last_error() !== JSON_ERROR_NONE ) {
+							// is new value a valid json string
+							json_decode( $meta_value );
 
-							// canceling meta value uptdate
-							error_log( 'The plugin advanced-custom-fields-table-field prevented a third party update_post_meta( ' . $object_id . ', "' . $meta_key . '", $value ); action that would save a broken JSON string.' . "\n" . 'For details see https://codex.wordpress.org/Function_Reference/update_post_meta#Character_Escaping.' );
-							return true;
+							if ( json_last_error() !== JSON_ERROR_NONE ) {
+
+								// canceling meta value uptdate
+								error_log( 'The plugin advanced-custom-fields-table-field prevented a third party update_post_meta( ' . $object_id . ', "' . $meta_key . '", $value ); action that would save a broken JSON string.' . "\n" . 'For details see https://codex.wordpress.org/Function_Reference/update_post_meta#Character_Escaping.' );
+								return true;
+							}
 						}
-					}
 
-				}, 10, 5 );
+						return $x;
+
+					}, 10, 5 );
+				}
 
 			// }
 
@@ -82,28 +91,58 @@
 		{
 
 			$data_field['use_header'] = $field['use_header'];
+			$data_field['use_caption'] = $field['use_caption'];
 
 			$e = '';
 
 			$e .= '<div class="acf-table-root">';
 
-				// OPTION HEADER {
+				$e .= '<div class="acf-table-optionwrap">';
 
-				if ( $data_field['use_header'] === 0 ) {
+					// OPTION HEADER {
 
-					$e .= '<div class="acf-table-optionbox">';
-						$e .= '<label>' . __( 'use table header', 'acf-table' ) . ' </label>';
-						$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" name="acf-table-opt-use-header">';
-							$e .= '<option value="0">' . __( 'No', 'acf-table' ) . '</option>';
-							$e .= '<option value="1">' . __( 'Yes', 'acf-table' ) . '</option>';
-						$e .= '</select>';
-					$e .= '</div>';
+						if ( $data_field['use_header'] === 0 ) {
+
+							$e .= '<div class="acf-table-optionbox">';
+								$e .= '<label>' . __( 'use table header', 'acf-table' ) . ' </label>';
+								$e .= '<select class="acf-table-optionbox-field acf-table-fc-opt-use-header" name="acf-table-opt-use-header">';
+									$e .= '<option value="0">' . __( 'No', 'acf-table' ) . '</option>';
+									$e .= '<option value="1">' . __( 'Yes', 'acf-table' ) . '</option>';
+								$e .= '</select>';
+							$e .= '</div>';
+						}
+
+					// }
+
+					// OPTION CAPTION {
+
+						if ( $data_field['use_caption'] === 1 ) {
+
+							$e .= '<div class="acf-table-optionbox">';
+								$e .= '<label for="acf-table-opt-caption">' . __( 'table caption', 'acf-table' ) . ' </label><br>';
+								$e .= '<input class="acf-table-optionbox-field acf-table-fc-opt-caption" id="acf-table-opt-caption" type="text" name="acf-table-opt-caption" value=""></input>';
+							$e .= '</div>';
+						}
+
+					// }
+
+				$e .= '</div>';
+
+				if ( is_array( $field['value'] ) ) {
+
+					$field['value'] = wp_json_encode( $field['value'] );
 				}
 
-				// }
+				if ( is_string( $field['value'] ) ) {
+
+					if ( substr( $field['value'] , 0 , 1 ) === '{' ) {
+
+						$field['value'] = urlencode( $field['value'] );
+					}
+				}
 
 				$e .= '<div class="acf-input-wrap">';
-					$e .= '<input type="hidden" data-field-options="' . urlencode( wp_json_encode( $data_field ) ) . '" id="' . $field['id'] . '"  class="' . $field['class'] . '" name="' . $field['name'] . '" value="' . urlencode( $field['value'] ) . '"/>';
+					$e .= '<input type="hidden" data-field-options="' . urlencode( wp_json_encode( $data_field ) ) . '" id="' . $field['id'] . '"  class="' . $field['class'] . '" name="' . $field['name'] . '" value="' . $field['value'] . '"/>';
 				$e .= '</div>';
 
 			$e .= '</div>';
@@ -166,14 +205,19 @@
 				$field['use_header'] = 0;
 			}
 
+			if ( empty( $field['use_caption'] ) ) {
+
+				$field['use_caption'] = 2;
+			}
+
 			// Create Field Options HTML
 
-			// USER HEADER
+			// USE HEADER
 
 			echo '<tr class="field_option field_option_' . $this->name . '">';
 				echo '<td class="label">';
 					echo '<label>' . __( "Table Header", 'acf-table' ) . '</label>';
-					//echo '<p class="description">' . __( "", 'acf' ) . '</p>';
+					echo '<p class="description">' . __( "Presetting the usage of table header", 'acf-table' ) . '</p>';
 				echo '</td>';
 				echo '<td>';
 
@@ -187,6 +231,31 @@
 								2   =>  __( "No", 'acf-table' ),
 							),
 							'layout'	=>  'horizontal',
+							'default_value'	=> 0,
+						));
+
+				echo '</td>';
+			echo '</tr>';
+
+			// USER CAPTION
+
+			echo '<tr class="field_option field_option_' . $this->name . '">';
+				echo '<td class="label">';
+					echo '<label>' . __( "Table Caption", 'acf-table' ) . '</label>';
+					echo '<p class="description">' . __( "Presetting the usage of table caption", 'acf-table' ) . '</p>';
+				echo '</td>';
+				echo '<td>';
+
+						do_action('acf/create_field', array(
+							'type'	=>  'radio',
+							'name'	=>  'fields[' . $key . '][use_caption]',
+							'value'   =>  $field['use_caption'],
+							'choices'   =>  array(
+								1   =>  __( "Yes", 'acf-table' ),
+								2   =>  __( "No", 'acf-table' ),
+							),
+							'layout'	=>  'horizontal',
+							'default_value'	=> 2,
 						));
 
 				echo '</td>';
@@ -212,26 +281,55 @@
 
 		function format_value_for_api( $value, $post_id, $field )
 		{
-			$a = json_decode( $value, true );
+			if ( is_string( $value ) ) {
+
+				// CHECK FOR GUTENBERG BLOCK CONTENT (URL ENCODED JSON) {
+
+					if ( substr( $value , 0 , 1 ) === '%' ) {
+
+						$value = urldecode( $value );
+					}
+
+				// }
+
+				$value = json_decode( $value, true ); // decode gutenberg JSONs, but also old table JSONs strings to array
+			}
+
+			$a = $value;
 
 			$value = false;
 
 			// IF BODY DATA
 
 			if (
-				null !== $a['b'] &&
+				! empty( $a['b'] ) AND
 				count( $a['b'] ) > 0
 			) {
 
 				// IF HEADER DATA
 
-				if ( $a['p']['o']['uh'] === 1 ) {
+				if ( ! empty( $a['p']['o']['uh'] ) ) {
 
 					$value['header'] = $a['h'];
 				}
 				else {
 
 					$value['header'] = false;
+				}
+
+				// IF CAPTION DATA
+
+				if (
+					! empty( $field['use_caption'] ) AND
+					$field['use_caption'] === 1 AND
+					! empty( $a['p']['ca'] )
+				) {
+
+					$value['caption'] = $a['p']['ca'];
+				}
+				else {
+
+					$value['caption'] = false;
 				}
 
 				// BODY
@@ -273,29 +371,104 @@
 		{
 			if ( is_string( $value ) ) {
 
-				$value = urldecode( str_replace( '%5C', '%5C%5C', $value ) );
+				$value = wp_unslash( $value );
+				$value = urldecode( $value );
+				$value = json_decode( $value, true );
 			}
+
+			// UPDATE via update_field() {
+
+				if (
+					isset( $value['header'] ) OR
+					isset( $value['body'] )
+				) {
+
+					$data = get_post_meta( $post_id, $field['name'], true );
+
+					// prevents updating a field, thats data are not defined yet
+					if ( empty( $data ) ) {
+
+						return false;
+					}
+
+					if ( is_string( $data ) ) {
+
+						$data = json_decode( $data, true );
+					}
+
+					if ( isset( $value['use_header'] ) ) {
+
+						$data['p']['o']['uh'] = 1;
+					}
+
+					if ( isset( $value['caption'] ) ) {
+
+						$data['p']['ca'] = $value['caption'];
+					}
+
+					if (
+						isset( $value['header'] ) AND
+						$value['header'] !== false
+					 ) {
+
+						$data['h'] = $value['header'];
+					}
+
+					if ( isset( $value['body'] ) ) {
+
+						$data['b'] = $value['body'];
+					}
+
+					$value = $data;
+				}
+
+			// }
+
+			$value = $this->table_slash( $value );
+
+			return $value;
+		}
+
+		/**
+		* table_slash()
+		*
+		* Add slashes to a string or strings in an array.
+		*
+		* This should be used instead of wp_slash() because wp_slash() convertes all
+		* array values to strings which affects also the table object values of
+		* type number converting to string.
+		*/
+
+		function table_slash( $value ) {
 
 			if ( is_array( $value ) ) {
 
-				$data = get_post_meta( $post_id, $field['name'], true );
-				$data = json_decode( $data, true );
+				foreach ( $value as $k => $v ) {
 
-				if ( isset( $value['header'] ) ) {
+					if (
+						is_array( $v ) OR
+						is_object( $v )
+					) {
+						$value[ $k ] = $this->table_slash( $v );
+					}
+					else if( is_string( $v ) ) {
 
-					$data['h'] = $value['header'];
+						$value[ $k ] = addslashes( $v );
+					}
+					else {
+
+						$value[ $k ] = $v;
+					}
 				}
 
-				if ( isset( $value['body'] ) ) {
+			} else {
 
-					$data['b'] = $value['body'];
-				}
-
-				$value = wp_slash( json_encode( $data ) );
+				$value = addslashes( $value );
 			}
 
 			return $value;
 		}
+
 	}
 
 	// create field

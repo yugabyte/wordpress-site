@@ -44,8 +44,15 @@ add_action( 'admin_enqueue_scripts', 'bodhi_svgs_admin_css' );
  */
 function bodhi_svgs_frontend_css() {
 
-	// enqueue attachment CSS
-	wp_enqueue_style( 'bodhi-svgs-attachment', BODHI_SVGS_PLUGIN_URL . 'css/svgs-attachment.css' );
+	// get the settings
+	global $bodhi_svgs_options;
+
+	if ( ! empty( $bodhi_svgs_options['frontend_css'] ) ) {
+
+		// enqueue attachment CSS
+		wp_enqueue_style( 'bodhi-svgs-attachment', BODHI_SVGS_PLUGIN_URL . 'css/svgs-attachment.css' );
+
+	}
 
 }
 add_action( 'wp_enqueue_scripts', 'bodhi_svgs_frontend_css' );

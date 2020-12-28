@@ -6,12 +6,12 @@
  */
 
 /**
- * Class WPSEO_Invalid_Argument_Exception
+ * Class WPSEO_Invalid_Argument_Exception.
  */
 class WPSEO_Invalid_Argument_Exception extends InvalidArgumentException {
 
 	/**
-	 * Creates an invalid empty parameter exeception.
+	 * Creates an invalid empty parameter exception.
 	 *
 	 * @param string $name The name of the parameter.
 	 *

@@ -143,41 +143,34 @@ class acf_field_page_link extends acf_field {
 		// add archives to $results
 		if( $field['allow_archives'] && $args['paged'] == 1 ) {
 			
-			$archives = array();
-			$archives[] = array(
-				'id'	=> home_url(),
-				'text'	=> home_url()
-			);
-			
+			// Generate unique list of URLs.
+			$links = array();
+			$links[] = home_url();
 			foreach( $args['post_type'] as $post_type ) {
-				
-				// vars
-				$archive_link = get_post_type_archive_link( $post_type );
-				
-				
-				// bail ealry if no link
-				if( !$archive_link ) continue;
-				
-				
-				// bail early if no search match
-				if( $is_search && stripos($archive_link, $s) === false ) continue;
-				
-				
-				// append
-				$archives[] = array(
-					'id'	=> $archive_link,
-					'text'	=> $archive_link
-				);
-				
+				$links[] = get_post_type_archive_link( $post_type );
 			}
-			
-			
-			// append
-			$results[] = array(
-				'text'		=> __('Archives', 'acf'),
-				'children'	=> $archives
-			);
-			
+			$links = array_filter( $links );
+			$links = array_unique( $links );
+
+			// Convert list into choices.
+			$children = array();
+			foreach( $links as $link ) {
+
+				// Ignore if search does not match.
+				if( $is_search && stripos($link, $s) === false ) {
+					continue;
+				}
+				$children[] = array(
+					'id'	=> $link,
+					'text'	=> $link
+				);
+			}
+			if( $children ) {
+				$results[] = array(
+					'text'		=> __('Archives', 'acf'),
+					'children'	=> $children
+				);
+			}
 		}
 		
 		
@@ -210,7 +203,7 @@ class acf_field_page_link extends acf_field {
 				
 				
 				// order posts by search
-				if( $is_search && empty($args['orderby']) ) {
+				if( $is_search && empty($args['orderby']) && isset($args['s']) ) {
 					
 					$posts = acf_order_by_search( $posts, $args['s'] );
 					
@@ -631,42 +624,25 @@ class acf_field_page_link extends acf_field {
 	
 	function update_value( $value, $post_id, $field ) {
 		
-		// validate
+		// Bail early if no value.
 		if( empty($value) ) {
-		
 			return $value;
-			
 		}
 		
-		
-		// format
-		if( is_array($value) ) {
-			
-			// array
-			foreach( $value as $k => $v ){
-			
-				// object?
-				if( is_object($v) && isset($v->ID) )
-				{
-					$value[ $k ] = $v->ID;
-				}
-			}
-			
-			
-			// save value as strings, so we can clearly search for them in SQL LIKE statements
+		// Format array of values.
+		// - ensure each value is an id.
+		// - Parse each id as string for SQL LIKE queries.
+		if( acf_is_sequential_array($value) ) {
+			$value = array_map('acf_maybe_idval', $value);
 			$value = array_map('strval', $value);
-			
-		} elseif( is_object($value) && isset($value->ID) ) {
-			
-			// object
-			$value = $value->ID;
-			
+		
+		// Parse single value for id.
+		} else {
+			$value = acf_maybe_idval( $value );
 		}
 		
-		
-		// return
+		// Return value.
 		return $value;
-		
 	}
 	
 }

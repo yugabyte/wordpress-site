@@ -2,8 +2,8 @@
 /*
 Plugin Name: Advanced Custom Fields: Table Field
 Plugin URI: http://www.johannheyne.de/
-Description: This free Add-on adds a table field type for the Advanced Custom Fields plugin
-Version: 1.2.6
+Description: This free Add-on adds a table field type for the Advanced Custom Fields plugin.
+Version: 1.3.9
 Author: Johann Heyne
 Author URI: http://www.johannheyne.de/
 License: GPLv2 or later

@@ -46,7 +46,8 @@ function wpcf7_get_hangover( $name, $default = null ) {
 
 	$submission = WPCF7_Submission::get_instance();
 
-	if ( ! $submission || $submission->is( 'mail_sent' ) ) {
+	if ( ! $submission
+	or $submission->is( 'mail_sent' ) ) {
 		return $default;
 	}
 
@@ -142,6 +143,8 @@ function wpcf7_save_contact_form( $args = '', $context = 'save' ) {
 		'additional_settings' => null,
 	) );
 
+	$args = wp_unslash( $args );
+
 	$args['id'] = (int) $args['id'];
 
 	if ( -1 == $args['id'] ) {
@@ -162,24 +165,30 @@ function wpcf7_save_contact_form( $args = '', $context = 'save' ) {
 		$contact_form->set_locale( $args['locale'] );
 	}
 
-	$properties = $contact_form->get_properties();
+	$properties = array();
 
-	$properties['form'] = wpcf7_sanitize_form(
-		$args['form'], $properties['form'] );
+	if ( null !== $args['form'] ) {
+		$properties['form'] = wpcf7_sanitize_form( $args['form'] );
+	}
 
-	$properties['mail'] = wpcf7_sanitize_mail(
-		$args['mail'], $properties['mail'] );
+	if ( null !== $args['mail'] ) {
+		$properties['mail'] = wpcf7_sanitize_mail( $args['mail'] );
+		$properties['mail']['active'] = true;
+	}
 
-	$properties['mail']['active'] = true;
+	if ( null !== $args['mail_2'] ) {
+		$properties['mail_2'] = wpcf7_sanitize_mail( $args['mail_2'] );
+	}
 
-	$properties['mail_2'] = wpcf7_sanitize_mail(
-		$args['mail_2'], $properties['mail_2'] );
+	if ( null !== $args['messages'] ) {
+		$properties['messages'] = wpcf7_sanitize_messages( $args['messages'] );
+	}
 
-	$properties['messages'] = wpcf7_sanitize_messages(
-		$args['messages'], $properties['messages'] );
-
-	$properties['additional_settings'] = wpcf7_sanitize_additional_settings(
-		$args['additional_settings'], $properties['additional_settings'] );
+	if ( null !== $args['additional_settings'] ) {
+		$properties['additional_settings'] = wpcf7_sanitize_additional_settings(
+			$args['additional_settings']
+		);
+	}
 
 	$contact_form->set_properties( $properties );
 
@@ -202,7 +211,7 @@ function wpcf7_sanitize_form( $input, $default = '' ) {
 }
 
 function wpcf7_sanitize_mail( $input, $defaults = array() ) {
-	$defaults = wp_parse_args( $defaults, array(
+	$input = wp_parse_args( $input, array(
 		'active' => false,
 		'subject' => '',
 		'sender' => '',

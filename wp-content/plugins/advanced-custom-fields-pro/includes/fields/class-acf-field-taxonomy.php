@@ -32,12 +32,15 @@ class acf_field_taxonomy extends acf_field {
 			'field_type' 		=> 'checkbox',
 			'multiple'			=> 0,
 			'allow_null' 		=> 0,
-			//'load_save_terms' 	=> 0, // removed in 5.2.7
 			'return_format'		=> 'id',
 			'add_term'			=> 1, // 5.2.3
 			'load_terms'		=> 0, // 5.2.7	
 			'save_terms'		=> 0 // 5.2.7
 		);
+		
+		// Register filter variations.
+		acf_add_filter_variations( 'acf/fields/taxonomy/query', array('name', 'key'), 1 );
+		acf_add_filter_variations( 'acf/fields/taxonomy/result', array('name', 'key'), 2 );
 		
 		
 		// ajax
@@ -156,8 +159,6 @@ class acf_field_taxonomy extends acf_field {
 		
 		// filters
 		$args = apply_filters('acf/fields/taxonomy/query', $args, $field, $options['post_id']);
-		$args = apply_filters('acf/fields/taxonomy/query/name=' . $field['name'], $args, $field, $options['post_id'] );
-		$args = apply_filters('acf/fields/taxonomy/query/key=' . $field['key'], $args, $field, $options['post_id'] );
 		
 		
 		// get terms
@@ -227,54 +228,35 @@ class acf_field_taxonomy extends acf_field {
 			
 	}
 	
-	
-	/*
-	*  get_term_title
-	*
-	*  This function returns the HTML for a result
-	*
-	*  @type	function
-	*  @date	1/11/2013
-	*  @since	5.0.0
-	*
-	*  @param	$post (object)
-	*  @param	$field (array)
-	*  @param	$post_id (int) the post_id to which this value is saved to
-	*  @return	(string)
-	*/
-	
+	/**
+	 * Returns the Term's title displayed in the field UI.
+	 *
+	 * @date	1/11/2013
+	 * @since	5.0.0
+	 *
+	 * @param	WP_Term $term The term object.
+	 * @param	array $field The field settings.
+	 * @param	mixed $post_id The post_id being edited.
+	 * @return	string
+	 */
 	function get_term_title( $term, $field, $post_id = 0 ) {
+		$title = acf_get_term_title( $term );
 		
-		// get post_id
-		if( !$post_id ) $post_id = acf_get_form_data('post_id');
+		// Default $post_id to current post being edited.
+		$post_id = $post_id ? $post_id : acf_get_form_data('post_id');
 		
-		
-		// vars
-		$title = '';
-		
-		
-		// ancestors
-		$ancestors = get_ancestors( $term->term_id, $field['taxonomy'] );
-		
-		if( !empty($ancestors) ) {
-		
-			$title .= str_repeat('- ', count($ancestors));
-			
-		}
-		
-		
-		// title
-		$title .= $term->name;
-				
-		
-		// filters
-		$title = apply_filters('acf/fields/taxonomy/result', $title, $term, $field, $post_id);
-		$title = apply_filters('acf/fields/taxonomy/result/name=' . $field['_name'] , $title, $term, $field, $post_id);
-		$title = apply_filters('acf/fields/taxonomy/result/key=' . $field['key'], $title, $term, $field, $post_id);
-		
-		
-		// return
-		return $title;
+		/**
+		 * Filters the term title.
+		 *
+		 * @date	1/11/2013
+		 * @since	5.0.0
+		 *
+		 * @param	string $title The term title.
+		 * @param	WP_Term $term The term object.
+		 * @param	array $field The field settings.
+		 * @param	(int|string) $post_id The post_id being edited.
+		 */
+		 return apply_filters('acf/fields/taxonomy/result', $title, $term, $field, $post_id);
 	}
 	
 	
@@ -347,9 +329,14 @@ class acf_field_taxonomy extends acf_field {
 		// load_terms
 		if( $field['load_terms'] ) {
 			
+			// Decode $post_id for $type and $id.
+			extract( acf_decode_post_id($post_id) );
+			if( $type === 'block' ) {
+				// Get parent block...
+			}
+			
 			// get terms
-			$info = acf_get_post_id_info($post_id);
-			$term_ids = wp_get_object_terms($info['id'], $field['taxonomy'], array('fields' => 'ids', 'orderby' => 'none'));
+			$term_ids = wp_get_object_terms( $id, $field['taxonomy'], array('fields' => 'ids', 'orderby' => 'none') );
 			
 			
 			// bail early if no terms
@@ -474,26 +461,26 @@ class acf_field_taxonomy extends acf_field {
 	
 	function save_post( $post_id ) {
 		
-		// bail ealry if no terms
-		if( empty($this->save_post_terms) ) return;
-		
-		
-		// vars
-		$info = acf_get_post_id_info($post_id);
-		
-		
-		// loop
-		foreach( $this->save_post_terms as $taxonomy => $term_ids ){
+		// Check for saved terms.
+		if( !empty($this->save_post_terms) ) {
 			
-			// save
-			wp_set_object_terms( $info['id'], $term_ids, $taxonomy, false );
+			// Determine object ID allowing for non "post" $post_id (user, taxonomy, etc).
+			// Although not fully supported by WordPress, non "post" objects may use the term relationships table.
+			// Sharing taxonomies across object types is discoraged, but unique taxonomies work well.
+			// Note: Do not attempt to restrict to "post" only. This has been attempted in 5.8.9 and later reverted.
+			extract( acf_decode_post_id($post_id) );
+			if( $type === 'block' ) {
+				// Get parent block...
+			}
 			
+			// Loop over taxonomies and save terms.
+			foreach( $this->save_post_terms as $taxonomy => $term_ids ){
+				wp_set_object_terms( $id, $term_ids, $taxonomy, false );
+			}
+			
+			// Reset storage.
+			$this->save_post_terms = array();
 		}
-		
-		
-		// reset array ( WP saves twice )
-		$this->save_post_terms = array();
-		
 	}
 	
 	
@@ -568,8 +555,9 @@ class acf_field_taxonomy extends acf_field {
 		$div = array(
 			'class'				=> 'acf-taxonomy-field',
 			'data-save'			=> $field['save_terms'],
-			'data-type'			=> $field['field_type'],
-			'data-taxonomy'		=> $field['taxonomy']
+			'data-ftype'		=> $field['field_type'],
+			'data-taxonomy'		=> $field['taxonomy'],
+			'data-allow_null'	=> $field['allow_null']
 		);
 		
 		
@@ -722,23 +710,13 @@ class acf_field_taxonomy extends acf_field {
 		$args = apply_filters('acf/fields/taxonomy/wp_list_categories/name=' . $field['_name'], $args, $field);
 		$args = apply_filters('acf/fields/taxonomy/wp_list_categories/key=' . $field['key'], $args, $field);
 		
-		?><div class="categorychecklist-holder">
-		
-			<ul class="acf-checkbox-list acf-bl">
-			
-				<?php if( $field['field_type'] == 'radio' && $field['allow_null'] ): ?>
-					<li>
-						<label class="selectit">
-							<input type="radio" name="<?php echo esc_attr($field['name']); ?>" value="" /> <?php _e("None", 'acf'); ?>
-						</label>
-					</li>
-				<?php endif; ?>
-				
-				<?php wp_list_categories( $args ); ?>
-		
-			</ul>
-			
-		</div><?php
+		?>
+<div class="categorychecklist-holder">
+	<ul class="acf-checkbox-list acf-bl">
+		<?php wp_list_categories( $args ); ?>
+	</ul>
+</div>
+		<?php
 		
 	}
 	
@@ -764,7 +742,7 @@ class acf_field_taxonomy extends acf_field {
 			'instructions'	=> __('Select the taxonomy to be displayed','acf'),
 			'type'			=> 'select',
 			'name'			=> 'taxonomy',
-			'choices'		=> acf_get_taxonomies(),
+			'choices'		=> acf_get_taxonomy_labels(),
 		));
 		
 		
@@ -795,6 +773,11 @@ class acf_field_taxonomy extends acf_field {
 			'name'			=> 'allow_null',
 			'type'			=> 'true_false',
 			'ui'			=> 1,
+			'conditions'	=> array(
+				'field'		=> 'field_type',
+				'operator'	=> '!=',
+				'value'		=> 'checkbox'
+			)
 		));
 		
 		
@@ -860,100 +843,79 @@ class acf_field_taxonomy extends acf_field {
 	function ajax_add_term() {
 		
 		// vars
-		$args = acf_parse_args($_POST, array(
+		$args = wp_parse_args($_POST, array(
 			'nonce'				=> '',
 			'field_key'			=> '',
 			'term_name'			=> '',
 			'term_parent'		=> ''
 		));
 		
-		
 		// verify nonce
-		if( ! wp_verify_nonce($args['nonce'], 'acf_nonce') ) {
-		
+		if( !acf_verify_ajax() ) {
 			die();
-			
-		}
-		
+		}		
 		
 		// load field
 		$field = acf_get_field( $args['field_key'] );
-		
 		if( !$field ) {
-		
 			die();
-			
 		}
-		
 		
 		// vars
 		$taxonomy_obj = get_taxonomy($field['taxonomy']);
 		$taxonomy_label = $taxonomy_obj->labels->singular_name;
 			
-			
 		// validate cap
 		// note: this situation should never occur due to condition of the add new button
 		if( !current_user_can( $taxonomy_obj->cap->manage_terms) ) {
-			
-			echo '<p><strong>' . __("Error.", 'acf') . '</strong> ' . sprintf( __('User unable to add new %s', 'acf'), $taxonomy_label ) . '</p>';
-			die;
-			
+			wp_send_json_error(array(
+				'error'	=> sprintf( __('User unable to add new %s', 'acf'), $taxonomy_label )
+			));
 		}
-	
 		
 		// save?
 		if( $args['term_name'] ) {
 			
 			// exists
-			if( term_exists($args['term_name'], $field['taxonomy']) ) {
-				
+			if( term_exists($args['term_name'], $field['taxonomy'], $args['term_parent']) ) {
 				wp_send_json_error(array(
 					'error'	=> sprintf( __('%s already exists', 'acf'), $taxonomy_label )
 				));
-			
 			}
 			
+			// vars
+			$extra = array();
+			if( $args['term_parent'] ) {
+				$extra['parent'] = (int) $args['term_parent'];
+			}
 			
 			// insert
-			$extra = array();
-			
-			if( $args['term_parent'] ) {
-				
-				$extra['parent'] = $args['term_parent'];
-				
-			}
-			
 			$data = wp_insert_term( $args['term_name'], $field['taxonomy'], $extra );
 			
-			
-			// error?
+			// error
 			if( is_wp_error($data) ) {
-				
 				wp_send_json_error(array(
 					'error'	=> $data->get_error_message()
 				));
-			
 			}
 			
+			// load term
+			$term = get_term($data['term_id']);
 			
-			// ancestors
+			// prepend ancenstors count to term name
 			$prefix = '';
-			$ancestors = get_ancestors( $data['term_id'], $field['taxonomy'] );
-			
+			$ancestors = get_ancestors( $term->term_id, $term->taxonomy );
 			if( !empty($ancestors) ) {
-			
 				$prefix = str_repeat('- ', count($ancestors));
-				
 			}
-		
 		
 			// success
 			wp_send_json_success(array(
 				'message'		=> sprintf( __('%s added', 'acf'), $taxonomy_label ),
-				'term_id'		=> $data['term_id'],
-				'term_name'		=> $args['term_name'],
-				'term_label'	=> $prefix . $args['term_name'],
-				'term_parent'	=> $args['term_parent']
+				'term_id'		=> $term->term_id,
+				'term_name'		=> $term->name,
+				'term_label'	=> $prefix . $term->name,
+				'term_parent'	=> $term->parent
 			));
 				
 		}
@@ -994,7 +956,10 @@ class acf_field_taxonomy extends acf_field {
 		}
 		
 		
-		?><p class="acf-submit"><button class="acf-button button button-primary" type="submit"><?php _e("Add", 'acf'); ?></button><i class="acf-spinner"></i><span></span></p></form><?php
+		?><p class="acf-submit">
+			<button class="acf-submit-button button button-primary" type="submit"><?php _e("Add", 'acf'); ?></button>
+		</p>
+		</form><?php
 		
 		
 		// die

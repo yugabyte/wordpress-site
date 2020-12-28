@@ -12,6 +12,8 @@ class WPSEO_Cornerstone_Filter extends WPSEO_Abstract_Post_Filter {
 
 	/**
 	 * Name of the meta value.
+	 *
+	 * @var string
 	 */
 	const META_NAME = 'is_cornerstone';
 
@@ -23,7 +25,8 @@ class WPSEO_Cornerstone_Filter extends WPSEO_Abstract_Post_Filter {
 	public function register_hooks() {
 		parent::register_hooks();
 
-		add_filter( 'wpseo_cornerstone_post_types', array( 'WPSEO_Post_Type', 'filter_attachment_post_type' ) );
+		add_filter( 'wpseo_cornerstone_post_types', [ 'WPSEO_Post_Type', 'filter_attachment_post_type' ] );
+		add_filter( 'wpseo_cornerstone_post_types', [ $this, 'filter_metabox_disabled' ] );
 	}
 
 	/**
@@ -36,7 +39,7 @@ class WPSEO_Cornerstone_Filter extends WPSEO_Abstract_Post_Filter {
 	}
 
 	/**
-	 * Modify the query based on the seo_filter variable in $_GET
+	 * Modify the query based on the seo_filter variable in $_GET.
 	 *
 	 * @param string $where Query variables.
 	 *
@@ -53,6 +56,26 @@ class WPSEO_Cornerstone_Filter extends WPSEO_Abstract_Post_Filter {
 		}
 
 		return $where;
+	}
+
+	/**
+	 * Filters the post types that have the metabox disabled.
+	 *
+	 * @param array $post_types The post types to filter.
+	 *
+	 * @return array The filtered post types.
+	 */
+	public function filter_metabox_disabled( $post_types ) {
+		$filtered_post_types = [];
+		foreach ( $post_types as $post_type_key => $post_type ) {
+			if ( ! WPSEO_Post_Type::has_metabox_enabled( $post_type_key ) ) {
+				continue;
+			}
+
+			$filtered_post_types[ $post_type_key ] = $post_type;
+		}
+
+		return $filtered_post_types;
 	}
 
 	/**
@@ -94,7 +117,8 @@ class WPSEO_Cornerstone_Filter extends WPSEO_Abstract_Post_Filter {
 		global $wpdb;
 
 		return (int) $wpdb->get_var(
-			$wpdb->prepare( '
+			$wpdb->prepare(
+				'
 				SELECT COUNT( 1 )
 				FROM ' . $wpdb->postmeta . '
 				WHERE post_id IN( SELECT ID FROM ' . $wpdb->posts . ' WHERE post_type = %s ) &&
@@ -119,7 +143,7 @@ class WPSEO_Cornerstone_Filter extends WPSEO_Abstract_Post_Filter {
 		 */
 		$post_types = apply_filters( 'wpseo_cornerstone_post_types', parent::get_post_types() );
 		if ( ! is_array( $post_types ) ) {
-			return array();
+			return [];
 		}
 
 		return $post_types;

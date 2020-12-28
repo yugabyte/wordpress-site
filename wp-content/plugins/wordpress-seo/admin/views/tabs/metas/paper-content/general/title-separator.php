@@ -4,7 +4,7 @@
  *
  * @package WPSEO\Admin\Views\General
  *
- * @var Yoast_Form $yform
+ * @uses Yoast_Form $yform Form object.
  */
 
 $title_separator_help = new WPSEO_Admin_Help_Panel(
@@ -19,7 +19,7 @@ $title_separator_help = new WPSEO_Admin_Help_Panel(
 	<?php
 	echo $title_separator_help->get_panel_html();
 	$legend      = __( 'Title separator symbol', 'wordpress-seo' );
-	$legend_attr = array( 'class' => 'radiogroup screen-reader-text' );
-	$yform->radio( 'separator', WPSEO_Option_Titles::get_instance()->get_separator_options(), $legend, $legend_attr );
+	$legend_attr = [ 'class' => 'radiogroup screen-reader-text' ];
+	$yform->radio( 'separator', WPSEO_Option_Titles::get_instance()->get_separator_options_for_display(), $legend, $legend_attr );
 	?>
 </div>

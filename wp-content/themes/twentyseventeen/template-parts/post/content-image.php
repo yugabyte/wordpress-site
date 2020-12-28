@@ -2,7 +2,7 @@
 /**
  * Template part for displaying image posts
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
  * @subpackage Twenty_Seventeen
@@ -83,4 +83,4 @@
 	}
 	?>
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- #post-## -->

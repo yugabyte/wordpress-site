@@ -1,7 +1,5 @@
 # Read Me 
 
-[![GitHub release](https://img.shields.io/github/release/iubenda/iubenda-cookie-class.svg)](https://github.com/iubenda/iubenda-cookie-class/releases/tag/2.0.3)
-
 ***PHP class for the iubenda cookie law solution***
  
 If you have European users you need to obtain and manage consent for the use of most cookies. 
@@ -22,19 +20,49 @@ This class works with the iubenda Cookie Law Solution and allows you to block th
 
 The class is currently able to detect and automatically block the following scripts:
 
-* Facebook widgets
-* Twitter widgets
-* Google+ widgets
+* Google Analytics
+* Google Maps
 * Google AdSense
-* YouTube widgets
+* Google ReCaptcha
+* Google Site Search
+* Google Tag Manager
+* Google oAuth
+* Google+ widgets
+* Twitter widgets
+* Facebook widgets
+* Facebook Comments
+* YouTube
 * Vimeo
-* AddThis widgets
+* Linkedin widgets
 * ShareThis widgets
+* Instagram widgets
+* AddThis widgets
+* Pinterest widgets
+* PayPal widgets
+* Disqus
+* Optimizely
+* Neodata
+* Criteo
+* Outbrain
+* Headway
+* Codepen
+* Freshchat
+* Uservoice
+* AdRoll
+* Olark
+* Segment
+* Kissmetrics
+* Mixpanel
+* Pingdom
+* Bing
+* Elevio
+
 
 It also allows the manual blocking of all other resources without direct intervention on the actual scripts. Read more about the [prior blocking functionality here](https://www.iubenda.com/en/help/1229-cookie-law-solution-preventing-code-execution-that-could-install-cookies).
-* * *
-Here is an example of the PHP class integration:
 
+* * *
+
+Here is an example of the PHP class integration:
 ```php
 function iubenda_system( $html, $type = 'page' ) {
 	if ( empty( $html ) )
@@ -62,8 +90,6 @@ Simply copy your method into the PHP document and then call it with the followin
 
 These operations take place in accordance with the rules explained in [this guide](https://www.iubenda.com/en/help/posts/1229). We suggest that you consult the posts relating to the alteration of script, img and iframe tags. 
 
-As a last step the script invokes the `get_converted_page()` of the Page object and returns the page modified in such a way that no cookie will be generated. 
-
 ## Additional Help and docs
 
 * [Full Cookie Solution Documentation](https://www.iubenda.com/en/help/1205-technical-documentation-for-the-cookie-law-solution-banner-cookie-policy-and-consent-management)
@@ -72,8 +98,34 @@ As a last step the script invokes the `get_converted_page()` of the Page object 
 
 ## Changelog
 
+##### 4.1.0
+* New: Google AMP support
+
+##### 4.0.0
+* New: Per-purpose script blocking support
+* New: Reject button support
+
+##### 3.4.0
+* New: Introducing wildcard support for scripts and iframes
+
+##### 3.3.1
+* Tweak: Improved Google Tag Manager script blocking
+
+##### 3.3.0
+* Tweak: Simple HTML Dom PHP class update to 1.9
+
+##### 3.2.0
+* New: Introducing a way to skip specific script parsing
+
+##### 3.1.2
+* Tweak: Improved Youtube and Google Maps support
+
+##### 3.1.1
+* Tweak: Update composer.json autoloader
+
 ##### 3.1.0
-* Tweak: Update and extend the list of blocked scripts
+* Tweak: Update and extend the list of blocked scripts including Google Site Search, Google oAuth, Linkedin widgets, PayPal widgets, Pinterest, AddThis, Disqus, Optimizely, Neodata, Criteo, Outbrain, Headway, Codepen, Freshchat, Uservoice
+, AdRoll, Olark, Segment, Kissmetrics, Mixpanel, Pingdom, Bing and Elevio
 
 ##### 3.0.0
 * Tweak: Update and unify iubenda parsing engine

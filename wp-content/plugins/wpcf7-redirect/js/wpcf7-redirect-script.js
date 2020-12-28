@@ -21,8 +21,9 @@ function wpcf7_redirect_mailsent_handler() {
 
 		// Build http query
 		if ( form.http_build_query ) {
-			http_query 	 = jQuery.param( event.detail.inputs, true );
-			redirect_url = redirect_url + '?' + http_query;
+			temp_http_query 	 = jQuery.param( event.detail.inputs, true );
+			http_query = temp_http_query.replace(new RegExp('\\+', 'g'), '%20');
+			redirect_url = redirect_url + '?' + decodeURIComponent(http_query);
 		} else if ( form.http_build_query_selectively ) {
 			http_query = '?';
 			selective_fields = form.http_build_query_selectively_fields.split(' ').join('');
@@ -33,17 +34,29 @@ function wpcf7_redirect_mailsent_handler() {
 			});
 
 			http_query = http_query.slice(0, -1);
-			redirect_url = redirect_url + http_query;
+			redirect_url = redirect_url + decodeURIComponent(http_query);
 		} 
 
 		// Redirect
 		if ( redirect_url ) {
 			if ( ! form.open_in_new_tab ) {
 				// Open in current tab
-				location.href = redirect_url;
+				if ( form.delay_redirect ) {
+					setTimeout(function() {
+						location.href = redirect_url;
+					}, form.delay_redirect);
+				} else {
+					location.href = redirect_url;
+				}
 			} else {
 				// Open in external tab
-				window.open( redirect_url );
+				if ( form.delay_redirect ) {
+					setTimeout(function() {
+						window.open( redirect_url );
+					}, form.delay_redirect);
+				} else {
+					window.open( redirect_url );
+				}
 			}
 		}
 

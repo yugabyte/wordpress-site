@@ -16,7 +16,7 @@ jQuery(document).ready(function () {
         handlers: {
             /* Upload */
             upload: function (event, instance) {
-                if (fmfparams.fm_enable_media_upload) {
+                if (fmfparams.fm_enable_media_upload == '1') {
                     var filepaths = [];
                     var uploadedFiles = event.data.added;
                     for (i in uploadedFiles) {

@@ -11,29 +11,39 @@
 class WPSEO_Link_Columns {
 
 	/**
-	 * @var string Partial column name.
+	 * Partial column name.
+	 *
+	 * @var string
 	 */
 	const COLUMN_LINKED = 'linked';
 
 	/**
-	 * @var string Partial column name.
+	 * Partial column name.
+	 *
+	 * @var string
 	 */
 	const COLUMN_LINKS = 'links';
 
 	/**
+	 * Holds the link column count instance.
+	 *
 	 * @var WPSEO_Link_Column_Count
 	 */
 	protected $link_count;
 
 	/**
-	 * @var WPSEO_Meta_Storage Storage to use.
+	 * Storage to use.
+	 *
+	 * @var WPSEO_Meta_Storage
 	 */
 	protected $storage;
 
 	/**
-	 * @var array List of public post types.
+	 * List of public post types.
+	 *
+	 * @var array
 	 */
-	protected $public_post_types = array();
+	protected $public_post_types = [];
 
 	/**
 	 * WPSEO_Link_Columns constructor.
@@ -49,7 +59,7 @@ class WPSEO_Link_Columns {
 	 */
 	public function register_hooks() {
 		global $pagenow;
-		$is_ajax_request = defined( 'DOING_AJAX' ) && DOING_AJAX;
+		$is_ajax_request = wp_doing_ajax();
 
 		if ( ! WPSEO_Metabox::is_post_overview( $pagenow ) && ! $is_ajax_request ) {
 			return;
@@ -61,16 +71,16 @@ class WPSEO_Link_Columns {
 		}
 
 		if ( $is_ajax_request ) {
-			add_action( 'admin_init', array( $this, 'set_count_objects' ) );
+			add_action( 'admin_init', [ $this, 'set_count_objects' ] );
 		}
 
 		// Hook into tablenav to calculate links and linked.
-		add_action( 'manage_posts_extra_tablenav', array( $this, 'count_objects' ) );
+		add_action( 'manage_posts_extra_tablenav', [ $this, 'count_objects' ] );
 
-		add_filter( 'posts_clauses', array( $this, 'order_by_links' ), 1, 2 );
-		add_filter( 'posts_clauses', array( $this, 'order_by_linked' ), 1, 2 );
+		add_filter( 'posts_clauses', [ $this, 'order_by_links' ], 1, 2 );
+		add_filter( 'posts_clauses', [ $this, 'order_by_linked' ], 1, 2 );
 
-		add_filter( 'admin_init', array( $this, 'register_init_hooks' ) );
+		add_filter( 'admin_init', [ $this, 'register_init_hooks' ] );
 	}
 
 	/**
@@ -79,8 +89,8 @@ class WPSEO_Link_Columns {
 	public function register_init_hooks() {
 		$this->public_post_types = apply_filters( 'wpseo_link_count_post_types', WPSEO_Post_Type::get_accessible_post_types() );
 
-		if ( is_array( $this->public_post_types ) && $this->public_post_types !== array() ) {
-			array_walk( $this->public_post_types, array( $this, 'set_post_type_hooks' ) );
+		if ( is_array( $this->public_post_types ) && $this->public_post_types !== [] ) {
+			array_walk( $this->public_post_types, [ $this, 'set_post_type_hooks' ] );
 		}
 	}
 
@@ -137,7 +147,7 @@ class WPSEO_Link_Columns {
 		$order = strtoupper( $query->get( 'order' ) );
 
 		// Make sure the order setting qualifies. If not, set default as ASC.
-		if ( ! in_array( $order, array( 'ASC', 'DESC' ), true ) ) {
+		if ( ! in_array( $order, [ 'ASC', 'DESC' ], true ) ) {
 			$order = 'ASC';
 		}
 
@@ -155,9 +165,9 @@ class WPSEO_Link_Columns {
 	 * @param string $post_type The post type.
 	 */
 	public function set_post_type_hooks( $post_type ) {
-		add_filter( 'manage_' . $post_type . '_posts_columns', array( $this, 'add_post_columns' ) );
-		add_action( 'manage_' . $post_type . '_posts_custom_column', array( $this, 'column_content' ), 10, 2 );
-		add_filter( 'manage_edit-' . $post_type . '_sortable_columns', array( $this, 'column_sort' ) );
+		add_filter( 'manage_' . $post_type . '_posts_columns', [ $this, 'add_post_columns' ] );
+		add_action( 'manage_' . $post_type . '_posts_custom_column', [ $this, 'column_content' ], 10, 2 );
+		add_filter( 'manage_edit-' . $post_type . '_sortable_columns', [ $this, 'column_sort' ] );
 	}
 
 	/**
@@ -171,10 +181,19 @@ class WPSEO_Link_Columns {
 		if ( ! is_array( $columns ) ) {
 			return $columns;
 		}
-		$columns[ 'wpseo-' . self::COLUMN_LINKS ] = '<span class="yoast-linked-to yoast-column-header-has-tooltip" data-label="' . esc_attr__( 'Number of internal links in this post. See "Yoast Columns" text in the help tab for more info.', 'wordpress-seo' ) . '"><span class="screen-reader-text">' . __( '# links in post', 'wordpress-seo' ) . '</span></span>';
+
+		$columns[ 'wpseo-' . self::COLUMN_LINKS ] = sprintf(
+			'<span class="yoast-linked-to yoast-column-header-has-tooltip" data-tooltip-text="%1$s"><span class="screen-reader-text">%2$s</span></span>',
+			esc_attr__( 'Number of outgoing internal links in this post. See "Yoast Columns" text in the help tab for more info.', 'wordpress-seo' ),
+			esc_html__( 'Outgoing internal links', 'wordpress-seo' )
+		);
 
 		if ( ! WPSEO_Link_Query::has_unprocessed_posts( $this->public_post_types ) ) {
-			$columns[ 'wpseo-' . self::COLUMN_LINKED ] = '<span class="yoast-linked-from yoast-column-header-has-tooltip" data-label="' . esc_attr__( 'Number of internal links linking to this post. See "Yoast Columns" text in the help tab for more info.', 'wordpress-seo' ) . '"><span class="screen-reader-text">' . __( '# internal links to', 'wordpress-seo' ) . '</span></span>';
+			$columns[ 'wpseo-' . self::COLUMN_LINKED ] = sprintf(
+				'<span class="yoast-linked-from yoast-column-header-has-tooltip" data-tooltip-text="%1$s"><span class="screen-reader-text">%2$s</span></span>',
+				esc_attr__( 'Number of internal links linking to this post. See "Yoast Columns" text in the help tab for more info.', 'wordpress-seo' ),
+				esc_html__( 'Received internal links', 'wordpress-seo' )
+			);
 		}
 
 		return $columns;
@@ -186,7 +205,7 @@ class WPSEO_Link_Columns {
 	 * @param string $target Extra table navigation location which is triggered.
 	 */
 	public function count_objects( $target ) {
-		if ( 'top' === $target ) {
+		if ( $target === 'top' ) {
 			$this->set_count_objects();
 		}
 	}
@@ -197,8 +216,8 @@ class WPSEO_Link_Columns {
 	public function set_count_objects() {
 		global $wp_query;
 
-		$posts    = $wp_query->get_posts();
-		$post_ids = array();
+		$posts    = empty( $wp_query->posts ) ? $wp_query->get_posts() : $wp_query->posts;
+		$post_ids = [];
 
 		// Post lists return a list of objects.
 		if ( isset( $posts[0] ) && is_object( $posts[0] ) ) {
@@ -218,7 +237,7 @@ class WPSEO_Link_Columns {
 	}
 
 	/**
-	 * Displays the column content for the given column
+	 * Displays the column content for the given column.
 	 *
 	 * @param string $column_name Column to display the content for.
 	 * @param int    $post_id     Post to display the column content for.

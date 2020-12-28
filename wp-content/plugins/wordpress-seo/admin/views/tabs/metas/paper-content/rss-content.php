@@ -4,13 +4,13 @@
  *
  * @package WPSEO\Admin\Views\Rss
  *
- * @var Yoast_Form $yform
+ * @uses Yoast_Form $yform Form object.
  */
 
-$textarea_atts = array(
+$textarea_atts = [
 	'cols' => '50',
 	'rows' => '5',
-);
+];
 $yform->textarea( 'rssbefore', __( 'Content to put before each post in the feed', 'wordpress-seo' ), $textarea_atts );
 $yform->textarea( 'rssafter', __( 'Content to put after each post in the feed', 'wordpress-seo' ), $textarea_atts );
 

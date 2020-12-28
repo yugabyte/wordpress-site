@@ -4,7 +4,7 @@
  *
  * Used in Search Results and for Recent Posts in Front Page panels.
  *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
+ * @link https://codex.wordpress.org/Template_Hierarchy
  *
  * @package WordPress
  * @subpackage Twenty_Seventeen
@@ -45,4 +45,4 @@
 		<?php the_excerpt(); ?>
 	</div><!-- .entry-summary -->
 
-</article><!-- #post-<?php the_ID(); ?> -->
+</article><!-- #post-## -->

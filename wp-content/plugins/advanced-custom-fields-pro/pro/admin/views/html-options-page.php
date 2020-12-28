@@ -7,9 +7,9 @@
 		<?php 
 		
 		// render post data
-		acf_form_data(array( 
-			'post_id'	=> $post_id, 
-			'nonce'		=> 'options',
+		acf_form_data(array(
+			'screen'	=> 'options',
+			'post_id'	=> $post_id,
 		));
 		
 		wp_nonce_field( 'meta-box-order', 'meta-box-order-nonce', false );
@@ -17,7 +17,7 @@
 		
 		?>
 		
-		<div id="poststuff">
+		<div id="poststuff" class="poststuff">
 			
 			<div id="post-body" class="metabox-holder columns-<?php echo 1 == get_current_screen()->get_columns() ? '1' : '2'; ?>">
 				

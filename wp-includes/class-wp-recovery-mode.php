@@ -3,7 +3,7 @@
  * Error Protection API: WP_Recovery_Mode class
  *
  * @package WordPress
- * @since   5.2.0
+ * @since 5.2.0
  */
 
 /**
@@ -239,7 +239,7 @@ class WP_Recovery_Mode {
 		}
 
 		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( $_GET['_wpnonce'], self::EXIT_ACTION ) ) {
-			wp_die( __( 'Exit recovery mode link expired.' ) );
+			wp_die( __( 'Exit recovery mode link expired.' ), 403 );
 		}
 
 		if ( ! $this->exit_recovery_mode() ) {
@@ -272,14 +272,16 @@ class WP_Recovery_Mode {
 		if ( is_wp_error( $validated ) ) {
 			$this->cookie_service->clear_cookie();
 
-			wp_die( $validated, '' );
+			$validated->add_data( array( 'status' => 403 ) );
+			wp_die( $validated );
 		}
 
 		$session_id = $this->cookie_service->get_session_id_from_cookie();
 		if ( is_wp_error( $session_id ) ) {
 			$this->cookie_service->clear_cookie();
 
-			wp_die( $session_id, '' );
+			$session_id->add_data( array( 'status' => 403 ) );
+			wp_die( $session_id );
 		}
 
 		$this->is_active  = true;
@@ -337,11 +339,12 @@ class WP_Recovery_Mode {
 	 *
 	 * @global array $wp_theme_directories
 	 *
-	 * @param array  $error Error that was triggered.
-	 *
+	 * @param array $error Error that was triggered.
 	 * @return array|false {
-	 *      @type string  $slug  The extension slug. This is the plugin or theme's directory.
-	 *      @type string  $type  The extension type. Either 'plugin' or 'theme'.
+	 *     Extension details.
+	 *
+	 *     @type string $slug The extension slug. This is the plugin or theme's directory.
+	 *     @type string $type The extension type. Either 'plugin' or 'theme'.
 	 * }
 	 */
 	protected function get_extension_for_error( $error ) {

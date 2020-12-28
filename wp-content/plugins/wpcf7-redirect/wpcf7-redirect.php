@@ -1,9 +1,9 @@
 <?php
 /**
- * Plugin Name:  Contact Form 7 Redirection
- * Plugin URI:   http://querysol.com/blog/product/contact-form-7-redirection/
+ * Plugin Name:  Redirection for Contact Form 7
+ * Plugin URI:   http://querysol.com
  * Description:  Contact Form 7 Add-on - Redirect after mail sent.
- * Version:      1.2.9
+ * Version:      1.3.5
  * Author:       Query Solutions
  * Author URI:   http://querysol.com
  * Contributors: querysolutions, yuvalsabar
@@ -12,7 +12,7 @@
  * Text Domain: wpcf7-redirect
  * Domain Path: /lang
  *
- * @package Contact Form 7 Redirection
+ * @package Redirection for Contact Form 7
  * @category Contact Form 7 Addon
  * @author Query Solutions
  */
@@ -29,10 +29,25 @@ class WPCF7_Redirect {
 	 * Construct class
 	 */
 	public function __construct() {
-		$this->plugin_url       = plugin_dir_url( __FILE__ );
-		$this->plugin_path      = plugin_dir_path( __FILE__ );
-		$this->version          = '1.2.9';
+		$this->plugin_url  = plugin_dir_url( __FILE__ );
+		$this->plugin_path = plugin_dir_path( __FILE__ );
+		$this->version     = '1.3.5';
 		$this->add_actions();
+	}
+
+	static function plugin_activated( $file ) {
+		update_option( 'wpcf7_redirect_admin_notice_dismiss', 0 );
+		update_option( 'wpcf7_redirect_banner_dismiss', 0 );
+	}
+
+	public function dismiss_ads() {
+		if ( isset( $_GET['wpcf7_redirect_dismiss_notice'] ) && 1 == $_GET['wpcf7_redirect_dismiss_notice'] ) {
+			update_option( 'wpcf7_redirect_admin_notice_dismiss', 1 );
+		}
+
+		if ( isset( $_GET['wpcf7_redirect_dismiss_banner'] ) && 1 == $_GET['wpcf7_redirect_dismiss_banner'] ) {
+			update_option( 'wpcf7_redirect_banner_dismiss', 1 );
+		}
 	}
 
 	/**
@@ -46,7 +61,9 @@ class WPCF7_Redirect {
 		add_action( 'wpcf7_after_save', array( $this, 'store_meta' ) );
 		add_action( 'wpcf7_after_create', array( $this, 'duplicate_form_support' ) );
 		add_action( 'wpcf7_submit', array( $this, 'non_ajax_redirection' ) );
-		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
+		add_action( 'admin_init', array( $this, 'dismiss_ads' ) );
+		add_action( 'admin_notices', array( $this, 'dependencies_notice' ) );
+		add_action( 'admin_notices', array( $this, 'pro_notice' ) );
 	}
 
 	/**
@@ -71,8 +88,8 @@ class WPCF7_Redirect {
 		wp_enqueue_script( 'wpcf7-redirect-script', $this->plugin_url . 'js/wpcf7-redirect-script.js', array(), null, true );
 		wp_localize_script( 'wpcf7-redirect-script', 'wpcf7_redirect_forms', $this->get_forms() );
 
-		if ( isset( $this->enqueue_new_tab_script ) && $this->enqueue_new_tab_script ){
-			wp_add_inline_script( 'wpcf7-redirect-script', 'window.open("'. $this->redirect_url .'");' );
+		if ( isset( $this->enqueue_new_tab_script ) && $this->enqueue_new_tab_script ) {
+			wp_add_inline_script( 'wpcf7-redirect-script', 'window.open("' . $this->redirect_url . '");' );
 		}
 	}
 
@@ -83,8 +100,8 @@ class WPCF7_Redirect {
 	 */
 	public function add_panel( $panels ) {
 		$panels['redirect-panel'] = array(
-			'title'     => __( 'Redirect Settings', 'wpcf7-redirect' ),
-			'callback'  => array( $this, 'create_panel_inputs' ),
+			'title'    => __( 'Redirect Settings', 'wpcf7-redirect' ),
+			'callback' => array( $this, 'create_panel_inputs' ),
 		);
 		return $panels;
 	}
@@ -125,6 +142,10 @@ class WPCF7_Redirect {
 				'type' => 'text',
 			),
 			array(
+				'name' => 'delay_redirect',
+				'type' => 'number',
+			),
+			array(
 				'name' => 'after_sent_script',
 				'type' => 'textarea',
 			),
@@ -143,7 +164,7 @@ class WPCF7_Redirect {
 		$fields = $this->get_plugin_fields();
 
 		foreach ( $fields as $field ) {
-			$values[ $field['name'] ] = get_post_meta( $post_id, '_wpcf7_redirect_' . $field['name'] , true );
+			$values[ $field['name'] ] = get_post_meta( $post_id, '_wpcf7_redirect_' . $field['name'], true );
 		}
 
 		return $values;
@@ -162,9 +183,9 @@ class WPCF7_Redirect {
 				return;
 			}
 
-			$form_id        = $contact_form->id();
-			$fields         = $this->get_plugin_fields( $form_id );
-			$data           = $_POST['wpcf7-redirect'];
+			$form_id = $contact_form->id();
+			$fields  = $this->get_plugin_fields( $form_id );
+			$data    = $_POST['wpcf7-redirect'];
 
 			foreach ( $fields as $field ) {
 				$value = isset( $data[ $field['name'] ] ) ? $data[ $field['name'] ] : '';
@@ -195,30 +216,32 @@ class WPCF7_Redirect {
 
 	/**
 	 * Push all forms redirect settings data into an array.
+	 *
 	 * @return array  Form redirect settings data
 	 */
 	public function get_forms() {
-		$args = array(
-			'post_type' => 'wpcf7_contact_form',
-			'posts_per_page' => -1,
-			'suppress_filters' => true
+		$args  = array(
+			'post_type'        => 'wpcf7_contact_form',
+			'posts_per_page'   => -1,
+			'suppress_filters' => true,
 		);
 		$query = new WP_Query( $args );
 
 		$forms = array();
-		
+
 		if ( $query->have_posts() ) :
 
 			$fields = $this->get_plugin_fields();
 
-			while ( $query->have_posts() ) : $query->the_post();
+			while ( $query->have_posts() ) :
+				$query->the_post();
 
 				$post_id = get_the_ID();
 
 				foreach ( $fields as $field ) {
 					$forms[ $post_id ][ $field['name'] ] = get_post_meta( $post_id, '_wpcf7_redirect_' . $field['name'], true );
 
-					if ( $field['type'] == 'textarea' ) {
+					if ( 'textarea' === $field['type'] ) {
 						$forms[ $post_id ][ $field['name'] ] = $forms[ $post_id ][ $field['name'] ];
 					}
 				}
@@ -254,7 +277,7 @@ class WPCF7_Redirect {
 	/**
 	 * Verify CF7 dependencies.
 	 */
-	public function admin_notice() {
+	public function dependencies_notice() {
 		if ( is_plugin_active( 'contact-form-7/wp-contact-form-7.php' ) ) {
 			$wpcf7_path = plugin_dir_path( dirname( __FILE__ ) ) . 'contact-form-7/wp-contact-form-7.php';
 			$wpcf7_data = get_plugin_data( $wpcf7_path, false, false );
@@ -265,10 +288,10 @@ class WPCF7_Redirect {
 
 				<div class="wpcf7-redirect-error error notice">
 					<h3>
-						<?php esc_html_e( 'Contact Form Redirection', 'wpcf7-redirect' );?>
+						<?php esc_html_e( 'Contact Form Redirection', 'wpcf7-redirect' ); ?>
 					</h3>
 					<p>
-						<?php esc_html_e( 'Error: Contact Form 7 version is too old. Contact Form Redirection is compatible from version 4.8 and above. Please update Contact Form 7.', 'wpcf7-redirect' );?>
+						<?php esc_html_e( 'Error: Contact Form 7 version is too old. Contact Form Redirection is compatible from version 4.8 and above. Please update Contact Form 7.', 'wpcf7-redirect' ); ?>
 					</p>
 				</div>
 
@@ -279,10 +302,10 @@ class WPCF7_Redirect {
 			?>
 			<div class="wpcf7-redirect-error error notice">
 				<h3>
-					<?php esc_html_e( 'Contact Form Redirection', 'wpcf7-redirect' );?>
+					<?php esc_html_e( 'Contact Form Redirection', 'wpcf7-redirect' ); ?>
 				</h3>
 				<p>
-					<?php esc_html_e( 'Error: Please install and activate Contact Form 7.', 'wpcf7-redirect' );?>
+					<?php esc_html_e( 'Error: Please install and activate Contact Form 7.', 'wpcf7-redirect' ); ?>
 				</p>
 			</div>
 
@@ -290,38 +313,55 @@ class WPCF7_Redirect {
 		}
 	}
 
+	public function pro_notice() {
+		if ( ! get_option( 'wpcf7_redirect_admin_notice_dismiss' ) ) :
+			?>
+
+			<div class="wpcf7-redirect-pro-admin-notice updated notice is-dismissible">
+				<p>
+					<a href="https://querysol.com/product/contact-form-7-redirection/" target="_blank">
+						Redirection Pro For Contact Form 7 - We've added exciting new features!
+					</a>
+				</p>
+			</div>
+
+			<?php
+		endif;
+	}
+
+
 	/**
-	 * Add plugin support to browsers that don't support ajax 
+	 * Add plugin support to browsers that don't support ajax
 	 */
 	public function non_ajax_redirection( $contact_form ) {
 		$this->fields = $this->get_fields_values( $contact_form->id() );
 
 		if ( isset( $this->fields ) && ! WPCF7_Submission::is_restful() ) {
-			$submission   = WPCF7_Submission::get_instance();
+			$submission = WPCF7_Submission::get_instance();
 
-			if ( $submission->get_status() == 'mail_sent' ) {
+			if ( $submission->get_status() === 'mail_sent' ) {
 
 				// Use extrnal url
-				if ( $this->fields['external_url'] && $this->fields['use_external_url'] == 'on' ) {
+				if ( 'on' === $this->fields['external_url'] && $this->fields['use_external_url'] ) {
 					$this->redirect_url = $this->fields['external_url'];
 				} else {
 					$this->redirect_url = get_permalink( $this->fields['page_id'] );
 				}
 
 				// Pass all fields from the form as URL query parameters
-				if ( isset( $this->redirect_url ) && $this->redirect_url ) {	
-					if ( $this->fields['http_build_query'] == 'on' ) {
-						$posted_data  = $submission->get_posted_data();
+				if ( isset( $this->redirect_url ) && $this->redirect_url ) {
+					if ( 'on' === $this->fields['http_build_query'] ) {
+						$posted_data = $submission->get_posted_data();
 						// Remove WPCF7 keys from posted data
-						$remove_keys  = array( '_wpcf7', '_wpcf7_version', '_wpcf7_locale', '_wpcf7_unit_tag', '_wpcf7_container_post' );
-						$posted_data  = array_diff_key( $posted_data, array_flip( $remove_keys ) );
+						$remove_keys        = array( '_wpcf7', '_wpcf7_version', '_wpcf7_locale', '_wpcf7_unit_tag', '_wpcf7_container_post' );
+						$posted_data        = array_diff_key( $posted_data, array_flip( $remove_keys ) );
 						$this->redirect_url = add_query_arg( $posted_data, $this->redirect_url );
 					}
 				}
 
 				// Open link in a new tab
 				if ( isset( $this->redirect_url ) && $this->redirect_url ) {
-					if ( $this->fields['open_in_new_tab'] == 'on' ) {
+					if ( 'on' === $this->fields['open_in_new_tab'] ) {
 						$this->enqueue_new_tab_script = true;
 					} else {
 						wp_redirect( $this->redirect_url );
@@ -343,87 +383,143 @@ class WPCF7_Redirect {
 		$fields = $this->get_fields_values( $post->id() );
 		?>
 
+		<?php if ( ! get_option( 'wpcf7_redirect_banner_dismiss' ) ) : ?>
+
+		<div class="banner-wrap">
+			<button type="button" class="notice-dismiss">
+				<span class="screen-reader-text"><?php _e( 'Close Banner', 'qstheme' ); ?>.</span>
+			</button>
+			<a href="https://querysol.com/product/contact-form-7-redirection/" target="_blank">
+				<img src="<?php echo $this->plugin_url; ?>/img/banner-pro.png" alt="<?php _e( 'Banner - Redirection Pro For Contact Form 7', 'wpcf7-redirect' ); ?>">
+			</a>
+		</div>
+
+		<?php endif; ?>
+
 		<h2>
-			<?php esc_html_e( 'Redirect Settings', 'wpcf7-redirect' );?>
+			<?php esc_html_e( 'Redirect Settings', 'wpcf7-redirect' ); ?>
 		</h2>
 
 		<fieldset>
 			<div class="field-wrap field-wrap-page-id">
 				<label for="wpcf7-redirect-page-id">
-					<?php esc_html_e( 'Select a page to redirect to on successful form submission.', 'wpcf7-redirect' );?>   
+					<?php esc_html_e( 'Select a page to redirect to on successful form submission.', 'wpcf7-redirect' ); ?>   
 				</label>
+
 				<?php
-				echo wp_dropdown_pages( array(
-						'echo'              => 0,
-						'name'              => 'wpcf7-redirect[page_id]',
-						'show_option_none'  => __( 'Choose Page', 'wpcf7-redirect' ),
-						'option_none_value' => '0',
-						'selected'          => $fields['page_id'],
-						'id'                => 'wpcf7-redirect-page-id',
+				$pages = get_posts(
+					array(
+						'post_type'        => 'page',
+						'posts_per_page'   => -1,
+						'suppress_filters' => true,
 					)
 				);
-			?>        
-		</div>
+				?>
 
-		<div class="field-wrap field-wrap-external-url">
-			<input type="url" id="wpcf7-redirect-external-url" placeholder="<?php esc_html_e( 'External URL', 'wpcf7-redirect' );?>" name="wpcf7-redirect[external_url]" value="<?php echo $fields['external_url'];?>">
-		</div>
+				<select name="wpcf7-redirect[page_id]" id="wpcf7-redirect-page-id">
+					<option value="0" <?php selected( 0, $fields['page_id'] ); ?>>
+						<?php _e( 'Choose Page', 'wpcf7-redirect' ); ?>
+					</option>
 
-		<div class="field-wrap field-wrap-use-external-url">
-			<input type="checkbox" id="wpcf7-redirect-use-external-url" name="wpcf7-redirect[use_external_url]" <?php checked( $fields['use_external_url'], 'on', true ); ?>/>
-			<label for="wpcf7-redirect-use-external-url">
-				<?php esc_html_e( 'Use external URL', 'wpcf7-redirect' );?>
-			</label>
-		</div>
+					<?php foreach ( $pages as $p ) : ?>
 
+						<option value="<?php echo $p->ID; ?>" <?php selected( $p->ID, $fields['page_id'] ); ?>>
+							<?php echo $p->post_title; ?>
+						</option>
 
-		<div class="field-wrap field-wrap-open-in-new-tab">
-			<input type="checkbox" id="wpcf7-redirect-open-in-new-tab" name="wpcf7-redirect[open_in_new_tab]" <?php checked( $fields['open_in_new_tab'], 'on', true ); ?>/>
-			<label for="wpcf7-redirect-open-in-new-tab"><?php esc_html_e( 'Open page in a new tab', 'wpcf7-redirect' );?></label>
-			<div class="field-notice field-notice-alert field-notice-hidden">
-				<strong>
-					<?php esc_html_e( 'Notice!', 'wpcf7-redirect' );?>        
-				</strong>
-				<?php esc_html_e( 'This option might not work as expected, since browsers often block popup windows. This option depends on the browser settings.', 'wpcf7-redirect' );?>
+					<?php endforeach ?>
+				</select>     
 			</div>
-		</div>
 
-		<div class="field-wrap field-wrap-http-build-query">
-			<input type="checkbox" id="wpcf7-redirect-http-build-query" class="checkbox-radio-1" name="wpcf7-redirect[http_build_query]" <?php checked( $fields['http_build_query'], 'on', true ); ?>/>
-			<label for="wpcf7-redirect-http-build-query">
-				<?php esc_html_e( 'Pass all the fields from the form as URL query parameters', 'wpcf7-redirect' );?>      
-			</label>
-		</div>
+			<div class="field-wrap field-wrap-external-url">
+				<input type="url" id="wpcf7-redirect-external-url" placeholder="<?php esc_html_e( 'External URL', 'wpcf7-redirect' ); ?>" name="wpcf7-redirect[external_url]" value="<?php echo $fields['external_url']; ?>">
+			</div>
 
-		<div class="field-wrap field-wrap-http-build-query-selectively">
-			<input type="checkbox" id="wpcf7-redirect-http-build-query-selectively" class="checkbox-radio-1" name="wpcf7-redirect[http_build_query_selectively]" <?php checked( $fields['http_build_query_selectively'], 'on', true ); ?>/>
-			<label for="wpcf7-redirect-http-build-query-selectively">
-				<?php esc_html_e( 'Pass specific fields from the form as URL query parameters', 'wpcf7-redirect' );?>      
-			</label>
-			<input type="text" id="wpcf7-redirect-http-build-query-selectively-fields" class="field-hidden" placeholder="<?php esc_html_e( 'Fields to pass, separated by commas', 'wpcf7-redirect' );?>" name="wpcf7-redirect[http_build_query_selectively_fields]" value="<?php echo $fields['http_build_query_selectively_fields'];?>">
-		</div>
+			<div class="field-wrap field-wrap-use-external-url">
+				<input type="checkbox" id="wpcf7-redirect-use-external-url" name="wpcf7-redirect[use_external_url]" <?php checked( $fields['use_external_url'], 'on', true ); ?>/>
 
-		<hr />
+				<label for="wpcf7-redirect-use-external-url">
+					<?php esc_html_e( 'Use external URL', 'wpcf7-redirect' ); ?>
+				</label>
+			</div>
 
-		<div class="field-wrap field-wrap-after-sent-script">
-			<label for="wpcf7-redirect-after-sent-script">
-				<?php esc_html_e( 'Here you can add scripts to run after form sent successfully.', 'wpcf7-redirect' );?>
-			</label>
-			<div class="field-message">
-				<?php esc_html_e( 'Do not include <script> tags.', 'wpcf7-redirect' );?>
+			<div class="field-wrap field-wrap-open-in-new-tab">
+				<input type="checkbox" id="wpcf7-redirect-open-in-new-tab" name="wpcf7-redirect[open_in_new_tab]" <?php checked( $fields['open_in_new_tab'], 'on', true ); ?>/>
+
+				<label for="wpcf7-redirect-open-in-new-tab"><?php esc_html_e( 'Open page in a new tab', 'wpcf7-redirect' ); ?></label>
+
+				<div class="field-notice field-notice-alert field-notice-hidden">
+					<strong>
+						<?php esc_html_e( 'Notice!', 'wpcf7-redirect' ); ?>        
+					</strong>
+
+					<?php esc_html_e( 'This option might not work as expected, since browsers often block popup windows. This option depends on the browser settings.', 'wpcf7-redirect' ); ?>
 				</div>
-				<textarea id="wpcf7-redirect-after-sent-script" name="wpcf7-redirect[after_sent_script]" rows="8" cols="100"><?php echo $fields['after_sent_script'];?></textarea>
 			</div>
-			<div class="field-notice field-warning-alert field-notice-hidden">
-				<strong>
-					<?php esc_html_e( 'Warning!', 'wpcf7-redirect' );?>        
-				</strong>
-				<?php esc_html_e( 'This option is for developers only - use with caution. If the plugin does not redirect after you have added scripts, it means you have a problem with your script. Either fix the script, or remove it.', 'wpcf7-redirect' );?>
+
+			<div class="field-wrap field-wrap-http-build-query">
+				<input type="checkbox" id="wpcf7-redirect-http-build-query" class="checkbox-radio-1" name="wpcf7-redirect[http_build_query]" <?php checked( $fields['http_build_query'], 'on', true ); ?>/>
+
+				<label for="wpcf7-redirect-http-build-query">
+					<?php esc_html_e( 'Pass all the fields from the form as URL query parameters', 'wpcf7-redirect' ); ?>      
+				</label>
+			</div>
+
+			<div class="field-wrap field-wrap-http-build-query-selectively">
+				<input type="checkbox" id="wpcf7-redirect-http-build-query-selectively" class="checkbox-radio-1" name="wpcf7-redirect[http_build_query_selectively]" <?php checked( $fields['http_build_query_selectively'], 'on', true ); ?>/>
+
+				<label for="wpcf7-redirect-http-build-query-selectively">
+					<?php esc_html_e( 'Pass specific fields from the form as URL query parameters', 'wpcf7-redirect' ); ?>      
+				</label>
+
+				<input type="text" id="wpcf7-redirect-http-build-query-selectively-fields" class="field-hidden" placeholder="<?php esc_html_e( 'Fields to pass, separated by commas', 'wpcf7-redirect' ); ?>" name="wpcf7-redirect[http_build_query_selectively_fields]" value="<?php echo $fields['http_build_query_selectively_fields']; ?>">
+			</div>
+
+			<div class="field-wrap field-wrap-delay-redirect">
+				<label for="wpcf7-redirect-delay-redirect">
+					<?php esc_html_e( 'Delay redirect (in milliseconds)', 'wpcf7-redirect' ); ?>      
+				</label>
+
+				<input type="number" id="wpcf7-redirect-delay-redirect" name="wpcf7-redirect[delay_redirect]" value="<?php echo $fields['delay_redirect']; ?>">
+			</div>
+
+			<hr />
+
+			<div class="field-wrap field-wrap-after-sent-script">
+				<label for="wpcf7-redirect-after-sent-script">
+					<?php esc_html_e( 'Here you can add scripts to run after form sent successfully.', 'wpcf7-redirect' ); ?>
+				</label>
+
+				<div class="field-message">
+					<?php esc_html_e( 'Do not include <script> tags.', 'wpcf7-redirect' ); ?>
+				</div>
+
+				<textarea id="wpcf7-redirect-after-sent-script" name="wpcf7-redirect[after_sent_script]" rows="8" cols="100"><?php echo $fields['after_sent_script']; ?></textarea>
+
+				<div class="field-notice field-warning-alert field-notice-hidden">
+					<strong>
+						<?php esc_html_e( 'Warning!', 'wpcf7-redirect' ); ?>        
+					</strong>
+
+					<?php esc_html_e( 'This option is for developers only - use with caution. If the plugin does not redirect after you have added scripts, it means you have a problem with your script. Either fix the script, or remove it.', 'wpcf7-redirect' ); ?>
+				</div>
 			</div>
 		</fieldset>
+
+		<div class="get-pro-wrap">
+			<div class="get-pro">
+				<span class="dashicons dashicons-star-filled"></span>
+				<a href="https://querysol.com/product/contact-form-7-redirection/" target="_blank">
+					Redirection Pro For Contact Form 7 - We've added exciting new features!
+				</a>
+				<span class="dashicons dashicons-star-filled"></span>
+			</div>
+		</div>
 
 		<?php
 	}
 }
+
+register_activation_hook( __FILE__, array( 'WPCF7_Redirect', 'plugin_activated' ) );
 
 $cf7_redirect = new WPCF7_Redirect();
