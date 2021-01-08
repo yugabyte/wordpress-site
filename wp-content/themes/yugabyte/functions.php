@@ -169,4 +169,33 @@ add_filter( 'query_vars', 'content_lib_query_vars' );
 // 	return false;
 // }
 
+function _checkArrayContains ( $arr, $tag_name, $needle ) {
+	foreach ($arr as $obj) {
+		if ($obj[$tag_name] == $needle) {
+			return True;
+		}
+	}
+	return False;
+}
+
+function getPostDetailsTest( $test ) {
+	$vote_count = get_post_meta($_REQUEST["post_id"]);
+	$type = $_REQUEST["type"];
+	$fields = get_field_objects($_REQUEST["post_id"]);	
+	if (!isset($type)) {
+		echo json_encode($fields["partners_repeater"]["value"]);
+		die();
+	}
+	$companies = array();
+	foreach ($fields["partners_repeater"]["value"] as $company) {		
+		if (_checkArrayContains($company["tags"], "tag_name", $type)) {
+			array_push($companies, $company);
+		}
+	}
+	echo json_encode($companies);
+	die();
+}
+add_action("wp_ajax_get_post_details", "getPostDetailsTest");
+add_action("wp_ajax_nopriv_get_post_details", "getPostDetailsTest");
+
 ?>

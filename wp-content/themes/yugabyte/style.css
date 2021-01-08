@@ -1,18 +1,17 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.118
+* Version: 1.0.119
 */
 
 /* #region Default */
 
-body, p, div, li, a, select, th, tr, td, input, textarea {
-	font-family: 'Inter', sans-serif;
-	font-weight: 300;
+body, p, div, li, a, select, th, tr, td, input, textarea, h1, h2, h3, h4, h5, h6 {
+	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 400;
 }
 
 h1, h2, h3, h4, h5, h6 {
-	font-family: 'Rubik';
-	font-weight: 500;
+	font-weight: 600;
 }
 
 html {
@@ -190,7 +189,7 @@ a:hover .l-to-r {
 	color: #F75821;
 	font-size: 32px;
 	line-height: 44px;
-	font-weight: 500;
+	font-weight: 600;
 	margin-bottom: 40px;
 	text-align: center;
 	padding: 0 20px;
@@ -336,7 +335,7 @@ a:hover .l-to-r {
 .navbar .nav-link {
 	color: #322965;
 	font-size: 16px;
-	font-weight: 500;
+	font-weight: 400;
  	padding: 1.57rem 1.25rem;
  	line-height: 18px;
  	position: relative;
@@ -424,7 +423,7 @@ hr {
 
 .navbar .button-container span {
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 600;
 	letter-spacing: -0.4px;
 	line-height: 20px;
 	text-align: center;
@@ -478,7 +477,7 @@ hr {
 
 .hero-banner.secondary .main-title {
 	font-size: 15px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 19px;
 	color: #8F94A8;
 	position: absolute;
@@ -490,7 +489,7 @@ hr {
 .hero-title-phrase {
 	color: #322965;
 	font-size: 40px;
-	font-weight: 400;
+	font-weight: 600;
 	line-height: 52px;
 	margin: 1.25rem 0;
 }
@@ -512,7 +511,7 @@ hr {
 
 .homepage-hero .banner-link b {
 	font-size: 13px;
-	font-weight: 500;
+	font-weight: 600;
 	width: 58px;
 	line-height: 18px;
 	border-radius: 5px;
@@ -585,7 +584,7 @@ a.banner-link:hover span {
 .main-footer .footer-menu ul a:first-child li {
 	max-width: 190px;
 	font-size: 18px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 24px;
 	border-bottom: 2px solid #F75821;
 	margin-bottom: 30px;
@@ -731,7 +730,7 @@ a.banner-link:hover span {
 }
 
 .homepage-hero .item-title {
-	font-weight: 500;
+	font-weight: 600;
 	font-size: 20px;
 	line-height: 28px;
 	margin: 15px 0;
@@ -848,7 +847,7 @@ a.banner-link:hover span {
     padding-right: 15px;
 	border-radius: 0 5px 5px 0;
 	height: 40px;
-    font-weight: 500;
+    font-weight: 600;
 	font-size: 14px;
 	line-height: 20px;
 	letter-spacing: -0.4px;
@@ -958,7 +957,7 @@ body:not(#contact-sales) .grecaptcha-badge {
 .community-metrics .community-header h2 {
 	font-size: 28px;
 	line-height: 36px;
-	font-weight: 500;
+	font-weight: 600;
 	color: #322965;
 }
 
@@ -1009,7 +1008,7 @@ body:not(#contact-sales) .grecaptcha-badge {
 	font-size: 18px;
 	line-height: 26px;
 	color: #FF6E42;
-	font-weight: 500;
+	font-weight: 600;
 	text-decoration: none;
 	display: block;
 	cursor: pointer;
@@ -1071,7 +1070,7 @@ section.layers {
 
 .tile-title {
 	font-size: 18px;
-    font-weight: 500;
+    font-weight: 600;
 	line-height: 28px;
 	color: #322965;
 	margin-bottom: 5px;
@@ -1142,7 +1141,7 @@ section.demo-banner {
 .global-banner a {
 	color: #FFF;
 	font-size: 18px;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 .small-devices .global-banner a {
@@ -1264,7 +1263,7 @@ section.demo-banner {
 .case-study-wrapper .more-info-link{
 	margin: 20px auto 0 auto;
 	text-align: center;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 .customers .col-lg-12 {
@@ -1501,7 +1500,7 @@ section.demo-banner {
 	padding: 10px;
 	border: none;
 	color: #322965;
-	font-weight: 500;
+	font-weight: 600;
 	font-size: 14px;
 	border-radius: 5px;
 	letter-spacing: 0.05em;
@@ -1576,7 +1575,6 @@ section.demo-banner {
 }
 
 .footer-cta .main-title {
-	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 60px;
 	color: #ffffff;
 	font-weight: 400;
@@ -1603,14 +1601,13 @@ section.demo-banner {
 	border: 2px solid #FFFFFF;
 	border-radius: 8px;
 	background: unset;
-	font-weight: 500;
-	font-family: 'Source Sans Pro', sans-serif;
+	font-weight: 600;
 }
 
 .footer-cta .button-container .button span {
 	text-align: center;
     font-size: 25px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 0px;
     line-height: 1.5;
 }
@@ -1854,9 +1851,8 @@ section.demo-banner {
 
 .enterprise .hero .title {
 	color: #FFFFFF;
-	font-family: 'Rubik';
 	font-size: 36px;
-	font-weight: bold;
+	font-weight: 600;
 	line-height: 44px;
 	margin: 20px auto;
 }
@@ -1866,7 +1862,7 @@ section.demo-banner {
 	font-size: 36px;
 	line-height: 44px;
 	margin: 20px auto;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 #community-contribute-page .community-hero .subtitle {
@@ -1986,7 +1982,7 @@ section.demo-banner {
 .enterprise .hero .copy {
 	color: #FFFFFF;
 	font-size: 16px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 28px;
 	margin: 0 auto 20px;
 	max-width: 800px;
@@ -2029,7 +2025,7 @@ section.demo-banner {
 .enterprise .hero-banner .item .title {
 	color: #8F94A8;
 	font-size: 15px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 60px;
 }
 
@@ -2388,7 +2384,7 @@ section.demo-banner {
 	margin-top: 5px;
 	font-size: 18px;
     margin-right: auto;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 .community .it-blocks .it-blocks-holder .item,
@@ -2452,9 +2448,8 @@ section.demo-banner {
 
 #community-contribute-page .contributor-program .contributor-type {
 	color: #322965;
-	font-family: 'Inter';
 	font-size: 20px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 28px;
 	text-align: center;
 	margin: 35px 0 20px;
@@ -2462,7 +2457,7 @@ section.demo-banner {
 
 #community-contribute-page .contributor-program .description {
 	color: #546371;
-	font-size: 13px;
+	font-size: 14px;
 	line-height: 22px;
 	text-align: center;
 }
@@ -2478,7 +2473,6 @@ section.demo-banner {
 
 #community-contribute-page .contributor-footnote .more-info.email-info-text {
 	color: #FFFFFF;
-	font-family: Rubik;
 	font-size: 42px;
 	line-height: 58px;
 	text-align: center;
@@ -2493,9 +2487,8 @@ section.demo-banner {
 .contributor-footnote .button-container .email-cta.button {
 	color: #FFFFFF;
 	background: #f75821;
-	font-family: 'Inter';
 	font-size: 14px;
-	font-weight: 500;
+	font-weight: 600;
 	letter-spacing: -0.4px;
 	line-height: 20px;
 	text-align: center;
@@ -2592,8 +2585,7 @@ section.demo-banner {
 	text-align: center;
 	color: #FFFFFF;
 	font-size: 36px;
-	font-weight: bold;
-	font-family: 'Rubik';
+	font-weight: 600;
 	line-height: 44px;
 	max-width: 420px;
 	margin: auto;
@@ -2603,10 +2595,9 @@ section.demo-banner {
 .comparison .hero .subtitle {
 	text-align: center;
 	color: #FFFFFF;
-	font-family: 'Rubik';
 	font-size: 16px;
 	line-height: 25px;
-	font-weight: 500;
+	font-weight: 600;
 	padding: 0 10px 50px;
 }
 
@@ -2697,9 +2688,7 @@ section.demo-banner {
 .download-cta .main-title {
 	font-size: 48px;
 	line-height: 58px;
-	font-weight: bold;
 	text-align: center;
-	font-family: 'Rubik';
 	color: #FFFFFF;
 	margin-bottom: 50px;
 }
@@ -2861,10 +2850,6 @@ section.demo-banner {
 
 /* Case Study */
 
-.case-study p, .case-study div, .case-study li, .case-study a, .case-study select, .case-study th, .case-study tr, .case-study td {
-    font-family: 'Inter', sans-serif;
-}
-
 .customer-logo {
 	width: 200px;
 	height: 50px;
@@ -2872,9 +2857,8 @@ section.demo-banner {
 
 .yugabyte-branding .primary-btn, .yugabyte-branding .primary-btn-mobile {
 	color: #FFFFFF;
-	font-family: 'Inter';
 	font-size: 15px;
-	font-weight: 500;
+	font-weight: 600;
 	letter-spacing: -0.43px;
 	line-height: 22px;
 	text-align: center;
@@ -2957,7 +2941,7 @@ section.demo-banner {
 }
 
 .case-study .hero-title strong {
-	font-weight: 500;
+	font-weight: 600;
 }
 
 .case-study .yugabyte-purpose {
@@ -3657,9 +3641,8 @@ section.demo-banner {
 }
 
 .customer-intro .company-title {
-	font-family: 'Rubik';
 	color: #322965;
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 28px;
 	line-height: 44px;
 }
@@ -3681,7 +3664,6 @@ section.evaluation {
 
 .evaluation .section-title {
 	font-size: 42px;
-	font-family: 'Rubik';
 	line-height: 70px;
 	text-align: left;
 	margin-bottom: 1.25rem;
@@ -3717,9 +3699,8 @@ section.evaluation {
 .case-study .tablepress thead th {
 	background-color: #322965;
 	color: #7AD1E4;
-	font-family: 'Rubik';
 	font-size: 12px;
-	font-weight: 500;
+	font-weight: 400;
 	line-height: 14px;
 	text-align: center;
 	padding: 22px 0;
@@ -3841,7 +3822,7 @@ section.solutions {
 section.solutions h1 {
 	color: #322965;
 	font-size: 58px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 70px;
 	text-align: center;
 	z-index: 100;
@@ -3906,10 +3887,9 @@ section.solutions h1 {
 }
 
 .solutions .tech-specs .stat-number {
-	font-family: 'Rubik';
 	font-size: 30px;
 	line-height: 40px;
-	font-weight: 500;
+	font-weight: 600;
 	text-align: center;
 }
 
@@ -4026,7 +4006,7 @@ footer.footer-minimal {
 
 .footer-video .main-title {
 	font-size: 32px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 46px;
 	margin-bottom: 30px;
 }
@@ -4045,7 +4025,7 @@ footer.footer-minimal {
 .footer-video .text-wrapper .btn {
 	padding: .8rem 2rem;
 	border-radius: 8px;
-	font-weight: 500;
+	font-weight: 600;
 	font-size: 15px;
 	width: 250px;
 }
@@ -4301,7 +4281,7 @@ footer.footer-minimal {
 	height: 25px;
 	width: 25px;
 	border: 1px solid white;
-	font-weight: 500;
+	font-weight: 600;
 	padding-left: 4px;
 	font-size: 23px;
 	line-height: 0.9;
@@ -4637,7 +4617,7 @@ footer.footer-minimal {
 
 .contact .hero .subtitle {
 	font-size: 16px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 25px;
 	text-align: center;
 	color: #202951;
@@ -5120,7 +5100,7 @@ footer.footer-minimal {
 
 .text-heavy .hero .subtitle {
 	font-size: 16px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 25px;
 	text-align: center;
 	color: #202951;
@@ -5147,7 +5127,7 @@ footer.footer-minimal {
 .comparison .form-download h2 {
 	color: #F75821;
 	font-size: 32px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 39px;
 	text-align: center;
 	margin: 0 0 51px;
@@ -5450,7 +5430,7 @@ footer.footer-minimal {
     color: #202951;
     font-size: 15px;
     line-height: 20px;
-    font-weight: 500;
+    font-weight: 600;
     text-align: center;
     margin-bottom: 15px;
 }
@@ -5714,7 +5694,7 @@ footer.footer-minimal {
 .more-orange .main-title {
 	color: #FFF;
 	font-size: 32px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 39px;
 	text-align: center;
 	margin-bottom: 42px;
@@ -5821,7 +5801,7 @@ footer.footer-minimal {
     color: #F75821;
     font-size: 15px;
     line-height: 25px;
-    font-weight: 500;
+    font-weight: 600;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -5948,7 +5928,7 @@ span.wpcf7-not-valid-tip {
 
 .events-page .event-list .item-container .event-name {
 	font-size: 18px;
-	font-weight: 500;
+	font-weight: 600;
 	text-decoration: none;
 	background-color: transparent;
 }
@@ -5960,7 +5940,7 @@ span.wpcf7-not-valid-tip {
 
 .events-page .event-info .event-type {
 	text-transform: uppercase;
-	font-weight: 500;
+	font-weight: 600;
 }
 .events-page .event-info .event-type:after,
 .events-page .event-info .event-dates:after {
@@ -5994,7 +5974,7 @@ span.wpcf7-not-valid-tip {
 .careers .jobs-section h3 {
 	color: #322965;
 	font-size: 28px;
-	font-weight: 500;
+	font-weight: 600;
 	line-height: 36px;
 	margin-top: 3.125rem;
 	text-align: center;
@@ -6050,7 +6030,7 @@ span.wpcf7-not-valid-tip {
 .jobs-section .job-list .title {
 	color: #FF6E42;
 	font-size: 18px;
-	font-weight: 500;
+	font-weight: 600;
 	letter-spacing: 0.32px;
 	line-height: 27px;
 	margin: 0;
@@ -6063,7 +6043,7 @@ span.wpcf7-not-valid-tip {
 }
 
 .jobs-section .job-info span strong {
-	font-weight: 500;
+	font-weight: 600;
 }
 
 .careers .footer-cta {
@@ -6086,7 +6066,7 @@ span.wpcf7-not-valid-tip {
 
 .careers .footer-cta  .cta-phrase > a {
 	color: #FF6E42;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 .cloud-features {
@@ -6134,7 +6114,7 @@ span.wpcf7-not-valid-tip {
 
 .cloud-alt-link a {
 	color: #ff6e42;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 /* Charity Giving page */
@@ -6163,7 +6143,6 @@ span.wpcf7-not-valid-tip {
 
 .charity .subtitle {
 	font-size: 18px;
-	font-family: 'Rubik';
 }
 
 .charity .register {
@@ -6179,7 +6158,6 @@ span.wpcf7-not-valid-tip {
 }
 
 .charity .register .section-text {
-	font-family: 'Rubik';
 	font-size: 20px;
 	margin: 23px 0 38px;
 }
@@ -6190,8 +6168,7 @@ span.wpcf7-not-valid-tip {
 	border-radius: 12px;
 	padding: 15px 50px 19px;
 	font-size: 20px;
-	font-weight: 500;
-	font-family: 'Rubik';
+	font-weight: 600;
 	letter-spacing: 0.2px;
 }
 
@@ -6207,7 +6184,6 @@ span.wpcf7-not-valid-tip {
 }
 
 .charity .vote-charity .description {
-	font-family: 'Rubik';
 	font-size: 20px;
 	margin-top: 20px;
 }
@@ -6247,9 +6223,8 @@ span.wpcf7-not-valid-tip {
 .charity .charity-list .email-vote {
 	border: 1px solid #FF6E42;
 	border-radius: 12px;
-	font-family: 'Rubik';
 	font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     color: #707070;
 	padding: 8px 23px 9px;
 	margin: 50px auto 0;
@@ -6274,7 +6249,6 @@ span.wpcf7-not-valid-tip {
 
 .charity .footer-cta .message-text {
 	font-size: 20px;
-	font-family: 'Rubik';
 	margin-top: 20px;
 	color: #707070;
 }
@@ -6282,9 +6256,8 @@ span.wpcf7-not-valid-tip {
 .charity .email-submission-form {
 	border: 1px solid #FF6E42;
 	border-radius: 12px;
-	font-family: 'Rubik';
 	font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     color: #707070;
 	margin: 50px auto 0;
 	width: 250px;
@@ -6346,7 +6319,6 @@ span.wpcf7-not-valid-tip {
 
 .comparison .banner-section .title {
 	font-size: 60px;
-	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
 	color: inherit;
 }
@@ -6363,8 +6335,7 @@ span.wpcf7-not-valid-tip {
 }
 
 .comparison h2 {
-	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 400;
+	font-weight: 600;
 	font-size: 55px;
 	text-align: center;
 	color: #000041;
@@ -6406,14 +6377,13 @@ span.wpcf7-not-valid-tip {
 .comparison .advantages .item-label {
 	color: #000041;
 	font-size: 32px;
-	font-family: 'Source Sans Pro', sans-serif;
 	font-weight: 400;
 	margin-bottom: 20px;
 }
 
 .comparison .learn-more-link {
 	color: #000041;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 .comparison .advantages .item-text {
@@ -6435,7 +6405,6 @@ span.wpcf7-not-valid-tip {
 }
 
 .comparison .customers .quote p {
-	font-family: 'Inter';
 	font-size: 30px;
 	font-style: italic;
 	color: #313133;
@@ -6470,7 +6439,7 @@ span.wpcf7-not-valid-tip {
 	background: #FF6E42;
 	color: #ffffff;
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 500;
+	font-weight: 600;
 	font-size: 30px;
 	border-radius: 7px;
 	padding: 10px 30px;
@@ -6494,7 +6463,7 @@ span.wpcf7-not-valid-tip {
 	color: #ffffff;
 	background: #000041;
 	font-family: 'Source Sans Pro', sans-serif;
-	font-weight: 500;
+	font-weight: 600;
 	font-size: 30px;
 	text-align: center;
 	padding: 10px 0;
@@ -6543,7 +6512,7 @@ span.wpcf7-not-valid-tip {
 .comparison .features table td {
 	border: 1px solid #8f95a4 !important;
 	padding: 8px 30px;
-	font-weight: 500;
+	font-weight: 600;
 }
 
 .comparison .features table thead th {
@@ -6744,7 +6713,7 @@ span.wpcf7-not-valid-tip {
 	background: #FF6E42;
 	color: #ffffff;
 	border-radius: 7px;
-	font-weight: 500;
+	font-weight: 600;
 	font-size: 30px;
 	font-family: 'Source Sans Pro', sans-serif;
 	padding: 7px 35px;
@@ -8315,4 +8284,147 @@ span.wpcf7-not-valid-tip {
 		margin-right: 0;
 		margin-left: 0;
 	}
+}
+
+.partners-page {
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.partners-page section.banner-section {
+	min-height: 500px;
+	padding: 5rem 0;
+}
+
+.partners-page .subtitle {
+	color: #FFF;
+	font-size: 32px;
+}
+
+.partners-page .title {	
+	color: #FF6E42;
+	text-align: center;
+	max-width: 800px;
+	margin-bottom: 30px;
+	line-height: 1.2;
+	font-weight: 600;
+	font-size: 60px;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+.partners-page .partners-content {	
+	background: #F2F3F8;
+	padding: 60px 0;
+}
+
+.partners-page .content-container {
+	display: flex;
+	flex-direction: row;
+	max-width: 1220px;
+	margin: 0 auto;
+}
+
+#partner-category-filter {
+	width: 250px;
+	float: left;
+}
+
+#partner-category-filter h4 {
+	font-size: 22px;
+}
+
+#partner-category-filter .list {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	font-size: 18px;
+}
+
+#partner-category-filter .list .category {
+	padding: 8px 25px;
+	cursor: pointer;
+}
+
+#partner-category-filter .list .category.active {
+	background: rgba(255, 110, 66, 0.15);
+	font-weight: 600;
+}
+
+#partners-list .company-info h4 {
+	font-size: 20px;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+#partners-list .tag-list {
+	color: #FF6E42;
+	font-size: 16px;
+	margin-top: auto;
+	height: 52px;
+    line-height: 1.2;
+}
+
+#partners-list .tag-list span {
+	white-space: nowrap;
+}
+
+.partners-page .banner-section {
+	background: #001b8e;
+	text-align: center;
+}
+
+.partners-page .header-text {
+	margin: 0 auto;
+}
+
+#partners-list {
+	padding: 0 40px;
+	width: 100%;
+}
+
+#partners-list > h4 {
+	padding: 0 30px;
+}
+
+#partners-list ul {
+	display: flex;
+	justify-content: start;
+	padding: 0;
+	margin-bottom: 50px;
+}
+
+#partners-list .tag-list > *:not(:last-child):after {
+	content: "·";
+	font-size: 20px;
+	margin: 0 2px 0 5px;
+}
+
+#partners-list .card {
+	background: #FFF;
+	max-width: 288px;
+	margin: 10px;
+	flex: 0 0 33%;
+}
+
+#partners-list .card .image-wrapper {
+	border-bottom: 1px dotted #707070;
+	padding: 30px;
+	width: 100%;
+	text-align: center;
+}
+
+#partners-list .image-wrapper .logo {
+	height: 120px;
+	width: auto;
+}
+
+#partners-list .card .company-info {
+	padding: 20px;
+	height: 100%;
+	display: flex;
+    flex-direction: column;
+}
+
+#partners-list .card .company-info .description {
+	font-size: 16px;
+	margin-bottom: 20px;
 }
