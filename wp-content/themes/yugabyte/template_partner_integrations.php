@@ -36,7 +36,7 @@
                 ?>
               <div id="partner-category-filter">
                 <h4><?php the_field('filter_text'); ?></h4>
-                <form id="test-filter" method="GET">
+                <form id="filter-type">
                     <ul class="list">
                         <?php foreach(array_keys($categories) as $key) { ?>
                             <li class="category<?php if ($key == $selected_option) {
@@ -47,25 +47,6 @@
                 </form>
               </div>
               <?php } ?>
-
-
-
-            <!-- <?php if(have_rows('category_repeater')) {
-                $selected_option = 'All';
-            ?>
-            <div id="partner-category-filter">
-                <h4><?php the_field('filter_text'); ?></h4>
-                <form id="test-filter" method="GET">
-                    <ul class="list">
-                        <?php while(have_rows('category_repeater')) : the_row(); ?>
-                            <li class="category<?php if (get_sub_field('type') == $selected_option) {
-                                    echo ' active';
-                                } ?>"><?php the_sub_field('type'); ?></li>
-                        <?php endwhile ?>                        
-                    </ul>
-                </form>
-            </div>
-            <?php } ?> -->
             <?php if(have_rows('partners_repeater')): ?>
                 <div id="partners-list">
                     <h4>PARTNERS</h4>
@@ -147,7 +128,7 @@
     <?php include(locate_template('template_parts/main-scripts.php')); ?>
     <script>
       (function() {
-        var form = document.getElementById('test-filter');
+        var form = document.getElementById('filter-type');
 
         document.getElementById('partner-category-filter').addEventListener('click', event => {
           if (event.target.nodeName === 'LI') {

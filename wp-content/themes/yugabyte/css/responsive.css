@@ -1,4 +1,7 @@
-/* Responsive */
+/*
+ * 	Theme Name: yugabyte
+ *	Version: 1.0.50
+ */
 
 @media only screen and (min-width: 992px) {
 	html {
@@ -89,6 +92,9 @@
 	}
 	.versus .hero-banner .img {
 		height: 58px;
+	}
+	#partners-list .card {
+		flex: unset;
 	}	
 }
 
@@ -843,11 +849,6 @@
 	#content-pitch {
 		margin: 0 15px 60px;
 	}
-	#partners-list .card {
-		flex: unset;
-	}
-	#partner-category-filter {
-		padding-left: 30px;
 }
 
 @media only screen and (max-width: 576px) {
