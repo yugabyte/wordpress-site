@@ -976,7 +976,10 @@
 		width: auto;
 	}
 	.partners-page .title {
-		font-size: 48px;
+		font-size: 48px;		
+	}
+	.partners-page .header-text {
+		margin: 0 10px;
 	}
 	.partners-page .subtitle {
 		font-size: 24px;
