@@ -223,7 +223,7 @@ window.onload = function () {
 		$(this).addClass('hidden');
 	});
 
-	/* 451 Report Landing */
+	/* Download Report Template */
 	var SERVICE_URL = 'https://yugabyte-form-submission.herokuapp.com';
 	var SERVICE_AUTH_TOKEN = '84c2c09d-2f20-48a5-b5e9-0068a95e97de';
 	document.addEventListener( 'wpcf7submit', function( event ) {
@@ -245,6 +245,8 @@ window.onload = function () {
 					url = `${SERVICE_URL}/oreilly-book/download`;
 				} else if (window.location.pathname.match(/dzone-refcard-distributedsql-2020/)) {
 					url = `${SERVICE_URL}/dzone-refcard/download`;
+				} else if (window.location.pathname.match(/multi-cloud-data-strategy/)) {
+					url = `${SERVICE_URL}/multi-cloud-white-paper-jan-2021/download`;
 				}
 				if (url) {
 					fetch(url, {
