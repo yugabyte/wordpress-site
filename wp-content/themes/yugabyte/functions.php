@@ -178,7 +178,7 @@ function _checkArrayContains ( $arr, $tag_name, $needle ) {
 	return False;
 }
 
-function getPostDetailsTest( $test ) {
+function getIntegrationsList( $test ) {
 	$vote_count = get_post_meta($_REQUEST["post_id"]);
 	$type = $_REQUEST["type"];
 	$fields = get_field_objects($_REQUEST["post_id"]);	
@@ -209,7 +209,7 @@ function getPostDetailsTest( $test ) {
 	));
 	die();
 }
-add_action("wp_ajax_get_post_details", "getPostDetailsTest");
-add_action("wp_ajax_nopriv_get_post_details", "getPostDetailsTest");
+add_action("wp_ajax_get_integrations_list", "getIntegrationsList");
+add_action("wp_ajax_nopriv_get_integrations_list", "getIntegrationsList");
 
 ?>

@@ -10,11 +10,6 @@
 
   <body>
     <?php include(locate_template('template_parts/main-header.php')); ?>
-    <?php get_post_meta($post->ID, "votes", true);
-            $votes = ($votes == "") ? 0 : $votes;
-            $link = admin_url('admin-ajax.php?action=get_post_details&post_id='.$post->ID.'&type=Storage');
-            echo '<a class="user_vote" data-nonce="' . $nonce . '" data-post_id="' . $post->ID . '" href="' . $link . '">vote for this article</a>';
-        ?>
       <div class="partners-page">
         <section class="banner-section" style="background-image: url(<?php the_field('banner_image'); ?>)">
             <div>
@@ -159,7 +154,7 @@
             document.querySelector('#partner-category-filter li.active').classList.remove('active');
             event.target.classList.add('active');
             var data = {
-              'action' : 'get_post_details',
+              'action' : 'get_integrations_list',
               'post_id': '<?php echo $post->ID; ?>'                                
             };
             if (event.target.innerText !== 'All') {
