@@ -18,7 +18,7 @@
       <div class="partners-page">
         <section class="banner-section" style="background-image: url(<?php the_field('banner_image'); ?>)">
             <div>
-                <div class="col-6 header-text">
+                <div class="header-text">
                     <h1 class="title"><?php the_field('hero_title'); ?></h1>
                     <div class="subtitle"><?php the_field('hero_subtitle'); ?></div>
                 </div>
@@ -166,44 +166,49 @@
               data.type = event.target.innerText;
             }
             jQuery.get('<?php echo admin_url('admin-ajax.php'); ?>', data, function( response ) {
-              var companyData = JSON.parse(response);
-              // Construct list of results
+              var responseData = JSON.parse(response);
               var partnerList = document.getElementById('partners-list');
               partnerList.innerHTML = '';
-              var listTitle = document.createElement('H4');
-              listTitle.innerText = event.target.innerText;
-              partnerList.appendChild(listTitle);
-              var listElem = document.createElement('UL');
-              companyData.forEach(function (data) {
-                var item = document.createElement('LI');                
-                item.className = 'card';
-                var imageContainer = document.createElement('DIV');
-                imageContainer.className = 'image-wrapper';
-                if (data.company_logo) {
-                  var imageElem = document.createElement('IMG');
-                  imageElem.src = data.company_logo;
-                  imageContainer.appendChild(imageElem);
-                }
-                item.appendChild(imageContainer);
-                var companyInfo = document.createElement('DIV');
-                companyInfo.className = 'company-info';
-                var companyName = document.createElement('H4');
-                companyName.innerText = data.company_name;
-                companyInfo.appendChild(companyName);
-                var companyDesc = document.createElement('DIV');
-                companyDesc.innerText = data.description;
-                companyInfo.appendChild(companyDesc);
-                var tagList = document.createElement('DIV');
-                data.tags.forEach(function (obj) {
-                  var tagSpan = document.createElement('SPAN');
-                  tagSpan.innerText = obj.tag_name;
-                  tagList.appendChild(tagSpan);
+              Object.keys(responseData).forEach(category => {
+                var companyData = responseData[category];
+                // Construct list of results                
+                var listTitle = document.createElement('H4');
+                listTitle.innerText = category;
+                partnerList.appendChild(listTitle);
+                var listElem = document.createElement('UL');
+                companyData.forEach(function (data) {
+                  var item = document.createElement('LI');                
+                  item.className = 'card';
+                  var imageContainer = document.createElement('DIV');
+                  imageContainer.className = 'image-wrapper';
+                  if (data.company_logo) {
+                    var imageElem = document.createElement('IMG');
+                    imageElem.className = 'logo';
+                    imageElem.src = data.company_logo;
+                    imageContainer.appendChild(imageElem);
+                  }
+                  item.appendChild(imageContainer);
+                  var companyInfo = document.createElement('DIV');
+                  companyInfo.className = 'company-info';
+                  var companyName = document.createElement('H4');
+                  companyName.innerText = data.company_name;
+                  companyInfo.appendChild(companyName);
+                  var companyDesc = document.createElement('DIV');
+                  companyDesc.innerText = data.description;
+                  companyInfo.appendChild(companyDesc);
+                  var tagList = document.createElement('DIV');
+                  tagList.className = 'tag-list'
+                  data.tags.forEach(function (obj) {
+                    var tagSpan = document.createElement('SPAN');
+                    tagSpan.innerText = obj.tag_name;
+                    tagList.appendChild(tagSpan);
+                  });
+                  companyInfo.appendChild(tagList);
+                  item.appendChild(companyInfo)
+                  listElem.appendChild(item);
                 });
-                companyInfo.appendChild(tagList);
-                item.appendChild(companyInfo)
-                listElem.appendChild(item);
+                partnerList.appendChild(listElem);
               });
-              partnerList.appendChild(listElem);
             });
           }
         });

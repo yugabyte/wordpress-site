@@ -8291,20 +8291,29 @@ span.wpcf7-not-valid-tip {
 }
 
 .partners-page section.banner-section {
-	min-height: 500px;
-	padding: 5rem 0;
+	height: 515px;	
+	background-position: center;
+	background-repeat: no-repeat;
+	background-color: #00002f;
+	text-align: center;
+	padding: 0;
+	margin-top: 70px;
+	display: grid;
+    place-content: center;
 }
 
 .partners-page .subtitle {
 	color: #FFF;
 	font-size: 32px;
+	line-height: 44px;
+	max-width: 800px;
 }
 
 .partners-page .title {	
 	color: #FF6E42;
 	text-align: center;
 	max-width: 800px;
-	margin-bottom: 30px;
+	margin: 0 auto 30px;
 	line-height: 1.2;
 	font-weight: 600;
 	font-size: 60px;
@@ -8359,17 +8368,12 @@ span.wpcf7-not-valid-tip {
 	color: #FF6E42;
 	font-size: 16px;
 	margin-top: auto;
-	height: 52px;
+	min-height: 52px;
     line-height: 1.2;
 }
 
 #partners-list .tag-list span {
 	white-space: nowrap;
-}
-
-.partners-page .banner-section {
-	background: #001b8e;
-	text-align: center;
 }
 
 .partners-page .header-text {
@@ -8390,6 +8394,7 @@ span.wpcf7-not-valid-tip {
 	justify-content: start;
 	padding: 0;
 	margin-bottom: 50px;
+	flex-flow: wrap;
 }
 
 #partners-list .tag-list > *:not(:last-child):after {
@@ -8407,14 +8412,21 @@ span.wpcf7-not-valid-tip {
 
 #partners-list .card .image-wrapper {
 	border-bottom: 1px dotted #707070;
-	padding: 30px;
+	padding: 20px;
 	width: 100%;
 	text-align: center;
+	min-height: 180px;
+	display: grid;
+    place-content: center;
 }
 
 #partners-list .image-wrapper .logo {
-	height: 120px;
-	width: auto;
+	height: auto;
+    width: auto;
+    /* max-width: 240px; */
+	max-height: 120px;
+	max-width: calc(100% - 40px);
+    margin: 0 auto;
 }
 
 #partners-list .card .company-info {

@@ -182,8 +182,20 @@ function getPostDetailsTest( $test ) {
 	$vote_count = get_post_meta($_REQUEST["post_id"]);
 	$type = $_REQUEST["type"];
 	$fields = get_field_objects($_REQUEST["post_id"]);	
-	if (!isset($type)) {
-		echo json_encode($fields["partners_repeater"]["value"]);
+	if (!isset($type) || $type == 'All') {
+		$partners = array();
+		$integrations = array();
+		foreach ($fields["partners_repeater"]["value"] as $company) {		
+			if (_checkArrayContains($company["tags"], "tag_name", "Partner")) {
+				array_push($partners, $company);
+			} else if (_checkArrayContains($company["tags"], "tag_name", "Integration")) {
+				array_push($integrations, $company);
+			}
+		}
+		echo json_encode(array(
+			"Partners" => $partners,
+			"Integrations" => $integrations
+		));
 		die();
 	}
 	$companies = array();
@@ -192,7 +204,9 @@ function getPostDetailsTest( $test ) {
 			array_push($companies, $company);
 		}
 	}
-	echo json_encode($companies);
+	echo json_encode(array(
+		$type => $companies
+	));
 	die();
 }
 add_action("wp_ajax_get_post_details", "getPostDetailsTest");
