@@ -57,10 +57,12 @@
                         });
                         if (count($found_tag) > 0) {
                       ?>
-                      <li class="card">                                                            
-                        <div class="image-wrapper">
-                            <img class="logo" src="<?php the_sub_field('company_logo'); ?>" />
-                        </div>
+                      <li class="card">
+                        <a rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>">
+                          <div class="image-wrapper">
+                              <img class="logo" src="<?php the_sub_field('company_logo'); ?>" />
+                          </div>
+                        </a>
                         <div class="company-info">
                         <a rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>"><h4><?php the_sub_field('company_name'); ?></h4></a>
                             <div class="description"><?php the_sub_field('description'); ?></div>
@@ -84,10 +86,12 @@
                         });
                         if (count($found_tag) > 0) {
                       ?>
-                        <li class="card">                                
-                          <div class="image-wrapper">
-                              <img class="logo" src="<?php the_sub_field('company_logo'); ?>" />
-                          </div>
+                        <li class="card">
+                          <a rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>">
+                            <div class="image-wrapper">
+                                <img class="logo" src="<?php the_sub_field('company_logo'); ?>" />
+                            </div>
+                          </a>
                           <div class="company-info">
                             <a rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>">
                               <h4><?php the_sub_field('company_name'); ?></h4>
@@ -112,10 +116,10 @@
         <section class="footer-cta">
         <div class="container">
           <div class="contributor-footnote">
-                        <?php $cta = get_field('partners_cta'); ?>
-                        <div class="more-info email-info-text" style="font-size: 32px; line-height: 42px; color: white; text-align: center;">
-                            <?php echo $cta['text'] ?>
-                        </div>
+              <?php $cta = get_field('partners_cta'); ?>
+              <div class="more-info email-info-text" style="font-size: 32px; line-height: 42px; color: white; text-align: center;">
+                  <?php echo $cta['text'] ?>
+              </div>
             <div class="button-container">
               <a href="<?php echo $cta['email_url']; ?>" class="email-cta button">
                 <?php echo $cta['email_text']; ?>
@@ -163,12 +167,22 @@
                     imageElem.src = data.company_logo;
                     imageContainer.appendChild(imageElem);
                   }
-                  item.appendChild(imageContainer);
+                  var companyLink = document.createElement('A');
+                  companyLink.rel = '';
+                  companyLink.target = '_blank';
+                  companyLink.href = data.external_link;
+                  companyLink.appendChild(imageContainer);
+                  item.appendChild(companyLink);
                   var companyInfo = document.createElement('DIV');
                   companyInfo.className = 'company-info';
                   var companyName = document.createElement('H4');
                   companyName.innerText = data.company_name;
-                  companyInfo.appendChild(companyName);
+                  companyLink = document.createElement('A');
+                  companyLink.rel = '';
+                  companyLink.target = '_blank';
+                  companyLink.href = data.external_link;
+                  companyLink.appendChild(companyName);
+                  companyInfo.appendChild(companyLink);
                   var companyDesc = document.createElement('DIV');
                   companyDesc.innerText = data.description;
                   companyInfo.appendChild(companyDesc);

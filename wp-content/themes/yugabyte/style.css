@@ -8404,7 +8404,8 @@ span.wpcf7-not-valid-tip {
 #partners-list .tag-list > *:not(:last-child):after {
 	content: "·";
 	font-size: 20px;
-	margin: 0 2px 0 5px;
+	margin: 0 4px 0 8px;
+	vertical-align: text-top;
 }
 
 #partners-list .card {
@@ -8415,7 +8416,10 @@ span.wpcf7-not-valid-tip {
 }
 
 #partners-list .card .image-wrapper {
-	border-bottom: 1px dotted #707070;
+	background-image: linear-gradient(to right, #707070, 33%, rgba(255,255,255,0) 0%);
+	background-position: bottom;
+	background-size: 6px 2px;
+	background-repeat: repeat-x;
 	padding: 20px;
 	width: 100%;
 	text-align: center;
@@ -8442,5 +8446,5 @@ span.wpcf7-not-valid-tip {
 
 #partners-list .card .company-info .description {
 	font-size: 16px;
-	margin-bottom: 20px;
+	margin-bottom: 15px;
 }

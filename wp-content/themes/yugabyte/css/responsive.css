@@ -16,6 +16,11 @@
 	.navbar .mobile-container.active {
 		right: -100%;
 	}
+
+	.contributor-footnote .more-info.email-info-text {
+		max-width: 800px;
+		margin: 12px auto 20px;
+	}	
 }
 @media only screen and (min-width: 1201px) {
 	.versus .vc_section > .vc_row {
