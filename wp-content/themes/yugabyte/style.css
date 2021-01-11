@@ -2487,10 +2487,9 @@ section.demo-banner {
 .contributor-footnote .button-container .email-cta.button {
 	color: #FFFFFF;
 	background: #f75821;
-	font-size: 14px;
-	font-weight: 600;
-	letter-spacing: -0.4px;
-	line-height: 20px;
+	font-size: 30px;
+	font-weight: 700;
+    line-height: 1.2;
 	text-align: center;
 	width: fit-content;
     padding: 11px 50px 12px 50px;
