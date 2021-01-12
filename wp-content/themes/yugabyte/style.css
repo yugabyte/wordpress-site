@@ -8361,14 +8361,18 @@ span.wpcf7-not-valid-tip {
 	font-size: 20px;
 	font-weight: 600;
 	text-transform: uppercase;
+	color: #000000;
 }
 
-#partners-list .tag-list {
-	color: #FF6E42;
+#partners-list .tag-list {	
 	font-size: 16px;
 	margin-top: auto;
 	min-height: 52px;
     line-height: 1.2;
+}
+
+#partners-list .tag-list > span {
+	color: #FF6E42;
 }
 
 #partners-list .tag-list span {
@@ -8446,4 +8450,9 @@ span.wpcf7-not-valid-tip {
 #partners-list .card .company-info .description {
 	font-size: 16px;
 	margin-bottom: 15px;
+	color: #000000;
+}
+
+#partners-list .card .company-info:hover > * {
+	color: #404040;
 }

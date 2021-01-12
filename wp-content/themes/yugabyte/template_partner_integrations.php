@@ -57,14 +57,12 @@
                         });
                         if (count($found_tag) > 0) {
                       ?>
-                      <li class="card">
-                        <a rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>">
+                      <a class="card" rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>">
                           <div class="image-wrapper">
                               <img class="logo" src="<?php the_sub_field('company_logo'); ?>" />
-                          </div>
-                        </a>
-                        <div class="company-info">
-                        <a rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>"><h4><?php the_sub_field('company_name'); ?></h4></a>
+                          </div>                      
+                          <div class="company-info">
+                            <h4><?php the_sub_field('company_name'); ?></h4>
                             <div class="description"><?php the_sub_field('description'); ?></div>
                             <?php if(have_rows('tags')) { ?>
                                 <div class="tag-list">
@@ -73,8 +71,8 @@
                                 <?php endwhile; ?>
                             </div>
                             <?php } ?>
-                        </div>
-                      </li>
+                          </div>
+                        </a>
                       <?php } ?>
                     <?php endwhile; ?>
                     </ul>
@@ -86,26 +84,22 @@
                         });
                         if (count($found_tag) > 0) {
                       ?>
-                        <li class="card">
-                          <a rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>">
+                        <a class="card" rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>">
                             <div class="image-wrapper">
                                 <img class="logo" src="<?php the_sub_field('company_logo'); ?>" />
+                            </div>                          
+                            <div class="company-info">
+                              <h4><?php the_sub_field('company_name'); ?></h4>
+                              <div class="description"><?php the_sub_field('description'); ?></div>
+                              <?php if(have_rows('tags')) { ?>
+                                  <div class="tag-list">
+                                  <?php while(have_rows('tags')) : the_row(); ?>
+                                      <span data-tag="<?php the_sub_field('tag_name'); ?>"><?php the_sub_field('tag_name'); ?></span>
+                                  <?php endwhile; ?>
+                              </div>
+                              <?php } ?>
                             </div>
                           </a>
-                          <div class="company-info">
-                            <a rel="noopener noreferrer" target="_blank" href="<?php the_sub_field('external_link'); ?>">
-                              <h4><?php the_sub_field('company_name'); ?></h4>
-                            </a>
-                            <div class="description"><?php the_sub_field('description'); ?></div>
-                            <?php if(have_rows('tags')) { ?>
-                                <div class="tag-list">
-                                <?php while(have_rows('tags')) : the_row(); ?>
-                                    <span data-tag="<?php the_sub_field('tag_name'); ?>"><?php the_sub_field('tag_name'); ?></span>
-                                <?php endwhile; ?>
-                            </div>
-                            <?php } ?>
-                          </div>
-                        </li>
                       <?php } ?>
                     <?php endwhile; ?>
                     </ul>
@@ -157,8 +151,6 @@
                 partnerList.appendChild(listTitle);
                 var listElem = document.createElement('UL');
                 companyData.forEach(function (data) {
-                  var item = document.createElement('LI');                
-                  item.className = 'card';
                   var imageContainer = document.createElement('DIV');
                   imageContainer.className = 'image-wrapper';
                   if (data.company_logo) {
@@ -166,22 +158,11 @@
                     imageElem.className = 'logo';
                     imageElem.src = data.company_logo;
                     imageContainer.appendChild(imageElem);
-                  }
-                  var companyLink = document.createElement('A');
-                  companyLink.rel = '';
-                  companyLink.target = '_blank';
-                  companyLink.href = data.external_link;
-                  companyLink.appendChild(imageContainer);
-                  item.appendChild(companyLink);
+                  }                  
                   var companyInfo = document.createElement('DIV');
                   companyInfo.className = 'company-info';
                   var companyName = document.createElement('H4');
                   companyName.innerText = data.company_name;
-                  companyLink = document.createElement('A');
-                  companyLink.rel = '';
-                  companyLink.target = '_blank';
-                  companyLink.href = data.external_link;
-                  companyLink.appendChild(companyName);
                   companyInfo.appendChild(companyLink);
                   var companyDesc = document.createElement('DIV');
                   companyDesc.innerText = data.description;
@@ -194,8 +175,14 @@
                     tagList.appendChild(tagSpan);
                   });
                   companyInfo.appendChild(tagList);
-                  item.appendChild(companyInfo)
-                  listElem.appendChild(item);
+                  var companyLink = document.createElement('A');
+                  companyLink.className = 'card';
+                  companyLink.rel = 'noopener noreferrer';
+                  companyLink.target = '_blank';
+                  companyLink.href = data.external_link;
+                  companyLink.appendChild(imageContainer);
+                  companyLink.appendChild(companyInfo);
+                  listElem.appendChild(companyLink);
                 });
                 partnerList.appendChild(listElem);
               });
