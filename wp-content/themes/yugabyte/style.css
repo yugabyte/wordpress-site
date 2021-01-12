@@ -8405,10 +8405,9 @@ span.wpcf7-not-valid-tip {
 }
 
 #partners-list .tag-list > *:not(:last-child):after {
-	content: "·";
+	content: "\00B7";
 	font-size: 20px;
-	margin: 0 4px 0 8px;
-	vertical-align: text-top;
+	margin: 0 5px 0 7px;
 }
 
 #partners-list .card {

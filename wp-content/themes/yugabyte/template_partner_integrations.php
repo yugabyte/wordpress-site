@@ -33,6 +33,8 @@
                     endwhile;
                   }
                 endwhile;
+                ksort($categories);
+                $categories = array("All" => True) + $categories;
                 ?>
               <div id="partner-category-filter">
                 <h4><?php the_field('filter_text'); ?></h4>
@@ -151,38 +153,25 @@
                 partnerList.appendChild(listTitle);
                 var listElem = document.createElement('UL');
                 companyData.forEach(function (data) {
-                  var imageContainer = document.createElement('DIV');
-                  imageContainer.className = 'image-wrapper';
-                  if (data.company_logo) {
-                    var imageElem = document.createElement('IMG');
-                    imageElem.className = 'logo';
-                    imageElem.src = data.company_logo;
-                    imageContainer.appendChild(imageElem);
-                  }                  
-                  var companyInfo = document.createElement('DIV');
-                  companyInfo.className = 'company-info';
-                  var companyName = document.createElement('H4');
-                  companyName.innerText = data.company_name;
-                  companyInfo.appendChild(companyLink);
-                  var companyDesc = document.createElement('DIV');
-                  companyDesc.innerText = data.description;
-                  companyInfo.appendChild(companyDesc);
-                  var tagList = document.createElement('DIV');
-                  tagList.className = 'tag-list'
-                  data.tags.forEach(function (obj) {
-                    var tagSpan = document.createElement('SPAN');
-                    tagSpan.innerText = obj.tag_name;
-                    tagList.appendChild(tagSpan);
-                  });
-                  companyInfo.appendChild(tagList);
-                  var companyLink = document.createElement('A');
-                  companyLink.className = 'card';
-                  companyLink.rel = 'noopener noreferrer';
-                  companyLink.target = '_blank';
-                  companyLink.href = data.external_link;
-                  companyLink.appendChild(imageContainer);
-                  companyLink.appendChild(companyInfo);
-                  listElem.appendChild(companyLink);
+                  var cardElem = document.createElement('A');
+                  cardElem.className = 'card';
+                  cardElem.rel = 'noopener noreferrer';
+                  cardElem.target = '_blank';
+                  cardElem.href = data.external_link;
+                  cardElem.innerHTML = `<div class="image-wrapper">${
+                    data.company_logo ?
+                      `<img class="logo" src="${data.company_logo}" />`
+                      : ''
+                  }</div>
+                  <div class="company-info">
+                    <h4>${data.company_name}</h4>
+                    <div class="description">${data.description}</div>
+                    <div class="tag-list">${
+                      data.tags.map(tag => (`<span>${tag.tag_name}</span>`)).join('')
+                    }
+                    </div>
+                  </div>`;
+                  listElem.appendChild(cardElem);
                 });
                 partnerList.appendChild(listElem);
               });
