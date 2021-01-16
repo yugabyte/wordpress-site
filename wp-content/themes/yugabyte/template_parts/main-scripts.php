@@ -406,7 +406,7 @@ window.onload = function () {
 			.toggle();
 	});
 
-	if (window.location.pathname.includes('training-swag')) {
+	if (window.location.pathname.includes('dss-asia-swag')) {
 		function updateSwagNumbers() {
 			const url = `${SERVICE_URL}/swag-donations`;
 			const params = {
@@ -490,6 +490,8 @@ window.onload = function () {
 		});
 
 		const urlencoded = new URLSearchParams();
+		urlencoded.append('location', window.location.href);
+		urlencoded.append('userAgent', window.navigator.userAgent);
 		urlencoded.append('contactFormId', event.detail.contactFormId);
 		urlencoded.append('formData', formDataLines.join('\n'));
 

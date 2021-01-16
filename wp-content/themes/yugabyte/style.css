@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.119
+* Version: 1.0.120
 */
 
 /* #region Default */
@@ -2487,13 +2487,13 @@ section.demo-banner {
 .contributor-footnote .button-container .email-cta.button {
 	color: #FFFFFF;
 	background: #f75821;
-	font-size: 30px;
-	font-weight: 700;
-    line-height: 1.2;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 20px;
 	text-align: center;
 	width: fit-content;
-    padding: 11px 50px 12px 50px;
-    border: none;
+	padding: 12px 50px;
+	border: none;
 }
 
 .community .it-blocks .section-title {
@@ -7458,7 +7458,7 @@ span.wpcf7-not-valid-tip {
 	font-size: 22px;
 	color: #ffffff;
 	font-weight: 400;
-	max-width: 540px;
+	max-width: 510px;
 	line-height: 1.5;
 	margin-bottom: 40px;
 }
