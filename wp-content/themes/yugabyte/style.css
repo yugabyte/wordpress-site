@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.120
+* Version: 1.0.121
 */
 
 /* #region Default */
@@ -8455,3 +8455,12 @@ span.wpcf7-not-valid-tip {
 #partners-list .card .company-info:hover > * {
 	color: #404040;
 }
+
+.yb-university-page {}
+
+.yb-university-hero {
+	width: 100%;
+	height: 515px;
+}
+.yb-university-hero__title {}
+.yb-university-hero__subtitle {}
