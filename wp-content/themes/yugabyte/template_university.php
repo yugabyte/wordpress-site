@@ -14,7 +14,7 @@
     <section class="yb-university-hero" style="background-image: url(<?php the_field('hero_background'); ?>)">
       <div class="container">
 				<div class="row">
-          <div class="col-12">
+          <div class="col-md-12">
             <h1 class="yb-university-hero__title"><?php the_field('hero_title'); ?></h1>
             <h2 class="yb-university-hero__subtitle"><?php the_field('hero_subtitle'); ?></h2>
           </div>
@@ -24,84 +24,101 @@
 
 
     <?php while(have_rows('trainings_repeater')) : the_row(); ?>
-      <section>
+      <section class="yb-university-training">
         <div class="container">
           <div class="row">
-            
-            <div class="col-9">
-              <div>
+            <div class="col-md-7">
+              <h1 class="yb-university-training__title">
                 <?php the_sub_field('training_title'); ?>
-              </div>
-              <div>
+              </h1>
+              <div class="yb-university-training__description">
                 <?php the_sub_field('training_description'); ?>
               </div>
-              <div>
+              <div class="yb-university-training__cta-label">
                 <?php the_sub_field('training_cta_label'); ?>
               </div>
-              <a href="#">
+              <a href="<?php the_sub_field('training_cta_btn_link'); ?>" class="yb-university-training__cta-btn">
                 <?php the_sub_field('training_cta_btn_text'); ?>
               </a>
             </div>
 
-            <div class="col-3">
-              <?php $parent_title = get_sub_field('training_available_courses_label'); ?>
-              <?php if(have_rows('training_available_courses_repeater')) { ?>
-                <div class="xxx">
-                  <?php echo $parent_title; ?>
-                </div>
-                <ul>
-                  <?php while(have_rows('training_available_courses_repeater')) : the_row(); ?>
-                    <li>
-                      <a href="<?php the_sub_field('training_available_courses_link'); ?>">
-                        <?php the_sub_field('training_available_courses_name'); ?>
-                      </a>
-                    </li>
-                  <?php endwhile; ?>
-                </ul>
-              <?php } ?>
+            <div class="col-md-5">
+              <div class="yb-university-training__links-wrapper">
+                <?php
+                  $parent_title = get_sub_field('training_available_courses_label');
+                  if(have_rows('training_available_courses_repeater')) {
+                ?>
+                  <div class="yb-university-training__links-group-title">
+                    <?php echo $parent_title; ?>
+                  </div>
+                  <ul class="yb-university-training__links-list">
+                    <?php while(have_rows('training_available_courses_repeater')) : the_row(); ?>
+                      <li>
+                        <a href="<?php the_sub_field('training_available_courses_link'); ?>" class="yb-university-training__link">
+                          <?php the_sub_field('training_available_courses_name'); ?>
+                        </a>
+                      </li>
+                    <?php endwhile; ?>
+                  </ul>
+                <?php } ?>
 
-              <?php $parent_title = get_sub_field('training_available_workshops_label'); ?>
-              <?php if(have_rows('training_available_workshops_repeater')) { ?>
-                <div>
-                  <?php echo $parent_title; ?>
-                </div>
-                <ul>
-                  <?php while(have_rows('training_available_workshops_repeater')) : the_row(); ?>
-                    <li>
-                      <a href="<?php the_sub_field('training_available_workshops_link'); ?>">
-                        <?php the_sub_field('training_available_workshops_name'); ?>
-                      </a>
-                    </li>
-                  <?php endwhile; ?>
-                </ul>
-              <?php } ?>
+                <?php
+                  $parent_title = get_sub_field('training_available_workshops_label');
+                  if(have_rows('training_available_workshops_repeater')) {
+                ?>
+                  <div class="yb-university-training__links-group-title">
+                    <?php echo $parent_title; ?>
+                  </div>
+                  <ul class="yb-university-training__links-list">
+                    <?php while(have_rows('training_available_workshops_repeater')) : the_row(); ?>
+                      <li>
+                        <a href="<?php the_sub_field('training_available_workshops_link'); ?>" class="yb-university-training__link">
+                          <?php the_sub_field('training_available_workshops_name'); ?>
+                        </a>
+                      </li>
+                    <?php endwhile; ?>
+                  </ul>
+                <?php } ?>
 
-              <?php $parent_title = get_sub_field('training_courses_in_dev_label'); ?>
-              <?php if(have_rows('training_courses_in_dev_repeater')) { ?>
-                <div>
-                  <?php echo $parent_title; ?>
-                </div>
-                <ul>
-                  <?php while(have_rows('training_courses_in_dev_repeater')) : the_row(); ?>
-                    <li>
-                      <a href="<?php the_sub_field('training_courses_in_dev_link'); ?>">
-                        <?php the_sub_field('training_courses_in_dev_name'); ?>
-                      </a>
-                    </li>
-                  <?php endwhile; ?>
-                </ul>
-              <?php } ?>
-
+                <?php
+                  $parent_title = get_sub_field('training_courses_in_dev_label');
+                  if(have_rows('training_courses_in_dev_repeater')) {
+                ?>
+                  <div class="yb-university-training__links-group-title">
+                    <?php echo $parent_title; ?>
+                  </div>
+                  <ul class="yb-university-training__links-list">
+                    <?php while(have_rows('training_courses_in_dev_repeater')) : the_row(); ?>
+                      <li>
+                        <a href="<?php the_sub_field('training_courses_in_dev_link'); ?>" class="yb-university-training__link">
+                          <?php the_sub_field('training_courses_in_dev_name'); ?>
+                        </a>
+                      </li>
+                    <?php endwhile; ?>
+                  </ul>
+                <?php } ?>
+              </div>
             </div>
           </div>
         </div>
       </section>
     <?php endwhile; ?>
 
+    <section class="yb-university-footer">
+      <div class="yb-university-footer__titles-wrapper">
+        <h1 class="yb-university-footer__title"><?php the_field('footer_title'); ?></h1>
+        <h2 class="yb-university-footer__subtitle"><?php the_field('footer_subtitle'); ?></h2>
+      </div>
+      <div class="yb-university-footer__btns-wrapper">
+        <a href="<?php the_field('footer_contact_btn_link'); ?>" class="yb-university-training__cta-btn">
+          <?php the_field('footer_contact_btn_text'); ?>
+        </a>
+        <a href="<?php the_field('footer_slack_btn_link'); ?>" class="yb-university-training__cta-btn">
+          <?php the_field('footer_slack_btn_text'); ?>
+        </a>
+      </div>
+    </section>
     
-
-    
-
 		<?php include(locate_template('template_parts/main-footer.php')); ?>
 		<?php include(locate_template('template_parts/main-scripts.php')); ?>	
 	</body>
