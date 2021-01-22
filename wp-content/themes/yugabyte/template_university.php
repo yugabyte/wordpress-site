@@ -22,7 +22,6 @@
       </div>
     </section>
 
-
     <?php while(have_rows('trainings_repeater')) : the_row(); ?>
       <section class="yb-university-training">
         <div class="container">
@@ -54,7 +53,7 @@
                   <ul class="yb-university-training__links-list">
                     <?php while(have_rows('training_available_courses_repeater')) : the_row(); ?>
                       <li>
-                        <a href="<?php the_sub_field('training_available_courses_link'); ?>" class="yb-university-training__link">
+                        <a href="<?php the_sub_field('training_available_courses_link'); ?>" class="yb-university-training__link" target="_blank">
                           <?php the_sub_field('training_available_courses_name'); ?>
                         </a>
                       </li>
@@ -72,7 +71,7 @@
                   <ul class="yb-university-training__links-list">
                     <?php while(have_rows('training_available_workshops_repeater')) : the_row(); ?>
                       <li>
-                        <a href="<?php the_sub_field('training_available_workshops_link'); ?>" class="yb-university-training__link">
+                        <a href="<?php the_sub_field('training_available_workshops_link'); ?>" class="yb-university-training__link" target="_blank">
                           <?php the_sub_field('training_available_workshops_name'); ?>
                         </a>
                       </li>
@@ -90,7 +89,7 @@
                   <ul class="yb-university-training__links-list">
                     <?php while(have_rows('training_courses_in_dev_repeater')) : the_row(); ?>
                       <li>
-                        <a href="<?php the_sub_field('training_courses_in_dev_link'); ?>" class="yb-university-training__link">
+                        <a href="<?php the_sub_field('training_courses_in_dev_link'); ?>" class="yb-university-training__link" target="_blank">
                           <?php the_sub_field('training_courses_in_dev_name'); ?>
                         </a>
                       </li>
@@ -113,7 +112,7 @@
         <a href="<?php the_field('footer_contact_btn_link'); ?>" class="yb-university-training__cta-btn">
           <?php the_field('footer_contact_btn_text'); ?>
         </a>
-        <a href="<?php the_field('footer_slack_btn_link'); ?>" class="yb-university-training__cta-btn">
+        <a href="<?php the_field('footer_slack_btn_link'); ?>" class="yb-university-training__cta-btn" target="_blank">
           <?php the_field('footer_slack_btn_text'); ?>
         </a>
       </div>
