@@ -1,19 +1,19 @@
 <?php 
-	/* Template Name: Yugabyte University */ 
+  /* Template Name: Yugabyte University */ 
 ?>
 
 <!doctype html>
 <html>
-	<head>
-		<?php include(locate_template('template_parts/main-head.php')); ?>
-	</head>
+  <head>
+    <?php include(locate_template('template_parts/main-head.php')); ?>
+  </head>
 
-	<body class="yb-university-page">
-		<?php include(locate_template('template_parts/main-header.php')); ?>
+  <body class="yb-university-page">
+    <?php include(locate_template('template_parts/main-header.php')); ?>
 
     <section class="yb-university-hero" style="background-image: url(<?php the_field('hero_background'); ?>)">
       <div class="container">
-				<div class="row">
+        <div class="row">
           <div class="col-md-12">
             <h1 class="yb-university-hero__title"><?php the_field('hero_title'); ?></h1>
             <h2 class="yb-university-hero__subtitle"><?php the_field('hero_subtitle'); ?></h2>
@@ -118,7 +118,7 @@
       </div>
     </section>
     
-		<?php include(locate_template('template_parts/main-footer.php')); ?>
-		<?php include(locate_template('template_parts/main-scripts.php')); ?>	
-	</body>
+    <?php include(locate_template('template_parts/main-footer.php')); ?>
+    <?php include(locate_template('template_parts/main-scripts.php')); ?>	
+  </body>
 </html> 
