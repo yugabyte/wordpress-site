@@ -30,7 +30,7 @@ Site By TheSpider.com | Custom web design + development
 
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/bootstrap.min.css" type="text/css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/main.css" type="text/css" />
-<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?ver=1.0.120" type="text/css" />
+<link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/style.css?ver=1.0.121" type="text/css" />
 <link rel="stylesheet" href="<?php echo get_template_directory_uri(); ?>/css/responsive.css?ver=1.0.50" type="text/css" />
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
