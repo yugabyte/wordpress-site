@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.122
+* Version: 1.0.123
 */
 
 /* #region Default */
@@ -8558,12 +8558,15 @@ span.wpcf7-not-valid-tip {
   color: #1F1FDD;
 }
  
-.yb-university-training__link {
+.yb-university-training__list-item {
   color: #141920;
 }
-a.yb-university-training__link:hover {
-  color: #141920;
-  text-decoration: underline;
+.yb-university-training__list-item--link {
+	text-decoration: underline;
+}
+.yb-university-training__list-item--link:hover {
+	color: #1F1FDD;
+	text-decoration: underline;
 }
 
 .yb-university-footer {
