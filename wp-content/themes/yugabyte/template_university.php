@@ -54,11 +54,15 @@
                     <?php while(have_rows('training_available_courses_repeater')) : the_row(); ?>
                       <li>
                         <?php if(empty(get_sub_field('training_available_courses_link'))) { ?>
-                          <span class="yb-university-training__link">
+                          <span class="yb-university-training__list-item">
                             <?php the_sub_field('training_available_courses_name'); ?>
                           </span>
                         <?php } else { ?>
-                          <a href="<?php the_sub_field('training_available_courses_link'); ?>" class="yb-university-training__link" target="_blank">
+                          <a
+                            href="<?php the_sub_field('training_available_courses_link'); ?>"
+                            class="yb-university-training__list-item yb-university-training__list-item--link"
+                            target="_blank"
+                          >
                             <?php the_sub_field('training_available_courses_name'); ?>
                           </a>
                         <?php } ?>
@@ -78,11 +82,15 @@
                     <?php while(have_rows('training_available_workshops_repeater')) : the_row(); ?>
                       <li>
                         <?php if(empty(get_sub_field('training_available_workshops_link'))) { ?>
-                          <span class="yb-university-training__link">
+                          <span class="yb-university-training__list-item">
                             <?php the_sub_field('training_available_workshops_name'); ?>
                           </span>
                         <?php } else { ?>
-                          <a href="<?php the_sub_field('training_available_workshops_link'); ?>" class="yb-university-training__link" target="_blank">
+                          <a
+                            href="<?php the_sub_field('training_available_workshops_link'); ?>"
+                            class="yb-university-training__list-item yb-university-training__list-item--link"
+                            target="_blank"
+                          >
                             <?php the_sub_field('training_available_workshops_name'); ?>
                           </a>
                         <?php } ?>
@@ -102,11 +110,15 @@
                     <?php while(have_rows('training_courses_in_dev_repeater')) : the_row(); ?>
                       <li>
                         <?php if(empty(get_sub_field('training_courses_in_dev_link'))) { ?>
-                          <span class="yb-university-training__link">
+                          <span class="yb-university-training__list-item">
                             <?php the_sub_field('training_courses_in_dev_name'); ?>
                           </span>
                         <?php } else { ?>
-                          <a href="<?php the_sub_field('training_courses_in_dev_link'); ?>" class="yb-university-training__link" target="_blank">
+                          <a
+                            href="<?php the_sub_field('training_courses_in_dev_link'); ?>"
+                            class="yb-university-training__list-item yb-university-training__list-item--link"
+                            target="_blank"
+                          >
                             <?php the_sub_field('training_courses_in_dev_name'); ?>
                           </a>
                         <?php } ?>

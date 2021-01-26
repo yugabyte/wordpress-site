@@ -27,7 +27,14 @@
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1537" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1537 nav-item"><a title="Yugabyte Cloud" href="/cloud" class="dropdown-item">Yugabyte Cloud</a></li>
 					</ul>
 				</li>
-				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-601" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-601 nav-item"><a title="Open Source" href="/community" class="nav-link">Community</a></li>				
+				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-601" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-601 nav-item"><a title="Community" href="#" class="nav-link">Community</a>
+					<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-12" role="menu">
+            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Community Overview" href="/community" class="dropdown-item">Community Overview</a></li>
+            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Slack" href="/slack" class="dropdown-item">Slack</a></li>
+						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1540 nav-item"><a title="GitHub" href="https://github.com/YugaByte/yugabyte-db" class="dropdown-item">GitHub</a></li>
+						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1638" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1639 nav-item"><a title="Events" href="/events" class="dropdown-item">Events</a></li>
+					</ul>
+			  </li>				
 				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-910" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home active menu-item-910 nav-item"><a title="Success Stories" href="/success-stories" class="nav-link">Success Stories</a></li>
 				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-13 nav-item"><a title="Use Cases" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-13">Use Cases</a>
 					<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-14" role="menu">
@@ -37,14 +44,12 @@
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-843 nav-item"><a title="Transactional NoSQL" href="/transactional-nosql" class="dropdown-item">Transactional NoSQL</a></li>
 					</ul>
 				</li>
-				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-908" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-908 nav-item"><a title="Resources" href="/all-resources/resource-parent" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-908">Resources</a>
+				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-908" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-908 nav-item"><a title="Resources" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-908">Resources</a>
 					<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-908" role="menu">
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1034" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1034 nav-item"><a title="Blog" href="https://blog.yugabyte.com/" class="dropdown-item">Blog</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-16" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16 nav-item"><a title="Docs" href="https://docs.yugabyte.com/" class="dropdown-item">Docs</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Slack" href="http://yugabyte.com/slack" class="dropdown-item">Slack</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1540 nav-item"><a title="GitHub" href="https://github.com/YugaByte/yugabyte-db" class="dropdown-item">GitHub</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1638" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1639 nav-item"><a title="Events" href="https://yugabyte.com/events" class="dropdown-item">Events</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1582" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1582 nav-item"><a title="Content Library" href="/content-library" class="dropdown-item">Content Library</a></li>
+						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1582" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1582 nav-item"><a title="Yugabyte University" href="/university" class="dropdown-item">Yugabyte University</a></li>
 					</ul>
 				</li>
 				<hr />
@@ -87,7 +92,18 @@
 				</li>
 				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-601" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-601 nav-item">
 					<div class="expandable-header">
-						<a title="Community" href="/community" class="nav-link" style="width: 100%">Community</a>
+						<a title="Community" href="#" class="nav-link" style="width: 100%">Community</a>
+          	<div class="action-dropdown open">
+							<i class="fa fa-angle-down"></i>
+							<i class="fa fa-angle-up"></i>
+						</div>
+					</div>
+					<ul class="sub-nav-menu" aria-labelledby="menu-item-dropdown-12" role="menu">
+            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Community Overview" href="/community" class="dropdown-item">Community Overview</a></li>
+            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Slack" href="/slack" class="dropdown-item">Slack</a></li>
+						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1540 nav-item"><a title="GitHub" href="https://github.com/YugaByte/yugabyte-db" class="dropdown-item">GitHub</a></li>
+						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1638" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1639 nav-item"><a title="Events" href="/events" class="dropdown-item">Events</a></li>
+		 			</ul>
 				</li>				
 				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-910" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home active menu-item-910 nav-item">
 					<div class="expandable-header">
@@ -111,7 +127,7 @@
 				</li>
 				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-908" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-908 nav-item">
 					<div class="expandable-header">
-						<a title="Resources" href="/all-resources/resource-parent" class="nav-link" id="menu-item-dropdown-908">Resources</a>
+						<a title="Resources" href="#" class="nav-link" id="menu-item-dropdown-908">Resources</a>
 						<div class="action-dropdown open">
 							<i class="fa fa-angle-down"></i>
 							<i class="fa fa-angle-up"></i>
@@ -120,10 +136,8 @@
 					<ul class="sub-nav-menu" aria-labelledby="menu-item-dropdown-908" role="menu">
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1034" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1034 nav-item"><a title="Blog" href="https://blog.yugabyte.com/" class="dropdown-item">Blog</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-16" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16 nav-item"><a title="Docs" href="https://docs.yugabyte.com/" class="dropdown-item">Docs</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Slack" href="http://yugabyte.com/slack" class="dropdown-item">Slack</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1540 nav-item"><a title="GitHub" href="https://github.com/YugaByte/yugabyte-db" class="dropdown-item">GitHub</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1638" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1639 nav-item"><a title="Events" href="https://yugabyte.com/events" class="dropdown-item">Events</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1582" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1582 nav-item"><a title="Content Library" href="/content-library" class="dropdown-item">Content Library</a></li>
+						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1582" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1582 nav-item"><a title="Yugabyte University" href="/university" class="dropdown-item">Yugabyte University</a></li>
 					</ul>
 				</li>
 			</ul>
