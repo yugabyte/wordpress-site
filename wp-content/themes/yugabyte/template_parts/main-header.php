@@ -29,21 +29,13 @@
 				</li>
 				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-601" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-601 nav-item"><a title="Community" href="#" class="nav-link">Community</a>
 					<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-12" role="menu">
-            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Community Overview" href="/community" class="dropdown-item">Community Overview</a></li>
+            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Get Involved" href="/community" class="dropdown-item">Get Involved</a></li>
             <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Slack" href="/slack" class="dropdown-item">Slack</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1540 nav-item"><a title="GitHub" href="https://github.com/YugaByte/yugabyte-db" class="dropdown-item">GitHub</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1638" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1639 nav-item"><a title="Events" href="/events" class="dropdown-item">Events</a></li>
 					</ul>
 			  </li>				
 				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-910" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home active menu-item-910 nav-item"><a title="Success Stories" href="/success-stories" class="nav-link">Success Stories</a></li>
-				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-13 nav-item"><a title="Use Cases" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-13">Use Cases</a>
-					<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-14" role="menu">
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-844 nav-item"><a title="Globally Distributed Applications" href="/globally-distributed-applications" class="dropdown-item">Globally Distributed Applications</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-841 nav-item"><a title="Real-Time Streaming &amp; Analytics" href="/real-time-streaming-and-analytics" class="dropdown-item">Real-Time Streaming &amp; Analytics</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-791 nav-item"><a title="Planet-Scale SQL" href="/planet-scale-sql" class="dropdown-item">Planet-Scale SQL</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-843 nav-item"><a title="Transactional NoSQL" href="/transactional-nosql" class="dropdown-item">Transactional NoSQL</a></li>
-					</ul>
-				</li>
 				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-908" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-908 nav-item"><a title="Resources" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-908">Resources</a>
 					<ul class="dropdown-menu" aria-labelledby="menu-item-dropdown-908" role="menu">
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1034" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1034 nav-item"><a title="Blog" href="https://blog.yugabyte.com/" class="dropdown-item">Blog</a></li>
@@ -99,7 +91,7 @@
 						</div>
 					</div>
 					<ul class="sub-nav-menu" aria-labelledby="menu-item-dropdown-12" role="menu">
-            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Community Overview" href="/community" class="dropdown-item">Community Overview</a></li>
+            <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Get Involved" href="/community" class="dropdown-item">Get Involved</a></li>
             <li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1398" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1398 nav-item"><a title="Slack" href="/slack" class="dropdown-item">Slack</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1540" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1540 nav-item"><a title="GitHub" href="https://github.com/YugaByte/yugabyte-db" class="dropdown-item">GitHub</a></li>
 						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-1638" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1639 nav-item"><a title="Events" href="/events" class="dropdown-item">Events</a></li>
@@ -109,21 +101,6 @@
 					<div class="expandable-header">
 						<a title="Success Stories" href="/success-stories" class="nav-link" style="width: 100%">Success Stories</a>
 					</div>
-				</li>
-				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-13" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children dropdown menu-item-13 nav-item">
-					<div class="expandable-header">
-						<a title="Use Cases" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link" id="menu-item-dropdown-13">Use Cases</a>
-						<div class="action-dropdown open">
-							<i class="fa fa-angle-down"></i>
-							<i class="fa fa-angle-up"></i>
-						</div>
-					</div>
-					<ul class="sub-nav-menu" aria-labelledby="menu-item-dropdown-14" role="menu">
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-844" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-844 nav-item"><a title="Globally Distributed Applications" href="/globally-distributed-applications" class="dropdown-item">Globally Distributed Applications</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-841" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-841 nav-item"><a title="Real-Time Streaming &amp; Analytics" href="/real-time-streaming-and-analytics" class="dropdown-item">Real-Time Streaming &amp; Analytics</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-791" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-791 nav-item"><a title="Planet-Scale SQL" href="/planet-scale-sql" class="dropdown-item">Planet-Scale SQL</a></li>
-						<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-843" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-843 nav-item"><a title="Transactional NoSQL" href="/transactional-nosql" class="dropdown-item">Transactional NoSQL</a></li>
-					</ul>
 				</li>
 				<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" id="menu-item-908" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-has-children dropdown menu-item-908 nav-item">
 					<div class="expandable-header">
