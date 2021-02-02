@@ -19,6 +19,9 @@ wp-content/wp-cache-config.php
 wp-content/cache/*
 wp-content/cache/supercache/*
 
+# local MAMP environment
+wp-config-LOCAL-MAMP.php
+
 # wpengine specific
 .smushit-status
 .gitattributes
@@ -64,6 +67,7 @@ wp-content/plugins
 /wp-admin
 /wp-includes
 /wp-content/index.php
+/wp-content/debug.log
 /wp-content/themes/twentyten
 /wp-content/themes/twentyeleven
 /wp-content/themes/twentytwelve
