@@ -782,6 +782,10 @@ msgstr "Eliminazione del form fallita."
 msgid "Dismiss this notice."
 msgstr "Chiudi questo avviso."
 
+#: includes/settings.php:1424
+msgid "Currently, you do not have write permission for <i>%s</i>. For instructions on how to fix this, please read <a target=\"_blank\" href=\"%s\">our guide</a>."
+msgstr "Al momento non disponi dei permessi di scrittura per <i>%s</i>. Leggi la <a target=\"_blank\" href=\"%s\">nostra guida</a> per istruzioni su come risolvere il problema."
+
 #, fuzzy
 #~| msgid "Settings applied successfully"
 #~ msgid "Forms detected successfully."

@@ -3,14 +3,14 @@ Contributors: nsp-code, tdgu
 Donate link: http://www.nsp-code.com/donate.php
 Tags: post order, posts order, sort, post sort, posts sort, post type order, custom order, admin posts order
 Requires at least: 2.8
-Tested up to: 5.3
-Stable tag: 1.9.4.2
+Tested up to: 5.6
+Stable tag: 1.9.5.4
 
 Post Order and custom Post Type Objects (custom post types) using a Drag and Drop Sortable JavaScript AJAX interface or default WordPress dashboard. 
 
 == Description ==
 
-<strong>Over 3.2 MILLIONS DOWNLOADS and near PERFECT rating out of 200 REVIEWS</strong>. <br />
+<strong>Over 4 MILLIONS DOWNLOADS and near PERFECT rating out of 200 REVIEWS</strong>. <br />
 A powerful plugin, Order Posts and Post Types Objects using a Drag and Drop Sortable JavaScript capability. 
 
 The order can be customized within **default WordPress post type archive list page** or **a separate Re-Order interface** which display all objects.
@@ -93,6 +93,28 @@ Consider upgrading to our advanced version of this plugin at a very resonable pr
 
 
 == Change Log ==
+
+= 1.9.5.4 =
+  - Fix PHP implode() notice
+  - Ensure the drag & drop interface show for correct post types, non hierarchically to ensure correct functionality
+  - WordPress 5.6 compatibility tag
+
+= 1.9.5.2 =
+  - Clean post cache on order update to allow menu_order to change on cached data
+  - WordPress 5.5 compatibility tag
+
+= 1.9.5.1 =
+  - Fix: Outputs the admin save notice through admin_notices filter
+
+= 1.9.5 =
+  - Fix: disable drag & drop within taxonomies interfaces; fix WooCommerce attributes sort issue
+  - Reorder interface slight styles improvements
+  - Compatibility tag update for WordPress 5.4.2
+
+= 1.9.4.3 =
+  - Option text translation update
+  - Changed the posts class to to wp-list-table when applying sortable for better compatibility  
+  - Compatibility tag update for WordPress 5.4
 
 = 1.9.4.2 =
   - Compatibility tag update for WordPress 5.3

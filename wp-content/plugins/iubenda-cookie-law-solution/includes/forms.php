@@ -462,9 +462,15 @@ class iubenda_Forms {
 							if ( $result )
 								$new_forms['new'] = $result;
 						} else {
-							// check for fields changes
-							$new_fields = array_merge( array_diff( $formdata['form_fields'], $exists->form_fields ), array_diff( $exists->form_fields, $formdata['form_fields'] ) );
-							
+							// Is multi dimensions array
+							// Check if the existing form fields is not equal the new form fields
+							if ( is_array( current( $formdata['form_fields'] ) ) ) {
+								$new_fields = md5( json_encode( $this->array_dot( $formdata['form_fields'] ) ) ) !== md5( json_encode( $this->array_dot( $exists->form_fields ) ) );
+							}else{
+								// check for fields changes
+								$new_fields = array_merge( array_diff( $formdata['form_fields'], $exists->form_fields ), array_diff( $exists->form_fields, $formdata['form_fields'] ) );
+							}
+
 							if ( $new_fields ) {
 								$new_forms['updated'] = $exists->ID;
 								
@@ -505,6 +511,9 @@ class iubenda_Forms {
 			'file',
 			'quiz'
 		) );
+
+		// Do what you want before preparing the form
+		do_action("iub_before_call_{$source}_forms");
 
 		switch ( $source ) {
 			case 'wpforms' :
@@ -714,6 +723,14 @@ class iubenda_Forms {
 				// Create an abstract order
 				WC()->order  = new WC_Order;
 
+				/**
+				 * Load notice function to be compatible with custom themes
+				 * that request notice functions in templates
+				 */
+				if ( file_exists( WC_ABSPATH . 'includes/wc-notice-functions.php' ) ) {
+					include_once WC_ABSPATH . 'includes/wc-notice-functions.php';
+				}
+
 				wc_get_template(
 					'checkout/form-checkout.php', array(
 						'checkout' => WC()->checkout()
@@ -780,6 +797,12 @@ class iubenda_Forms {
 
 					// Simple HTML Dom parser
 					} else {
+
+						// Ensure helper class were loaded
+						if ( ! function_exists( 'str_get_html' ) ) {
+							require_once( IUBENDA_PLUGIN_PATH . 'iubenda-cookie-class/simple_html_dom.php' );
+						}
+
 						$html = str_get_html( $checkout_form, $lowercase = true, $force_tags_closed = true, $strip = false );
 
 						if ( is_object( $html ) ) {
@@ -895,6 +918,12 @@ class iubenda_Forms {
 
 					// Simple HTML Dom parser
 					} else {
+
+						// Ensure helper class were loaded
+						if ( ! function_exists( 'str_get_html' ) ) {
+							require_once( IUBENDA_PLUGIN_PATH . 'iubenda-cookie-class/simple_html_dom.php' );
+						}
+
 						$html = str_get_html( $comment_form, $lowercase = true, $force_tags_closed = true, $strip = false );
 
 						if ( is_object( $html ) ) {
@@ -964,6 +993,28 @@ class iubenda_Forms {
 
 		// kick back results
 		return $form;
+	}
+
+	/**
+	 * Convert nested array into one level
+	 *
+	 * @param  $array
+	 * @param string $prepend
+	 *
+	 * @return array
+	 */
+	public function array_dot( $array, $prepend = '' ) {
+		$results = array();
+
+		foreach ( $array as $key => $value ) {
+			if ( is_array( $value ) && ! empty( $value ) ) {
+				$results = array_merge( $results, $this->array_dot( $value, $prepend . $key . '.' ) );
+			} else {
+				$results[ $prepend . $key ] = $value;
+			}
+		}
+
+		return $results;
 	}
 
 }

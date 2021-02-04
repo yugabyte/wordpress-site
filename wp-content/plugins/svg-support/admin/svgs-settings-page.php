@@ -30,13 +30,13 @@
 				<h3><span><?php _e( 'Send Some Love', 'svg-support' ); ?></span></h3>
 				<div class="inside">
 
-					<p><?php _e( 'SVG Support has grown to be installed on over 100,000 active websites. That\'s insane! It\'s developed and maintained by one person alone. If you find it useful, please consider donating to help keep it going. I truly appreciate any contribution.', 'svg-support' ); ?></p>
+					<p><?php _e( 'SVG Support has grown to be installed on 300,000+ active websites. That\'s insane! It\'s developed and maintained by one person alone. If you find it useful, please consider donating to help keep it going. I truly appreciate any contribution.', 'svg-support' ); ?></p>
 					<p><strong>
 						<?php _e( 'BTC: 1qF8r2HkTLifND7WLGfWmvxfXc9ze55DZ', 'svg-support' ); ?><br/>
 						<?php _e( 'LTC: LUnQPJrSk6cVFmMqBMv5FAqweJbnzRUz4o', 'svg-support' ); ?><br/>
 						<?php _e( 'ETH: 0x599695Eb51aFe2e5a0DAD60aD9c89Bc8f10B54f4', 'svg-support' ); ?>
 					</strong></p>
-					<p><?php _e( 'Or if you\'re old school, you can', 'svg-support' ); ?> <a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9R7JERS82EQQ"><?php _e( 'Donate using PayPal', 'svg-support' ); ?></a></p>
+					<p><?php _e( 'You can also', 'svg-support' ); ?> <a target="_blank" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9R7JERS82EQQ&source=url"><?php _e( 'Donate using PayPal', 'svg-support' ); ?></a></p>
 
 				</div> <!-- .inside -->
 
@@ -251,6 +251,15 @@
 						<div class="inside">
 							<p><?php _e( 'If you like <strong>SVG Support</strong> please consider leaving a', 'svg-support' ); ?> <a href="https://wordpress.org/support/view/plugin-reviews/svg-support?filter=5#postform" target="_blank" class="svgs-rating-link">&#9733;&#9733;&#9733;&#9733;&#9733;</a> <?php _e( 'rating.', 'svg-support' ); ?><br><?php _e( 'A huge thanks in advance!', 'svg-support' ); ?></p>
 							<p><a href="https://wordpress.org/support/view/plugin-reviews/svg-support?filter=5#postform" target="_blank" class="button-primary">Leave a rating</a></p>
+						</div> <!-- .inside -->
+					</div> <!-- .postbox -->
+
+					<div class="postbox">
+						<h3><span><?php _e( 'Having Issues?', 'svg-support' ); ?></span></h3>
+						<div class="inside">
+							<p><?php _e( 'I\'m always happy to help out!', 'svg-support' ); ?>
+								<br><?php _e( 'Support is handled exlusively through WordPress.org by my one man team - me.', 'svg-support' ); ?></p>
+							<p><a href="https://wordpress.org/support/plugin/svg-support/" target="_blank" class="button-primary">Get Support</a></p>
 						</div> <!-- .inside -->
 					</div> <!-- .postbox -->
 

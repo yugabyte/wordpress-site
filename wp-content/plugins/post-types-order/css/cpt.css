@@ -1,8 +1,8 @@
 #order-post-type #sortable { list-style-type: none; margin: 10px 0 0; padding: 0; width: 100%; }
 #order-post-type #sortable ul { margin-left:20px; list-style: none; }
-#order-post-type #sortable li { padding: 7px 10px; margin: 4px 0px;  border: 1px solid #DDDDDD; cursor: move; -moz-border-radius:6px; background-color: #f9f9f9;}
-#order-post-type #sortable li:nth-child(2n+1) {    background-color: #fff !important;}
-#order-post-type #sortable li span { display: block; color:#555; font-size:13px;}
+#order-post-type #sortable li { padding: 10px; margin: 3px 0px;  border-bottom: 1px solid #f4f4f4;border-left: 4px solid #ccd0d4; cursor: move; background-color: #FFF}
+#order-post-type #sortable li:nth-child(2n+1) {    background-color: #f9f9f9 !important;}
+#order-post-type #sortable li span { display: block; font-size:14px;}
 #order-post-type #sortable li.placeholder{border: dashed 2px #ccc;height:18px; background-color: #FFF;}
 
 #icon-settings {background-image:url("../images/admin-icon-settings.gif");background-repeat:no-repeat;}

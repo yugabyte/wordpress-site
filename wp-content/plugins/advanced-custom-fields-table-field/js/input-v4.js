@@ -4,7 +4,7 @@
 
 		var t = this;
 
-		t.version = '1.3.9';
+		t.version = '1.3.10';
 
 		t.param = {};
 
@@ -706,7 +706,7 @@
 			p.obj_root = p.obj_row.parents( '.acf-table-root' );
 			p.obj_table = p.obj_root.find( '.acf-table-table' );
 			p.obj_table_rows = p.obj_table.children();
-			col_amount = p.obj_table.find( '.acf-table-top-cell' ).size();
+			col_amount = p.obj_table.find( '.acf-table-top-cell' ).length;
 			that_index = p.obj_row.index();
 
 			for ( i = 0; i < col_amount; i++ ) {

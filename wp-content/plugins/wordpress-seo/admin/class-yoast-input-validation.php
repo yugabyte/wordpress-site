@@ -55,7 +55,7 @@ class Yoast_Input_Validation {
 		foreach ( $errors as $error ) {
 			// For now, filter the admin title only in the Yoast SEO settings pages.
 			if ( self::is_yoast_option_group_name( $error['setting'] ) && $error['code'] !== 'settings_updated' ) {
-				$error_count++;
+				++$error_count;
 			}
 		}
 
@@ -111,11 +111,6 @@ class Yoast_Input_Validation {
 				/* translators: %s: additional message with the submitted invalid value */
 				esc_html__( 'Please check the format of the Facebook Page URL you entered. %s', 'wordpress-seo' ),
 				self::get_dirty_value_message( 'facebook_site' )
-			),
-			'fbadminapp'      => sprintf(
-				/* translators: %s: additional message with the submitted invalid value */
-				esc_html__( 'The Facebook App ID you entered doesn\'t exist. %s', 'wordpress-seo' ),
-				self::get_dirty_value_message( 'fbadminapp' )
 			),
 			'googleverify'    => sprintf(
 				/* translators: %s: additional message with the submitted invalid value */
@@ -314,7 +309,7 @@ class Yoast_Input_Validation {
 			return sprintf(
 				/* translators: %s: form value as submitted. */
 				esc_html__( 'The submitted value was: %s', 'wordpress-seo' ),
-				$dirty_value
+				esc_html( $dirty_value )
 			);
 		}
 

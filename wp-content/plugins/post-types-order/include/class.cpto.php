@@ -258,12 +258,19 @@
                     $screen = get_current_screen();
                         
                     //check if the right interface
-                    if(!isset($screen->post_type)   ||  empty($screen->post_type))
+                    if( !isset( $screen->post_type )   ||  empty($screen->post_type))
+                        return;
+                    
+                    if( isset( $screen->taxonomy ) && !empty($screen->taxonomy) )
+                        return;
+                    
+                    //check if post type is sortable
+                    if(isset($options['show_reorder_interfaces'][$screen->post_type]) && $options['show_reorder_interfaces'][ $screen->post_type ] != 'show')
                         return;
                         
-                    //check if post type is sortable
-                    if(isset($options['show_reorder_interfaces'][$screen->post_type]) && $options['show_reorder_interfaces'][$screen->post_type] != 'show')
-                        return;
+                    //not for hierarhical
+                    if ( is_post_type_hierarchical( $screen->post_type ) )
+                        return; 
                     
                     //if is taxonomy term filter return
                     if(is_category()    ||  is_tax())
@@ -292,7 +299,8 @@
                     
                     // Localize the script with new data
                     $CPTO_variables = array(
-                                                'archive_sort_nonce' => wp_create_nonce( 'CPTO_archive_sort_nonce_' . $userdata->ID)
+                                                'post_type'             =>  $screen->post_type,
+                                                'archive_sort_nonce'    =>  wp_create_nonce( 'CPTO_archive_sort_nonce_' . $userdata->ID) 
                                             );
                     wp_localize_script( 'cpto', 'CPTO', $CPTO_variables );
 
@@ -424,7 +432,7 @@
                     
                     //retrieve a list of all objects
                     $mysql_query    =   $wpdb->prepare("SELECT ID FROM ". $wpdb->posts ." 
-                                                            WHERE post_type = %s AND post_status IN ('publish', 'pending', 'draft', 'private', 'future')
+                                                            WHERE post_type = %s AND post_status IN ('publish', 'pending', 'draft', 'private', 'future', 'inherit')
                                                             ORDER BY menu_order, post_date DESC", $post_type);
                     $results        =   $wpdb->get_results($mysql_query);
                     
@@ -467,6 +475,8 @@
                             $data = apply_filters('pto/save-ajax-order', $data, $menu_order, $id);
                             
                             $wpdb->update( $wpdb->posts, $data, array('ID' => $id) );
+                            
+                            clean_post_cache( $id );
                         }
                         
                     //trigger action completed

@@ -44,8 +44,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 		'twitter_card_type'     => 'summary_large_image',
 		'youtube_url'           => '',
 		'wikipedia_url'         => '',
-		// Form field, but not always available.
-		'fbadminapp'            => '', // Facebook app ID.
 	];
 
 	/**
@@ -56,7 +54,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 	public $ms_exclude = [
 		/* Privacy. */
 		'pinterestverify',
-		'fbadminapp',
 	];
 
 	/**
@@ -174,7 +171,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 						 * with the exception of underscores.
 						 *
 						 * @link https://support.twitter.com/articles/101299-why-can-t-i-register-certain-usernames
-						 * @link https://dev.twitter.com/docs/platform-objects/users
 						 */
 						if ( preg_match( '`^[A-Za-z0-9_]{1,25}$`', $twitter_id ) ) {
 							$clean[ $key ] = $twitter_id;
@@ -218,10 +214,6 @@ class WPSEO_Option_Social extends WPSEO_Option {
 				case 'opengraph':
 				case 'twitter':
 					$clean[ $key ] = ( isset( $dirty[ $key ] ) ? WPSEO_Utils::validate_bool( $dirty[ $key ] ) : false );
-					break;
-
-				case 'fbadminapp':
-					$this->validate_facebook_app_id( $key, $dirty, $old, $clean );
 					break;
 			}
 		}

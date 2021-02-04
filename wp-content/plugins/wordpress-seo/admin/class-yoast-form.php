@@ -93,7 +93,12 @@ class Yoast_Form {
 				$hidden_fields_cb = 'settings_fields';
 			}
 
-			echo '<form action="' . esc_url( $action_url ) . '" method="post" id="wpseo-conf"' . $enctype . ' accept-charset="' . esc_attr( get_bloginfo( 'charset' ) ) . '">';
+			echo '<form action="' .
+				esc_url( $action_url ) .
+				'" method="post" id="wpseo-conf"' .
+				$enctype . ' accept-charset="' .
+				esc_attr( get_bloginfo( 'charset' ) ) .
+				'" novalidate="novalidate">';
 			call_user_func( $hidden_fields_cb, $option_long_name );
 		}
 		$this->set_option( $option );
@@ -241,7 +246,7 @@ class Yoast_Form {
 	 * @param bool   $label_left Whether the label should be left (true) or right (false).
 	 */
 	public function checkbox( $var, $label, $label_left = false ) {
-		$val = WPSEO_Options::get( $var, false );
+		$val = $this->get_field_value( $var, false );
 
 		if ( $val === true ) {
 			$val = 'on';
@@ -273,7 +278,7 @@ class Yoast_Form {
 	 * @param string $labels   The labels to show for the variable.
 	 */
 	public function checkbox_list( $variable, $labels ) {
-		$values = WPSEO_Options::get( $variable, [] );
+		$values = $this->get_field_value( $variable, [] );
 
 		foreach ( $labels as $name => $label ) {
 			printf(
@@ -306,7 +311,7 @@ class Yoast_Form {
 	 * @param bool   $strong  Whether the visual label is displayed in strong text. Default is false.
 	 */
 	public function light_switch( $var, $label, $buttons = [], $reverse = true, $help = '', $strong = false ) {
-		$val = WPSEO_Options::get( $var, false );
+		$val = $this->get_field_value( $var, false );
 
 		if ( $val === true ) {
 			$val = 'on';
@@ -333,8 +338,8 @@ class Yoast_Form {
 		'<label class="', $class, '"><b class="switch-yoast-seo-jaws-a11y">&nbsp;</b>',
 		'<input type="checkbox" aria-labelledby="', esc_attr( $var . '-label' ), '" id="', esc_attr( $var ), '" name="', esc_attr( $this->option_name ), '[', esc_attr( $var ), ']" value="on"', checked( $val, 'on', false ), disabled( $this->is_control_disabled( $var ), true, false ), '/>',
 		'<span aria-hidden="true">
-			<span>', esc_html( $off_button ) ,'</span>
-			<span>', esc_html( $on_button ) ,'</span>
+			<span>', esc_html( $off_button ), '</span>
+			<span>', esc_html( $on_button ), '</span>
 			<a></a>
 		 </span>
 		 </label><div class="clear"></div></div>';
@@ -351,6 +356,7 @@ class Yoast_Form {
 	 * @param array|string $attr  Extra attributes to add to the input field. Can be class, disabled, autocomplete.
 	 */
 	public function textinput( $var, $label, $attr = [] ) {
+		$type = 'text';
 		if ( ! is_array( $attr ) ) {
 			$attr = [
 				'class'    => $attr,
@@ -358,12 +364,16 @@ class Yoast_Form {
 			];
 		}
 
-		$defaults   = [
+		$defaults = [
 			'placeholder' => '',
 			'class'       => '',
 		];
-		$attr       = wp_parse_args( $attr, $defaults );
-		$val        = WPSEO_Options::get( $var, '' );
+		$attr     = wp_parse_args( $attr, $defaults );
+		$val      = $this->get_field_value( $var, '' );
+		if ( isset( $attr['type'] ) && $attr['type'] === 'url' ) {
+			$val  = urldecode( $val );
+			$type = 'url';
+		}
 		$attributes = isset( $attr['autocomplete'] ) ? ' autocomplete="' . esc_attr( $attr['autocomplete'] ) . '"' : '';
 		if ( isset( $attr['disabled'] ) && $attr['disabled'] ) {
 			$attributes .= ' disabled';
@@ -383,7 +393,7 @@ class Yoast_Form {
 		Yoast_Input_Validation::set_error_descriptions();
 		$aria_attributes .= Yoast_Input_Validation::get_the_aria_describedby_attribute( $var );
 
-		echo '<input' . $attributes . $aria_attributes . ' class="textinput ' . esc_attr( $attr['class'] ) . '" placeholder="' . esc_attr( $attr['placeholder'] ) . '" type="text" id="', esc_attr( $var ), '" name="', esc_attr( $this->option_name ), '[', esc_attr( $var ), ']" value="', esc_attr( $val ), '"', disabled( $this->is_control_disabled( $var ), true, false ), '/>', '<br class="clear" />';
+		echo '<input' . $attributes . $aria_attributes . ' class="textinput ' . esc_attr( $attr['class'] ) . '" placeholder="' . esc_attr( $attr['placeholder'] ) . '" type="' . $type . '" id="', esc_attr( $var ), '" name="', esc_attr( $this->option_name ), '[', esc_attr( $var ), ']" value="', esc_attr( $val ), '"', disabled( $this->is_control_disabled( $var ), true, false ), '/>', '<br class="clear" />';
 		echo Yoast_Input_Validation::get_the_error_description( $var );
 	}
 
@@ -409,7 +419,7 @@ class Yoast_Form {
 			'class' => '',
 		];
 		$attr     = wp_parse_args( $attr, $defaults );
-		$val      = WPSEO_Options::get( $var, '' );
+		$val      = $this->get_field_value( $var, '' );
 
 		$this->label(
 			$label,
@@ -430,7 +440,7 @@ class Yoast_Form {
 	 * @param string $id  The ID of the element.
 	 */
 	public function hidden( $var, $id = '' ) {
-		$val = WPSEO_Options::get( $var, '' );
+		$val = $this->get_field_value( $var, '' );
 		if ( is_bool( $val ) ) {
 			$val = ( $val === true ) ? 'true' : 'false';
 		}
@@ -471,7 +481,7 @@ class Yoast_Form {
 		}
 
 		$select_name       = esc_attr( $this->option_name ) . '[' . esc_attr( $var ) . ']';
-		$active_option     = WPSEO_Options::get( $var, '' );
+		$active_option     = $this->get_field_value( $var, '' );
 		$wrapper_start_tag = '';
 		$wrapper_end_tag   = '';
 
@@ -504,7 +514,7 @@ class Yoast_Form {
 	 * @param string $label The label to show for the variable.
 	 */
 	public function file_upload( $var, $label ) {
-		$val = WPSEO_Options::get( $var, '' );
+		$val = $this->get_field_value( $var, '' );
 		if ( is_array( $val ) ) {
 			$val = $val['url'];
 		}
@@ -537,8 +547,8 @@ class Yoast_Form {
 	 * @param string $label Label message.
 	 */
 	public function media_input( $var, $label ) {
-		$val      = WPSEO_Options::get( $var, '' );
-		$id_value = WPSEO_Options::get( $var . '_id', '' );
+		$val      = $this->get_field_value( $var, '' );
+		$id_value = $this->get_field_value( $var . '_id', '' );
 
 		$var_esc = esc_attr( $var );
 
@@ -599,7 +609,7 @@ class Yoast_Form {
 		if ( ! is_array( $values ) || $values === [] ) {
 			return;
 		}
-		$val = WPSEO_Options::get( $var, false );
+		$val = $this->get_field_value( $var, false );
 
 		$var_esc = esc_attr( $var );
 
@@ -656,7 +666,7 @@ class Yoast_Form {
 		if ( ! is_array( $values ) || $values === [] ) {
 			return;
 		}
-		$val = WPSEO_Options::get( $var, false );
+		$val = $this->get_field_value( $var, false );
 		if ( $val === true ) {
 			$val = 'on';
 		}
@@ -686,7 +696,7 @@ class Yoast_Form {
 			$key_esc = esc_attr( $key );
 			$for     = $var_esc . '-' . $key_esc;
 			echo '<input type="radio" id="' . $for . '" name="' . esc_attr( $this->option_name ) . '[' . $var_esc . ']" value="' . $key_esc . '" ' . checked( $val, $key_esc, false ) . disabled( $this->is_control_disabled( $var ), true, false ) . ' />',
-			'<label for="', $for, '">', esc_html( $value ), $screen_reader_text_html,'</label>';
+			'<label for="', $for, '">', esc_html( $value ), $screen_reader_text_html, '</label>';
 		}
 
 		echo '<a></a></div></fieldset><div class="clear"></div></div>' . PHP_EOL . PHP_EOL;
@@ -742,6 +752,23 @@ class Yoast_Form {
 	}
 
 	/**
+	 * Retrieves the value for the form field.
+	 *
+	 * @param string $field_name    The field name to retrieve the value for.
+	 * @param string $default_value The default value, when field has no value.
+	 *
+	 * @return mixed|null The retrieved value.
+	 */
+	protected function get_field_value( $field_name, $default_value = null ) {
+		// On multisite subsites, the Usage tracking feature should always be set to Off.
+		if ( $this->is_tracking_on_subsite( $field_name ) ) {
+			return false;
+		}
+
+		return WPSEO_Options::get( $field_name, $default_value );
+	}
+
+	/**
 	 * Checks whether a given control should be disabled.
 	 *
 	 * @param string $var The variable within the option to check whether its control should be disabled.
@@ -751,6 +778,11 @@ class Yoast_Form {
 	protected function is_control_disabled( $var ) {
 		if ( $this->option_instance === null ) {
 			return false;
+		}
+
+		// Disable the Usage tracking feature for multisite subsites.
+		if ( $this->is_tracking_on_subsite( $var ) ) {
+			return true;
 		}
 
 		return $this->option_instance->is_disabled( $var );
@@ -768,28 +800,24 @@ class Yoast_Form {
 			return '';
 		}
 
-		return '<p class="disabled-note">' . esc_html__( 'This feature has been disabled by the network admin.', 'wordpress-seo' ) . '</p>';
+		$disabled_message = esc_html__( 'This feature has been disabled by the network admin.', 'wordpress-seo' );
+
+		// The explanation to show when disabling the Usage tracking feature for multisite subsites.
+		if ( $this->is_tracking_on_subsite( $var ) ) {
+			$disabled_message = esc_html__( 'This feature has been disabled since subsites never send tracking data.', 'wordpress-seo' );
+		}
+		return '<p class="disabled-note">' . $disabled_message . '</p>';
 	}
 
-	/* ********************* DEPRECATED METHODS ********************* */
-
 	/**
-	 * Retrieve options based on whether we're on multisite or not.
+	 * Determines whether we are dealing with the Usage tracking feature on a multisite subsite.
+	 * This feature requires specific behavior for the toggle switch.
 	 *
-	 * @since 1.2.4
-	 * @since 2.0   Moved to this class.
-	 * @deprecated 8.4
-	 * @codeCoverageIgnore
+	 * @param string $feature_setting The feature setting.
 	 *
-	 * @return array The option's value.
+	 * @return boolean True if we are dealing with the Usage tracking feature on a multisite subsite.
 	 */
-	public function get_option() {
-		_deprecated_function( __METHOD__, 'WPSEO 8.4' );
-
-		if ( is_network_admin() ) {
-			return get_site_option( $this->option_name );
-		}
-
-		return get_option( $this->option_name );
+	protected function is_tracking_on_subsite( $feature_setting ) {
+		return ( $feature_setting === 'tracking' && ! is_network_admin() && ! is_main_site() );
 	}
 }

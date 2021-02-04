@@ -2,8 +2,8 @@
 Contributors: jonua
 Tags: acf table
 Requires at least: 5.3
-Tested up to: 5.3
-Stable tag: 1.3.9
+Tested up to: 5.4.1
+Stable tag: 1.3.10
 Requires PHP: 5.6
 License: GPLv2 or later
 
@@ -216,20 +216,20 @@ For now the way to go is using the Elementors shortcode Widget. Before you can u
     return $return;
 }
 
-add_shortcode( 'table', 'shortcode_acf_tablefield' );`
+add_shortcode( 'tablefield', 'shortcode_acf_tablefield' );`
 
 
 Then use the shortcode in a Elementors shortcode widget like this, to **insert a table from the current page or post**…
 
-`[table field-name="your table field name" table-class="my-table"]`
+`[tablefield field-name="your table field name" table-class="my-table"]`
 
 You also can **insert a table from another page or post**…
 
-`[table field-name="your table field name" post-id="123" table-class="my-table"]`
+`[tablefield field-name="your table field name" post-id="123" table-class="my-table"]`
 
 Or you can **insert a table from a ACF option page**…
 
-`[table field-name="your table field name" post-id="option" table-class="my-table"]`
+`[tablefield field-name="your table field name" post-id="option" table-class="my-table"]`
 
 = Updating a table using update_field() =
 
@@ -308,6 +308,10 @@ However, only when activated as a plugin will updates be available.
 
 
 == Changelog ==
+
+= 1.3.10 =
+* Fixes table cell content and caption update issue on ACF Gutenberg blocks
+* Replaces jQuery depricated size() methode by .length property
 
 = 1.3.9 =
 * Fixes broken ACF select field styles in WordPress 5.3.

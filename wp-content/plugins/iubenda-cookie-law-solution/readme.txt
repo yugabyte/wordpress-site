@@ -4,8 +4,8 @@ Donate link:
 Tags: cookies, cookie law, cookie policy, cookie banner, privacy policy, cookie consent, privacy, gdpr, eprivacy
 Requires at least: 4.0
 Requires PHP: 5.2.4
-Tested up to: 5.3.2
-Stable tag: 2.3.0
+Tested up to: 5.6.0
+Stable tag: 2.3.18
 License: MIT License
 License URI: http://opensource.org/licenses/MIT
 
@@ -17,7 +17,7 @@ This plugin is an All-in-One approach developed by iubenda, which includes funct
 
 == Cookie Solution ==
 
-This plugin drastically reduces the need for direct interventions in the code of the site by integrating with iubenda’s Cookie Solution. It provides a fully customizable cookie banner, dynamically generates a cookie policy to [match the services in use on your site](https://www.iubenda.com/en/help/19004-how-to-use-the-site-scanner-from-within-the-generator),  and, fully manages cookie-related consent – including the blocking of the most common widgets and third-party cookies before consent is received – in order to comply with the GDPR and ePrivacy. 
+This plugin drastically reduces the need for direct interventions in the code of the site by integrating with iubenda’s Cookie Solution. It provides a fully customizable cookie banner, dynamically generates a cookie policy to [match the services in use on your site](https://www.iubenda.com/en/help/19004-how-to-use-the-site-scanner-from-within-the-generator),  and, fully manages cookie-related consent – including the blocking of the most common widgets and third-party cookies before consent is received – in order to comply with the GDPR and ePrivacy.
 
 **Key features:**
 
@@ -75,7 +75,7 @@ This plugin drastically reduces the need for direct interventions in the code of
 
 == Consent Solution ==
 
-Maintaining valid records of consent is a vital part of privacy compliance in general, and it is specifically required under the GDPR. These records should include a userid, timestamp, consent proof, record of the consenting action, and the legal documents available to the user at the time of consent, among other things. This plugin **is THE most complete solution for recording, sorting and maintaining GDPR records of consent**. The plugin also boasts built-in compatibility with WordPress comment form, Contact Form 7 and WP Forms plugins for your convenience, but can be manually integrated with any type of web-form and can even store consent proofs for consents collected offline (e.g in-store sign-ups) via WP media upload.  
+Maintaining valid records of consent is a vital part of privacy compliance in general, and it is specifically required under the GDPR. These records should include a userid, timestamp, consent proof, record of the consenting action, and the legal documents available to the user at the time of consent, among other things. This plugin **is THE most complete solution for recording, sorting and maintaining GDPR records of consent**. The plugin also boasts built-in compatibility with WordPress comment form, Contact Form 7 and WP Forms plugins for your convenience, but can be manually integrated with any type of web-form and can even store consent proofs for consents collected offline (e.g in-store sign-ups) via WP media upload.
 
 **Key features:**
 
@@ -109,10 +109,10 @@ Our Cookie and Consent Solution plugin for WordPress simplifies and manages thes
 == Installation ==
 
 * Search in your WordPress plugins admin panel for “iubenda Cookie and Consent Solution”, install it;
-* Once the plugin is installed and activated, go to the Admin Panel → iubenda menu where you can select either the Cookie Solution or Consent Solution (depending on which you’d like to set up first). 
+* Once the plugin is installed and activated, go to the Admin Panel → iubenda menu where you can select either the Cookie Solution or Consent Solution (depending on which you’d like to set up first).
 * **For the Cookie Solution**, you will be asked to paste your script into that field – the script is generated from your iubenda account dashboard when you activate the solution. For more information on how to activate the Cookie Solution, see this article (https://www.iubenda.com/en/help/1177-cookie-solution-getting-started#banner).
 * At this point the plugin will begin to show your banner on which displays the legal text, the consent options and your cookie policy (link) to users who visit the site for the first time. No need for other configurations;
-* Furthermore, the plugin automatically recognizes and blocks cookies that get installed via an extensive list of services such as the YouTube video player, social widgets (e.g the Facebook Like Box) etc. on your site. The full list is included in the “details” above. 
+* Furthermore, the plugin automatically recognizes and blocks cookies that get installed via an extensive list of services such as the YouTube video player, social widgets (e.g the Facebook Like Box) etc. on your site. The full list is included in the “details” above.
 * Important note: Scripts can only be automatically blocked when generated from the server side (therefore processed by PHP via WordPress). Scripts that are added to the page via Javascript after page load must be blocked manually. Thankfully, this is fairly easy to do via the Custom Scripts field in the plugin console. Simply enter the custom script or iframe sources you'd like to block within the field, and click on the save changes button. You can find details, examples and further information [here](https://www.iubenda.com/en/help/1215-cookie-solution-wordpress-plugin-installation-guide#blocking-custom-scripts).
 * If you’d like to manually block a specific script using a manual “wrap” method, you can use the following:
 `<!--IUB-COOKIE-BLOCK-START-->
@@ -150,9 +150,73 @@ We will be very happy to receive feedback here: [Uservoice forum](https://suppor
 
 == Changelog ==
 
+= 2.3.18 =
+* Fix: Avoid overriding the purposes attr if it was set
+
+= 2.3.16 =
+* Fix: purpose evaluation for iframes blocking
+
+= 2.3.15 =
+* Fix: ConS saves the wrong terms & conditions legal_notice
+
+= 2.3.14 =
+* Tweak: Support WP 5.6
+
+= 2.3.13 =
+* Fix: Check script type before getting content in GTM
+
+= 2.3.12 =
+* Fix: Allow banner customization in AMP
+* Tweak: Add alert about lack of permissions on templates folder
+* Tweak: Add GA to per-purpose blocking support
+* Fix: Add per-purpose on inline script tags
+
+= 2.3.11 =
+* Fix: Move the FB connect to experience enhancement
+* Tweak: Add Google GPT to per-purpose blocking support in engines
+
+= 2.3.10 =
+* Add action (Hook) before rendering the source form
+* Change the AMP consent href
+
+= 2.3.9 =
+* Fix: Woocommerce custom theme support
+* Fix: Detect changes on WPforms
+
+= 2.3.8 =
+* Tweak: Add Google GPT to per-purpose blocking support
+* Fix: admin.js ready method deprecation
+
+= 2.3.7 =
+* Fix: admin.js ready method deprecation
+
+= 2.3.6 =
+* TCF v2 Support
+
+= 2.3.6-beta =
+* TCF v2 Support
+
+= 2.3.5 =
+* Security Fix: limit url sanitize to http protocols
+
+= 2.3.4 =
+* Security Fix: limit url sanitize to http protocols
+
+= 2.3.3 =
+* Fix: AddThis purpose category
+
+= 2.3.2 =
+* Fix: Configuration regular expression issue in some edge cases
+
+= 2.3.1 =
+* Fix: Error on AMP configuration during install in some edge cases
+* Fix: Invalid www detection during AMP configuration generation process
+* Fix: Regex for iubenda script url in AMP configuration
+* Tweak: Added noindex for generated AMP configuration file
+
 = 2.3.0 =
 * Fix: Multiple consent forms per page support
-* Fix: WP Forms checkbox field compatibility 
+* Fix: WP Forms checkbox field compatibility
 * Tweak: AMP consent geolocation support
 
 = 2.2.0 =
@@ -222,7 +286,7 @@ We will be very happy to receive feedback here: [Uservoice forum](https://suppor
 * Fix: iubenda script tags removed when Jetpack is active
 
 = 1.15.5 =
-* Fix: Skip parsing engine when scripts blocking is disabled 
+* Fix: Skip parsing engine when scripts blocking is disabled
 * Tweak: Update iubenda logo
 
 = 1.15.4 =
@@ -425,7 +489,5 @@ We will be very happy to receive feedback here: [Uservoice forum](https://suppor
 
 == Upgrade Notice ==
 
-= 2.3.0 =
-* Fix: Multiple consent forms per page support
-* Fix: WP Forms checkbox field compatibility 
-* Tweak: AMP consent geolocation support
+= 2.3.18 =
+* Fix: Avoid overriding the purposes attr if it was set

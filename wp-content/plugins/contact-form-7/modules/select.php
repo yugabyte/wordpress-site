@@ -40,7 +40,14 @@ function wpcf7_select_form_tag_handler( $tag ) {
 		$atts['aria-required'] = 'true';
 	}
 
-	$atts['aria-invalid'] = $validation_error ? 'true' : 'false';
+	if ( $validation_error ) {
+		$atts['aria-invalid'] = 'true';
+		$atts['aria-describedby'] = wpcf7_get_validation_error_reference(
+			$tag->name
+		);
+	} else {
+		$atts['aria-invalid'] = 'false';
+	}
 
 	$multiple = $tag->has_option( 'multiple' );
 	$include_blank = $tag->has_option( 'include_blank' );
@@ -112,7 +119,8 @@ function wpcf7_select_form_tag_handler( $tag ) {
 
 	$html = sprintf(
 		'<span class="wpcf7-form-control-wrap %1$s"><select %2$s>%3$s</select>%4$s</span>',
-		sanitize_html_class( $tag->name ), $atts, $html, $validation_error );
+		sanitize_html_class( $tag->name ), $atts, $html, $validation_error
+	);
 
 	return $html;
 }
@@ -126,18 +134,17 @@ add_filter( 'wpcf7_validate_select*', 'wpcf7_select_validation_filter', 10, 2 );
 function wpcf7_select_validation_filter( $result, $tag ) {
 	$name = $tag->name;
 
-	if ( isset( $_POST[$name] )
-	and is_array( $_POST[$name] ) ) {
-		foreach ( $_POST[$name] as $key => $value ) {
-			if ( '' === $value ) {
-				unset( $_POST[$name][$key] );
-			}
-		}
+	$has_value = isset( $_POST[$name] ) && '' !== $_POST[$name];
+
+	if ( $has_value and $tag->has_option( 'multiple' ) ) {
+		$vals = array_filter( (array) $_POST[$name], function( $val ) {
+			return '' !== $val;
+		} );
+
+		$has_value = ! empty( $vals );
 	}
 
-	$empty = ! isset( $_POST[$name] ) || empty( $_POST[$name] ) && '0' !== $_POST[$name];
-
-	if ( $tag->is_required() and $empty ) {
+	if ( $tag->is_required() and ! $has_value ) {
 		$result->invalidate( $tag, wpcf7_get_message( 'invalid_required' ) );
 	}
 
@@ -160,7 +167,7 @@ function wpcf7_tag_generator_menu( $contact_form, $args = '' ) {
 
 	$description = __( "Generate a form-tag for a drop-down menu. For more details, see %s.", 'contact-form-7' );
 
-	$desc_link = wpcf7_link( __( 'https://contactform7.com/checkboxes-radio-buttons-and-menus/', 'contact-form-7' ), __( 'Checkboxes, Radio Buttons and Menus', 'contact-form-7' ) );
+	$desc_link = wpcf7_link( __( 'https://contactform7.com/checkboxes-radio-buttons-and-menus/', 'contact-form-7' ), __( 'Checkboxes, radio buttons and menus', 'contact-form-7' ) );
 
 ?>
 <div class="control-box">

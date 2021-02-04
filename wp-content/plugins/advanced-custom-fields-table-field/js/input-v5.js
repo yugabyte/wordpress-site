@@ -4,7 +4,7 @@
 
 		var t = this;
 
-		t.version = '1.3.9';
+		t.version = '1.3.10';
 
 		t.param = {};
 
@@ -94,6 +94,8 @@
 			ajax: false,
 		};
 
+		t.tables = {};
+
 		t.state = {
 			'current_cell_obj': false,
 			'cell_editor_cell': false,
@@ -153,13 +155,28 @@
 
 		};
 
+		t.get_field_key = function( that ) {
+
+			return that.closest( '[data-key]').data( 'key' );
+		};
+
 		t.each_table = function( ) {
 
 			$( '.acf-field-table .acf-table-root' ).not( '.acf-table-rendered' ).each( function() {
 
 				var p = {};
-				p.obj_root = $( this ),
-				table = p.obj_root.find( '.acf-table-wrap' );
+
+				p.obj_root = $( this );
+
+				var that = $( this ),
+					field_key = t.get_field_key( that ),
+					table = p.obj_root.find( '.acf-table-wrap' );
+
+				// ADDS TABLE OBJECT {
+
+					t.tables[ field_key ] = p;
+
+				// }
 
 				if ( table.length > 0 ) {
 
@@ -183,7 +200,6 @@
 					p.obj_root.find( '.acf-table-remove-col' ).hide(),
 					p.obj_root.find( '.acf-table-remove-row' ).hide();
 				}
-
 			} );
 		};
 
@@ -214,7 +230,7 @@
 					var that = $( this ),
 						p = {};
 
-					p.obj_root = that.parents( '.acf-table-root' );
+					p.obj_root = that.closest( '.acf-table-root' );
 					p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 					t.data_get( p );
@@ -247,21 +263,40 @@
 
 				t.obj.body.on( 'change', '.acf-table-fc-opt-caption', function() {
 
-					var that = $( this ),
-						p = {};
+					var that = $( this );
+					t.caption_update( that );
+				} );
 
-					p.obj_root = that.parents( '.acf-table-root' );
-					p.obj_table = p.obj_root.find( '.acf-table-table' );
+				var interval;
 
-					t.data_get( p );
-					t.data_default( p );
+				t.obj.body.on( 'keyup', '.acf-table-fc-opt-caption', function() {
 
-					p.data.p.ca = that.val();
-					t.update_table_data_field( p );
+					clearInterval( interval );
+					var that = $( this );
+
+					interval = setInterval( function() {
+
+						t.caption_update( that );
+						clearInterval( interval );
+					}, 300 );
 
 				} );
 
 			// }
+		};
+
+		t.caption_update = function( that ) {
+
+			p = {};
+
+			p.obj_root = that.closest( '.acf-table-root' );
+			p.obj_table = p.obj_root.find( '.acf-table-table' );
+
+			t.data_get( p );
+			t.data_default( p );
+
+			p.data.p.ca = that.val();
+			t.update_table_data_field( p );
 		};
 
 		t.ui_event_new_flex_field = function() {
@@ -631,7 +666,7 @@
 
 				var that_index = p.obj_col.index();
 
-				p.obj_root = p.obj_col.parents( '.acf-table-root' );
+				p.obj_root = p.obj_col.closest( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 				$( p.obj_table.find( '.acf-table-top-row' ).children()[ that_index ] ).after( t.param.htmltable.top_cell.replace( '<!--ph-->', '' ) );
@@ -665,7 +700,7 @@
 					obj_rows = undefined,
 					cols_count = false;
 
-				p.obj_root = that.parents( '.acf-table-root' );
+				p.obj_root = that.closest( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 				p.obj_top = p.obj_root.find( '.acf-table-top-row' );
 				obj_rows = p.obj_table.find( '.acf-table-body-row' );
@@ -731,10 +766,10 @@
 				col_amount = 0,
 				body_cells_html = '';
 
-			p.obj_root = p.obj_row.parents( '.acf-table-root' );
+			p.obj_root = p.obj_row.closest( '.acf-table-root' );
 			p.obj_table = p.obj_root.find( '.acf-table-table' );
 			p.obj_table_rows = p.obj_table.children();
-			col_amount = p.obj_table.find( '.acf-table-top-cell' ).size();
+			col_amount = p.obj_table.find( '.acf-table-top-cell' ).length;
 			that_index = p.obj_row.index();
 
 			for ( i = 0; i < col_amount; i++ ) {
@@ -767,7 +802,7 @@
 					that = $( this ),
 					rows_count = false;
 
-				p.obj_root = that.parents( '.acf-table-root' );
+				p.obj_root = that.closest( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 				p.obj_rows = p.obj_root.find( '.acf-table-body-row' );
 
@@ -977,6 +1012,8 @@
 
 				t.cell_editor_save();
 			} );
+
+			t.cell_editor_update_event();
 		};
 
 		t.cell_editor_add_editor = function( p ) {
@@ -1074,6 +1111,47 @@
 			}
 		};
 
+		t.cell_editor_update_event = function() {
+
+			var interval;
+
+			t.obj.body.on( 'keyup', '.acf-table-cell-editor-textarea', function() {
+
+				clearInterval( interval );
+
+				interval = setInterval( function() {
+
+					t.cell_editor_update();
+					clearInterval( interval );
+				}, 300 );
+			} );
+
+		};
+
+		t.cell_editor_update = function() {
+
+			var cell_editor = t.obj.body.find( '.acf-table-cell-editor' ),
+				cell_editor_textarea = cell_editor.find( '.acf-table-cell-editor-textarea' ),
+				p = {},
+				cell_editor_val = '';
+
+			if ( typeof cell_editor_textarea.val() !== 'undefined' ) {
+
+				p.obj_root = cell_editor.closest( '.acf-table-root' );
+				p.obj_table = p.obj_root.find( '.acf-table-table' );
+
+				var cell_editor_val = cell_editor_textarea.val();
+
+				// prevent XSS injection
+				cell_editor_val = cell_editor_val.replace( /\<(script)/ig, '&#060;$1' );
+				cell_editor_val = cell_editor_val.replace( /\<\/(script)/ig, '&#060;/$1' );
+
+				cell_editor.next().html( cell_editor_val );
+
+				t.table_build_json( p );
+			}
+		};
+
 		t.cell_editor_save = function() {
 
 			var cell_editor = t.obj.body.find( '.acf-table-cell-editor' ),
@@ -1083,7 +1161,7 @@
 
 			if ( typeof cell_editor_textarea.val() !== 'undefined' ) {
 
-				p.obj_root = cell_editor.parents( '.acf-table-root' );
+				p.obj_root = cell_editor.closest( '.acf-table-root' );
 				p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 				var cell_editor_val = cell_editor_textarea.val();
@@ -1169,7 +1247,7 @@
 
 					var p = {};
 
-					p.obj_root = ui.item.parents( '.acf-table-root' );
+					p.obj_root = ui.item.closest( '.acf-table-root' );
 					p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 					t.table_left_labels( p );
@@ -1201,7 +1279,7 @@
 
 					p.end_index = ui.item.index();
 
-					p.obj_root = ui.item.parents( '.acf-table-root' );
+					p.obj_root = ui.item.closest( '.acf-table-root' );
 					p.obj_table = p.obj_root.find( '.acf-table-table' );
 
 					t.table_top_labels( p );
@@ -1232,7 +1310,11 @@
 
 			if ( p.field_context === 'block' ) {
 
-				p.obj_root.change();
+				setTimeout( function() {
+
+					p.obj_root.trigger( 'change' );
+
+				}, 0 );
 			}
 		};
 

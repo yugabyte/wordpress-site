@@ -19,12 +19,12 @@
     jQuery(document).ready(function()
         {
             
-            jQuery('table.posts #the-list').sortable({
+            jQuery('table.wp-list-table #the-list').sortable({
                                                         'items': 'tr',
                                                         'axis': 'y',
                                                         'update' : function(e, ui) {
                                                            
-                                                            var post_type           =   jQuery('input[name="post_type"]').val();
+                                                            var post_type           =   CPTO.post_type;
                                                             var order               =   jQuery('#the-list').sortable('serialize');
                                                             
                                                             var paged       =   getUrlParameter('paged');

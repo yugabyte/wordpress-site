@@ -3,7 +3,7 @@
   Plugin Name: Cookie and Consent Solution for the GDPR & ePrivacy
   Plugin URI: https://www.iubenda.com
   Description: An All-in-One approach developed by iubenda, which includes functionalities of two powerful solutions that help to make your website GDPR and ePrivacy compliant.
-  Version: 2.3.0
+  Version: 2.3.18
   Author: iubenda
   Author URI: https://www.iubenda.com
   License: MIT License
@@ -32,7 +32,7 @@ define( 'IUB_DEBUG', false );
  * iubenda final class.
  *
  * @class iubenda
- * @version	2.3.0
+ * @version	2.3.18
  */
 class iubenda {
 
@@ -43,7 +43,6 @@ class iubenda {
 			'parse'				=> false, // iubenda_parse
 			'skip_parsing'		=> true, // skip_parsing
 			'ctype'				=> true, // iubenda_ctype
-			'parse'				=> false, // iubenda_parse
 			'parser_engine'		=> 'new', // parser_engine
 			'output_feed'		=> true, // iubenda_output_feed
 			'output_post'		=> true,
@@ -62,7 +61,7 @@ class iubenda {
 		)
 	);
 	public $base_url;
-	public $version = '2.3.0';
+	public $version = '2.3.18';
 	public $activation = array(
 		'update_version'	=> 0,
 		'update_notice'		=> true,
@@ -124,13 +123,13 @@ class iubenda {
 		// settings
 		$cs_options = (array) get_option( 'iubenda_cookie_law_solution', $this->defaults['cs'] );
 		$cons_options = (array) get_option( 'iubenda_consent_solution', $this->defaults['cons'] );
-		
+
 		// activate AMP if not available before
 		if ( function_exists( 'is_amp_endpoint' ) || function_exists( 'ampforwp_is_amp_endpoint' ) ) {
 			if ( ! isset( $cs_options['amp_support'] ) )
 				$this->defaults['cs']['amp_support'] = true;
 		}
-		
+
 		$this->options['cs'] = array_merge( $this->defaults['cs'], $cs_options );
 		$this->options['cons'] = array_merge( $this->defaults['cons'], $cons_options );
 
@@ -633,7 +632,7 @@ class iubenda {
 	public function maybe_do_upgrade() {
 		if ( ! current_user_can( 'install_plugins' ) )
 			return;
-		
+
 		// bail if no activation or upgrade transient is set
 		if ( ! get_transient( 'iub_upgrade_completed' ) && ! get_transient( 'iub_activation_completed' ) )
 			return;
@@ -655,7 +654,7 @@ class iubenda {
 
 	/**
 	 * Get configuration data parsed from iubenda code
-	 * 
+	 *
 	 * @param type $iubenda_code
 	 * @param type $args
 	 * @return type
@@ -672,17 +671,24 @@ class iubenda {
 
 		if ( empty( $code ) )
 			return $configuration;
-		
+
 		// parse code if needed
 		$parsed_code = $args['parse'] === true ? $this->parse_code( $code, true ) : $code;
-		
+
 		// get script
 		$parsed_script = '';
-		
-		preg_match( '/src\=(["\'])(.*?)\1/', $parsed_code, $matches );
-		
-		if ( ! empty( $matches[2] ) && wp_http_validate_url( $matches[2] ) )
-			$parsed_script = $matches[2];
+
+		preg_match_all( '/src\=(?:[\"|\'])(.*?)(?:[\"|\'])/', $parsed_code, $matches );
+
+		// find the iubenda script url
+		if ( ! empty( $matches[1] ) ) {
+			foreach ( $matches[1] as $found_script ) {
+				if ( wp_http_validate_url( $found_script ) && strpos( $found_script, 'iubenda_cs.js' ) ) {
+					$parsed_script = $found_script;
+					continue;
+				}
+			}
+		}
 
 		// strip tags
 		$parsed_code = wp_kses( $parsed_code, array() );
@@ -697,9 +703,9 @@ class iubenda {
 		$decoded = json_decode( $parsed_code, true );
 
 		if ( ! empty( $decoded ) && is_array( $decoded ) ) {
-			
+
 			$decoded['script'] = $parsed_script;
-			
+
 			// basic mode
 			if ( $args['mode'] === 'basic' ) {
 				if ( isset( $decoded['banner'] ) )
@@ -708,11 +714,18 @@ class iubenda {
 					unset( $decoded['callback'] );
 				if ( isset( $decoded['perPurposeConsent'] ) )
 					unset( $decoded['perPurposeConsent'] );
+			// Banner mode to get banner configuration only
+			} else if ( 'banner' == $args['mode'] ) {
+				if ( isset( $decoded['banner'] ) ) {
+					return $decoded['banner'];
+				}
+
+				return array();
 			}
 
 			$configuration = $decoded;
 		}
-		
+
 		return $configuration;
 	}
 

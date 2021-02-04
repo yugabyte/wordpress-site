@@ -9,7 +9,20 @@ if ( ! defined( 'ABSPATH' ) )
  * @class iubenda_AMP
  */
 class iubenda_AMP {
-	
+
+	/**
+	 * The required banner configuration for AMP
+	 *
+	 * @var array
+	 */
+	private $required_banner_configuration = array(
+		'position'               => 'float-bottom-center',
+		'acceptButtonDisplay'    => true,
+		'customizeButtonDisplay' => true,
+		'rejectButtonDisplay'    => true,
+		'backgroundOverlay'      => true
+	);
+
 	/**
 	 * Class constructor.
 	 */
@@ -20,12 +33,12 @@ class iubenda_AMP {
 		add_action( 'amp_post_template_css', array( $this, 'amp_post_template_css' ), 100 );
 		add_action( 'amp_post_template_footer', array( $this, 'wp_footer_amp' ), 100 );
 		add_action( 'amp_post_template_footer', array( $this, 'fix_analytics_amp_for_wp' ), 1 );
-		
+
 		// filters
 		add_filter( 'amp_post_template_data', array( $this, 'amp_post_template_data' ), 100 );
 		add_filter( 'amp_analytics_entries', array( $this, 'fix_analytics_wp_amp' ), 10 );
 	}
-	
+
 	/**
 	 * Add scripts and CSS to WP AMP plugin in Transitional mode.
 	 *
@@ -39,7 +52,7 @@ class iubenda_AMP {
 			echo '
 				<script async custom-element="amp-consent" src="https://cdn.ampproject.org/v0/amp-consent-latest.js"></script>
 				<script async custom-element="amp-iframe" src="https://cdn.ampproject.org/v0/amp-iframe-latest.js"></script>';
-			
+
 			// optional geo support
 			if ( iubenda()->multilang && ! empty( iubenda()->lang_current ) ) {
 				$code = iubenda()->options['cs']['code_' . iubenda()->lang_current];
@@ -77,7 +90,7 @@ class iubenda_AMP {
 				</style>';
 		}
 	}
-	
+
 	/**
 	 * Add AMP consent HTML to WP AMP plugin in Transitional mode.
 	 *
@@ -95,12 +108,12 @@ class iubenda_AMP {
 			} else {
 				$code = iubenda()->options['cs']['code_default'];
 			}
-			
+
 			$configuration = iubenda()->parse_configuration( $code );
 
 			if ( empty( $configuration ) )
 				return;
-			
+
 			// local file
 			if ( iubenda()->options['cs']['amp_source'] === 'local' ) {
 				// multilang support
@@ -125,7 +138,8 @@ class iubenda_AMP {
 				<script type="application/json">
 					{
 						"consentInstanceId": "consent' . $configuration['siteId'] . '",
-						"consentRequired": true,
+						"consentRequired": "remote",
+						"checkConsentHref": "https://amp.iubenda.com/cs/amp/checkConsent",
 						"promptUI": "myConsentFlow"
 					}
 				</script>
@@ -158,7 +172,7 @@ class iubenda_AMP {
 				array( 'amp-iframe' => 'https://cdn.ampproject.org/v0/amp-iframe-latest.js' )
 			);
 		}
-		
+
 		return $data;
 	}
 
@@ -170,7 +184,7 @@ class iubenda_AMP {
 	public function amp_post_template_css( $data ) {
 		if ( iubenda()->options['cs']['amp_support'] === false )
 			return;
-		
+
 		echo '
 .popupOverlay {
 	position:fixed;
@@ -212,7 +226,7 @@ amp-consent.amp-active {
 
 		return $data;
 	}
-	
+
 	/**
 	 * Block analytics in WP AMP plugin.
 	 *
@@ -226,11 +240,11 @@ amp-consent.amp-active {
 		if ( ! iubendaParser::consent_given() && ! empty( $analytics_entries ) && is_array( $analytics_entries ) ) {
 			foreach ( $analytics_entries as $id => $entry ) {
 				$entry['attributes'] = ! empty( $entry['attributes'] ) ? $entry['attributes'] : array();
-				
+
 				$analytics_entries[$id]['attributes'] = array_merge( array( 'data-block-on-consent' => '_till_accepted' ), $entry['attributes'] );
 			}
 		}
-		
+
 		return $analytics_entries;
 	}
 
@@ -241,20 +255,22 @@ amp-consent.amp-active {
 	 */
 	public function prepare_amp_template( $code ) {
 		$html = '';
-		
+
 		$configuration_raw = iubenda()->parse_configuration( $code );
+        $banner_configuration = iubenda()->parse_configuration( $code ,array('mode' => 'banner' ,'parse' => false));
+		$banner_configuration = json_encode(array_merge($banner_configuration, $this->required_banner_configuration));
 
 		if ( ! empty( $configuration_raw ) ) {
 			// get script
 			$script_src = ! empty( $configuration_raw['script'] ) ? $configuration_raw['script'] : '//cdn.iubenda.com/cs/iubenda_cs.js';
-			
+
 			// remove from configuration
 			if ( isset( $configuration_raw['script'] ) )
 				unset( $configuration_raw['script'] );
-			
+
 			// encode array
 			$configuration = json_encode( $configuration_raw );
-			
+
 			// remove quotes
 			$configuration = preg_replace( '/"([a-zA-Z]+[a-zA-Z0-9]*)":/', '$1:', $configuration );
 			// replace brackets
@@ -265,6 +281,7 @@ amp-consent.amp-active {
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="robots" content="noindex">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>' . __( 'AMP Cookie Consent', 'iubenda' ) . '</title>
 	<script type="text/javascript">
@@ -274,27 +291,45 @@ amp-consent.amp-active {
 			// print configuration
 			$html .= $configuration . ',';
 			$html .= '
-	  banner: {
-		position: \'float-bottom-center\',
-		acceptButtonDisplay: true,
-		customizeButtonDisplay: true,
-		rejectButtonDisplay: true,
-		backgroundOverlay: true
-	  },
-	  callback: {
-		onPreferenceExpressed: function(preference) {
-		  var consentAction = \'reject\';
-		  if (preference && preference.consent) {
-			consentAction = \'accept\';
-		  }
-		  console.log(\'send consent-response\', consentAction);
-		  window.parent.postMessage({
-			type: \'consent-response\',
-			action: consentAction
-		  }, \'*\');
-		}
-	  }
-	};
+	  banner: ' . $banner_configuration . ',
+	  callback: { // Mandatory
+				onPreferenceExpressed: function(preference) {
+					var AMP_CONSENT_STRING_MAX_LENGTH = 1024;
+					var consentObject = {
+						type: \'consent-response\',
+						action: preference && preference.consent ? \'accept\' : \'reject\'
+					};
+
+					if (typeof window.__tcfapi === \'function\') {
+						__tcfapi(\'getTCData\', 2, function(res) {
+							var consentString = res.tcString;
+
+							if (consentString.length <= AMP_CONSENT_STRING_MAX_LENGTH) {
+								consentObject.info = consentString;
+							}
+
+							console.log(\'send consent-response\', consentObject.action, \'with CMP v2 consent string\', consentString);
+							window.parent.postMessage(consentObject, \'*\');
+						});
+					}
+					else if (typeof window.__cmp === \'function\') {
+						__cmp(\'getConsentData\', null, function(res) {
+							var consentString = res.consentData;
+
+							if (consentString.length <= AMP_CONSENT_STRING_MAX_LENGTH) {
+								consentObject.info = consentString;
+							}
+
+							console.log(\'send consent-response\', consentObject.action, \'with CMP consent string\', consentString);
+							window.parent.postMessage(consentObject, \'*\');
+						});
+					} else {
+						console.log(\'send consent-response\', consentObject.action);
+						window.parent.postMessage(consentObject, \'*\');
+					}
+				}
+      }
+    };
 	</script>
 	<script async src="' . $script_src . '"></script>
 	</head>
@@ -313,7 +348,7 @@ amp-consent.amp-active {
 	public function get_amp_template_url( $template_lang = '' ) {
 		$template_url = '';
 		$template_lang = ! empty( $template_lang ) && is_string( $template_lang ) ? $template_lang : '';
-		
+
 		// get basic site host and template file data
 		$file_url = ! empty( $template_lang ) ? IUBENDA_PLUGIN_URL . '/templates/amp' . '-' . $template_lang . '.html' : IUBENDA_PLUGIN_URL . '/templates/amp.html';
 		// $file_url = 'https://cdn.iubenda.com/cs/test/cs-for-amp.html'; // debug only
@@ -338,7 +373,7 @@ amp-consent.amp-active {
 				$has_www = strpos( $parsed_file['host'], 'www.' ) === 0;
 
 				//  add or remove www from url string to make iframe url pass AMP validation
-				$tweaked_host = ! $is_localhost && ! $is_subdomain ? ( ! $has_www ? 'www.' . $parsed_file['host'] : preg_replace( '/^www\./i', '', $parsed_file['host'] ) ) : $parsed_file['host'];
+				$tweaked_host = ! $is_localhost && ( ! $is_subdomain || $has_www ) ? ( ! $has_www ? 'www.' . $parsed_file['host'] : preg_replace( '/^www\./i', '', $parsed_file['host'] ) ) : $parsed_file['host'];
 
 				// generate new url
 				$tweaked_url = $parsed_file['scheme'] . '://' . $tweaked_host . ( isset( $parsed_file['port'] ) ? ':' . $parsed_file['port'] : '' ) . $parsed_file['path'] . ( ! empty( $parsed_file['query'] ) ? '?' . $parsed_file['query'] : '' );
@@ -358,7 +393,10 @@ amp-consent.amp-active {
 	 *
 	 * @return mixed
 	 */
-	public function generate_amp_template( $code, $lang = '' ) {
+	public function generate_amp_template( $code = '', $lang = '' ) {
+		if ( empty( $code ) )
+			return false;
+
 		$template_dir = IUBENDA_PLUGIN_PATH . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR;
 		$template_file = $template_dir . ( ! empty( $lang ) && in_array( $lang, array_keys( iubenda()->languages ) ) ? 'amp' . '-' . $lang . '.html' : 'amp.html' );
 		$html = $this->prepare_amp_template( $code );
@@ -371,5 +409,5 @@ amp-consent.amp-active {
 
 		return (bool) $result;
 	}
-	
+
 }

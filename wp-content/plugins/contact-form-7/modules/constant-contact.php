@@ -6,7 +6,7 @@ function wpcf7_constant_contact_register_service() {
 	$integration = WPCF7_Integration::get_instance();
 
 	$integration->add_category( 'email_marketing',
-		__( 'Email Marketing', 'contact-form-7' ) );
+		__( 'Email marketing', 'contact-form-7' ) );
 
 	$service = WPCF7_ConstantContact::get_instance();
 	$integration->add_service( 'constant_contact', $service );
@@ -316,7 +316,10 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 
 	public function email_exists( $email ) {
 		$endpoint = add_query_arg(
-			array( 'email' => $email ),
+			array(
+				'email' => $email,
+				'status' => 'all',
+			),
 			'https://api.cc.email/v3/contacts'
 		);
 
@@ -456,20 +459,20 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 		switch ( $message ) {
 			case 'success':
 				echo sprintf(
-					'<div class="updated notice notice-success is-dismissible"><p>%s</p></div>',
+					'<div class="notice notice-success is-dismissible"><p>%s</p></div>',
 					esc_html( __( "Connection established.", 'contact-form-7' ) )
 				);
 				break;
 			case 'failed':
 				echo sprintf(
-					'<div class="error notice notice-error is-dismissible"><p><strong>%1$s</strong>: %2$s</p></div>',
-					esc_html( __( "ERROR", 'contact-form-7' ) ),
+					'<div class="notice notice-error is-dismissible"><p><strong>%1$s</strong>: %2$s</p></div>',
+					esc_html( __( "Error", 'contact-form-7' ) ),
 					esc_html( __( "Failed to establish connection. Please double-check your configuration.", 'contact-form-7' ) )
 				);
 				break;
 			case 'updated':
 				echo sprintf(
-					'<div class="updated notice notice-success is-dismissible"><p>%s</p></div>',
+					'<div class="notice notice-success is-dismissible"><p>%s</p></div>',
 					esc_html( __( "Configuration updated.", 'contact-form-7' ) )
 				);
 				break;
@@ -484,7 +487,7 @@ class WPCF7_ConstantContact extends WPCF7_Service_OAuth2 {
 					'https://contactform7.com/constant-contact-integration/',
 					'contact-form-7'
 				),
-				__( 'Constant Contact Integration', 'contact-form-7' )
+				__( 'Constant Contact integration', 'contact-form-7' )
 			)
 		) . '</p>';
 
@@ -884,9 +887,10 @@ class WPCF7_ConstantContact_ContactPostRequest {
 	public function add_phone_number( $phone_number, $kind = 'home' ) {
 		$phone_number = trim( $phone_number );
 
-		if ( 2 <= count( $this->phone_numbers )
+		if ( empty( $phone_number )
 		or ! wpcf7_is_tel( $phone_number )
 		or 25 < $this->strlen( $phone_number )
+		or 2 <= count( $this->phone_numbers )
 		or ! in_array( $kind, array( 'home', 'work', 'other' ) ) ) {
 			return false;
 		}

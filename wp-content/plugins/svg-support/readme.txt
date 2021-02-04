@@ -3,13 +3,13 @@ Contributors: Benbodhi
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9R7JERS82EQQ
 Tags: svg, vector, safesvg, css, style, mime, mime type, embed, img, inline, animation, animate, js
 Requires at least: 4.8
-Tested up to: 5.3.3
+Tested up to: 5.7-alpha-49774
 Requires PHP: 5.2
-Stable tag: 2.3.17
+Stable tag: 2.3.18
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Safely upload SVG files to the Media Library. Advanced features also allow you to render SVG files inline for direct styling/animation of an SVG's internal elements using CSS/JS.
+Safely upload SVG files to the Media Library. Ability to render your SVG files inline for direct styling/animation of an SVG's internal elements.
 
 
 == Description ==
@@ -139,6 +139,12 @@ You need to add the mime type for svg and svgz to: "MLA Settings > Media Library
 
 
 == Changelog ==
+
+= 2.3.18 =
+* Updated author URL in main plugin file.
+* Updated donate links.
+* Cleaned up plugin action meta links and settings page.
+* Rolled back a fix in functions/attachment.php due to it removing meta from other attachments.
 
 = 2.3.17 =
 * Added setting to choose whether to load frontend CSS or not.
@@ -307,6 +313,9 @@ You need to add the mime type for svg and svgz to: "MLA Settings > Media Library
 
 
 == Upgrade Notice ==
+
+= 2.3.18 =
+General clean up of plugin, testing on latest nightly build plus fixed issue with metadata being removed from non SVG attachments.
 
 = 2.3.17 =
 Added a setting to choose whether to load the frontend CSS file or not. It was previously enabled by default, so you may want to flick that on after the update. This allows you to leave it out so your site has one less file to load :)

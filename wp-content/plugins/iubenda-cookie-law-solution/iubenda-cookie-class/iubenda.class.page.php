@@ -1,13 +1,13 @@
 <?php
 /**
  * iubenda.class.page.php
- * 
+ *
  * @author iubenda s.r.l
- * @copyright 2018-2019, iubenda s.r.l
+ * @copyright 2018-2020, iubenda s.r.l
  * @license GNU/GPL
  * @version 1.0.3
  * @deprecated
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -35,6 +35,7 @@ class iubendaPage {
 		'connect.facebook.net',
 		'www.youtube.com/iframe_api',
 		'pagead2.googlesyndication.com/pagead/js/adsbygoogle.js',
+		'securepubads.g.doubleclick.net/tag/js/gpt.js',
 		'sharethis.com/button/buttons.js',
 		'addthis.com/js/',
 		'window.adsbygoogle'
@@ -61,7 +62,7 @@ class iubendaPage {
 
 	/**
 	 * Construct: the whole HTML output of the page
-	 * 
+	 *
 	 * @param mixed $content_page
 	 */
 	public function __construct( $content_page ) {
@@ -71,7 +72,7 @@ class iubendaPage {
 
 	/**
 	 * Print iubenda banner, parameter: the script code of iubenda to print the banner
-	 * 
+	 *
 	 * @param string $banner
 	 * @return string
 	 */
@@ -99,7 +100,7 @@ if('callback' in _iub.csConfiguration) {
 
 	/**
 	 * Static, detect bot & crawler
-	 * 
+	 *
 	 * @return bool
 	 */
 	static function bot_detected() {
@@ -108,7 +109,7 @@ if('callback' in _iub.csConfiguration) {
 
 	/**
 	 * Static, utility function: Return true if the user has already given consent on the page
-	 * 
+	 *
 	 * @return boolean
 	 */
 	static function consent_given() {
@@ -122,7 +123,7 @@ if('callback' in _iub.csConfiguration) {
 
 	/**
 	 * Static, utility function: strpos for array
-	 * 
+	 *
 	 * @param type $haystack
 	 * @param type $needle
 	 * @return boolean
@@ -144,7 +145,7 @@ if('callback' in _iub.csConfiguration) {
 
 	/**
 	 * Convert scripts, iframe and other code inside IUBENDAs comment in text/plain to not generate cookies
-	 * 
+	 *
 	 * @param mixed $html
 	 * @return mixed
 	 */
@@ -209,12 +210,12 @@ if('callback' in _iub.csConfiguration) {
 	}
 
 	/**
-	 * Parse automatically all the scripts in the page and converts it in text/plain 
+	 * Parse automatically all the scripts in the page and converts it in text/plain
 	 * if src or the whole output has inside one of the elements in $auto_script_tags array
 	 */
 	public function parse_scripts() {
 		$html = str_get_html( $this->content_page, $lowercase = true, $forceTagsClosed = true, $stripRN = false );
-		
+
 		if ( is_object( $html ) ) {
 			$scripts = $html->find( "script" );
 			if ( is_array( $scripts ) ) {
@@ -340,7 +341,7 @@ if('callback' in _iub.csConfiguration) {
 	 */
 	public function parse_iframe() {
 		$html = str_get_html( $this->content_page, $lowercase = true, $forceTagsClosed = true, $stripRN = false );
-		
+
 		if ( is_object( $html ) ) {
 			$iframes = $html->find( "iframe" );
 			if ( is_array( $iframes ) ) {
@@ -374,7 +375,7 @@ if('callback' in _iub.csConfiguration) {
 
 	/**
 	 * Return the final page to output
-	 * 
+	 *
 	 * @return mixed
 	 */
 	public function get_converted_page() {

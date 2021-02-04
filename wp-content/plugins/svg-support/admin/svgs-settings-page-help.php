@@ -137,7 +137,7 @@ function bodhi_svgs_help_tab () {
 
 	$bodhi_svgs_help_tab_donations .= '<p><strong>' . __( 'PayPal: ', 'svg-support' ) . '</strong><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=Z9R7JERS82EQQ" target="_blank">Click Here</a><br/><strong>' . __( 'BTC: 1qF8r2HkTLifND7WLGfWmvxfXc9ze55DZ', 'svg-support' ) . '</strong><br/><strong>' . __( 'LTC: LUnQPJrSk6cVFmMqBMv5FAqweJbnzRUz4o', 'svg-support' ) . '</strong><br/><strong>' . __( 'ETH: 0x599695Eb51aFe2e5a0DAD60aD9c89Bc8f10B54f4', 'svg-support' ) . '</strong></p>';
 
-	$bodhi_svgs_help_tab_donations .= '<p>' . __( 'Need to buy some crypto to donate?', 'svg-support' ) . '</br>' . __( 'My Coinbase referral link will get $10 USD worth of BTC for free when you spend $100.', 'svg-support' ) . '</br>' . __( '(You don\'t need to send me that much to me, anything is appreciated!)', 'svg-support' ) . '<br/><a href="https://www.coinbase.com/join/59be646cb87715012bbdcc6b" target="_blank">https://www.coinbase.com/join/59be646cb87715012bbdcc6b</a></p>';
+	$bodhi_svgs_help_tab_donations .= '<p>' . __( 'Need to buy some crypto to donate?', 'svg-support' ) . '</br>' . __( 'My Coinbase referral link will get $10 USD worth of BTC for free when you spend $100.', 'svg-support' ) . '</br>' . __( '(You don\'t need to send me that much though, anything is appreciated!)', 'svg-support' ) . '<br/><a href="https://www.coinbase.com/join/59be646cb87715012bbdcc6b" target="_blank">https://www.coinbase.com/join/59be646cb87715012bbdcc6b</a></p>';
 
 	// register featured images tab
 	$screen->add_help_tab( array(

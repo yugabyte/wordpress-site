@@ -51,7 +51,7 @@ class iubenda_Settings {
 		$this->legal_notices = array(
 			'privacy_policy',
 			'cookie_policy',
-			'terms'
+			'term'
 		);
 
 		$this->tabs = array(
@@ -369,14 +369,14 @@ class iubenda_Settings {
 						</span>
 					</p>
 					<p class="step-2 step-yes">
-						<span class="notice-question"><?php _e( "Whew, what a relief!😅 We've worked countless hours to make this plugin as useful as possible – so we're pretty happy that you're enjoying it. While you here, would you mind leaving us a 5 star rating? It would really help us out.", 'iubenda' ); ?></span>
+						<span class="notice-question"><?php _e( "Whew, what a relief!? We've worked countless hours to make this plugin as useful as possible - so we're pretty happy that you're enjoying it. While you here, would you mind leaving us a 5 star rating? It would really help us out.", 'iubenda' ); ?></span>
 						<span class="notice-reply">
 							<a href="https://wordpress.org/support/plugin/iubenda-cookie-law-solution/reviews/?filter=5" target="_blank" class="reply-yes"><?php _e( 'Sure!', 'iubenda' ); ?></a>
 							<a href="javascript:void(0)" class="reply-no"><?php _e( 'No thanks', 'iubenda' ); ?></a>
 						</span>
 					</p>
 					<p class="step-2 step-no">
-						<span class="notice-question"><?php _e( "We’re sorry to hear that. Would you mind giving us some feedback?", 'iubenda' ); ?></span>
+						<span class="notice-question"><?php _e( "We're sorry to hear that. Would you mind giving us some feedback?", 'iubenda' ); ?></span>
 						<span class="notice-reply">
 							<a href="https://iubenda.typeform.com/to/BXuSMZ" target="_blank" class="reply-yes"><?php _e( 'Ok sure!', 'iubenda' ); ?></a>
 							<a href="javascript:void(0)" class="reply-no"><?php _e( 'No thanks', 'iubenda' ); ?></a>
@@ -564,10 +564,10 @@ class iubenda_Settings {
 				if ( $tab_key === 'cs' ) {
 					echo '
 					<p class="iubenda-text">
-						' . __( "This plugin is the easiest and most comprehensive way to adapt your WordPress site to the ePrivacy (EU Cookie Law). Upon your users’ first visit, the plugin will take care of collecting their consent, blocking the most popular cookie-scripts and subsequently reactivating these scripts as soon as consent is provided. The basic settings include obtaining consent by a simple scroll action (the most effective method) and script reactivation without refreshing the page (asynchronous script reactivation).", 'iubenda' ) . '
+						' . __( "This plugin is the easiest and most comprehensive way to adapt your WordPress site to the ePrivacy (EU Cookie Law). Upon your users' first visit, the plugin will take care of collecting their consent, blocking the most popular cookie-scripts and subsequently reactivating these scripts as soon as consent is provided. The basic settings include obtaining consent by a simple scroll action (the most effective method) and script reactivation without refreshing the page (asynchronous script reactivation).", 'iubenda' ) . '
 					</p>
 					<p class="iubenda-text">
-						<span class="iubenda-title">' . __( "Does the Cookie Solution support IAB’s Transparency and Consent Framework?", 'iubenda' ) . '</span><br />
+						<span class="iubenda-title">' . __( "Does the Cookie Solution support IAB's Transparency and Consent Framework?", 'iubenda' ) . '</span><br />
 						' . sprintf( __( "Yes it does. You can read more about it <a href=\"%s\" class=\"iubenda-url\" target=\"_blank\">here.</a>", 'iubenda' ), $this->links['iab'] ) . '
 					</p>
 					<p class="iubenda-text">
@@ -657,7 +657,7 @@ class iubenda_Settings {
 					
 					<?php 
 					if ( $tab_key === 'cs' ) {
-						echo '<p>' . sprintf( __( 'This plugin drastically reduces the need for direct interventions in the code of the site by integrating with iubenda’s Cookie Solution. It provides a fully customizable cookie banner, dynamically generates a cookie policy <a href="%s" target="_blank">to match the services in use on your site</a>, and, fully manages cookie-related consent – including the blocking of the most common widgets and third-party cookies before consent is received – in order to comply with the GDPR and ePrivacy.', 'iubenda' ), 'https://www.iubenda.com/en/help/19004-how-to-use-the-site-scanner-from-within-the-generator' ) . '</p>'; 
+						echo '<p>' . sprintf( __( 'This plugin drastically reduces the need for direct interventions in the code of the site by integrating with iubenda\'s Cookie Solution. It provides a fully customizable cookie banner, dynamically generates a cookie policy <a href="%s" target="_blank">to match the services in use on your site</a>, and, fully manages cookie-related consent - including the blocking of the most common widgets and third-party cookies before consent is received - in order to comply with the GDPR and ePrivacy.', 'iubenda' ), 'https://www.iubenda.com/en/help/19004-how-to-use-the-site-scanner-from-within-the-generator' ) . '</p>'; 
 					} else {
 						echo '<p>' . __( 'Maintaining valid records of consent is a vital part of privacy compliance in general, and it is specifically required under the GDPR. These records should include a userid, timestamp, consent proof, record of the consenting action, and the legal documents available to the user at the time of consent, among other things. This plugin is THE most complete solution for recording, sorting and maintaining GDPR records of consent*. The plugin also boasts built-in compatibility with WordPress comment form, Contact Form 7 and WP Forms plugins for your convenience, but can be manually integrated with any type of web-form and can even store consent proofs for consents collected offline (e.g in-store sign-ups) via WP media upload.' ) . '</p>'; 
 					}
@@ -772,7 +772,7 @@ class iubenda_Settings {
 				</div>
 				<div id="contextual-help-tabs-wrap-2" class="contextual-help-tabs-wrap">
 					<div id="tab-panel-scripts" class="help-tab-content active">
-						<p class="description">' . __( 'Provide a list of custom scripts you’d like to block and assign their purpose.', 'iubenda' ) . '</p>
+						<p class="description">' . __( 'Provide a list of custom scripts you\'d like to block and assign their purpose.', 'iubenda' ) . '</p>
 						<div id="custom-script-field-template" class="template-field" style="display: none;">
 							<input type="text" class="regular-text" value="" name="iubenda_cookie_law_solution[custom_scripts][script][]" placeholder="' . __( 'Enter custom script', 'iubenda' ) . '" /> ' . $this->render_tag_types( 'script', 0 ) . ' <a href="#" class="remove-custom-script-field button-secondary" title="' . __( 'Remove', 'iubenda' ) . '">-</a>
 						</div>';
@@ -790,7 +790,7 @@ class iubenda_Settings {
 						<a href="#" class="add-custom-script-field button-secondary">Add New Script</a>
 					</div>
 					<div id="tab-panel-iframes" class="help-tab-content">
-						<p class="description">' . __( 'Provide a list of custom iframes you’d like to block and assign their purpose. ', 'iubenda' ) . '</p>
+						<p class="description">' . __( 'Provide a list of custom iframes you\'d like to block and assign their purpose. ', 'iubenda' ) . '</p>
 						<div id="custom-iframe-field-template" class="template-field" style="display: none;">
 							<input type="text" class="regular-text" value="" name="iubenda_cookie_law_solution[custom_iframes][iframe][]" placeholder="' . __( 'Enter custom iframe', 'iubenda' ) . '" /> ' . $this->render_tag_types( 'iframe', 0 ) . ' <a href="#" class="remove-custom-iframe-field button-secondary" title="' . __( 'Remove', 'iubenda' ) . '">-</a>
 						</div>';
@@ -912,7 +912,7 @@ class iubenda_Settings {
 		echo '
 		<div id="iub_amp_support_container">
 			<label><input id="iub_amp_support" type="checkbox" name="iubenda_cookie_law_solution[amp_support]" value="1" ' . checked( true, (bool) iubenda()->options['cs']['amp_support'], false ) . '/>' . __( 'Enable Google AMP support.', 'iubenda' ) . '</label>
-			<p class="description">' . sprintf( __( 'This feature enables iubenda on AMP pages via the <a href="%s" target="_blank">AMP</a> and <a href="%s" target="_blank">AMP for WP</a> plugins. AMP requires specific configuration parameters and a page hosted on your domain where the configuration is loaded from. <a href="%s" target="_blank">Learn more on iubenda and AMP</a>.', 'iubenda' ), 'https://wordpress.org/plugins/amp/', 'https://wordpress.org/plugins/accelerated-mobile-pages/', 'https://www.iubenda.com/en/help/3182-cookie-solution-amp#wordpress' ) . '</p>
+			<p class="description">' . sprintf( __( 'This feature enables iubenda on AMP pages via the <a href="%s" target="_blank">AMP</a> and <a href="%s" target="_blank">AMP for WP</a> plugins. AMP requires specific configuration parameters and a page hosted on your domain where the configuration is loaded from. <a href="%s" target="_blank">Learn more on iubenda and AMP</a>.', 'iubenda' ), 'https://wordpress.org/plugins/amp/', 'https://wordpress.org/plugins/accelerated-mobile-pages/', 'https://www.iubenda.com/en/help/22135-cookie-solution-amp#wordpress' ) . '</p>
 			<div id="iub_amp_options_container"' . ( iubenda()->options['cs']['amp_support'] === false ? ' style="display: none;"' : '' ) . '>
 				<div>
 					<label><input id="iub_amp_source-local" class="iub_amp_source" type="radio" name="iubenda_cookie_law_solution[amp_source]" value="local" ' . checked( 'local', iubenda()->options['cs']['amp_source'], false ) . ' />' . __( 'Auto-generated configuration file', 'iubenda' ) . '</label>
@@ -952,7 +952,7 @@ class iubenda_Settings {
 			echo '
 					<p class="description">' . __( 'If you\'re experiencing issues with AMP setup download the generated iubenda AMP configuration file, upload it to any SSL server and paste the file link to the field above.', 'iubenda' ) . '</p>
 				</div>
-				<p class="description">' . sprintf( __( 'Seeing the AMP cookie notice when testing from Google but not when visiting your AMP pages directly? <a href="%s" target="_blank">Learn how to fix it</a>.', 'iubenda' ), 'https://www.iubenda.com/en/help/3182-cookie-solution-amp#amp-domain' ) . '</p>
+				<p class="description">' . sprintf( __( 'Seeing the AMP cookie notice when testing from Google but not when visiting your AMP pages directly? <a href="%s" target="_blank">Learn how to fix it</a>.', 'iubenda' ), 'https://www.iubenda.com/en/help/22135-cookie-solution-amp-wordpress#amp-domain' ) . '</p>
 			</div>
 		</div>';
 	}
@@ -1298,7 +1298,7 @@ class iubenda_Settings {
 										<tr>
 											<td class="label table-label">
 												<h4>' . __( 'Legal documents', 'iubenda' ) . '</h4>
-												<p class="description">' . __( 'In general, it’s important that you declare which legal documents are being agreed upon when each consent is collected. However, if you use iubenda for your legal documents, it is *required*  that you identify the documents by selecting them here.', 'iubenda' ) . '</p>
+												<p class="description">' . __( 'In general, it\'s important that you declare which legal documents are being agreed upon when each consent is collected. However, if you use iubenda for your legal documents, it is *required*  that you identify the documents by selecting them here.', 'iubenda' ) . '</p>
 											</td>
 											<td>
 												<table class="widefat legal_notices-table">
@@ -1420,7 +1420,17 @@ class iubenda_Settings {
 						$template_done = (bool) iubenda()->AMP->generate_amp_template( $iubenda_code );
 					}
 				}
-				
+
+                // Check if AMP is checked and the auto generated option is selected
+                if ("1" == $input['amp_support'] && 'local' == $input['amp_source']) {
+                    if (is_bool($template_done) && false === $template_done) {
+                        $message = "Currently, you do not have write permission for <i>%s</i>. For instructions on how to fix this, please read <a target=\"_blank\" href=\"%s\">our guide</a>.";
+                        $our_guide_URL = 'https://www.iubenda.com/en/help/1215-cookie-solution-wordpress-plugin-installation-guide#amp-permissions';
+                        $file_path = IUBENDA_PLUGIN_PATH . 'templates' . DIRECTORY_SEPARATOR;
+                        add_settings_error('cs_settings_errors', 'iub_cs_settings_updated', __(sprintf($message, $file_path, $our_guide_URL), 'iubenda'), 'error');
+                    }
+                }
+
 				$input['amp_template_done'] = $template_done;
 				
 				if ( is_array( $input['amp_template'] ) ) {

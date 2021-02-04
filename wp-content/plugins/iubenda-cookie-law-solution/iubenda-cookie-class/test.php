@@ -1,11 +1,11 @@
 <?php
 /**
  * test.php
- * 
+ *
  * @author iubenda s.r.l
- * @copyright 2018-2019, iubenda s.r.l
+ * @copyright 2018-2020, iubenda s.r.l
  * @license GNU/GPL
- * 
+ *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
@@ -49,7 +49,9 @@ ini_set( 'max_execution_time', 300 );
 
 				<?php
 				if ( ! empty( $_POST['url'] ) )
-					$url = filter_var( $_POST['url'], FILTER_SANITIZE_URL );
+          if (substr($_POST['url'], 0, 4) == "http") {
+					   $url = filter_var( $_POST['url'], FILTER_SANITIZE_URL );
+          }
 				else
 					$url = '';
 

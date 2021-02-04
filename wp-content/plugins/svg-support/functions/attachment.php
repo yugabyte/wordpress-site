@@ -120,4 +120,5 @@ function bodhi_svgs_get_attachment_metadata( $data ) {
 	return $res;
 
 }
-add_filter( 'wp_get_attachment_metadata' , 'bodhi_svgs_get_attachment_metadata' );
+// add_filter( 'wp_get_attachment_metadata' , 'bodhi_svgs_get_attachment_metadata' );
+// Commented this out 20200307 because it was stripping metadata from other attachments as well. Need to make this target only SVG attachments.

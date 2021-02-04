@@ -1,18 +1,18 @@
 === Redirection for Contact Form 7 ===
-Tags: contact form 7 redirect, contact form 7 thank you page, redirect cf7, redirect contact form 7, contact form 7 success page, cf7 redirect
-Contributors: yuvalsabar
-Requires at least: 4.7.0
-Tested up to: 5.2.2
-Stable tag: 1.3.5
+Tags: contact form 7 redirect, contact form 7 thank you page, redirect cf7, redirect contact form 7, contact form 7 success page, cf7 redirect, registration form, mailchimp, login form, conditional redirect, cms integration, conversions, save leads, paypal
+Contributors: yuvalsabar, regevlio
+Requires at least: 5.1.0
+Tested up to: 5.6
+Stable tag: 2.3.3
 License: GPLv3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-A simple add-on for Contact Form 7 that adds a redirect option after form sent successfully.
+The ultimate add-on for Contact Form 7 - redirect to any page you choose after mail sent successfully, firing scripts after submission, save submissions in database, and much more options to make Contact Form 7 poweful then ever.
 
 == Description ==
 
-A straightforward add-on plugin for Contact Form 7 - adds the option to redirect to any page you choose after mail sent successfully, with DOM Events and without AJAX being disabled.
-NOTE: This plugin requires Contact Form 7 version 4.8 or later. 
+The ultimate add-on for Contact Form 7 - redirect to any page you choose after mail sent successfully, firing scripts after submission, save submissions in database, and much more options to make Contact Form 7 poweful then ever.
+NOTE: This plugin requires Contact Form 7 version 4.8 or later.
 
 == Usage ==
 
@@ -24,25 +24,30 @@ Simply go to your form settings, choose the "Redirect Settings" tab and set the 
 * Open page in a new tab
 * Run JavaScript after form submission (great for conversion management)
 * Pass fields from the form as URL query parameters
+* Add Honeypot to minimize spam
+* Save form submissions to your database
 
-* **[Pro]** Create registration forms
-* **[Pro]** Create login forms
-* **[Pro]** Add to Mailchimp list
-* **[Pro]** Conditional error managment
-* **[Pro]** Redirect rules
-* **[Pro]** Conditional logic for each action
-* **[Pro]** Manage email notifications by conditional logic
-* **[Pro]** Fire custom JavaScript events by conditional logic
-* **[Pro]** Send data to remote servers (3rd-party integration)
-* **[Pro]** Send RESTful Json/XML to remote servers
-* **[Pro]** Send RESTful POST/GET to remote servers
-* **[Pro]** Manage Facebook conversion pixels
-* **[Pro]** Manage Google Adwords conversion pixels
-* **[Pro]** Leads Manager - save leads to database
-* **[Pro]** PayPal Integration
+== New and Exciting ==
+Cooperation with a world leading web accessibility solution - you can try it for free and make your website accessible to people with disabilities.
 
+== Our Extensions ==
+* **[Extension]** Conditional logic for each action
+* **[Extension]** Integrate your forms with your Salesforce CRM
+* **[Extension]** Integrate your forms with your Hubspot CRM
+* **[Extension]** Frontend Publishing - Allow your visitors to submit post types
+* **[Extension]** Frontend Registration - Use contact form 7 as a registration form
+* **[Extension]** Frontend Login - Use contact form 7 to login users to your website
+* **[Extension]** Automatically add form submissions to your predefined list
+* **[Extension]** Conditional form validations (custom error messages)
+* **[Extension]** Manage email notifications by conditional logic
+* **[Extension]** Fire custom JavaScript events by conditional logic
+* **[Extension]** Send data to remote servers (3rd-party integration)
+* **[Extension]** Send submissions to API Json/XML to remote servers
+* **[Extension]** Send submissions to API POST/GET to remote servers
+* **[Extension]** PayPal Integration
+* **[Extension]** Stripe Integration
 
-> Note: some features are availible only in the Pro version. Which means you need Redirection for Contact Form 7 Pro to unlock those features. You can [get Redirection for Contact Form 7 Pro here](http://querysol.com/product/contact-form-7-redirection/)!
+> Note: some features are availible only as an extension. Which means you need Redirection for Contact Form 7 Pro to unlock those features. You can [get Redirection for Contact Form 7 Pro here](https://redirection-for-contact-form7.com/product/wpcf7r-actions-bundle/)!
 
 == Installation ==
 
@@ -61,16 +66,83 @@ No, it doesn't. The plugin does not disables any of Contact Form 7 normal behavi
 
 = Does this plugin uses "on_sent_ok" additional setting? =
 
-No. One of the reasons we developed this plugin, is because on_send_ok is now deprecated, and is going to be abolished by the end of 2017. This plugin is the only redirect plugin for Contact Form 7 that has been updated to use [DOM events](https://contactform7.com/dom-events/) to perform redirect, as Contact Form 7 developer Takayuki Miyoshi recommends. 
+No. One of the reasons we developed this plugin, is because on_send_ok is now deprecated, and is going to be abolished by the end of 2017. This plugin is the only redirect plugin for Contact Form 7 that has been updated to use [DOM events](https://contactform7.com/dom-events/) to perform redirect, as Contact Form 7 developer Takayuki Miyoshi recommends.
 
 == Screenshots ==
 
-1. Redirect Settings tab
+1. Actions tab
+2. Redirect Action
+3. Fire JavaScript Action
+4. Save Lead Actions
+5. Extensions tab
 
 == Changelog ==
 
-= 1.3.5 =
-* Fixed a bug: Redirection Pro for Contact Form 7 message not disappearing after clicking the X button (for some users).
+= 2.3.3 =
+* Fixed undefined $_SERVER['HTTP_HOST'] on CLI calls
+
+= 2.3.2 =
+* Added columns on actions list (debug mode)
+* Added compatibility for Contact Form 7 Redirection Pro migrations
+* Fixed extensions download process.
+* Moved Mailchimp dependencies to Mailchimp action
+
+= 2.3.1 =
+* Added index.php to directories to disable directory browsing.
+* Fixed typo in popup action class name for receiving updates.
+* Fixed extensions update process.
+
+= 2.2.9 =
+* Added Export leads to csv option.
+* Added Duplicate action button.
+* Added Preview data on leads table (Defined by marking which fields to display on the action settings).
+* Added urlencode passed parameters option on redirect action.
+* Fixed duplicate actions on contact form duplication.
+
+
+= 2.2.8 =
+* Added html support to Send Email action.
+* Added file attachments support to Send Email action.
+* Added reset settings button to debug tools.
+* Fixed a bug: radio buttons and checkboxes are now passed correctly as url parameters.
+* Fixed a bug: "Changes you made may not be saved" pop-up no longer appears when no changes have been made.
+
+= 2.2.7 =
+* Fixed extensions update check interval.
+
+= 2.2.6 =
+* Fixed support for non-ajax redirection action.
+* Minor styling changes.
+
+= 2.2.5 =
+* Fixed compatibility issues with "Contact Form 7 - Conditional Fields" Plugin.
+
+= 2.2.4 =
+* Fixed a bug with jQuery.noConflict()
+
+= 2.2.3 =
+* Fixed compatability issue with "Contact Form 7 - Conditional Fields" Plugin.
+
+= 2.2.2 =
+* Fixed a bug with jQuery.noConflict()
+* jQuery migrate compatibility changes
+* Added debug options
+
+= 2.2.1 =
+* Fixed a bug in extension class
+* Fixed a bug - accessiBe turned off by default
+
+= 2.2.0 =
+* New feature: Saving form leads in database.
+* New actions system.
+* Easy installation of plugin extensions.
+* Complete code refactoring.
+
+= 1.3.7 =
+* Show pages hierarchy in page select dropdown.
+
+= 1.3.6 =
+* Fixed a bug: Redirection for legacy browsers (non-ajax) not working when using external url.
 
 = 1.3.4 =
 * Fixed a bug: "Changes you made may not be saved" pop-up no longer appears when no changes have been made.
@@ -97,7 +169,7 @@ No. One of the reasons we developed this plugin, is because on_send_ok is now de
 * Minor dev improvements.
 
 = 1.2.7 =
-* Script field now accepts special characters, such as < and >. 
+* Script field now accepts special characters, such as < and >.
 
 = 1.2.6 =
 * Added support for browsers that don't support AJAX.
