@@ -41,6 +41,29 @@ button.gpnf-add-entry,
         color: $orange !important;
     }
     
+    &.sq {
+        border-radius:0;
+        border:2px solid $purple_dark;
+        background:none !important;
+        color: $purple_dark !important;
+        
+        .arrow {
+            display:inline-block;
+            margin-left:10px;
+            width: 0; 
+            height: 0; 
+            border-style: solid;
+            border-width: 6px 0 6px 10px;
+            border-color: transparent transparent transparent $orange;
+        }
+        
+        &:hover {
+            background:$purple_dark !important;
+            color:$orange !important;
+            border-color:$purple_dark !important;
+        }
+    }
+    
     &:hover {
         color: $white !important;
         border-color:$blue !important;

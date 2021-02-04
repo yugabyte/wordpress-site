@@ -35,7 +35,7 @@ $wptb_sc = get_field('wptb_sc');
             <div class="col-8-12 push-2-12 mobile-col-1-1 nopadding centered">
             <?php
             if( $heading ) {
-                echo '<h2>'.$heading.'</h2>';
+                echo '<h2 class="lined">'.$heading.'</h2>';
             }
             if( $intro ) {
                 echo $intro;

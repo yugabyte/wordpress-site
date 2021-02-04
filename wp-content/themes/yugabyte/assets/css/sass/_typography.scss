@@ -53,31 +53,54 @@ h1 {
 }
 
 h2 {
-    font-size: 3em; /* 54px */
-    line-height:1.05em;
-    margin:0 0 0.25em;
+    font-size: 2em; /* 40px */
+    line-height:1.25em;
     font-family: $ssans;
-    font-weight:$bold;
-    color:$blue;
+    font-weight:$normal;
+    color:$orange;
+    text-transform:uppercase;
+    letter-spacing:4px;
     
     &.lined {
-        margin-bottom:0.5em;
-        padding-bottom:5px;
-        border-bottom:2px solid $orange;
+        position:relative;
+        margin-bottom:1.5em;
         
-        .feat_prods &,
-        #related_products & {
-            margin-bottom:1em;
+        &:after {
+            position:absolute;
+            left:50%;
+            top:calc(100% + 20px);
+            width:75px;
+            height:2px;
+            background:$purple_dark;
+            content:'';
+            transform:translateX(-50%);
         }
     }
 }
 
 h3 {
-    margin:0 0 0.25em;
-    color: $blue;
-    font-size:1.94em; /* 35px */
+    color: $orange;
+    font-size:1.5em; /* 30px */
     font-family: $ssans;
-    line-height:1.05em;
+    line-height:1.25em;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    
+    &.lined {
+        position:relative;
+        margin-bottom:1.5em;
+        
+        &:after {
+            position:absolute;
+            left:50%;
+            top:calc(100% + 20px);
+            width:75px;
+            height:2px;
+            background:$purple_dark;
+            content:'';
+            transform:translateX(-50%);
+        }
+    }
 }
 
 h4 {

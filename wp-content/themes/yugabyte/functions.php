@@ -374,6 +374,24 @@ function custom_acf_blocks_init() {
             ),
         ));
         
+        //BASIC CTA BUCKETS
+        acf_register_block_type(array(
+            'name'              => 'cta_buckets',
+            'title'             => __('CTA Buckets'),
+            'description'       => __('Basic CTA buckets: heading, summary, CTA'),
+            'render_template'   => 'template-parts/blocks/cta_buckets.php',
+            'category'          => 'formatting',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
         //2 COL IMAGE/CONTENT
         acf_register_block_type(array(
             'name'              => 'image_content',
