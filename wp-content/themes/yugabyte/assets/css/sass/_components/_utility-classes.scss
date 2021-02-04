@@ -1,0 +1,250 @@
+/**********************************************************************************************/
+/***** UTILITY ********************************************************************************/
+/**********************************************************************************************/
+/* ---------------------------------------------------------------
+   HELPER CLASSES
+--------------------------------------------------------------- */
+.clearfix:before, .clearfix:after { content: ""; display: table; }
+.clearfix:after { clear: both; }
+.clearfix { *zoom: 1; }
+
+
+/* PATTERNS */
+
+
+.flexrow {
+    display:flex;
+    
+    .flex_i {
+        flex-grow:1;
+        
+    }
+    
+    .flex_i + .flex_i {
+        margin-left:5%;
+    }
+    
+}
+
+
+.alignleft,
+.alignright {
+    float:none;
+    width:100%;
+    max-width:100%;
+    height:auto;
+}
+.alignnone,
+.aligncenter {
+    width:auto;
+    max-width:100%;
+    height:auto;
+    text-align:center;
+}
+
+figure {
+    display:block;
+    width:100%;
+    margin:0 auto 1.67em;
+    
+    &.wp-caption {
+        margin-bottom:10px;
+    }
+}
+    
+figcaption {
+    text-align:left;
+    font-size:0.78em;
+    line-height:1.4em;
+    font-style:italic;
+    color: #666;
+}
+
+
+
+iframe {
+    max-width:100% !important;
+}
+
+.video_container {
+    position:relative;
+    padding-bottom:56.25%;
+    /*padding-top:30px;*/
+    margin:0 0 0 0;
+    width:100%;
+    height:0;
+    opacity:1;
+    visibility:visible;
+    overflow:hidden;
+    transition:opacity 0.3s;
+    
+    &.off {
+        opacity:0;
+        visibility:hidden;
+    }
+}
+.video_container iframe,
+.video_container object,
+.video_container embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.to_cols_3 {
+    column-count:3;
+    column-gap: 74px;
+    
+    > li {
+        list-style-position: inside;
+        break-inside: avoid;
+    }
+}
+
+.pos_rel {
+    position:relative !important;
+}
+.float_left {
+	float:left !important;
+}
+.float_right {
+	float:right !important;
+}
+.of_hidden {
+    overflow:hidden !important;
+}
+.nomargin {
+    margin:0 !important;
+}
+.nomargin_top {
+    margin-top:0 !important;
+}
+.nomargin_bottom {
+    margin-bottom:0 !important;
+}
+.large_margin_bottom {
+    margin-bottom:60px !important;
+}
+.nopadding {
+    padding:0 !important;
+}
+.nopadding_lr {
+    padding-left:0 !important;
+    padding-right:0 !important;
+}
+.nopadding_tb {
+    padding-top:0 !important;
+    padding-bottom:0 !important;
+}
+.nopadding_top {
+    padding-top:0 !important;
+}
+.nopadding_bottom {
+    padding-bottom:0 !important;
+}
+.tall_pad {
+    padding-top:90px !important;
+    padding-bottom:90px !important;
+}
+.short_pad {
+    padding-top:30px !important;
+    padding-bottom:30px !important;
+}
+.small_padding_bottom {
+    padding-bottom:30px !important;
+}
+.large_padding_bottom {
+    padding-bottom:100px !important;
+}
+.small_padding_top {
+    padding-top:30px !important;
+}
+.large_padding_top {
+    padding-top:100px !important;
+}
+.nobullets {
+    list-style:none !important;
+}
+.upper {
+    text-transform:uppercase !important;
+}
+.lower {
+    text-transform:none !important;
+}
+.centered {
+    text-align:center !important;
+}
+.lefted {
+    text-align:left !important;
+}
+.righted {
+    text-align:right !important;
+}
+.blockit {
+    display:block !important;
+}
+.flex_vert_cent {
+    display:flex !important;
+    align-items:center !important;
+}
+.width_cap {
+    max-width:1008px;
+}
+
+.show_on_mobile {
+	display:none !important;
+}
+.hide_on_mobile {
+	display:block !important;
+}
+
+.show_on_tablet {
+	display:none !important;
+}
+.hide_on_tablet {
+	display:block !important;
+}
+
+@media only screen and (max-width: 767px) {
+    
+    .flexrow {
+        display:flex;
+        
+        &.noflex_m {
+            display:block;
+            
+            .flex_i + .flex_i {
+                margin-left:0;
+            }
+        }
+    
+    }
+    
+    .to_cols_3 {
+        column-count:1;
+    }
+    
+    .show_on_mobile {
+        display:block !important;
+    }
+    .hide_on_mobile {
+        display:none !important;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    .show_on_tablet {
+        display:block !important;
+    }
+    .hide_on_tablet {
+        display:none !important;
+    }
+    
+    .nopadding_tablet {
+        padding:0 !important;
+    }
+    
+}

@@ -1,0 +1,360 @@
+/**********************************************************************************************/
+/***** PRIMARY NAV ****************************************************************************/
+/**********************************************************************************************/
+#primary-navigation {
+    float:left;
+    position:relative;
+    width:calc(100% - 200px);
+    margin-left:24px;
+    padding:0;
+    box-sizing:border-box;
+    
+    .nav-menu {
+        position:relative;
+        margin:0;
+        padding:0;
+        list-style:none;
+        text-align:left;
+        
+        > li {
+            position:relative;
+            display:inline-block;
+            margin:0 0 0 -4px;
+            transition: all 0.3s ease 0s;
+            vertical-align:top;
+            text-align:left;
+            
+            &:first-of-type {
+                
+            }
+            
+            a {
+                display:block;
+                position:relative;
+                padding:0 24px;
+                line-height:80px;
+                font-family: $ssans;
+                font-size:0.9em;
+                font-weight: $semibold;
+                color: $white;
+                text-transform:none;
+                text-align:center;
+                transition:all 0.3s;  
+                text-decoration:none;
+                border-radius: 0;
+                
+                .scrolling & {
+                    
+                }
+                
+                &:hover {
+                    color:$orange;
+                }
+            }
+            
+            &:hover > a,
+            &:focus > a,
+            &.current-menu-item > a,
+            &.current-menu-ancestor > a,
+            &.current-post-ancestor > a,
+            &.current-page-ancestor > a {
+                color:$orange;
+            }
+            
+            &:hover .sub-menu,
+            &:focus .sub-menu {
+                left:0;
+                margin-top:0;
+            }
+        
+            &.flip:hover .sub-menu,
+            &.flip:focus .sub-menu {
+                left:auto;
+                right:0;
+            }
+        }
+        
+        ul {
+            position: absolute;
+            top:100%;
+            left: -999em;
+            //left:0;
+            width:auto;
+            min-width:100%;
+            margin:0;
+            background:$purple_dark;
+            padding:0;
+            z-index:1000;
+            box-sizing:border-box;            
+            
+            li {
+                position:relative;
+                display:block;
+                margin:0;
+                background:$purple_dark;
+                overflow:hidden;
+                
+                a {
+                    display:block;
+                    width:100%;
+                    box-sizing:border-box;
+                    vertical-align:middle;
+                    line-height:1.3em;
+                    font-family:$ssans;
+                    font-weight:$normal;
+                    height:auto;
+                    padding:15px 24px;
+                    color:$white;
+                    background:none !important;
+                    border-top:1px solid $white;
+                    white-space:nowrap;
+                    transition:all 0.3s;
+                    text-align:left;
+                    border-radius:0;
+                    text-decoration:none;
+                    
+                    .scrolling & {
+                        
+                    }
+                    
+                    &:hover,
+                    &.active,
+                    .nav-menu li:hover &,
+                    .nav-menu li:focus & {
+                        color:$orange
+                    }
+                    
+                }
+                
+                &.current-menu-item a,
+                &.current-menu-ancestor a,
+                &.current-post-ancestor a,
+                &.current-page-ancestor a {
+                    color: $orange;
+                                    
+                    &:hover,
+                    &.active,
+                    .nav-menu li:hover &,
+                    .nav-menu li:focus & {
+                        
+                    }
+                }
+                
+                &:first-of-type {
+                    
+                    a {
+                        //border:none;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    
+    #primary-navigation-mobile {
+        
+        .nav-menu {
+            
+        
+            > li {
+                
+            
+                &:last-of-type {
+                
+                    > a {
+                        
+                    
+                        &:after {
+                            
+                        }
+                    }
+                }
+            
+                a {
+                    display:block;
+                    position:relative;
+                    padding:5px 0;
+                    line-height:1.2em;
+                    font-family: $ssans;
+                    font-size:1em;
+                    font-weight: $bold;
+                    text-align:left;
+                    text-transform:uppercase;
+                    color:$white;
+                    
+                    &:after {
+                        position:absolute;
+                        left:-20px;
+                        top:0;
+                        width:3px;
+                        height:34px;
+                        content:'';
+                    }
+                    
+                    &:hover {
+                        color:$blue;
+                    }
+                }
+            
+                &:hover > a,
+                &:focus > a,
+                &.current-menu-item > a,
+                &.current-menu-ancestor > a,
+                &.current-post-ancestor > a,
+                &.current-page-ancestor > a {
+                    color:$blue;
+                
+                    &:after {
+                        background:$orange;
+                    }
+                
+                    &:hover {
+                    
+                        &:after {
+                            background:$orange;
+                        }
+                    }
+                }
+            }
+        
+            ul {
+                position: relative;
+                width:100%;
+                margin:0;
+                background:none;
+                padding:5px 10px;          
+            
+                li {
+                    position:relative;
+                    display:block;
+                    margin:0;
+                    background:none;
+                    overflow:hidden;
+                
+                    a {
+                        display:block;
+                        width:100%;
+                        box-sizing:border-box;
+                        vertical-align:middle;
+                        line-height:1.2em;
+                        height:auto;
+                        padding:5px 0;
+                        color:$white;
+                        background:none !important;
+                        transition:all 0.3s;
+                        text-align:left;
+                        border-radius:0;
+                        text-decoration:none;
+                    
+                        &:hover,
+                        &.active,
+                        .nav-menu li:hover &,
+                        .nav-menu li:focus & {
+                            color:$orange;
+                        }
+                    
+                    }
+                
+                    &.current-menu-item a,
+                    &.current-menu-ancestor a,
+                    &.current-post-ancestor a,
+                    &.current-page-ancestor a {
+                        color: $orange;
+                                    
+                        &:hover,
+                        &.active,
+                        .nav-menu li:hover &,
+                        .nav-menu li:focus & {
+                        
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media only screen and (max-width: #{$bp_small}) {
+    
+    
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
+    
+    
+}
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    #primary-navigation-mobile {
+        
+        .nav-menu {
+        
+            > li {
+            
+                a {
+                    
+                    &:after {
+                        left:-80px;
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1260px) {
+    
+    #primary-navigation {
+        
+        .nav-menu {
+        
+            > li {
+                
+                &:last-of-type {
+                
+                    > a {
+                    
+                        &:after {
+                            width:calc(100% - 8px);
+                        }
+                    }
+                }
+            
+                a {
+                    font-size:0.833em;
+                    padding:0 8px;
+                
+                    &:after {
+                        left:8px;
+                        width:calc(100% - 16px);
+                    }
+                }
+                
+                &:hover .sub-menu,
+                &:focus .sub-menu {
+                    left:-4px;
+                }
+        
+                &.flip:hover .sub-menu,
+                &.flip:focus .sub-menu {
+                    right:-4px;
+                }
+                
+                &.mega {
+                
+                    ul {
+                        width:50vw;
+                    }
+                }
+            } 
+        }
+    }
+    
+}

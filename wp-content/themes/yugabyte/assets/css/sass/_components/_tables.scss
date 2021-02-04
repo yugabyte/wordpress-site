@@ -1,0 +1,65 @@
+/**********************************************************************************************/
+/***** SITEWIDE TABLE STYLES ******************************************************************/
+/**********************************************************************************************/
+
+
+
+.info_tip {
+    position:absolute;
+    right:10px;
+    top:50%;
+    width:20px;
+    height:20px;
+    margin-top:-10px;
+    background:$blue;
+    
+    &:hover {
+        background:$orange;
+        
+        .tip {
+            display:block;
+        }
+    }
+    
+    .tip {
+        display:none;
+        position:absolute;
+        left:calc(100% + 40px);
+        top:-20px;
+        width:300px;
+        height:auto;
+        border:4px solid $blue;
+        background:$white;
+        z-index:10000;
+        
+        .inner {
+            display:block;
+            padding:30px;
+            color: $black;
+        }
+    }
+}
+
+@media screen and (max-width: #{$bp_small}) {
+
+    
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
+    
+    
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    
+    
+}
+
+@media only screen and (min-width: 1025px) and (max-width: #{$bp_full}) {
+    
+    
+    
+}

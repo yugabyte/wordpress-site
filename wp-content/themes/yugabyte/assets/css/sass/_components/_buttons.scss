@@ -1,0 +1,136 @@
+/**********************************************************************************************/
+/***** SITEWIDE BUTTONS ***********************************************************************/
+/**********************************************************************************************/
+a.btn,
+.btn a,
+a span.btn,
+input[type='image'],
+input[type='submit'],
+input[type='button'],
+button.btn,
+button.gpnf-add-entry,
+.wp-block-button__link {
+    display:inline-block;
+    position:relative;
+    margin:0 0 1.67em 0;
+    padding:10px 20px;
+    width:auto;
+    background:$orange !important;
+    font-family: $ssans;
+    font-size: 1.25em;
+    font-weight: $semibold;
+    font-style:normal;
+    line-height:1.4em !important;
+    color: $white !important;
+    border:2px solid $orange;
+    border-radius:100px;
+    text-decoration:none !important;
+    text-transform:none;
+    box-sizing:border-box;
+    text-align:center;
+    -webkit-appearance:none;
+    transition:all 0.3s;
+    cursor:pointer;
+    
+    &.offset {
+        margin-left:20px;
+    }
+    
+    &.outline {
+        background:none !important;
+        color: $orange !important;
+    }
+    
+    &:hover {
+        color: $white !important;
+        border-color:$blue !important;
+        background:$blue !important;
+        text-decoration:none !important;
+    }
+}
+
+input[type='submit'],
+input[type='button'] {
+    
+    
+    &:focus {
+        outline:none;
+    }
+}
+
+a.btn.disabled,
+a.btn.disabled:hover,
+button.btn:disabled:hover,
+button.gpnf-add-entry:disabled:hover {
+    cursor:default;
+    color: $white !important;
+    background: #ededec !important;
+}
+
+// HEADER CTA
+#header_cta {
+    float:right;
+    margin:18px 0 0 48px;
+    padding:3px 15px;
+    line-height:33px !important;
+}
+
+.read_more {
+    text-decoration:underline;
+}
+
+
+// GUTENBERG BUTTON STYLES
+.wp-block-buttons {
+    width:100%;
+    max-width:1360px;
+    margin-right:auto;
+    margin-left:auto;
+
+    .wp-block-button {
+        margin-bottom:0;
+        margin-right:20px;
+        
+        &:last-child {
+            margin-right:0;
+        }
+    }
+}
+
+.wp-block-button__link {
+	border-radius: 0;
+}
+
+@media screen and (max-width: #{$bp_small}) {
+
+    a.btn,
+    .btn a,
+    a span.btn,
+    input[type='image'],
+    input[type='submit'],
+    input[type='button'],
+    button.btn,
+    button.gpnf-add-entry,
+    .wp-block-button__link {
+        
+    }
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
+    
+    
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    
+    
+}
+
+@media only screen and (min-width: 1025px) and (max-width: #{$bp_full}) {
+    
+    
+    
+}

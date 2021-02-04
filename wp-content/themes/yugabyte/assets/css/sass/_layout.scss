@@ -1,0 +1,311 @@
+/**********************************************************************************************/
+/***** RESET **********************************************************************************/
+/**********************************************************************************************/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/**********************************************************************************************/
+/***** STRUCTURAL *****************************************************************************/
+/**********************************************************************************************/
+html {
+    height:100%;
+}
+body {
+    height:auto !important;
+    min-height:100%;
+    font-family: $ssans;
+    font-weight: $normal;
+    font-size: 20px;
+	line-height: 1.45em;
+    color: $black;
+    -webkit-text-size-adjust: 100%;
+    background: $white;
+}
+
+#page {
+	position:relative;
+	width:100%;
+	height:100%;
+	margin:0 auto;
+}
+
+#main {
+    width:100%;
+    margin:0;
+    background:$white;
+    transition:margin 0.3s;
+}
+
+#primary {
+    float:left;
+    width:50%;
+    box-sizing:border-box;
+    padding:0 30px 0 0;
+    
+    &.full {
+        float:none;
+        width:100%;
+        border:none;
+        padding:0;
+    }
+}
+#secondary {
+    float:right;
+    width:50%;
+    padding:0 70px;
+    box-sizing:border-box;
+}
+
+#content {
+    position:relative;
+    width:100%;
+    /*min-height:1800px;*/ /****************** TEMP FOR DEV *****/
+    margin:0 auto;
+    background:none;
+    box-sizing:border-box;
+    z-index:10;
+    overflow:hidden;
+    
+    > article {
+        padding-top:100px;
+        
+        > .gform_wrapper {
+            padding-top:0;
+            width:calc(100% - 160px);
+            max-width:1200px;
+            margin:0 auto 80px;
+        }
+    }
+}
+
+.content_section {
+    position:relative;
+    width:100%;
+    /*overflow:hidden;*/
+    text-align:left;
+    
+    &.content_wrapper {
+        z-index:10;
+    }
+    
+    &.ybtable {
+        background: $offwhite;
+    }
+    
+    &.gray_light {
+        background: $gray_light;
+    }
+    
+    &.blue {
+        background: $blue;
+    }
+    
+    &.white {
+        background: $white;
+    }
+    
+    &.invert {
+        > * {
+            color: $white;
+        }
+    }
+}
+
+.content_section_inner {
+    width:calc(100% - 80px);
+    max-width:1360px;
+    margin:0 auto;
+    padding:60px 0;
+    text-align:left;
+    box-sizing:border-box;
+    background-color: transparent;
+    
+    &.full {
+        width:100%;
+        max-width:none;
+    }
+    &.narrow {
+        width:75%;
+        max-width:calc(1360px * 0.75);
+    }
+    &.narrower {
+        width:65%;
+        max-width:calc(1360px * 0.65);
+    }
+}
+
+.wysiwyg {
+    text-align:left;
+    
+    &.narrow {
+        width:80%;
+        margin:0 auto;
+    }
+    &.narrower {
+        width:65%;
+        margin:0 auto;
+    }
+}
+
+@media screen and (max-width: #{$bp_small}) {
+    
+    #content {
+        
+        > article {
+            padding-top:60px;
+            
+            > .gform_wrapper {
+                width:calc(100% - 40px);
+                margin:0 auto 40px;
+            }
+        }
+    }
+    
+    #main {
+        
+    }
+    
+    #primary {
+        float:none;
+        width:100%;
+        box-sizing:border-box;
+        margin:0;
+        padding:40px 0;
+    }
+    #secondary {
+        float:none;
+        width:100%;
+        margin-top:0;
+        padding:0;
+        
+        .inner {
+            min-height:0;
+        }
+    }
+    
+    .content_section {
+        
+    }
+    
+    .content_section_inner {
+        padding-top:60px;
+        padding-bottom:30px;
+    }
+    
+    .content_section_inner,
+    .content_section_inner.narrow,
+    .content_section_inner.narrower {
+        width:100%;
+        padding-left:20px;
+        padding-right:20px;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+    
+    .content_section_inner,
+    .content_section_inner.narrow,
+    .content_section_inner.narrower {
+        width:100%;
+        padding-left:20px;
+        padding-right:20px;
+    }
+    
+}
+
+
+@media screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    
+    
+}
+
+@media screen and (min-width: 768px) and (max-width: #{$bp_full}) {
+    
+    .wysiwyg {
+        
+        /*br {
+            display:none;
+        }*/
+        
+        &.narrow {
+            width:85%;
+        }
+        &.narrower {
+            width:85%;
+        }
+    }
+    
+    .content_section_inner {
+        
+    }
+    
+    .content_section_inner.narrow,
+    .content_section_inner.narrower {
+        width:85%;
+    }
+    
+}
+
+@media screen and (min-width: 1025px) and (max-width: #{$bp_full}) {
+    
+    .content_section_inner {
+        
+    }
+    
+}
+
+/* SPECIFIC FOR BRINGING IN MOBILE NAV AND HAMBURGER */
+@media screen and (max-width: 1024px) {
+    
+    body.mobile_nav_open {
+        overflow:hidden;
+    }
+    
+    #site-inner {
+        position:relative;
+    }
+    
+}

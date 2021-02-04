@@ -1,0 +1,27 @@
+@media print {
+  @page {
+    margin: .5in;
+  }
+  * {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    outline: none;
+   }
+  html, body {
+    color: #000 !important;
+    background: $white !important;
+    width: 7.5in !important;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+  
+
+  blockquote, table, pre, img, .bg-img{
+    page-break-inside: avoid;
+  }
+
+  ul, ol, dl {
+    page-break-before: avoid;
+  }
+}

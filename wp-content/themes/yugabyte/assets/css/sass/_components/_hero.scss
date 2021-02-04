@@ -1,0 +1,110 @@
+/**********************************************************************************************/
+/***** HERO ***********************************************************************************/
+/**********************************************************************************************/
+#hero {
+    position:relative;
+    height:520px;
+    min-height:520px;
+    background-color:$blue;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
+    z-index:15;
+    
+    &:before {
+        position:absolute;
+        top:0;
+        right:0;
+        bottom:0;
+        left:0;
+        content:'';
+        z-index:-1;
+    }
+    
+    .content_section_inner {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        position:relative;
+        height:100%;
+        min-height:520px;
+        z-index:10;
+        text-align:center;
+    }
+    
+    h1 {
+        position:relative;
+        display:inline-block;
+        margin:0 0 120px;
+        padding:10px 20px;
+        font-size:3.5em;
+        font-weight:$normal;
+        letter-spacing:0.1em;
+        color: $orange;
+        text-transform:uppercase;
+        border:2px solid $white;
+        
+        &:before {
+            position:absolute;
+            left:50%;
+            top:100%;
+            margin-left:-1px;
+            width:2px;
+            height:90px;
+            content:'';
+            background:$white;
+        }
+        
+        &:after {
+            position:absolute;
+            left:50%;
+            top:calc(100% + 90px);
+            margin-left:-6px;
+            width:12px;
+            height:12px;
+            content:'';
+            background:$white;
+            border-radius:6px;
+        }
+    }
+    
+    p {
+        font-size:1.1em;
+        color: $white;
+    }
+    
+    .cta_group {
+        
+        .btn {
+            margin:0 0 0 40px;
+            
+            &:first-of-type {
+                margin:0;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: #{$bp_small}) {
+    
+    
+    
+}
+
+@media only screen and (max-width: 480px) {
+    
+    
+    
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    
+    
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1260px) {
+    
+    
+    
+}
