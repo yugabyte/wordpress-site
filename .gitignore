@@ -19,8 +19,9 @@ wp-content/wp-cache-config.php
 wp-content/cache/*
 wp-content/cache/supercache/*
 
-# local MAMP environment
+# local DEV environment
 wp-config-LOCAL-MAMP.php
+wp-content/themes/yugabyte/node_modules
 
 # wpengine specific
 .smushit-status
