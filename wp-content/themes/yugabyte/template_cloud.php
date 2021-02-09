@@ -18,7 +18,11 @@
                         <h1 class="title"><?php the_field('hero_title'); ?></h1>
                         <div class="subtitle"><?php the_field('hero_subtitle'); ?></div>
                         <div class="button-container">                            
-                            <a href="<?php the_field('cloud_register') ?>" class="email-cta button"><?php the_field('cloud_register_cta_text'); ?></a>					
+                            <a href="<?php the_field('cloud_register') ?>" class="email-cta">
+								<button class="button">
+									<?php the_field('cloud_register_cta_text'); ?>
+								</button>
+							</a>
                         </div>
 						<div class="cloud-alt-link">
 							<?php the_field('cloud_login_cta'); ?>
@@ -45,25 +49,21 @@
 				</div>
 			</section>
 
-			<!-- <section class="contact-form">
+			<section class="startup-cta">
 				<div class="container">
 					<div class="row">
 						<div class="col">
-							<div class="section-title"><?php the_field('contact_form_title'); ?></div>
-						</div>
-					</div>
-					<div class="row">
-						<?php if(get_field('textbox')) { ?>
-						<div class="col-md">
-							<div class="textbox"><?php echo the_field('textbox'); ?></div>
-						</div>
-						<?php } ?>
-						<div class="col-md <?php echo get_field('textbox') ? '' : 'full-form'; ?>">
-							<div class="cf7-form"><?php echo do_shortcode( get_field('contact_form') ); ?></div>
+							<h2 class="startup-cta__title"><?php the_field('startup_cta_title'); ?></h2>
+							<div class="startup-cta__contentbox">
+								<div class="startup-cta__description"><?php the_field('startup_cta_description'); ?></div>
+								<a href="<?php the_field('startup_cta_btn_url') ?>" class="startup-cta__btn">
+									<button class="button"><?php the_field('startup_cta_btn_text'); ?></button>
+								</a>
+							</div>							
 						</div>
 					</div>
 				</div>
-			</section> -->
+			</section>
 			<section class="layers">
 				<div class="container value-prop">
 					<div class="value-header-container">

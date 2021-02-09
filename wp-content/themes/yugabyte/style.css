@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.123
+* Version: 1.0.124
 */
 
 /* #region Default */
@@ -1428,6 +1428,51 @@ section.demo-banner {
 	max-height: 500px;
 	margin-left: 0;
 	max-width: 100%;
+}
+
+#yugabyte-cloud .banner-section .email-cta > .button,
+#yugabyte-cloud .startup-cta__btn > .button {
+	border-radius: 7px;
+    min-width: 204px;
+    font-size: 25px;
+    font-weight: 500;
+    border: none;
+    padding: 20px 25px;
+	line-height: 1;
+}
+
+#yugabyte-cloud section.startup-cta {
+	background: transparent linear-gradient(123deg, #000041 0%, #2B59C3 100%) 0% 0% no-repeat padding-box;
+	color: #ffffff;
+	padding: 75px 0;
+	text-align: center;
+}
+#yugabyte-cloud .startup-cta__title {
+	font-size: 48px;
+	font-weight: 300;
+}
+
+#yugabyte-cloud .startup-cta__contentbox {
+	display: flex;
+	max-width: 700px;
+	margin: 45px auto 0;
+}
+
+#yugabyte-cloud .startup-cta__btn > .button {
+	background: transparent;
+	border: 2px solid #FF6E42;
+	color: #FF6E42;
+	padding: 18px 25px;
+}
+
+#yugabyte-cloud .startup-cta__btn > .button:hover {
+	background: #FF6E42;
+	color: #ffffff;
+}
+
+#yugabyte-cloud .startup-cta__description {
+	text-align: left;
+	padding: 0 20px;
 }
 
 .success-stories .company-gallery .table-view {
