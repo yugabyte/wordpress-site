@@ -63,7 +63,7 @@
 											<?php the_sub_field('learn_more_text'); ?>
 										</div>
 									</div>
-									<div class="kubecon-options__select" data-name="<?php the_sub_field('name'); ?>">
+									<div class="kubecon-options__select kubecon-options__select--disabled" data-name="<?php the_sub_field('name'); ?>">
 										<div class="kubecon-options__select__btn-default">
 											<span><?php the_field('select_option'); ?></span>
 											<img src="<?php the_field('button_heart_image'); ?>" />
@@ -88,19 +88,19 @@
 					</div>
 					<div class="col-md-1"></div>
 					<div class="col-md-7">
-						
+						<!--
 						<div class="kubecon-form__form-wrapper">
 							<?php echo do_shortcode(get_field('form_shortcode')) ?>
 						</div>
 						<div class="kubecon-form__after-submit">
 							<?php the_field('success_text'); ?>
 						</div>
+						-->
 
-						<!--
 						<div class="kubecon-form__after-submit kubecon-form__after-submit--visible">
 							<p>Selection is over, thank you!</p>
 						</div>
- 						-->
+ 						
 					</div>
 				</div>
 			</div>
