@@ -31,28 +31,24 @@
                 <span class="switch_txt_theme">Change Theme Here:</span>
 
                 <select name="theme" id="fm_theme">
-                    <option value="default" <?php echo (isset($_GET['theme']) && $_GET['theme'] == 'default') ? 'selected="selected"' : ($wp_fm_theme !== false) && $wp_fm_theme == 'default' ? 'selected="selected"'
-                        : ''; ?>>
+                    <option value="default" <?php echo (isset($_GET['theme']) && $_GET['theme'] == 'default') ? 'selected="selected"' : (($wp_fm_theme !== false) && $wp_fm_theme == 'default' ? 'selected="selected"' : ''); ?>>
                         <?php _e('Default', 'wp-file-manager'); ?>
                     </option>
                     <option value="dark" <?php echo (isset($_GET['theme']) && $_GET['theme'] == 'dark') ?
-                        'selected="selected"' : ($wp_fm_theme !== false) && $wp_fm_theme == 'dark' ? 'selected="selected"' :
-                        ''; ?>>
+                        'selected="selected"' : (($wp_fm_theme !== false) && $wp_fm_theme == 'dark' ? 'selected="selected"' : ''); ?>>
                         <?php _e('Dark', 'wp-file-manager'); ?>
                     </option>
                     <option value="light" <?php echo (isset($_GET['theme']) && $_GET['theme'] == 'light') ?
-                        'selected="selected"' : ($wp_fm_theme !== false) && $wp_fm_theme == 'light' ? 'selected="selected"' :
-                        ''; ?>>
+                        'selected="selected"' : (($wp_fm_theme !== false) && $wp_fm_theme == 'light' ? 'selected="selected"' : ''); ?>>
                         <?php _e('Light', 'wp-file-manager'); ?>
                     </option>
                     <option value="gray" <?php echo (isset($_GET['theme']) && $_GET['theme'] == 'gray') ?
-                        'selected="selected"' : ($wp_fm_theme !== false) && $wp_fm_theme == 'gray' ? 'selected="selected"' :
-                        ''; ?>>
+                        'selected="selected"' : (($wp_fm_theme !== false) && $wp_fm_theme == 'gray' ? 'selected="selected"' : ''); ?>>
                         <?php _e('Gray', 'wp-file-manager'); ?>
                     </option>
                     <option value="windows - 10" <?php echo (isset($_GET['theme']) && $_GET['theme'] == 'windows - 10') ?
-                        'selected="selected"' : ($wp_fm_theme !== false) && $wp_fm_theme == 'windows - 10' ?
-                        'selected="selected"' : ''; ?>>
+                        'selected="selected"' : (($wp_fm_theme !== false) && $wp_fm_theme == 'windows - 10' ?
+                        'selected="selected"' : ''); ?>>
                         <?php _e('Windows - 10', 'wp-file-manager'); ?>
                     </option>
                 </select>
@@ -60,7 +56,7 @@
                     <?php foreach ($this->fm_languages() as $name => $lang) {
                             ?>
                     <option value="<?php echo $lang; ?>" <?php echo (isset($_GET['lang']) && $_GET['lang'] == $lang) ?
-                        'selected="selected"' : ($wp_fm_lang !== false) && $wp_fm_lang == $lang ? 'selected="selected"' : ''; ?>>
+                        'selected="selected"' : (($wp_fm_lang !== false) && $wp_fm_lang == $lang ? 'selected="selected"' : ''); ?>>
                         <?php echo $name; ?>
                     </option>
                     <?php
