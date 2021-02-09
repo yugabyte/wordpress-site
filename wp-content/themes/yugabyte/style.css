@@ -1442,7 +1442,7 @@ section.demo-banner {
 }
 
 #yugabyte-cloud section.startup-cta {
-	background: transparent linear-gradient(123deg, #000041 0%, #2B59C3 100%) 0% 0% no-repeat padding-box;
+	background: transparent linear-gradient(123deg, #2B59C3 0%, #000041 100%) 0% 0% no-repeat padding-box;
 	color: #ffffff;
 	padding: 75px 0;
 	text-align: center;
