@@ -37,7 +37,7 @@ jQuery(document).ready(function($) {
         
         if($(window).width() > 767) {
             pushOffHeader();
-            //calcEqualHeightBlocks();
+            calcEqualHeightBlocks();
         }
         
         if($(window).width() < 768) {
@@ -59,11 +59,11 @@ jQuery(document).ready(function($) {
         
         setTimeout(function(){
             if($(window).width() > 767) {
-                //calcEqualHeightBlocks();
+                calcEqualHeightBlocks();
             } else {
                 //RESET EQ H BLOCKS TO AUTO HEIGHT
-                //$('.eq_h .eq_l').css('height','auto');
-                //$('.eq_h .eq_r').css('height','auto');
+                $('.eq_h .eq_l').css('height','auto');
+                $('.eq_h .eq_r').css('height','auto');
             }
             
             if($(window).width() < 768) {

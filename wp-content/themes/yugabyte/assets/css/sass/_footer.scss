@@ -135,7 +135,7 @@
             transition: all 0.2s;
             transform:translateX(-50%);
             
-            .yb_social_icon {
+            .icon {
                 transition: all 0.3s;
                 fill: $purple_dark;
             }
@@ -144,7 +144,7 @@
         &:hover {
             border-color:$orange;
             
-            svg .yb_social_icon {
+            svg .icon {
                 fill: $orange;
             }
         }

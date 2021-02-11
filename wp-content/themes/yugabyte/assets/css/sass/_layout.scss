@@ -108,7 +108,7 @@ body {
     overflow:hidden;
     
     > article {
-        padding-top:40px;
+        //padding-top:40px;
         
         > .gform_wrapper {
             padding-top:0;
@@ -129,7 +129,8 @@ body {
         z-index:10;
     }
     
-    &.ybtable {
+    &.ybtable,
+    &.light-blue {
         background: $offwhite;
     }
     
@@ -139,6 +140,22 @@ body {
     
     &.blue {
         background: $blue;
+    }
+    
+    &.orange {
+        background: $orange;
+    }
+    
+    &.purple {
+        background: $purple;
+    }
+    
+    &.gray-light {
+        background: $gray_light;
+    }
+    
+    &.purple-dark {
+        background: $purple_dark;
     }
     
     &.white {

@@ -1,6 +1,6 @@
 <?php
 /**
- * Image Content Two Column Block Template.
+ * Testimonial Content Two Column Block Template.
  *
  * @param   array $block The block settings and attributes.
  * @param   string $content The block inner HTML (empty).
@@ -9,13 +9,13 @@
  */
 
 // Create id attribute allowing for custom "anchor" value.
-$id = 'img_cont-' . $block['id'];
+$id = 'test_cont-' . $block['id'];
 if( !empty($block['anchor']) ) {
     $id = $block['anchor'];
 }
 
 // Create class attribute allowing for custom "className" and "align" values.
-$className = 'img_cont';
+$className = 'test_cont';
 if( !empty($block['className']) ) {
     $className .= ' ' . $block['className'];
 }
@@ -27,23 +27,33 @@ if( !empty($block['align']) ) {
 $bg_color = get_field('bg_color');
 $flip = get_field('flip');
 $cont = get_field('cont');
-$image = get_field('image');
-$img_src = $image['sizes']['large'];
-$img_alt = $image['alt'];
+$test_quote = get_field('test_quote');
+$test_cite = get_field('test_cite');
+$test_cite_subtitle = get_field('test_cite_subtitle');
 
-$flip_class_img = ( $flip ) ? 'col-1-2 mobile-col-1-1 img' : 'col-1-2 mobile-col-1-1 push-right img';
-$flip_class_cont = ( $flip ) ? 'col-1-2 mobile-col-1-1 push-right cont' : 'col-1-2 mobile-col-1-1 cont';
+$flip_class_test = ( $flip ) ? 'col-1-2 mobile-col-1-1 push-right test flip' : 'col-1-2 mobile-col-1-1 test';
+$flip_class_cont = ( $flip ) ? 'col-1-2 mobile-col-1-1 cont' : 'col-1-2 mobile-col-1-1 push-right cont';
 
-$bg_color_class = ( $bg_color ) ? $bg_color : '';
+$bg_color_class = ( $bg_color ) ? $bg_color : 'light-blue';
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
     <div class="content_section_inner tall_pad">
         <div class="clearfix vert_align">
             <div class="grid eq_h nopadding">
-                <div class="eq_r nopadding <?php echo $flip_class_img; ?>">
+                <div class="eq_r nopadding <?php echo $flip_class_test; ?>">
                     <div class="inner">
                         <div class="inner_content">
-                            <?php echo '<img src="'.$img_src.'" alt="'.$img_alt.'" />'; ?>
+                            <?php
+                            if( $test_quote ) {
+                                echo '<blockquote>'.$test_quote.'</blockquote>';
+                                if( $test_cite ) {
+                                    echo '<cite>&mdash;&nbsp;'.$test_cite;
+                                    if( $test_cite_subtitle ) {
+                                        echo '<span>'.$test_cite_subtitle.'</span>';
+                                    }
+                                }
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>

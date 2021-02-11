@@ -61,7 +61,8 @@ h2 {
     text-transform:uppercase;
     letter-spacing:4px;
     
-    &.lined {
+    &.lined,
+    &.lined_left {
         position:relative;
         margin-bottom:1.5em;
         
@@ -74,6 +75,14 @@ h2 {
             background:$purple_dark;
             content:'';
             transform:translateX(-50%);
+        }
+    }
+    
+    &.lined_left {
+        
+        &:after {
+            left:0;
+            transform:none;
         }
     }
 }
@@ -104,11 +113,14 @@ h3 {
 }
 
 h4 {
-    margin:0 0 0.25em;
-    color:$blue;
+    margin:0 0 0.5em;
+    color:$black;
     font-family: $ssans;
     font-size: 1.22em; /* 22px */
-    line-height:1.33em;
+    line-height:1.45em;
+    font-weight:$semibold;
+    text-transform:uppercase;
+    letter-spacing:3px;
 }
 
 h5 {
@@ -160,6 +172,10 @@ sub {
 .wysiwyg {
     p {
         font-size:1em;
+        
+        .btn {
+            margin-bottom:0 !important;
+        }
     }
     ul,
     ol {
@@ -175,7 +191,7 @@ sub {
         display: list-item; 
         margin-bottom:0.25em;
         font-size:1em;
-        line-height:1.56em;
+        line-height:1.45em;
         color:$gray;
     }
     ol li {
@@ -232,6 +248,10 @@ sub {
         
         p:last-of-type {
             margin:0;
+        }
+        
+        p:first-of-type {
+            margin-bottom:1.56em !important;
         }
     }
 }
@@ -307,10 +327,14 @@ i, em {
 blockquote {
     position:relative;
     @extend p;
-    margin:0.5em 0 1em;
+    font-size:1.4em;
+    line-height:1.5em;
+    font-style:italic;
+    font-weight:$normal;
+    margin:0 0 2em;
     padding:0;
     border:none;
-    color: $gray;
+    color: $black;
     text-align:left;
     
     p {
@@ -318,18 +342,28 @@ blockquote {
     }
     
     .wysiwyg & {
-        margin:0 0 1em 0;
+        margin:0 0 2em 0;
         padding:0;
     }
 }
 cite,
 p.cite {
+    @extend p;
+    font-size:1.4em;
+    line-height:1.5em;
+    font-style:italic;
+    font-weight:$bold;
     margin-bottom:1.56em;
-    font-size: 1.2em;
-    font-weight: $bold;
-    font-family: $ssans;
-    font-style:normal;
-    color: $blue;
+    color: $black;
+    
+    .wysiwyg & {
+        margin:0;
+    }
+    
+    span {
+        display:block;
+        font-weight:$normal;
+    }
 }
 
 img{

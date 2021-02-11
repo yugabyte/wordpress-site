@@ -106,6 +106,62 @@ add_action( 'wp_enqueue_scripts', 'kill_parent_load_child_style', 20 );
 remove_action( 'wp_head', 'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles', 'print_emoji_styles' );
 
+
+/**************************************************************/
+/***** CUSTOM FORMATTING FOR ACF WYSIWYG EDITOR FIELD *********/
+/**************************************************************/
+function yb_custom_mce_formats($buttons) {
+    array_unshift($buttons, 'styleselect');
+    return $buttons;
+}
+add_filter('mce_buttons_2', 'yb_custom_mce_formats');
+
+function mce_sub_sup( $buttons ) {	
+	array_push( $buttons, 'subscript' );
+	array_push( $buttons, 'superscript' );
+	return $buttons;
+}
+add_filter('mce_buttons', 'mce_sub_sup');
+
+function constrain_mce_editor( $init ) {
+    
+    $default_colours = '"000000", "Black", "ffffff", "White", "2b59c3", "Blue", "4ecd5f", "Green", "ff6e42", "Orange", "000041", "Purple Dark", "332a66", "Purple", "141920", "Nearly Black", "4d4647", "Gray Dark", "707070", "Gray", "e8e9f3", "Gray Light", "eef1fa", "Light Blue"';
+    $init['textcolor_map'] = '['.$default_colours.']';
+    
+    $style_formats = array(
+        array(
+            'title' => 'H2 LINED',
+            'block'    => 'h2',
+            'classes' => 'lined',
+        ),
+        array(
+            'title' => 'H2 LINED (LEFT)',
+            'block'    => 'h2',
+            'classes' => 'lined_left',
+        ),
+        array(
+            'title' => 'BUTTON STANDARD',
+            'selector'    => 'a',
+            'classes' => 'btn',
+        ),
+        array(
+            'title' => 'BUTTON OUTLINED',
+            'selector'    => 'a',
+            'classes' => 'btn outline',
+        ),
+        array(
+            'title' => 'BUTTON SQUARED',
+            'selector'    => 'a',
+            'classes' => 'btn sq',
+        ),
+    );
+    
+    $init['style_formats'] = json_encode( $style_formats );
+    return $init;
+}
+add_filter('tiny_mce_before_init', 'constrain_mce_editor');
+
+
 /******************************************/
 /***** REGISTER/INIT SIDEBARS *************/
 /******************************************/
@@ -350,6 +406,18 @@ add_shortcode('info_tip', 'set_info_tooltip');
 /***********************************************/
 /**** PAGE BLOCKS ******************************/
 /***********************************************/
+function create_yb_block_category( $categories, $post ) {
+	return array_merge(
+		$categories,
+		array(
+			array(
+				'slug' => 'yugabyte-blocks',
+				'title' => __( 'Yugabyte Blocks', 'yugabyte-blocks' ),
+			),
+		)
+	);
+}
+add_filter( 'block_categories', 'create_yb_block_category', 10, 2);
 
 add_action('acf/init', 'custom_acf_blocks_init');
 function custom_acf_blocks_init() {
@@ -362,7 +430,7 @@ function custom_acf_blocks_init() {
             'title'             => __('Comp Table'),
             'description'       => __('Wrapper and shortcode for inserting a WPTableBuilder table'),
             'render_template'   => 'template-parts/blocks/wptb_table.php',
-            'category'          => 'formatting',
+            'category'          => 'yugabyte-blocks',
             'post_types' => array('page'),
             'align' => false,
             'mode' => 'edit',
@@ -380,7 +448,7 @@ function custom_acf_blocks_init() {
             'title'             => __('CTA Buckets'),
             'description'       => __('Basic CTA buckets: heading, summary, CTA'),
             'render_template'   => 'template-parts/blocks/cta_buckets.php',
-            'category'          => 'formatting',
+            'category'          => 'yugabyte-blocks',
             'post_types' => array('page'),
             'align' => false,
             'mode' => 'edit',
@@ -398,7 +466,97 @@ function custom_acf_blocks_init() {
             'title'             => __('Two Column Image and Content'),
             'description'       => __('Standard two-column, 50-50 Image and Content'),
             'render_template'   => 'template-parts/blocks/image_content.php',
-            'category'          => 'formatting',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //2 COL TESTIMONIAL/CONTENT
+        acf_register_block_type(array(
+            'name'              => 'testimonial_content',
+            'title'             => __('Two Column Testimonial and Content'),
+            'description'       => __('Standard two-column, 50-50 Testimonial and Content'),
+            'render_template'   => 'template-parts/blocks/testimonial_content.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //2 COL LOGOS/CONTENT
+        acf_register_block_type(array(
+            'name'              => 'content_logos',
+            'title'             => __('Two Column Content and Logos Group'),
+            'description'       => __('Standard two-column, 50-50 Content and Logos Group'),
+            'render_template'   => 'template-parts/blocks/content_logos.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //TEAM GRID
+        acf_register_block_type(array(
+            'name'              => 'team_grid',
+            'title'             => __('Team Grid'),
+            'description'       => __('Grid of Team Members'),
+            'render_template'   => 'template-parts/blocks/team_grid.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //LOGO GRID
+        acf_register_block_type(array(
+            'name'              => 'logo_grid',
+            'title'             => __('Logo Grid'),
+            'description'       => __('Grid of Logos, 4-up'),
+            'render_template'   => 'template-parts/blocks/logo_grid.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //FULL-WIDTH CTA
+        acf_register_block_type(array(
+            'name'              => 'fw_cta',
+            'title'             => __('Full-Width CTA'),
+            'description'       => __('Full-width block, heading, social links, multiple CTA buttons'),
+            'render_template'   => 'template-parts/blocks/fw_cta.php',
+            'category'          => 'yugabyte-blocks',
             'post_types' => array('page'),
             'align' => false,
             'mode' => 'edit',
@@ -416,7 +574,7 @@ function custom_acf_blocks_init() {
             'title'             => __('Customer Testimonial'),
             'description'       => __('Full-width, DNY blue background, customer logo and testimonial'),
             'render_template'   => 'template-parts/blocks/testimonial.php',
-            'category'          => 'formatting',
+            'category'          => 'yugabyte-blocks',
             'post_types' => array('page'),
             'align' => false,
             'mode' => 'edit',

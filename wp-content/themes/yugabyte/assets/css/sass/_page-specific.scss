@@ -68,6 +68,47 @@
 /**********************************************************************************************/
 /***** UNIQUE GUTENBERG BLOCKS ****************************************************************/
 /**********************************************************************************************/
+.img_cont {
+    
+    .vert_align {
+        
+        
+        .inner {
+            display:flex;
+            align-items:center;
+            height:100%;
+        }
+        .img {
+            
+        }
+    }
+    
+    .cont {
+        
+        
+        .inner_content {
+            padding:0 60px;
+        }
+    }
+    
+    .img {
+        position:relative;
+        
+        .inner_content {
+            float:right;
+            position:relative;
+            margin:0 auto;
+            padding-right:60px;
+            z-index:15;
+        }
+        
+        img {
+            display:block;
+            width:100%;
+        }
+    }
+}
+
 .cta_buckets {
     
     
@@ -76,6 +117,432 @@
     }
 }
 
+.team_grid {
+    
+    
+    .team {
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        list-style:none;
+        margin:80px 0 0 0;
+        padding:0;
+    
+        .gridblock {
+            float:left;
+            vertical-align:top;
+            width:calc(33.33% - 14px);
+            margin:0 0 60px 20px;
+            
+            &:first-of-type {
+                margin-left:0 !important;
+            }
+            
+            &:nth-of-type(3n + 1) {
+                margin-left:0;
+            }
+        }
+        
+        .inner {
+            margin:0;
+            padding:0 10%;
+            text-align:center;
+            
+            .headshot {
+                display:inline-block;
+                position:relative;
+                height:180px;
+                width:180px;
+                border-radius:100px;
+                overflow:hidden;
+                border:3px solid $orange;
+                margin:0 auto 40px;
+                
+                img {
+                    position:absolute;
+                    left:50%;
+                    bottom:0;
+                    display:block;
+                    width:auto;
+                    max-height:100%;
+                    max-width:100%;
+                    transform:translateX(-50%);
+                }
+            }
+            
+            p {
+                margin:0 0 0.75em;
+                color:$nearlyblack;
+                font-family:$ssans;
+            }
+        }
+        
+        .social {
+            a {
+                display:inline-block;
+                position:relative;
+                width:32px;
+                height:33px;
+                margin:0 0 0 10px;
+                border:none;
+                background: none;
+                text-indent:-9999px;
+                overflow:hidden;
+                vertical-align:middle;
+                transition:all 0.3s;
+                color: $black;
+        
+                &.first {
+                    margin-left:0;
+                }
+        
+                svg {
+                    display:block;
+                    position:absolute;
+                    left:50%;
+                    top:50%;
+                    margin:0;
+                    width:32px;
+                    height:33px;
+                    transition: all 0.2s;
+                    transform:translate(-50%, -50%);
+                    
+                    .bg {
+                        opacity:0;
+                    }
+            
+                    .icon {
+                        transition: all 0.3s;
+                        fill: $purple_dark;
+                    }
+                }
+        
+                &:hover {
+            
+                    svg .icon {
+                        fill: $orange;
+                    }
+                }
+            }
+        }
+    }
+}
+
+.logo_grid {
+    
+    
+    .logos {
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+        justify-content:center;
+        list-style:none;
+        margin:80px 0 0 0;
+        padding:0;
+    
+        .gridblock {
+            float:left;
+            vertical-align:top;
+            width:calc(25% - 20px);
+            margin:0 0 60px 20px;
+            
+            &:first-of-type {
+                margin-left:0 !important;
+            }
+            
+            &:nth-of-type(4n + 1) {
+                margin-left:0;
+            }
+        }
+        
+        .inner {
+            margin:0;
+            text-align:center;
+            
+            .logo {
+                display:inline-block;
+                position:relative;
+                height:96px;
+                width:90%;
+                margin:0 auto 10px;
+                
+                img {
+                    position:absolute;
+                    left:50%;
+                    bottom:0;
+                    display:block;
+                    width:auto;
+                    max-height:100%;
+                    max-width:100%;
+                    transform:translateX(-50%);
+                }
+            }
+        }
+    }
+}
+
+.fw_cta {
+    
+    
+    h2.lined {
+        color: $white;
+        
+        &:after {
+            background: $white;
+        }
+    }
+    
+    .social_wrap {
+        margin-bottom:40px;
+        
+        a {
+            display:inline-block;
+            position:relative;
+            width:44px;
+            height:45px;
+            margin:0 0 0 20px;
+            border:none;
+            background: none;
+            text-indent:-9999px;
+            overflow:hidden;
+            vertical-align:middle;
+            transition:all 0.3s;
+            color: $white;
+    
+            &.first {
+                margin-left:0;
+            }
+    
+            svg {
+                display:block;
+                position:absolute;
+                left:50%;
+                top:50%;
+                margin:0;
+                width:44px;
+                height:45px;
+                transition: all 0.2s;
+                transform:translate(-50%, -50%);
+                
+                .bg {
+                    opacity:0;
+                }
+        
+                .icon {
+                    transition: all 0.3s;
+                    fill: $white;
+                }
+            }
+    
+            &:hover {
+        
+                svg .icon {
+                    fill: $orange;
+                }
+            }
+        }
+    }
+    
+    .ctas_wrap {
+        
+        
+        .btn {
+            margin:0 0 10px 40px;
+            
+            &:first-of-type {
+                margin-left:0;
+            }
+            
+            &:hover {
+                background:$orange !important;
+                border-color: $orange !important;
+            }
+        }
+    }
+}
+
+.logos_cont {
+    
+    
+    .vert_align {
+        
+        
+        .inner {
+            display:flex;
+            align-items:center;
+            height:100%;
+        }
+    }
+    
+    .logos {
+        .inner_content {
+            padding:0 60px;
+        }
+    }
+    
+    .cont {
+        
+        .inner {
+            padding:0 60px;
+        }
+        
+        .inner_content {
+            position:relative;
+            padding:60px;
+            background:$offwhite;
+            
+            &:after {
+                position:absolute;
+                right:-40px;
+                top:100px;
+                width: 0; 
+                height: 0; 
+                border-style: solid;
+                border-width: 24px 0 24px 40px;
+                border-color: transparent transparent transparent $offwhite;
+                content:'';
+            }
+        }
+        
+        &.flip .inner_content {
+            
+            &:after {
+                right:auto;
+                left:-40px;
+                border-width: 24px 40px 24px 0;
+                border-color: transparent $offwhite transparent transparent;
+            }
+        }
+    }
+    
+    .logos_stagger {
+        
+        
+        li {
+            
+            
+            .logo {
+                float:left;
+                display:inline-block;
+                width:auto;
+                max-width:40%;
+                margin-bottom:20px;
+                
+                img {
+                    display:block;
+                    width:100%;
+                }
+            }
+            
+            &:nth-child(even) {
+                
+                
+                .logo {
+                    float:right;
+                }
+            }
+            
+            &:last-of-type {
+                
+                .logo {
+                    margin-bottom:0;
+                }
+            }
+        }
+    }
+}
+
+.test_cont {
+    
+    
+    .vert_align {
+        
+        
+        .inner {
+            display:flex;
+            align-items:center;
+            height:100%;
+        }
+    }
+    
+    .cont {
+        .inner_content {
+            padding:0 60px;
+        }
+    }
+    
+    .test {
+        
+        .inner {
+            padding:0 60px;
+        }
+        
+        .inner_content {
+            position:relative;
+            padding:60px;
+            background:$white;
+            
+            &:after {
+                position:absolute;
+                right:-40px;
+                top:100px;
+                width: 0; 
+                height: 0; 
+                border-style: solid;
+                border-width: 24px 0 24px 40px;
+                border-color: transparent transparent transparent $white;
+                content:'';
+            }
+        }
+        
+        &.flip .inner_content {
+            
+            &:after {
+                right:auto;
+                left:-40px;
+                border-width: 24px 40px 24px 0;
+                border-color: transparent $white transparent transparent;
+            }
+        }
+    }
+    
+    .logos_stagger {
+        
+        
+        li {
+            
+            
+            .logo {
+                float:left;
+                display:inline-block;
+                width:auto;
+                max-width:40%;
+                margin-bottom:20px;
+                
+                img {
+                    display:block;
+                    width:100%;
+                }
+            }
+            
+            &:nth-child(even) {
+                
+                
+                .logo {
+                    float:right;
+                }
+            }
+            
+            &:last-of-type {
+                
+                .logo {
+                    margin-bottom:0;
+                }
+            }
+        }
+    }
+}
 
 .testimonial {
     background:$blue;

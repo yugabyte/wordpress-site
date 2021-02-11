@@ -1,73 +1,72 @@
 <?php
 
 //CUSTOM POST TYPES
-/*function cpt_product() { 
-	register_post_type( 'darrigoproduct',
+function cpt_teammember() { 
+	register_post_type( 'teammember',
 	 	// let's now add all the options for this post type
 		array('labels' => array(
-			'name' => __('Products', 'post type general name'),
-			'singular_name' => __('Product', 'post type singular name'),
+			'name' => __('Team Members', 'post type general name'),
+			'singular_name' => __('Team Member', 'post type singular name'),
 			'add_new' => __('Add New', 'custom post type item'),
-			'add_new_item' => __('Add New Product'),
+			'add_new_item' => __('Add New Team Member'),
 			'edit' => __( 'Edit' ),
-			'edit_item' => __('Edit Product'),
-			'new_item' => __('New Product'),
-			'view_item' => __('View Product'),
-			'search_items' => __('Search Products'),
+			'edit_item' => __('Edit Team Member'),
+			'new_item' => __('New Team Member'),
+			'view_item' => __('View Team Member'),
+			'search_items' => __('Search Team Members'),
 			'not_found' =>  __('Nothing found in the Database.'),
 			'not_found_in_trash' => __('Nothing found in Trash'),
-			'parent_item_colon' => 'Parent Product:'
+			'parent_item_colon' => 'Parent Team Member:'
 			),
-			'description' => __( 'D\'ArrigoNY Products' ),
+			'description' => __( 'Yugabyte Team Members' ),
 			'public' => true,
-			'exclude_from_search' => false,
-			'publicly_queryable' => true,
+			'exclude_from_search' => true,
+			'publicly_queryable' => false,
 			'show_ui' => true,
 			'show_in_nav_menus' => true,
 			'menu_position' => 30, 
-			'menu_icon' => 'dashicons-products',
+			'menu_icon' => 'dashicons-businessman',
 			'capability_type' => 'post',
-			'hierarchical' => true,
+			'hierarchical' => false,
 			'show_in_rest' => true,
-			'supports' => array('title', 'editor', 'excerpt', 'thumbnail'),
+			'supports' => array('title'),
 			'has_archive' => false,
-			'taxonomies' => array('producttypes'),
-			'rewrite' => array( 'slug' => 'products', 'with_front' => false ),
+			'rewrite' => array( 'slug' => 'team-members', 'with_front' => false ),
 			'query_var' => true
 	 	)
 	);
-} 
-add_action( 'init', 'cpt_product');*/
+}
+add_action( 'init', 'cpt_teammember');
 
 //TAXONOMIES
 /*function register_taxonomies() {
 
 	$topic_labels = array(
-		'name'              => _x( 'Product Types', 'taxonomy general name', 'darrigo' ),
-		'singular_name'     => _x( 'Product Type', 'taxonomy singular name', 'darrigo' ),
-		'search_items'      => __( 'Search Product Types', 'darrigo' ),
-		'all_items'         => __( 'All Product Types', 'darrigo' ),
-		'parent_item'       => __( 'Parent Product Type', 'darrigo' ),
-		'parent_item_colon' => __( 'Parent Product Type:', 'darrigo' ),
-		'edit_item'         => __( 'Edit Product Type', 'darrigo' ),
-		'update_item'       => __( 'Update Product Type', 'darrigo' ),
-		'add_new_item'      => __( 'Add New Product Type', 'darrigo' ),
-		'new_item_name'     => __( 'New Product Type Name', 'darrigo' ),
-		'menu_name'         => __( 'Product Types', 'darrigo' ),
+		'name'              => _x( 'Teams', 'taxonomy general name', 'yugabyte' ),
+		'singular_name'     => _x( 'Team', 'taxonomy singular name', 'yugabyte' ),
+		'search_items'      => __( 'Search Teams', 'yugabyte' ),
+		'all_items'         => __( 'All Teams', 'yugabyte' ),
+		'parent_item'       => __( 'Parent Team', 'yugabyte' ),
+		'parent_item_colon' => __( 'Parent Team:', 'yugabyte' ),
+		'edit_item'         => __( 'Edit Team', 'yugabyte' ),
+		'update_item'       => __( 'Update Team', 'yugabyte' ),
+		'add_new_item'      => __( 'Add New Team', 'yugabyte' ),
+		'new_item_name'     => __( 'New Team Name', 'yugabyte' ),
+		'menu_name'         => __( 'Teams', 'yugabyte' ),
 	);
 
 	$topic_args = array(
 		'hierarchical' => true,
 		'labels' => $topic_labels,
 		//'rewrite' => true,
-		'rewrite' => array( 'slug' => 'products/type' ),
+		'rewrite' => array( 'slug' => 'teams' ),
 		'show_ui' => true,
 		'show_in_menu' => true,
 		'show_in_rest' => true,
 		'show_admin_column' => true
 	);
 
-	register_taxonomy('producttypes', array('darrigoproduct'), $topic_args);
+	register_taxonomy('teams', array('teammember'), $topic_args);
 
 }
 add_action( 'init', 'register_taxonomies');*/
