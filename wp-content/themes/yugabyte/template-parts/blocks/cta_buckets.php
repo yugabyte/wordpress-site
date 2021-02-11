@@ -25,7 +25,7 @@ if( !empty($block['align']) ) {
 
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?>">
-    <div class="content_section_inner centered">
+    <div class="content_section_inner centered tall_pad">
         <div class="grid nopadding">
             <?php
             if( have_rows('cta_buckets') ):
