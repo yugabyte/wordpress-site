@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.124
+* Version: 1.0.125
 */
 
 /* #region Default */
@@ -6003,6 +6003,65 @@ span.wpcf7-not-valid-tip {
 	font-size: 15px;
 	border-bottom: 2px solid #f1f1f1;
 	min-height: 75px;
+}
+
+.events-page .meetups {
+	padding: 50px 0;
+	background-color: #fff;
+}
+
+.events-page .meetups-title {
+	font-size: 22px;
+	font-weight: 600;
+	color: #000041;
+	position: relative;
+	padding: 12px 0;
+}
+
+.events-page .meetups-title:before {
+	position: absolute;
+	top: 0;
+	left: 0;
+	content: '';
+	width: 50px;
+	height: 3px;
+	background-color: #FF6E42;
+}
+
+.events-page .list-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	padding: 0 30px;
+}
+
+.events-page .meetup-tile {
+	padding: 25px 40px;
+}
+
+.events-page .meetup-image {
+	width: 256px;
+}
+
+.events-page .meetup-name {
+	font-size: 15px;
+	font-weight: 600;
+	text-transform: uppercase;
+	color: #313133;
+	margin-top: 10px;
+}
+
+@media (max-width: 767.98px) {
+	.events-page .meetups-title {
+		font-size: 18px;
+	}
+
+	.events-page .list-wrapper {
+		padding: 0;
+	}
+
+	.events-page .meetup-image {
+		width: 225px;
+	}
 }
 
 .perks-section {
