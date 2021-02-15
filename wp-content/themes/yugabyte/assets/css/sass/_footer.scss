@@ -121,6 +121,29 @@
             margin-left:0;
         }
         
+        &.gh {
+            background:$white;
+            
+            svg {
+                top:23px;
+                
+                .icon {
+                    fill: $white;
+                }
+            }
+            
+            &:hover {
+                svg {
+                    .icon {
+                        fill: $white;
+                    }
+                    .bg {
+                        fill: $orange;
+                    }
+                }
+            }
+        }
+        
         span {
             
         }
@@ -138,6 +161,9 @@
             .icon {
                 transition: all 0.3s;
                 fill: $purple_dark;
+            }
+            .bg {
+                transition: all 0.3s;
             }
         }
         

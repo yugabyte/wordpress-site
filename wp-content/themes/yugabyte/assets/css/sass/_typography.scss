@@ -133,31 +133,6 @@ h6 {
     font-size:1em;
 }
 
-/*table{
-    width:100%;
-    margin: 2em 0; 
-    border: 1px solid $indigo; 
-    border-top: none; 
-    table-layout:auto;
-}
-td,
-th { 
-    border-left: 1px solid $indigo; 
-	padding: 1em;
-	background: $white;
-}
-th { 
-    background: $white;
-}
-
-tr{
-    border-top: 1px solid $indigo; 
-    border-left: 1px solid $indigo;
-}
-tr:nth-child(even) td {
-    background: $white;
-}*/
-
 sup, sub {
     vertical-align: baseline;
     position: relative;
@@ -262,58 +237,6 @@ p {
     
     strong, b {
         font-family:$ssans;
-        color:$orange;
-    }
-    
-    &.pre_header {
-        margin-bottom:0.25em;
-        font-family:$ssans;
-        font-style:italic;
-        font-weight:$bold;
-        color:$orange;
-    }
-    
-    &.icon {
-        position:relative;
-        line-height:1.3em;
-        font-size:1.11em;
-        margin:0;
-        padding:12px 0 12px 60px;
-        color:$blue;
-        
-        svg {
-            position:absolute;
-            left:0;
-            top:0;
-            
-            .tel_email {
-                transition:fill 0.3s;
-            }
-        }
-        
-        &.phone {
-            svg {
-                top:4px;
-            }
-        }
-        &.email {
-            svg {
-                top:10px;
-            }
-        }
-        
-        a {
-            color:$blue;
-            text-decoration:none;
-            
-            &:hover {
-                color:$blue;
-                
-                svg .tel_email {
-                    fill: $blue;
-                }
-            }
-        }
     }
 }
 
