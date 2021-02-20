@@ -1,6 +1,6 @@
 /*
 * Theme Name: yugabyte
-* Version: 1.0.125
+* Version: 1.0.126
 */
 
 /* #region Default */
@@ -603,6 +603,10 @@ a.banner-link:hover span {
 .main-footer .social-icons > a {
 	flex: 0 0 20%;
 	color: #322965;
+}
+
+.main-footer .social-icons a[href*=youtube] img {
+	width: 36px;
 }
 
 .main-footer .copyright-container {
