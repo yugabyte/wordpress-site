@@ -32,7 +32,7 @@ h1,h2,h3,h4,h5,h6 {
     margin:0 0 0.5em 0;
     font-family: $ssans;
     font-weight:$normal;
-    line-height:1.2em;
+    line-height:1.25em;
     color: $blue;
     
     &.large_margin {
@@ -53,7 +53,7 @@ h1 {
 }
 
 h2 {
-    font-size: 2em; /* 40px */
+    font-size: 2em; /* 36px */
     line-height:1.25em;
     font-family: $ssans;
     font-weight:$normal;
@@ -89,7 +89,7 @@ h2 {
 
 h3 {
     color: $orange;
-    font-size:1.5em; /* 30px */
+    font-size:1.5em; /* 27px */
     font-family: $ssans;
     line-height:1.25em;
     text-transform:uppercase;
@@ -125,12 +125,12 @@ h4 {
 
 h5 {
     margin:0;
-    font-size:1em;
+    font-size:1em; /* 18px */
     font-weight:$bold;
 }
 h6 {
     margin:0;
-    font-size:1em;
+    font-size:1em; /* 18px */
 }
 
 sup, sub {

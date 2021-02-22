@@ -263,7 +263,11 @@ function set_hero() {
     $post = get_queried_object();
     $hero_image_id = get_post_thumbnail_id( $post->ID );
     $hero_image = get_all_featured_image_sizes($hero_image_id);
-    $title = get_the_title();
+    if( get_field('custom_title') ) {
+        $title = get_field('custom_title');
+    } else {
+        $title = get_the_title();
+    }
     
     //ADDITIONAL FIELDS
     $subheading = get_field('subheading');

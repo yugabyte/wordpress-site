@@ -41,6 +41,11 @@ button.gpnf-add-entry,
         color: $orange !important;
     }
     
+    &.small {
+        padding:5px 10px;
+        font-size:0.9em;
+    }
+    
     &.sq {
         padding-right:40px;
         border-radius:0;
@@ -96,12 +101,24 @@ input[type='button'] {
 }
 
 a.btn.disabled,
-a.btn.disabled:hover,
-button.btn:disabled:hover,
-button.gpnf-add-entry:disabled:hover {
+.btn a.disabled,
+input[type='image']:disabled,
+input[type='submit']:disabled,
+input[type='button']:disabled,
+button.btn:disabled,
+button.gpnf-add-entry:disabled,
+.wp-block-button__link.disabled {
     cursor:default;
     color: $white !important;
-    background: #ededec !important;
+    background: $offwhite !important;
+    border-color: $offwhite !important;
+    
+    &:hover {
+        cursor:default;
+        color: $white !important;
+        background: $offwhite !important;
+        border-color: $offwhite !important;
+    }
 }
 
 // HEADER CTA
@@ -113,7 +130,27 @@ button.gpnf-add-entry:disabled:hover {
 }
 
 .read_more {
-    text-decoration:underline;
+    display:inline-block;
+    position:relative;
+    padding-right:40px;
+    text-decoration:none;
+    font-size:1.67em;
+    line-height:1.333em;
+    font-weight:$semibold;
+    color:$purple_dark;
+    
+    &:after {
+        position:absolute;
+        right:20px;
+        top:calc(50% + 2px);
+        width: 0; 
+        height: 0; 
+        border-style: solid;
+        border-width: 6px 0 6px 10px;
+        border-color: transparent transparent transparent $orange;
+        content:'';
+        transform:translateY(-50%);
+    }
 }
 
 

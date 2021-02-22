@@ -289,12 +289,26 @@
 .fw_cta {
     
     
-    h2.lined {
+    h2 {
+        margin:0 0 0.75em;
+        text-transform:none;
+        letter-spacing:0;
+        font-weight:$semibold;
         color: $white;
         
-        &:after {
-            background: $white;
+        &.lined {
+            margin:0 0 1.5em;
+            text-transform:uppercase;
+            
+            &:after {
+                background: $white;
+            }
         }
+    }
+    
+    p {
+        margin:0 0 2.25em;
+        color: $white;
     }
     
     .social_wrap {
@@ -358,10 +372,10 @@
                 margin-left:0;
             }
             
-            &:hover {
+            /*&:hover {
                 background:$orange !important;
                 border-color: $orange !important;
-            }
+            }*/
         }
     }
 }
@@ -602,4 +616,220 @@
     
     
     
+}
+
+/**********************************************************************************************/
+/***** INLINE CTAs - LISTING PAGES ************************************************************/
+/**********************************************************************************************/
+.inline_cta {
+    margin-bottom:40px;
+    width:100%;
+    
+    &.test {
+        padding:60px;
+        background:#f2f3f8;
+        
+        .meta {
+            
+            .inner {
+                
+            }
+            
+            .headshot {
+                display:inline-block;
+                position:relative;
+                height:114px;
+                width:114px;
+                border-radius:100px;
+                overflow:hidden;
+                border:1px solid $purple_dark;
+                margin:0 auto 40px;
+                
+                img {
+                    position:absolute;
+                    left:50%;
+                    bottom:0;
+                    display:block;
+                    width:auto;
+                    max-height:100%;
+                    max-width:100%;
+                    transform:translateX(-50%);
+                }
+            }
+            
+            p {
+                margin:0;
+            }
+        }
+        
+        .quote {
+            
+            
+            .inner {
+                padding:0 40px;
+            }
+            
+            img {
+                display:block;
+                width:50%;
+                max-width:300px;
+                margin:0 0 40px;
+            }
+            
+            p {
+                margin:0;
+            }
+        }
+    }
+}
+
+/**********************************************************************************************/
+/***** SUCCESS STORIES ************************************************************************/
+/**********************************************************************************************/
+#success_stories {
+    width:calc(100% - 80px);
+    margin:0 auto;
+    padding:60px 0;
+    
+    //FILTERS
+    #alm-filters-ssfilter {
+        padding-right:40px;
+        
+        .alm-filter {
+            margin-bottom:50px;
+        
+            ul {
+                margin:0;
+                padding:0;
+                list-style:none;
+            
+                > li {
+                    margin:0;
+                    padding:0;
+                    list-style:none;
+                
+                    .alm-filter--link {
+                        display:block;
+                        padding:10px 10px 10px 15px;
+                        font-size:1em;
+                        color:$black;
+                        line-height:1.3em;
+                        outline:none;
+                        cursor:pointer;
+                        @include background-opacity($orange, 0.0);
+                        transition:all 0.3s;
+                                        
+                        &:hover,
+                        &.active {
+                            @include background-opacity($orange, 0.15);
+                        }
+                    }
+                }
+            }
+        }
+        .alm-filter--title {
+        
+            h3 {
+                margin:0 0 1em;
+                color: $black;
+                font-size:1.22em;
+                font-weight:$semibold;
+                text-transform:none;
+                letter-spacing:0;
+            }
+        }
+    }
+    
+    .alm-btn-wrap {
+        opacity:0;
+        visibility:hidden;
+        text-align:center;
+
+        .btn {
+            margin:0;
+        }
+    }
+    
+    //SS GRID
+    #success-stories-list {
+        
+        .alm-reveal.alm-filters {
+            display:flex;
+            flex-direction:row;
+            flex-wrap:wrap;
+            justify-content:flex-start;
+    
+            .ajax-load-more-wrap {
+                width:100%;
+            }
+        }
+        
+        .item {
+            position:relative;
+            float:left;
+            width:calc(33.3333% - 27px);
+            margin:0 0 40px 40px;
+            z-index:10;
+            background:#f2f3f8;
+    
+            &:nth-of-type(3n + 1) {
+                margin-left:0;
+            }
+            
+            .top {
+                position:relative;
+                z-index:12;
+                box-shadow:0 0 15px rgba(20,25,32,0.15);
+                background:$white;
+                
+                .inner {
+                    display:flex;
+                    align-items:center;
+                    position:relative;
+                    padding:40px;
+                    height:230px;
+                    box-sizing:border-box;
+                }
+                
+                img {
+                    display:block;
+                    width:100%;
+                }
+                
+                .vertical {
+                    position:absolute;
+                    left:0;
+                    bottom:5px;
+                    display:block;
+                    padding:5px;
+                    width:100%;
+                    font-size:0.78em;
+                    color:$gray;
+                    line-height:1.25em;
+                    box-sizing:border-box;
+                    text-align:center;
+                }
+            }
+            
+            .btm {
+                background:none;
+                z-index:11;
+                
+                .inner {
+                    position:relative;
+                    padding:30px 40px 80px 20px;
+                }
+                
+                p {
+                    margin:0;
+                }
+            }
+            
+            .rm_wrap {
+                position:absolute;
+                left:20px;
+                bottom:20px;
+            }
+        }
+    }
 }

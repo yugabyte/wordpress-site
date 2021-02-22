@@ -12,6 +12,12 @@ jQuery(document).ready(function($) {
 	    e.preventDefault();
 	});
 	
+	$('#filters_clear').on('click', function(e) {
+        e.preventDefault();
+        var t = $(this);
+        window.almFiltersClear();
+    });
+	
 	
     
     //KILL DISABLED BUTTONS
@@ -165,6 +171,21 @@ jQuery(document).ready(function($) {
                 });
                 
                 setEqualHeights( l, r );
+            });
+        }
+    }
+    
+    function rowMaxHeight(el) {
+        if( $(window).width() > 767 && el.length > 0 ) {
+            el.each(function() {
+                $(this).find('.inner_content').css('height','auto');
+                var h = Math.max.apply(null, $(this).find('.inner_content').map(function () {
+                            return $(this).height();
+                        }).get());
+                $(this).find('.inner_content').each(function() {
+                    var h_new = h;
+                    $(this).height(h_new);
+                });
             });
         }
     }

@@ -26,6 +26,8 @@ if( !empty($block['align']) ) {
 // Load values and adding defaults.
 $bg_color = get_field('bg_color');
 $heading = get_field('heading');
+$underline = get_field('underline');
+$subheading = get_field('subheading');
 $social = get_field('social');
 
 $bg_color_class = ( $bg_color ) ? $bg_color : 'purple-dark';
@@ -34,7 +36,11 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'purple-dark';
     <div class="content_section_inner centered tall_pad">
         <?php
         if( $heading ) {
-            echo '<h2 class="lined">'.$heading.'</h2>';
+            $is_lined = ( $underline ) ? 'lined' : '';
+            echo '<h2 class="'.$is_lined.'">'.$heading.'</h2>';
+        }
+        if( $subheading ) {
+            echo '<p>'.$subheading.'</p>';
         }
         //SOCIAL
         if( $social ):
@@ -55,7 +61,9 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'purple-dark';
                 $ct_ext = get_sub_field('ct_ext');
                 $ct_btn_txt = get_sub_field('ct_btn_txt');
                 $cta_tar = get_sub_field('cta_tar');
+                $alt_style = get_sub_field('alt_style');
                 
+                $is_alt = ( $alt_style ) ? 'outline' : '';
                 $tar = ( $cta_tar ) ? '_blank' : '_self';
                     
                 if( $ct || $ct_ext ) {
@@ -68,7 +76,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'purple-dark';
                     } else {
                         $link = $ct;
                     }
-                    echo '<a href="'.$link.'" class="btn outline" target="'.$tar.'">'.$ct_btn_txt.'</a>';
+                    echo '<a href="'.$link.'" class="btn '.$is_alt.'" target="'.$tar.'">'.$ct_btn_txt.'</a>';
                 }
             endwhile;
             echo '</div>';

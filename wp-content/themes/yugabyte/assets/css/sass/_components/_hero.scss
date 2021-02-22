@@ -71,6 +71,14 @@
     p {
         font-size:1.1em;
         color: $white;
+        
+        a {
+            color: $orange;
+            
+            &:hover {
+                color: $blue;
+            }
+        }
     }
     
     .cta_group {
