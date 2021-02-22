@@ -254,8 +254,8 @@ function generate_fw_thumbs($i, $el) {
     echo '<style>';
     echo $el.'{background-image:url('.$fw_image_1024.')}';
     echo '@media screen and (min-width: 768px) {'.$el.'{background-image:url('.$fw_image_768.')}}';
-    echo '@media screen and (min-width: 1300px) {'.$el.'{background-image: url('.$fw_image_1024.')}}';
-    echo '@media screen and (min-width: 1600px) {'.$el.'{background-image: url('.$fw_image_1600.')}}';
+    echo '@media screen and (min-width: 1000px) {'.$el.'{background-image: url('.$fw_image_1024.')}}';
+    echo '@media screen and (min-width: 1400px) {'.$el.'{background-image: url('.$fw_image_1600.')}}';
     echo '</style>';
 }
 
