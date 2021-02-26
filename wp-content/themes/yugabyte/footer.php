@@ -24,6 +24,7 @@
                             $slack = get_field('slack','option');
                             $twitter = get_field('twitter','option');
                             $linkedin = get_field('linkedin','option');
+                            $youtube = get_field('youtube','option');
                             $facebook = get_field('facebook','option');
                             
                             //ICON SVG IMAGES
@@ -31,6 +32,7 @@
                             $icon_sl = file_get_contents( get_stylesheet_directory_uri().'/assets/images/social-icons/slack.svg' );
                             $icon_tw = file_get_contents( get_stylesheet_directory_uri().'/assets/images/social-icons/twitter.svg' );
                             $icon_ln = file_get_contents( get_stylesheet_directory_uri().'/assets/images/social-icons/linkedin.svg' );
+                            $icon_yt = file_get_contents( get_stylesheet_directory_uri().'/assets/images/social-icons/youtube.svg' );
                             $icon_fb = file_get_contents( get_stylesheet_directory_uri().'/assets/images/social-icons/facebook.svg' );
                             
                             echo '<div class="social_cont">';
@@ -45,6 +47,9 @@
                             }
                             if( $linkedin ) {
                                 echo '<a href="'.$linkedin.'" class="social ln" target="_blank"><span>LinkedIn</span>'.$icon_ln.'</a>';
+                            }
+                            if( $youtube ) {
+                                echo '<a href="'.$youtube.'" class="social yt" target="_blank"><span>YouTube</span>'.$icon_yt.'</a>';
                             }
                             if( $facebook ) {
                                 echo '<a href="'.$facebook.'" class="social fb" target="_blank"><span>Facebook</span>'.$icon_fb.'</a>';

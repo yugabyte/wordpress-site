@@ -88,6 +88,13 @@
             vertical-align:middle;
             line-height:1.45em;
             color:$purple;
+            
+            a {
+                color: $purple;
+                &:hover {
+                    color: $orange;
+                }
+            }
         }
         
         a {
