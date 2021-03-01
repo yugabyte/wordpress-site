@@ -35,7 +35,7 @@
 							<div class="cf7-form"><?php echo do_shortcode( get_field('contact_form') ); ?></div>
 						</div>
 						<div class="col-md">
-							<div class="g-map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12679.028136102643!2d-122.031771!3d37.3955778!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb9f3a0d6b036c06d!2sYugaByte+Inc!5e0!3m2!1sen!2sus!4v1535387143878" width="530" height="310" frameborder="0" style="border:0" allowfullscreen></iframe></div>
+							<div class="g-map"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1585.2633874636845!2d-122.0298773!3d37.3773728!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808fb65cf669f5b5%3A0x2d21886e6d1c7025!2s100%20S%20Murphy%20Ave%2C%20Sunnyvale%2C%20CA%2094086!5e0!3m2!1sen!2sus!4v1614628017572!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe></div>
 							<div class="address"><?php the_field('contact_map_address'); ?></div>
 						</div>
 					</div>
