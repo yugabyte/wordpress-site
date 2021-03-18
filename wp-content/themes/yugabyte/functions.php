@@ -1,5 +1,6 @@
 <?php
 require_once('inc/custom-post-type.php');
+require_once('inc/block-registration.php');
 
 function yugabyte_setup() {		
 	register_nav_menus( array(
@@ -119,6 +120,7 @@ add_filter('mce_buttons_2', 'yb_custom_mce_formats');
 function mce_sub_sup( $buttons ) {	
 	array_push( $buttons, 'subscript' );
 	array_push( $buttons, 'superscript' );
+	array_push( $buttons, 'underline' );
 	return $buttons;
 }
 add_filter('mce_buttons', 'mce_sub_sup');
@@ -327,6 +329,7 @@ function set_hero() {
         echo '<div id="hero" class="content_section">';
         echo '<div class="content_section_inner nopadding">';
             echo '<div class="inner">';
+            echo '<div class="inner_content">';
             echo '<h1>'.$title.'</h1>';
             if( $subheading ) {
                 echo '<p class="subheading">'.$subheading.'</p>';
@@ -362,8 +365,81 @@ function set_hero() {
             wp_reset_postdata();
             
             echo '</div>';
+            echo '</div>';
         echo '</div>';
         echo '</div>';
+        
+    //endif;
+    wp_reset_postdata();
+}
+
+function set_ss_hero() {
+    $post = get_queried_object();
+    $client = get_field('client');
+    $hero_image = get_field('hero_image');
+    $hero_logo = get_field('hero_logo');
+    if( get_field('custom_title') ) {
+        $title = get_field('custom_title');
+    } else {
+        $title = get_the_title();
+    }
+    
+    $el = '#hero_ss';
+    if( $hero_image['sizes']['large'] ) {
+        $hero_img_src = $hero_image['sizes']['large'];
+    } else {
+        $hero_img_src = $hero_image['url'];
+    }
+
+    echo '<style>';
+    echo $el.'{background-image:url('.$hero_img_src.')}';
+    echo '@media screen and (max-width: 767px) {'.$el.'{background-image:none;}}';
+    echo '</style>';
+    
+    echo '<div id="hero_ss" class="content_section">';
+    echo '<div class="content_section_inner nopadding">';
+        echo '<div class="inner">';
+        echo '<div class="inner_content">';
+        if( $hero_logo ) {
+            $hero_logo_src = $hero_logo['url'];
+            $hero_logo_alt = ( $hero_logo['url'] ) ? $hero_logo['url'] : $client;
+            echo '<img class="ss_logo" src="'.$hero_logo_src.'" alt="'.$hero_logo_alt.'" />';
+        }
+        echo '<h1>'.$title.'</h1>';
+        
+        if ( have_rows('cta_buttons') ):
+            echo '<div class="cta_group">';
+            while ( have_rows('cta_buttons') ): the_row();
+                $cta_url = get_sub_field('cta_url');
+                $cta_url_ext = get_sub_field('cta_url_ext');
+                $cta_tar = get_sub_field('cta_tar');
+                $cta_btn_txt = get_sub_field('cta_btn_txt');
+                $alt_style = get_sub_field('alt_style');
+                
+                $is_alt = ( $alt_style ) ? 'outline' : '';
+                $tar = ( $cta_tar ) ? '_blank' : '_self';
+                
+                if( $cta_url || $cta_url_ext ) {
+                    if( $cta_url_ext ) {
+                        if( $cta_url ) {
+                            $link = $cta_url;
+                        } else {
+                            $link = $cta_url_ext;
+                        }
+                    } else {
+                        $link = $cta_url;
+                    }
+                    echo '<a href="'.$link.'" class="btn '.$is_alt.'" target="'.$tar.'">'.$cta_btn_txt.'</a>';
+                }
+            endwhile;
+            echo '</div>';
+        endif;
+        wp_reset_postdata();
+        
+        echo '</div>';
+        echo '</div>';
+    echo '</div>';
+    echo '</div>';
         
     //endif;
     wp_reset_postdata();
@@ -407,189 +483,6 @@ function set_info_tooltip( $atts = [], $content = null, $tag = '' ) {
 
 add_shortcode('info_tip', 'set_info_tooltip');
 
-/***********************************************/
-/**** PAGE BLOCKS ******************************/
-/***********************************************/
-function create_yb_block_category( $categories, $post ) {
-	return array_merge(
-		$categories,
-		array(
-			array(
-				'slug' => 'yugabyte-blocks',
-				'title' => __( 'Yugabyte Blocks', 'yugabyte-blocks' ),
-			),
-		)
-	);
-}
-add_filter( 'block_categories', 'create_yb_block_category', 10, 2);
 
-add_action('acf/init', 'custom_acf_blocks_init');
-function custom_acf_blocks_init() {
-
-    if( function_exists('acf_register_block_type') ) {
-        
-        //WP TABLE BUILDER TABLE
-        acf_register_block_type(array(
-            'name'              => 'wptb_table',
-            'title'             => __('Comp Table'),
-            'description'       => __('Wrapper and shortcode for inserting a WPTableBuilder table'),
-            'render_template'   => 'template-parts/blocks/wptb_table.php',
-            'category'          => 'yugabyte-blocks',
-            'post_types' => array('page'),
-            'align' => false,
-            'mode' => 'edit',
-            'supports'          => array(
-                'align' => false,
-                'anchor' => true,
-                'alignWide' => false,
-                'html' => false,
-            ),
-        ));
-        
-        //BASIC CTA BUCKETS
-        acf_register_block_type(array(
-            'name'              => 'cta_buckets',
-            'title'             => __('CTA Buckets'),
-            'description'       => __('Basic CTA buckets: heading, summary, CTA'),
-            'render_template'   => 'template-parts/blocks/cta_buckets.php',
-            'category'          => 'yugabyte-blocks',
-            'post_types' => array('page'),
-            'align' => false,
-            'mode' => 'edit',
-            'supports'          => array(
-                'align' => false,
-                'anchor' => true,
-                'alignWide' => false,
-                'html' => false,
-            ),
-        ));
-        
-        //2 COL IMAGE/CONTENT
-        acf_register_block_type(array(
-            'name'              => 'image_content',
-            'title'             => __('Two Column Image and Content'),
-            'description'       => __('Standard two-column, 50-50 Image and Content'),
-            'render_template'   => 'template-parts/blocks/image_content.php',
-            'category'          => 'yugabyte-blocks',
-            'post_types' => array('page'),
-            'align' => false,
-            'mode' => 'edit',
-            'supports'          => array(
-                'align' => false,
-                'anchor' => true,
-                'alignWide' => false,
-                'html' => false,
-            ),
-        ));
-        
-        //2 COL TESTIMONIAL/CONTENT
-        acf_register_block_type(array(
-            'name'              => 'testimonial_content',
-            'title'             => __('Two Column Testimonial and Content'),
-            'description'       => __('Standard two-column, 50-50 Testimonial and Content'),
-            'render_template'   => 'template-parts/blocks/testimonial_content.php',
-            'category'          => 'yugabyte-blocks',
-            'post_types' => array('page'),
-            'align' => false,
-            'mode' => 'edit',
-            'supports'          => array(
-                'align' => false,
-                'anchor' => true,
-                'alignWide' => false,
-                'html' => false,
-            ),
-        ));
-        
-        //2 COL LOGOS/CONTENT
-        acf_register_block_type(array(
-            'name'              => 'content_logos',
-            'title'             => __('Two Column Content and Logos Group'),
-            'description'       => __('Standard two-column, 50-50 Content and Logos Group'),
-            'render_template'   => 'template-parts/blocks/content_logos.php',
-            'category'          => 'yugabyte-blocks',
-            'post_types' => array('page'),
-            'align' => false,
-            'mode' => 'edit',
-            'supports'          => array(
-                'align' => false,
-                'anchor' => true,
-                'alignWide' => false,
-                'html' => false,
-            ),
-        ));
-        
-        //TEAM GRID
-        acf_register_block_type(array(
-            'name'              => 'team_grid',
-            'title'             => __('Team Grid'),
-            'description'       => __('Grid of Team Members'),
-            'render_template'   => 'template-parts/blocks/team_grid.php',
-            'category'          => 'yugabyte-blocks',
-            'post_types' => array('page'),
-            'align' => false,
-            'mode' => 'edit',
-            'supports'          => array(
-                'align' => false,
-                'anchor' => true,
-                'alignWide' => false,
-                'html' => false,
-            ),
-        ));
-        
-        //LOGO GRID
-        acf_register_block_type(array(
-            'name'              => 'logo_grid',
-            'title'             => __('Logo Grid'),
-            'description'       => __('Grid of Logos, 4-up'),
-            'render_template'   => 'template-parts/blocks/logo_grid.php',
-            'category'          => 'yugabyte-blocks',
-            'post_types' => array('page'),
-            'align' => false,
-            'mode' => 'edit',
-            'supports'          => array(
-                'align' => false,
-                'anchor' => true,
-                'alignWide' => false,
-                'html' => false,
-            ),
-        ));
-        
-        //FULL-WIDTH CTA
-        acf_register_block_type(array(
-            'name'              => 'fw_cta',
-            'title'             => __('Full-Width CTA'),
-            'description'       => __('Full-width block, heading, social links, multiple CTA buttons'),
-            'render_template'   => 'template-parts/blocks/fw_cta.php',
-            'category'          => 'yugabyte-blocks',
-            'post_types' => array('page'),
-            'align' => false,
-            'mode' => 'edit',
-            'supports'          => array(
-                'align' => false,
-                'anchor' => true,
-                'alignWide' => false,
-                'html' => false,
-            ),
-        ));
-        
-        //FULL-WIDTH CUSTOMER TESTIMONIAL
-        acf_register_block_type(array(
-            'name'              => 'testimonial',
-            'title'             => __('Customer Testimonial'),
-            'description'       => __('Full-width, DNY blue background, customer logo and testimonial'),
-            'render_template'   => 'template-parts/blocks/testimonial.php',
-            'category'          => 'yugabyte-blocks',
-            'post_types' => array('page'),
-            'align' => false,
-            'mode' => 'edit',
-            'supports'          => array(
-                'align' => false,
-                'anchor' => true,
-                'alignWide' => false,
-                'html' => false,
-            ),
-        ));
-    }
-}
 
 ?>

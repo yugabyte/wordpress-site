@@ -10,6 +10,9 @@
  */
 
 get_header();
+if( is_singular('success-story') ) {
+    set_ss_hero();
+}
 ?>
 
 <div id="primary" class="content-area full">

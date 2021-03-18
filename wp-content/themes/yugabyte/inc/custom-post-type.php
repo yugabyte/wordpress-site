@@ -66,7 +66,7 @@ function cpt_success_story() {
 			'capability_type' => 'post',
 			'hierarchical' => false,
 			'show_in_rest' => true,
-			'supports' => array('title', 'editor', 'thumbnail'),
+			'supports' => array('title', 'editor'),
 			'has_archive' => false,
 			'rewrite' => array( 'slug' => 'success-stories', 'with_front' => false ),
 			'query_var' => true

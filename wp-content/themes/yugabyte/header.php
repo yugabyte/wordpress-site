@@ -46,15 +46,41 @@
     the_post(); rewind_posts();
     
     $pageclass = '';
+    
+    //CTA SETUP
+    $header_cta = get_field('header_cta','option');
+    $header_cta_ext = get_field('header_cta_ext','option');
+    $header_cta_btn_txt = get_field('header_cta_btn_txt','option');
+    if( $header_cta || $header_cta_ext ) {
+        $cta_url = '';
+        if( $header_cta_ext ) {
+            if( $header_cta ) {
+                $cta_url = $header_cta;
+            } else {
+                $cta_url = $header_cta_ext;
+            }
+        } else {
+            $cta_url = $header_cta;
+        }
+        echo '<a href="'.$cta_url.'" id="header_cta" class="btn">'.$header_cta_btn_txt.'</a>';
+    }
     ?>
 
     <div id="page" class="site <?php echo $pageclass; ?>">
         <a href="#" id="back_to_top" title="Back to top"><span class="inner"></span></a>
         <div id="mobile_nav_tray">
-            <nav id="primary-navigation-mobile" class="site-navigation primary-navigation show_on_mobile show_on_tablet" role="navigation">
+            <nav id="primary-navigation-mobile" class="site-navigation primary-navigation" role="navigation">
                 <a class="screen-reader-text skip-link" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
-                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'after' => '<a class="toggle" href="#"><span>Toggle Submenu</span></a>' ) ); ?>
+                <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu', 'link_after' => '<a class="toggle" href="#"><span>Toggle Submenu</span></a>' ) ); ?>
             </nav>
+            <?php
+            if( $header_cta || $header_cta_ext ) {
+                echo '<a href="'.$cta_url.'" id="header_cta_mobile" class="btn">'.$header_cta_btn_txt.'</a>';
+            }
+            ?>
+            <div id="search_container_mobile">
+                <?php get_search_form(); ?>
+            </div>
         </div>
         
         <div id="site-inner">
@@ -64,7 +90,7 @@
                     <div class="grid">
                         <div class="col-8-12 tablet-col-9-12 mobile-col-9-12 nopadding">
                             <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img class="" src="<?php echo get_stylesheet_directory_uri().'/assets/images/logo-main-light.svg' ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></p>
-                            <nav id="primary-navigation" class="site-navigation primary-navigation hide_on_mobile hide_on_tablet" role="navigation">
+                            <nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
                                 <a class="screen-reader-text skip-link" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
                                 <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
                             </nav>
@@ -72,27 +98,14 @@
                         <div class="col-4-12 tablet-col-3-12 mobile-col-3-12 nopadding">
                             <div class="header_right clearfix">
                                 <?php
-                                $header_cta = get_field('header_cta','option');
-                                $header_cta_ext = get_field('header_cta_ext','option');
-                                $header_cta_btn_txt = get_field('header_cta_btn_txt','option');
                                 if( $header_cta || $header_cta_ext ) {
-                                    $cta_url = '';
-                                    if( $header_cta_ext ) {
-                                        if( $header_cta ) {
-                                            $cta_url = $header_cta;
-                                        } else {
-                                            $cta_url = $header_cta_ext;
-                                        }
-                                    } else {
-                                        $cta_url = $header_cta;
-                                    }
                                     echo '<a href="'.$cta_url.'" id="header_cta" class="btn">'.$header_cta_btn_txt.'</a>';
                                 }
                                 ?>
                                 <div id="search_container">
                                     <?php get_search_form(); ?>
                                 </div>
-                                <a id="mobile_nav_toggle" href="#" class="show_on_mobile show_on_tablet">
+                                <a id="mobile_nav_toggle" href="#">
                                     <div class="inner">
                                         <span></span>
                                         <span></span>

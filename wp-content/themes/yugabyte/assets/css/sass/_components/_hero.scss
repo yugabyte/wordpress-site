@@ -22,14 +22,25 @@
     }
     
     .content_section_inner {
-        display:flex;
+        /*display:flex;
         align-items:center;
-        justify-content:center;
+        justify-content:center;*/
         position:relative;
         height:100%;
         min-height:520px;
         z-index:10;
         text-align:center;
+    }
+    
+    .inner {
+        display:flex;
+        align-items:center;
+        justify-content:center;
+        height:100%;
+        width:100%;
+    }
+    .inner_content {
+        
     }
     
     h1 {
@@ -66,6 +77,74 @@
             background:$white;
             border-radius:6px;
         }
+    }
+    
+    p {
+        font-size:1.1em;
+        color: $white;
+        
+        a {
+            color: $orange;
+            
+            &:hover {
+                color: $blue;
+            }
+        }
+    }
+    
+    .cta_group {
+        
+        .btn {
+            margin:0 0 0 40px;
+            
+            &:first-of-type {
+                margin:0;
+            }
+        }
+    }
+}
+
+#hero_ss {
+    position:relative;
+    height:520px;
+    min-height:520px;
+    background-color:$purple_dark;
+    background-repeat:no-repeat;
+    background-position:right center;
+    background-size:auto 100%;
+    z-index:15;
+    
+    .content_section_inner {
+        /*display:flex;
+        align-items:center;
+        justify-content:left;*/
+        position:relative;
+        height:100%;
+        min-height:520px;
+        z-index:10;
+        text-align:left;
+    }
+    
+    .inner {
+        display:flex;
+        align-items:center;
+        justify-content:left;
+        width:60%;
+        height:100%;
+    }
+    .inner_content {
+        
+    }
+    
+    .ss_logo {
+        display:block;
+        margin:0 0 2em;
+        max-width:225px;
+    }
+    
+    h1 {
+        margin:0 0 2em;
+        color: $white;
     }
     
     p {

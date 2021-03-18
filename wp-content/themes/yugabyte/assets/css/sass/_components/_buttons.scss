@@ -122,11 +122,17 @@ button.gpnf-add-entry:disabled,
 }
 
 // HEADER CTA
-#header_cta {
+#header_cta,
+#header_cta_mobile {
     float:right;
     margin:18px 0 0 48px;
     padding:3px 15px;
     line-height:33px !important;
+}
+
+#header_cta_mobile {
+    float:left;
+    margin:18px 0 0 0;
 }
 
 .read_more {
@@ -173,6 +179,17 @@ button.gpnf-add-entry:disabled,
 
 .wp-block-button__link {
 	border-radius: 0;
+}
+
+@media screen and (max-width: 990px) {
+    
+    #header_cta {
+        display:none;
+    }
+    #header_cta_mobile {
+        display:inline-block;
+    }
+    
 }
 
 @media screen and (max-width: #{$bp_small}) {

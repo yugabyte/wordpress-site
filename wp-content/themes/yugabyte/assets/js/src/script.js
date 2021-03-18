@@ -8,6 +8,23 @@ jQuery(document).ready(function($) {
 		$('body').toggleClass('mobile_nav_open');
 	});
 	
+	$('#primary-navigation-mobile .toggle').on('click', function(e) {
+        e.preventDefault();
+        var t = $(this);
+                        
+        t.siblings('.sub-menu').slideDown();
+        //slide up all other sub-menus on the same level
+        if( t.hasClass('active') ) {
+            t.siblings('.sub-menu').slideUp();
+            t.removeClass('active');
+        } else {
+            $('#primary-navigation-mobile .toggle').not(t).siblings('.sub-menu').slideUp();
+            //active classes
+            t.addClass('active');
+            $('#primary-navigation-mobile .toggle').not(t).removeClass('active');
+        }
+    });
+	
 	$('.info_tip').on('click', function(e){
 	    e.preventDefault();
 	});

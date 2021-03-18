@@ -50,6 +50,11 @@ h1 {
     &.long {
         font-size: 2.22em; /* 40px */
     }
+    
+    #hero_ss & {
+        font-size:1.78em;
+        line-height:1.375em;
+    }
 }
 
 h2 {
@@ -121,6 +126,31 @@ h4 {
     font-weight:$semibold;
     text-transform:uppercase;
     letter-spacing:3px;
+    
+    &.lined,
+    &.lined_left {
+        position:relative;
+        margin-bottom:1.5em;
+        
+        &:after {
+            position:absolute;
+            left:50%;
+            top:calc(100% + 12px);
+            width:75px;
+            height:2px;
+            background:$purple_dark;
+            content:'';
+            transform:translateX(-50%);
+        }
+    }
+    
+    &.lined_left {
+        
+        &:after {
+            left:0;
+            transform:none;
+        }
+    }
 }
 
 h5 {
