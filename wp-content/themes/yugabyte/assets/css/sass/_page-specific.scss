@@ -696,7 +696,7 @@
         padding-right:40px;
         
         .alm-filter {
-            margin-bottom:50px;
+            margin-bottom:20px;
         
             ul {
                 margin:0;
@@ -704,9 +704,30 @@
                 list-style:none;
             
                 > li {
+                    display:none;
                     margin:0;
                     padding:0;
                     list-style:none;
+                    
+                    &:first-of-type {
+                        display:block !important;
+                        //@include background-opacity($orange, 0.15);
+                        
+                        .alm-filter--link {
+                            
+                            &.init {
+                                @include background-opacity($orange, 0.15);
+                            }
+                            
+                            &.off {
+                                @include background-opacity($orange, 0.0);
+                            }
+                        }
+                    }
+                    
+                    &:last-of-type {
+                        margin:0 0 30px;
+                    }
                 
                     .alm-filter--link {
                         display:block;
@@ -726,16 +747,45 @@
                     }
                 }
             }
+            
+            &.open {
+                
+                ul > li {
+                    
+                }
+            }
         }
         .alm-filter--title {
         
             h3 {
+                position:relative;
                 margin:0 0 1em;
                 color: $black;
                 font-size:1.22em;
                 font-weight:$semibold;
                 text-transform:none;
                 letter-spacing:0;
+                
+                &:after {
+                    position:absolute;
+                    right:20px;
+                    top:calc(50% + 2px);
+                    width: 0; 
+                    height: 0; 
+                    border-style: solid;
+                    border-width: 6px 0 6px 10px;
+                    border-color: transparent transparent transparent $orange;
+                    content:'';
+                    transform:translateY(-50%) rotate(0deg);
+                    transition:all 0.3s;
+                }
+                
+                &.open {
+                    
+                    &:after {
+                        transform:translateY(-50%) rotate(90deg);
+                    }
+                }
             }
         }
     }

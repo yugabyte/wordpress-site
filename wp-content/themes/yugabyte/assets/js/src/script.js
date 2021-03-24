@@ -29,12 +29,43 @@ jQuery(document).ready(function($) {
 	    e.preventDefault();
 	});
 	
+	//ALM FILTERS
+	
+	//init the All items to active
+	$('.alm-filter').each(function() {
+	    var t = $(this);
+	    t.find('.alm-filter--checkbox:first .alm-filter--link').addClass('init');
+	});
+	
 	$('#filters_clear').on('click', function(e) {
         e.preventDefault();
         var t = $(this);
         window.almFiltersClear();
     });
 	
+	$('.alm-filter--title h3').on('click', function(e) {
+	    e.preventDefault();
+	    
+	    var t = $(this),
+	        f = t.closest('.alm-filter');
+	    
+	    t.toggleClass('open');
+	    f.toggleClass('open');
+	    
+	    f.find('ul .alm-filter--checkbox:not(:first)').fadeToggle();
+	});
+	
+	//turn off ALL if any others are clicked
+	$('.alm-filter--link').on('click', function(e) {
+	    e.preventDefault();
+	    
+	    var t = $(this),
+	        i = t.parent().index();
+	    
+	    if( i != 0 ) {
+	        $('.alm-filter--checkbox:first .alm-filter--link').removeClass('init');
+	    }
+	});
 	
     
     //KILL DISABLED BUTTONS
