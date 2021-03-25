@@ -223,14 +223,15 @@ function register_taxonomies() {
 	$type_args = array(
 		'hierarchical' => true,
 		'labels' => $type_labels,
-		'rewrite' => true,
+		//'rewrite' => true,
+		'rewrite' => array( 'slug' => 'type' ),
 		'show_ui' => true,
 		'show_in_menu' => true,
 		'show_in_rest' => true,
 		'show_admin_column' => true
 	);
 
-	register_taxonomy('type', array('resource'), $type_args);
+	register_taxonomy('resource_types', array('resource'), $type_args);
 
 }
 add_action( 'init', 'register_taxonomies');

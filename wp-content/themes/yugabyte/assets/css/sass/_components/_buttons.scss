@@ -121,6 +121,53 @@ button.gpnf-add-entry:disabled,
     }
 }
 
+//VIDEO PLAY BTN
+.play_btn {
+    display:block;
+    position:absolute;
+    left:50%;
+    top:50%;
+    margin:-48px 0 0 -48px;
+    width:96px;
+    height:96px;
+    border-radius:48px;
+    background:rgba(255,255,255,0.8);
+    opacity:1;
+    visibility:visible;
+    transition:all 0.3s;
+    z-index:20;
+    cursor:pointer;
+    
+    &:after {
+        position:absolute;
+        left:23px;
+        top:29px;
+        margin:0;
+        width:46px;
+        height:38px;
+        line-height:38px;
+        text-align:center;
+        color:$orange;
+        font-family:'dashicons';
+        content:'\f522';
+        font-size:58px;
+        transition:all 0.3s;
+    }
+    
+    &:hover {
+        background:$white;
+        
+        &:after {
+            color: $blue;
+        }
+    }
+    
+    &.off {
+        opacity:0;
+        visibility:hidden;
+    }
+}
+
 // HEADER CTA
 #header_cta,
 #header_cta_mobile {

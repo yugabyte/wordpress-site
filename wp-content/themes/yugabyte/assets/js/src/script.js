@@ -67,6 +67,17 @@ jQuery(document).ready(function($) {
 	    }
 	});
 	
+	//VIDEO BLOCK PLAY BTN
+	$('.play_btn.vid_block').on('click', function(e) {
+	    e.preventDefault();
+	    var t = $(this),
+	        v_cont = t.prev();
+	    
+	    v_cont.toggleClass('off');
+	    t.toggleClass('off');
+	    v_cont.find('iframe')[0].src += "&autoplay=1";
+	});
+	
     
     //KILL DISABLED BUTTONS
     /*$('.btn.disabled').on('click', function(e) {
@@ -209,14 +220,14 @@ jQuery(document).ready(function($) {
                     r = $(this).find('.eq_r');
                 
                 //set min-height on the image half
-                $('.bg_img').each(function() {
+                /*$('.bg_img').each(function() {
                     var el = $(this),
                         el_h = el.closest('.eq_l').next().height();
                     
                     el.css({
                         'min-height' : el_h
                     });
-                });
+                });*/
                 
                 setEqualHeights( l, r );
             });

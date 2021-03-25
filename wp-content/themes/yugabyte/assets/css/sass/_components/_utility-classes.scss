@@ -66,9 +66,19 @@ iframe {
     max-width:100% !important;
 }
 
+.vid_cont {
+    position:relative;
+    background-color:transparent;
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
+    z-index:10;
+}
+
 .video_container {
     position:relative;
-    padding-bottom:56.25%;
+    //padding-bottom:56.25%;
+    padding-bottom:62.5%;
     /*padding-top:30px;*/
     margin:0 0 0 0;
     width:100%;

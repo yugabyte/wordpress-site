@@ -99,7 +99,7 @@ function kill_parent_load_child_style() {
 	}
 		
 	wp_enqueue_style('yugabyte-style', get_stylesheet_directory_uri().'/assets/css/dist/screen.min.css');
-    //wp_enqueue_style( 'dashicons' );
+    wp_enqueue_style( 'dashicons' );
     wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css' );
 }
 add_action( 'wp_enqueue_scripts', 'kill_parent_load_child_style', 20 );
@@ -483,6 +483,33 @@ function set_info_tooltip( $atts = [], $content = null, $tag = '' ) {
 
 add_shortcode('info_tip', 'set_info_tooltip');
 
+//SET VIDEO EMBED WITH POSTER IMAGE AND PLAY BUTTON
+function video_setup($v, $p) {
+    echo '<div class="vid_cont" style="background-image:url('.$p.');">';
+    echo '<div class="video_container off">';
+    preg_match('/src="(.+?)"/', $v, $matches);
+    $src = $matches[1];
 
+    // add extra params to iframe src
+    $params = array(
+        'controls'    => 1,
+        'rel' => 0,
+        'hd'        => 1,
+        'autohide'    => 1
+    );
+    $new_src = add_query_arg($params, $src);
+    $video = str_replace($src, $new_src, $v);
+
+    // add extra attributes to iframe html
+    $attributes = 'frameborder="0"';
+
+    $video = str_replace('></iframe>', ' ' . $attributes . '></iframe>', $video);
+    echo $video;
+    echo '</div>';
+    
+    //play btn overlay
+    echo '<a class="play_btn vid_block"></a>';
+    echo '</div>';
+}
 
 ?>

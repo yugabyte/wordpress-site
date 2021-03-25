@@ -30,8 +30,16 @@ $tech_heading = get_field('tech_heading');
 //biz_list
 //tech_list
 
-$c_b = count( get_field('biz_list') );
-$c_t = count( get_field('tech_list') );
+$biz_list = get_field('biz_list');
+$tech_list = get_field('tech_list');
+$c_b = 1;
+$c_t = 1;
+if ( !empty($biz_list) ) {
+    $c_b = count( $biz_list );
+}
+if ( !empty($tech_list) ) {
+    $c_t = count( $tech_list );
+}
 
 $bg_color_class = ( $bg_color ) ? $bg_color : '';
 ?>
