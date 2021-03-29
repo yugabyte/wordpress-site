@@ -121,9 +121,17 @@ function mce_sub_sup( $buttons ) {
 	array_push( $buttons, 'subscript' );
 	array_push( $buttons, 'superscript' );
 	array_push( $buttons, 'underline' );
+	array_push( $buttons, 'table' );
 	return $buttons;
 }
 add_filter('mce_buttons', 'mce_sub_sup');
+
+//ADD TABLE PLUGIN
+function add_mce_table_plugin( $plugins ) {
+    $plugins['table'] = get_stylesheet_directory_uri().'/tinymce-table/plugin.min.js';
+    return $plugins;
+}
+add_filter( 'mce_external_plugins', 'add_mce_table_plugin' );
 
 function constrain_mce_editor( $init ) {
     
@@ -131,6 +139,17 @@ function constrain_mce_editor( $init ) {
     $init['textcolor_map'] = '['.$default_colours.']';
     
     $style_formats = array(
+        array(
+            'title' => 'SPECIAL OL',
+            'block'    => 'ol',
+            'classes' => 'special_ol',
+        ),
+        array(
+            'title' => 'TAB INDENT WRAP',
+            'block'    => 'div',
+            'classes' => 'tab_indent_wrap',
+            'wrapper' => true,
+        ),
         array(
             'title' => 'H2 LINED',
             'block'    => 'h2',
@@ -340,6 +359,7 @@ function set_hero() {
                 while ( have_rows('cta_buttons') ): the_row();
                     $cta_url = get_sub_field('cta_url');
                     $cta_url_ext = get_sub_field('cta_url_ext');
+                    $cta_url_deep = get_sub_field('cta_url_deep');
                     $cta_tar = get_sub_field('cta_tar');
                     $cta_btn_txt = get_sub_field('cta_btn_txt');
                     $alt_style = get_sub_field('alt_style');
@@ -347,17 +367,21 @@ function set_hero() {
                     $is_alt = ( $alt_style ) ? 'outline' : '';
                     $tar = ( $cta_tar ) ? '_blank' : '_self';
                     
-                    if( $cta_url || $cta_url_ext ) {
+                    $is_deep = ( $cta_url_deep ) ? 'deeplink' : '';
+                    
+                    if( $cta_url || $cta_url_ext || $cta_url_deep ) {
                         if( $cta_url_ext ) {
                             if( $cta_url ) {
                                 $link = $cta_url;
                             } else {
                                 $link = $cta_url_ext;
                             }
+                        } elseif( $cta_url_deep ) {
+                            $link = '#'.$cta_url_deep;
                         } else {
                             $link = $cta_url;
                         }
-                        echo '<a href="'.$link.'" class="btn '.$is_alt.'" target="'.$tar.'">'.$cta_btn_txt.'</a>';
+                        echo '<a href="'.$link.'" class="btn '.$is_alt.' '.$is_deep.'" target="'.$tar.'">'.$cta_btn_txt.'</a>';
                     }
                 endwhile;
                 echo '</div>';
@@ -370,6 +394,30 @@ function set_hero() {
         echo '</div>';
         
     //endif;
+    wp_reset_postdata();
+}
+
+function set_hero_alt() {
+    $post = get_queried_object();
+    $hero_image_id = get_post_thumbnail_id( $post->ID );
+    $hero_image = get_all_featured_image_sizes($hero_image_id);
+    if( get_field('custom_title') ) {
+        $title = get_field('custom_title');
+    } else {
+        $title = get_the_title();
+    }
+        
+    $el = '#hero_alt';
+    generate_fw_thumbs($hero_image, $el);
+    echo '<div id="hero_alt" class="content_section">';
+    echo '<div class="content_section_inner nopadding">';
+        echo '<div class="inner">';
+        echo '<div class="inner_content">';
+        echo '<h1>'.$title.'</h1>';
+        echo '</div>';
+        echo '</div>';
+    echo '</div>';
+    echo '</div>'; 
     wp_reset_postdata();
 }
 

@@ -352,6 +352,114 @@ function custom_acf_blocks_init() {
             ),
         ));
         
+        //CURRENT (LEVER.CO) JOB POSTINGS
+        acf_register_block_type(array(
+            'name'              => 'job_openings',
+            'title'             => __('Lever Job Openings'),
+            'description'       => __('Simple toggle for inserting the current Lever.co job openings'),
+            'render_template'   => 'template-parts/blocks/job_openings.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //ICONS + LABELS, 3-UP GRID
+        acf_register_block_type(array(
+            'name'              => 'icon_label_grid',
+            'title'             => __('Icon/Label Grid'),
+            'description'       => __('Three column grid of icons and labels'),
+            'render_template'   => 'template-parts/blocks/icon_label_grid.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //IMAGE GALLERY SLIDER
+        acf_register_block_type(array(
+            'name'              => 'image_slider',
+            'title'             => __('Image Gallery Slider'),
+            'description'       => __('Gallery of images slider'),
+            'render_template'   => 'template-parts/blocks/image_slider.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //OUR VALUES
+        acf_register_block_type(array(
+            'name'              => 'our_values',
+            'title'             => __('Our Values'),
+            'description'       => __('Left-aligned heading/subhead, two-column grid of wysiwyg content (ex: Careers->Who We Are Values)'),
+            'render_template'   => 'template-parts/blocks/our_values.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //BLOG PICKER
+        acf_register_block_type(array(
+            'name'              => 'blog_picker',
+            'title'             => __('Blog Post Picker'),
+            'description'       => __('Set (max 3) blog posts to feature'),
+            'render_template'   => 'template-parts/blocks/blog_picker.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //NARROW, SINGLE-COLUMN WYSIWYG - THIS IS EXCLUSIVELY FOR ANCILLARY PAGES SUCH AS SUPPORT POLICY
+        acf_register_block_type(array(
+            'name'              => 'narrow_wysiwyg',
+            'title'             => __('Narrow, Single-Column WYSIWYG'),
+            'description'       => __('Exclusive narrow-column content editor, for ancillary pages such as Support Policy'),
+            'render_template'   => 'template-parts/blocks/narrow_wysiwyg.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
     }
 }
 ?>

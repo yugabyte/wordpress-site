@@ -37,6 +37,45 @@ table {
     }
 }
 
+//INLINE WYSIWYG TABLE STYLES (ADDED VIA THE CLASSIC MCE EDITOR)
+.wysiwyg {
+    
+    table {
+        border: 1px solid $offwhite; 
+        border-top: none; 
+        table-layout:auto;
+        
+        td,
+        th { 
+            border-left: 1px solid $offwhite; 
+            padding: 1em;
+            background: $white;
+            
+            &:first-of-type {
+                width:auto !important;
+            }
+        }
+        
+        tr {
+            border-top: 1px solid $offwhite; 
+            border-left: 1px solid $offwhite;
+            
+            &:nth-child(even) td {
+                background: $white;
+            }
+            
+            &:first-of-type {
+                
+                td {
+                    background:$offwhite;
+                    font-weight:$bold;
+                    text-transform:uppercase;
+                }
+            }
+        }
+    }
+}
+
 
 //INFO TOOLTIPS
 .wptb-shortcode-container.wptb-ph-element {

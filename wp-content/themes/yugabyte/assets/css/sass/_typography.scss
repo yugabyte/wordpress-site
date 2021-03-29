@@ -353,6 +353,41 @@ img{
     opacity:1;
 }
 
+/**** SPECIAL NESTED NUMBERED LISTS, A LA SUPPORT SERVICES AGREEMENT ******************/
+.wysiwyg {
+
+    .tab_indent_wrap {
+        padding-left:36px;
+    }
+    
+    .special_ol {
+        
+        li {
+            display:block;
+        }
+        
+        > li {
+            position:relative;
+            counter-increment: item;
+            
+            &:before {
+                position: absolute;
+                right: 10px;
+                margin-right: 100%;
+                content:counters(item, '.') '. ';
+            }
+            
+            &:first-child {
+                counter-reset: item;
+            }
+        }
+    }
+}
+ol li {display:block;} /* hide original list counter */
+ol > li:first-child {counter-reset: item;} /* reset counter */
+ol > li {counter-increment: item; position: relative;} /* increment counter */
+ol > li:before {content:counters(item, ".") ". "; position: absolute; margin-right: 100%; right: 10px;} /* print counter */
+
 @media only screen and (max-width: 767px) {
     
     h1 {
