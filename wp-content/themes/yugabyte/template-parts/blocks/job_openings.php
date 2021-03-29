@@ -46,7 +46,7 @@ $deep_anchor = get_field('deep_anchor');
         <div class="grid nopadding">
             <div class="col-8-12 push-2-12 mobile-col-1-1 nopadding">
                 <?php
-                echo do_shortcode($wptb_sc);
+                echo 'TODO: EMBED OF LEVER JOBS DATA'
                 ?>
             </div>
         </div>
