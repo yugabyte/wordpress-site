@@ -79,7 +79,7 @@ jQuery(document).ready(function($) {
 	});
 	
 	//DEEP-LINK HERO CTAs SMOOTH SCROLL TO TARGET
-	//OR IF URL HAS HASH AND MATCHING TARGET
+	//OR IF URL HAS HASH AND MATCHING TARGET (THIS IS SET IN WINDOW.LOAD)
 	$('#hero .deeplink').on('click', function(e) {
         e.preventDefault();
         var t = $(this),
@@ -93,24 +93,6 @@ jQuery(document).ready(function($) {
             }, 1000);
         }
     });
-	
-    if( window.location.hash ) {
-        var hash = window.location.hash,
-            header_h = $('#masthead').height(),
-            sT = $(hash).offset().top - header_h;
-        
-        console.log('HASH: ' + header_h);
-        
-        if ( window.location.hash ) scroll(0,0);
-        // void some browsers issue
-        setTimeout( function() { scroll(0,0); }, 1);
-        
-        setTimeout( function() {
-            $('html, body').animate({
-                scrollTop: sT
-            }, 1000);
-        }, 1000);
-    }
 	
     
     //KILL DISABLED BUTTONS
@@ -186,6 +168,22 @@ jQuery(document).ready(function($) {
         
         if($(window).width() < 768) {
             
+        }
+        
+        if( window.location.hash ) {
+            var hash = window.location.hash,
+                header_h = $('#masthead').height(),
+                sT = $(hash).offset().top;
+                
+            if ( window.location.hash ) scroll(0,0);
+            // void some browsers issue
+            setTimeout( function() { scroll(0,0); }, 1);
+        
+            setTimeout( function() {
+                $('html, body').animate({
+                    scrollTop: sT
+                }, 1000);
+            }, 1000);
         }
     });
     
