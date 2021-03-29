@@ -78,6 +78,40 @@ jQuery(document).ready(function($) {
 	    v_cont.find('iframe')[0].src += "&autoplay=1";
 	});
 	
+	//DEEP-LINK HERO CTAs SMOOTH SCROLL TO TARGET
+	//OR IF URL HAS HASH AND MATCHING TARGET
+	$('#hero .deeplink').on('click', function(e) {
+        e.preventDefault();
+        var t = $(this),
+            tar = t.attr('href'),
+            header_h = $('#masthead').height(),
+            tar_scroll = $(tar).offset().top - header_h;
+        
+        if( $(tar).length > 0 ) {
+            $('html, body').animate({
+                scrollTop : tar_scroll
+            }, 1000);
+        }
+    });
+	
+    if( window.location.hash ) {
+        var hash = window.location.hash,
+            header_h = $('#masthead').height(),
+            sT = $(hash).offset().top - header_h;
+        
+        console.log('HASH: ' + header_h);
+        
+        if ( window.location.hash ) scroll(0,0);
+        // void some browsers issue
+        setTimeout( function() { scroll(0,0); }, 1);
+        
+        setTimeout( function() {
+            $('html, body').animate({
+                scrollTop: sT
+            }, 1000);
+        }, 1000);
+    }
+	
     
     //KILL DISABLED BUTTONS
     /*$('.btn.disabled').on('click', function(e) {

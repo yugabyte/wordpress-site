@@ -26,11 +26,11 @@ if( !empty($block['align']) ) {
 // Load values and adding defaults.
 $heading = get_field('heading');
 $intro = get_field('intro');
-$wptb_sc = get_field('wptb_sc');
+$deep_anchor = get_field('deep_anchor');
 
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?>">
-    <div class="content_section_inner full">
+    <div id="<?php echo $deep_anchor; ?>" class="content_section_inner full">
         <div class="grid nopadding">
             <div class="col-8-12 push-2-12 mobile-col-1-1 nopadding centered">
             <?php
