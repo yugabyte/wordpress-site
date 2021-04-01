@@ -319,11 +319,11 @@ $deep_anchor = get_field('deep_anchor');
                     
                         function showFilterResults() {
                             $('#new-list .list').show();
-                            $('#lever-jobs-container').hide();
+                            $('#lever_jobs_cont').hide();
                         }
                         function hideFilterResults() {
                             $('#new-list .list').hide();
-                            $('#lever-jobs-container').show();
+                            $('#lever_jobs_cont').show();
                         }
                     
                         // Show the unfiltered list by default
