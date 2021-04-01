@@ -16,9 +16,6 @@ function yugabyte_setup() {
     add_image_size( 'fw-large', 1440, 460, true );
     add_image_size( 'fw-x-large', 1920, 620, true );
     
-    add_image_size( 'fw-mobile-home', 767, 1000, true);
-    add_image_size( 'fw-x-large-home', 1920, 1200, true );
-    
     //DISABLE CUSTOM COLORS
     add_theme_support( 'disable-custom-colors' );
     add_theme_support( 'align-wide' );
@@ -399,13 +396,38 @@ function set_hero() {
 
 function set_hero_alt() {
     $post = get_queried_object();
-    $hero_image_id = get_post_thumbnail_id( $post->ID );
+    $hero_image_id = get_post_thumbnail_id();
     $hero_image = get_all_featured_image_sizes($hero_image_id);
     if( get_field('custom_title') ) {
         $title = get_field('custom_title');
     } else {
         $title = get_the_title();
     }
+    
+    if( is_page() ):
+        
+        $hero_image_id = get_post_thumbnail_id();
+        $hero_image = get_all_featured_image_sizes($hero_image_id);
+        
+    elseif( is_category() || is_tax() ):
+    
+        $term = $post;
+        $term_id = $term->term_id;
+        $tax = $post->taxonomy;
+        $hero_image = get_field('hero_image', $tax.'_'.$term_id);
+        if( get_field('custom_title', $tax.'_'.$term_id) ) {
+            $title = get_field('custom_title', $tax.'_'.$term_id);
+        } else {
+            $title = $term->name;
+        }
+        $subheading = get_field('subheading', $tax.'_'.$term_id);
+                
+    else: //is post
+        
+        $hero_image_id = get_post_thumbnail_id();
+        $hero_image = get_all_featured_image_sizes($hero_image_id);
+        
+    endif;
         
     $el = '#hero_alt';
     generate_fw_thumbs($hero_image, $el);
@@ -414,6 +436,9 @@ function set_hero_alt() {
         echo '<div class="inner">';
         echo '<div class="inner_content">';
         echo '<h1>'.$title.'</h1>';
+        if( $subheading ) {
+            echo '<p class="subheading">'.$subheading.'</p>';
+        }
         echo '</div>';
         echo '</div>';
     echo '</div>';
@@ -506,6 +531,56 @@ function get_all_featured_image_sizes($attachment_id = 0) {
     );
     return $imageObject;
 }
+
+/******************************************/
+/***** PAGINATION *************************/
+/******************************************/
+function yb_paging_nav() {
+	// Don't print empty markup if there's only one page.
+	if ( $GLOBALS['wp_query']->max_num_pages < 2 ) {
+		return;
+	}
+
+	$paged        = get_query_var( 'paged' ) ? intval( get_query_var( 'paged' ) ) : 1;
+	$pagenum_link = html_entity_decode( get_pagenum_link() );
+	$query_args   = array();
+	$url_parts    = explode( '?', $pagenum_link );
+
+	if ( isset( $url_parts[1] ) ) {
+		wp_parse_str( $url_parts[1], $query_args );
+	}
+
+	$pagenum_link = remove_query_arg( array_keys( $query_args ), $pagenum_link );
+	$pagenum_link = trailingslashit( $pagenum_link ) . '%_%';
+
+	$format  = $GLOBALS['wp_rewrite']->using_index_permalinks() && ! strpos( $pagenum_link, 'index.php' ) ? 'index.php/' : '';
+	$format .= $GLOBALS['wp_rewrite']->using_permalinks() ? user_trailingslashit( 'page/%#%', 'paged' ) : '?paged=%#%';
+
+	// Set up paginated links.
+	$links = paginate_links( array(
+		'base'     => $pagenum_link,
+		'format'   => $format,
+		'total'    => $GLOBALS['wp_query']->max_num_pages,
+		'current'  => $paged,
+		'mid_size' => 3,
+		'add_args' => array_map( 'urlencode', $query_args ),
+		'prev_text' => __( 'Previous', 'yugabyte' ),
+		'next_text' => __( 'Next', 'yugabyte' ),
+	) );
+
+	if ( $links ) :
+
+	?>
+	<nav class="navigation paging-navigation" role="navigation">
+		<h1 class="screen-reader-text"><?php _e( 'Posts navigation', 'certified' ); ?></h1>
+		<div class="pagination loop-pagination">
+			<?php echo $links; ?>
+		</div><!-- .pagination -->
+	</nav><!-- .navigation -->
+	<?php
+	endif;
+}
+
 
 //CUSTOM TOOLTIP SHORTCODE
 function set_info_tooltip( $atts = [], $content = null, $tag = '' ) {

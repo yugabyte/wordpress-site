@@ -12,6 +12,8 @@
 get_header();
 if( is_singular('success-story') ) {
     set_ss_hero();
+} else {
+    set_hero_alt();
 }
 ?>
 
