@@ -28,7 +28,7 @@ $heading = get_field('heading');
 $blog_cat = get_field('blog_cat');
 $blog_tag = get_field('blog_tag');
 $post_picker = get_field('post_picker');
-$ct = get_field('ct');
+$include_ct = get_field('include_ct');
 $ct_btn_txt = get_field('ct_btn_txt');
 
 ?>
@@ -117,18 +117,20 @@ $ct_btn_txt = get_field('ct_btn_txt');
                 echo '</ul>';
     
                 //READ ALL CLICKTHROUGH BTN
-                if( $post_picker && $ct ) {
-                    $cat = get_category_by_slug( $ct );
-                    $read_all_link = get_category_link( $cat );
-                    echo '<a href="'.$read_all_link.'" class="btn nomargin">'.$ct_btn_txt.'</a>';
-                } else {
-                    if( $blog_cat || $blog_tag ) {
-                        $term = ( $blog_tag ) ? $blog_tag : $blog_cat;
-                        $t_id = $term->ID;
-                        $t_link = get_term_link($term);
-                        $t_name = $term->name;
+                if( $include_ct ) {
+                    if( $post_picker ) {
+                        $cat = get_category_by_slug( 'blog' );
+                        $read_all_link = get_category_link( $cat );
+                        echo '<a href="'.$read_all_link.'" class="btn nomargin">'.$ct_btn_txt.'</a>';
+                    } else {
+                        if( $blog_cat || $blog_tag ) {
+                            $term = ( $blog_tag ) ? $blog_tag : $blog_cat;
+                            $t_id = $term->ID;
+                            $t_link = get_term_link($term);
+                            $t_name = $term->name;
                         
-                        echo '<a href="'.$t_link.'" class="btn nomargin">'.$ct_btn_txt.'</a>';
+                            echo '<a href="'.$t_link.'" class="btn nomargin">'.$ct_btn_txt.'</a>';
+                        }
                     }
                 }
                 ?>

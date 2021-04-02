@@ -149,6 +149,80 @@ function cpt_resource() {
 }
 add_action( 'init', 'cpt_resource');
 
+function cpt_ybnews() { 
+	register_post_type( 'ybnews',
+	 	// let's now add all the options for this post type
+		array('labels' => array(
+			'name' => __('YB News', 'post type general name'),
+			'singular_name' => __('YB News', 'post type singular name'),
+			'add_new' => __('Add New', 'custom post type item'),
+			'add_new_item' => __('Add New YB News'),
+			'edit' => __( 'Edit' ),
+			'edit_item' => __('Edit YB News'),
+			'new_item' => __('New YB News'),
+			'view_item' => __('View YB News'),
+			'search_items' => __('Search YB News'),
+			'not_found' =>  __('Nothing found in the Database.'),
+			'not_found_in_trash' => __('Nothing found in Trash'),
+			'parent_item_colon' => 'Parent YB News:'
+			),
+			'description' => __( 'Yugabyte News posts' ),
+			'public' => true,
+			'exclude_from_search' => false,
+			'publicly_queryable' => true,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'menu_position' => 30, 
+			'menu_icon' => 'dashicons-megaphone',
+			'capability_type' => 'post',
+			'hierarchical' => false,
+			'show_in_rest' => true,
+			'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+			'has_archive' => false,
+			'rewrite' => array( 'slug' => 'yugabyte-news', 'with_front' => false ),
+			'query_var' => true
+	 	)
+	);
+}
+add_action( 'init', 'cpt_ybnews');
+
+function cpt_ybevent() { 
+	register_post_type( 'ybevent',
+	 	// let's now add all the options for this post type
+		array('labels' => array(
+			'name' => __('Events', 'post type general name'),
+			'singular_name' => __('Event', 'post type singular name'),
+			'add_new' => __('Add New', 'custom post type item'),
+			'add_new_item' => __('Add New Event'),
+			'edit' => __( 'Edit' ),
+			'edit_item' => __('Edit Event'),
+			'new_item' => __('New Event'),
+			'view_item' => __('View Event'),
+			'search_items' => __('Search Events'),
+			'not_found' =>  __('Nothing found in the Database.'),
+			'not_found_in_trash' => __('Nothing found in Trash'),
+			'parent_item_colon' => 'Parent Event:'
+			),
+			'description' => __( 'Yugabyte Events' ),
+			'public' => true,
+			'exclude_from_search' => false,
+			'publicly_queryable' => true,
+			'show_ui' => true,
+			'show_in_nav_menus' => true,
+			'menu_position' => 30, 
+			'menu_icon' => 'dashicons-tickets-alt',
+			'capability_type' => 'post',
+			'hierarchical' => false,
+			'show_in_rest' => true,
+			'supports' => array('title', 'editor', 'thumbnail', 'excerpt'),
+			'has_archive' => false,
+			'rewrite' => array( 'slug' => 'events', 'with_front' => false ),
+			'query_var' => true
+	 	)
+	);
+}
+add_action( 'init', 'cpt_ybevent');
+
 //TAXONOMIES
 function register_taxonomies() {
 
@@ -232,6 +306,33 @@ function register_taxonomies() {
 	);
 
 	register_taxonomy('resource_types', array('resource'), $type_args);
+	
+	$type_labels = array(
+		'name'              => _x( 'News Types', 'taxonomy general name', 'yugabyte' ),
+		'singular_name'     => _x( 'News Type', 'taxonomy singular name', 'yugabyte' ),
+		'search_items'      => __( 'Search News Types', 'yugabyte' ),
+		'all_items'         => __( 'All News Types', 'yugabyte' ),
+		'parent_item'       => __( 'Parent News Type', 'yugabyte' ),
+		'parent_item_colon' => __( 'Parent News Type:', 'yugabyte' ),
+		'edit_item'         => __( 'Edit News Type', 'yugabyte' ),
+		'update_item'       => __( 'Update News Type', 'yugabyte' ),
+		'add_new_item'      => __( 'Add New News Type', 'yugabyte' ),
+		'new_item_name'     => __( 'New News Type Name', 'yugabyte' ),
+		'menu_name'         => __( 'News Types', 'yugabyte' ),
+	);
+
+	$type_args = array(
+		'hierarchical' => false,
+		'labels' => $type_labels,
+		//'rewrite' => true,
+		'rewrite' => array( 'slug' => 'type' ),
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_rest' => true,
+		'show_admin_column' => true
+	);
+
+	register_taxonomy('news_types', array('ybnews'), $type_args);
 
 }
 add_action( 'init', 'register_taxonomies');
