@@ -868,121 +868,129 @@
 }
 
 /**********************************************************************************************/
+/***** ALL ALM, OTHER FILTERS COLUMN STYLES ***************************************************/
+/**********************************************************************************************/
+#alm-filters-ssfilter,
+#alm-filters-eventsfilter {
+    padding-right:40px;
+    
+    .alm-filter {
+        margin-bottom:20px;
+    
+        ul {
+            margin:0;
+            padding:0;
+            list-style:none;
+        
+            > li {
+                display:none;
+                margin:0;
+                padding:0;
+                list-style:none;
+                
+                &:first-of-type {
+                    display:block !important;
+                    //@include background-opacity($orange, 0.15);
+                    
+                    .alm-filter--link {
+                        
+                        &.init {
+                            @include background-opacity($orange, 0.15);
+                        }
+                        
+                        &.off {
+                            @include background-opacity($orange, 0.0);
+                        }
+                    }
+                }
+                
+                &:last-of-type {
+                    margin:0 0 30px;
+                }
+            
+                .alm-filter--link {
+                    display:block;
+                    padding:10px 10px 10px 15px;
+                    font-size:1em;
+                    color:$black;
+                    line-height:1.3em;
+                    outline:none;
+                    cursor:pointer;
+                    @include background-opacity($orange, 0.0);
+                    transition:all 0.3s;
+                                    
+                    &:hover,
+                    &.active {
+                        @include background-opacity($orange, 0.15);
+                    }
+                }
+            }
+        }
+        
+        &.open {
+            
+            ul > li {
+                
+            }
+        }
+    }
+    .alm-filter--title {
+    
+        h3 {
+            position:relative;
+            margin:0 0 1em;
+            color: $black;
+            font-size:1.22em;
+            font-weight:$semibold;
+            text-transform:none;
+            letter-spacing:0;
+            
+            &:after {
+                position:absolute;
+                right:20px;
+                top:calc(50% + 2px);
+                width: 0; 
+                height: 0; 
+                border-style: solid;
+                border-width: 6px 0 6px 10px;
+                border-color: transparent transparent transparent $orange;
+                content:'';
+                transform:translateY(-50%) rotate(0deg);
+                transition:all 0.3s;
+            }
+            
+            &.open {
+                
+                &:after {
+                    transform:translateY(-50%) rotate(90deg);
+                }
+            }
+        }
+    }
+}
+
+.alm-btn-wrap {
+    opacity:0;
+    visibility:hidden;
+    text-align:center;
+    
+    #events-list & {
+        opacity:1;
+        visibility:visible;
+    }
+
+    .btn {
+        margin:0;
+    }
+}
+
+/**********************************************************************************************/
 /***** SUCCESS STORIES ************************************************************************/
 /**********************************************************************************************/
 #success_stories {
     width:calc(100% - 80px);
     margin:0 auto;
     padding:60px 0;
-    
-    //FILTERS
-    #alm-filters-ssfilter {
-        padding-right:40px;
-        
-        .alm-filter {
-            margin-bottom:20px;
-        
-            ul {
-                margin:0;
-                padding:0;
-                list-style:none;
-            
-                > li {
-                    display:none;
-                    margin:0;
-                    padding:0;
-                    list-style:none;
-                    
-                    &:first-of-type {
-                        display:block !important;
-                        //@include background-opacity($orange, 0.15);
-                        
-                        .alm-filter--link {
-                            
-                            &.init {
-                                @include background-opacity($orange, 0.15);
-                            }
-                            
-                            &.off {
-                                @include background-opacity($orange, 0.0);
-                            }
-                        }
-                    }
-                    
-                    &:last-of-type {
-                        margin:0 0 30px;
-                    }
-                
-                    .alm-filter--link {
-                        display:block;
-                        padding:10px 10px 10px 15px;
-                        font-size:1em;
-                        color:$black;
-                        line-height:1.3em;
-                        outline:none;
-                        cursor:pointer;
-                        @include background-opacity($orange, 0.0);
-                        transition:all 0.3s;
-                                        
-                        &:hover,
-                        &.active {
-                            @include background-opacity($orange, 0.15);
-                        }
-                    }
-                }
-            }
-            
-            &.open {
-                
-                ul > li {
-                    
-                }
-            }
-        }
-        .alm-filter--title {
-        
-            h3 {
-                position:relative;
-                margin:0 0 1em;
-                color: $black;
-                font-size:1.22em;
-                font-weight:$semibold;
-                text-transform:none;
-                letter-spacing:0;
-                
-                &:after {
-                    position:absolute;
-                    right:20px;
-                    top:calc(50% + 2px);
-                    width: 0; 
-                    height: 0; 
-                    border-style: solid;
-                    border-width: 6px 0 6px 10px;
-                    border-color: transparent transparent transparent $orange;
-                    content:'';
-                    transform:translateY(-50%) rotate(0deg);
-                    transition:all 0.3s;
-                }
-                
-                &.open {
-                    
-                    &:after {
-                        transform:translateY(-50%) rotate(90deg);
-                    }
-                }
-            }
-        }
-    }
-    
-    .alm-btn-wrap {
-        opacity:0;
-        visibility:hidden;
-        text-align:center;
-
-        .btn {
-            margin:0;
-        }
-    }
     
     //SS GRID
     #success-stories-list {
@@ -1064,6 +1072,137 @@
                 left:20px;
                 bottom:20px;
             }
+        }
+    }
+}
+
+/**********************************************************************************************/
+/***** YB EVENTS ******************************************************************************/
+/**********************************************************************************************/
+#yb_events {
+    width:calc(100% - 80px);
+    margin:0 auto;
+    padding:60px 0;
+    
+    //EVENTS GRID
+    #events-list {
+        
+        .alm-reveal.alm-filters {
+            display:flex;
+            flex-direction:row;
+            flex-wrap:wrap;
+            justify-content:flex-start;
+    
+            .ajax-load-more-wrap {
+                width:100%;
+            }
+        }
+        
+        
+        li.item {
+            padding:48px 24px;
+            border-bottom:1px solid rgba(112,112,112,0.35);
+            
+            .img {
+                float:left;
+                width:30%;
+                
+                a {
+                    display:block;
+                }
+                
+                img {
+                    display:block;
+                    width:100%;
+                }
+            }
+            
+            .cont {
+                float:left;
+                width:70%;
+                box-sizing:border-box;
+                padding:0 0 0 50px;
+                
+                &.full {
+                    float:none;
+                    width:100%;
+                }
+            }
+            
+            h4 {
+                margin:0 0 0.25em;
+                color: $orange;
+                text-transform:none;
+                letter-spacing:0;
+                
+                a {
+                    color: $orange;
+                    
+                    &:hover {
+                        color: $blue;
+                    }
+                }
+            }
+            
+            p {
+                
+                
+                &.meta {
+                    margin:0 0 40px;
+                }
+                
+                .date {
+                    font-weight:$bold;
+                }
+            }
+        }
+    }
+}
+
+.mu_groups_list {
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin:80px 0 0;
+    
+    > li {
+        float:left;
+        width:33.33%;
+        margin:0 0 50px;
+        padding:0 50px;
+        box-sizing:border-box;
+        text-align:left;
+        
+        > a {
+            display:block;
+            
+            &:hover {
+                
+                img {
+                    transform:scale(1.05) rotate(0.02deg);
+                }
+                h4 {
+                    color: $orange;
+                }
+            }
+        }
+        
+        .img {
+            margin:0 0 10px;
+            overflow:hidden;
+        }
+        
+        img {
+            display:block;
+            width:100%;
+            transition:all 0.3s;
+            transform-origin: center center;
+        }
+        
+        h4 {
+            margin:0;
+            transition:all 0.3s;
         }
     }
 }

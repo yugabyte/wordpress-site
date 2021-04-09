@@ -59,6 +59,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'purple-dark';
             while ( have_rows('ctas') ): the_row();
                 $ct = get_sub_field('ct');
                 $ct_ext = get_sub_field('ct_ext');
+                $ct_email = get_sub_field('ct_email');
                 $ct_btn_txt = get_sub_field('ct_btn_txt');
                 $cta_tar = get_sub_field('cta_tar');
                 $alt_style = get_sub_field('alt_style');
@@ -66,8 +67,10 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'purple-dark';
                 $is_alt = ( $alt_style ) ? 'outline' : '';
                 $tar = ( $cta_tar ) ? '_blank' : '_self';
                     
-                if( $ct || $ct_ext ) {
-                    if( $ct_ext ) {
+                if( $ct || $ct_ext || $ct_email ) {
+                    if( $ct_email ) { //EMAIL WILL ALWAYS TAKE PRECEDENCE
+                        $link = 'mailto:'.$ct_email;
+                    } elseif( $ct_ext ) {
                         if( $ct ) {
                             $link = $ct;
                         } else {

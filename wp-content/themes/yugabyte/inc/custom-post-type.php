@@ -333,6 +333,60 @@ function register_taxonomies() {
 	);
 
 	register_taxonomy('news_types', array('ybnews'), $type_args);
+	
+	$ev_type_labels = array(
+		'name'              => _x( 'Event Types', 'taxonomy general name', 'yugabyte' ),
+		'singular_name'     => _x( 'Event Type', 'taxonomy singular name', 'yugabyte' ),
+		'search_items'      => __( 'Search Event Types', 'yugabyte' ),
+		'all_items'         => __( 'All Event Types', 'yugabyte' ),
+		'parent_item'       => __( 'Parent Event Type', 'yugabyte' ),
+		'parent_item_colon' => __( 'Parent Event Type:', 'yugabyte' ),
+		'edit_item'         => __( 'Edit Event Type', 'yugabyte' ),
+		'update_item'       => __( 'Update Event Type', 'yugabyte' ),
+		'add_new_item'      => __( 'Add New Event Type', 'yugabyte' ),
+		'new_item_name'     => __( 'New Event Type Name', 'yugabyte' ),
+		'menu_name'         => __( 'Event Types', 'yugabyte' ),
+	);
+
+	$ev_type_args = array(
+		'hierarchical' => true,
+		'labels' => $ev_type_labels,
+		//'rewrite' => true,
+		'rewrite' => array( 'slug' => 'type' ),
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_rest' => true,
+		'show_admin_column' => true
+	);
+
+	register_taxonomy('event_types', array('ybevent'), $ev_type_args);
+	
+	$ev_loc_labels = array(
+		'name'              => _x( 'Event Locations', 'taxonomy general name', 'yugabyte' ),
+		'singular_name'     => _x( 'Event Location', 'taxonomy singular name', 'yugabyte' ),
+		'search_items'      => __( 'Search Event Locations', 'yugabyte' ),
+		'all_items'         => __( 'All Event Locations', 'yugabyte' ),
+		'parent_item'       => __( 'Parent Event Location', 'yugabyte' ),
+		'parent_item_colon' => __( 'Parent Event Location:', 'yugabyte' ),
+		'edit_item'         => __( 'Edit Event Location', 'yugabyte' ),
+		'update_item'       => __( 'Update Event Location', 'yugabyte' ),
+		'add_new_item'      => __( 'Add New Event Location', 'yugabyte' ),
+		'new_item_name'     => __( 'New Event Location Name', 'yugabyte' ),
+		'menu_name'         => __( 'Event Locations', 'yugabyte' ),
+	);
+
+	$ev_loc_args = array(
+		'hierarchical' => true,
+		'labels' => $ev_loc_labels,
+		//'rewrite' => true,
+		'rewrite' => array( 'slug' => 'location' ),
+		'show_ui' => true,
+		'show_in_menu' => true,
+		'show_in_rest' => true,
+		'show_admin_column' => true
+	);
+
+	register_taxonomy('event_locations', array('ybevent'), $ev_loc_args);
 
 }
 add_action( 'init', 'register_taxonomies');
