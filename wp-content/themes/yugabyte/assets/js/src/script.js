@@ -94,6 +94,10 @@ jQuery(document).ready(function($) {
         }
     });
 	
+    //KILL NAV LINKS WITH 'NOLINK' CLASS
+    $('.nav-menu .nolink > a').on('click', function(e) {
+        e.preventDefault();
+    });
     
     //KILL DISABLED BUTTONS
     /*$('.btn.disabled').on('click', function(e) {

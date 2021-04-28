@@ -138,6 +138,10 @@ body {
         background: $gray_light;
     }
     
+    &.light-gray {
+        background: $gray-lightest;
+    }
+    
     &.blue {
         background: $blue;
     }
@@ -148,6 +152,10 @@ body {
     
     &.purple {
         background: $purple;
+    }
+    
+    &.gray-light {
+        background: $gray_light;
     }
     
     &.gray-light {

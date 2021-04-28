@@ -309,6 +309,10 @@
     p {
         margin:0 0 2.25em;
         color: $white;
+        
+        span {
+            color: $orange;
+        }
     }
     
     .social_wrap {
@@ -775,6 +779,58 @@
         margin:0 auto;
         width:70%;
         max-width:900px;
+    }
+}
+
+.inset_right_col {
+    
+    
+    .content_section_inner {
+        width:80%;
+    }
+    
+    .left {
+        
+        .inner {
+            padding-right:70px;
+        }
+    }
+    
+    .right {
+        
+        
+        .inner {
+            background:$gray_lightest;
+            padding:36px 36px 10px;
+        }
+        
+        h4 {
+            font-size:1.11em;
+            letter-spacing:1px;
+        }
+        
+        ul {
+            margin:0 0 1.56em 20px;
+            
+            li {
+                color: $nearlyblack;
+            }
+        }
+        
+        a {
+            text-decoration:underline;
+            
+            &:hover {
+                
+            }
+        }
+    }
+    
+    &.light-gray {
+        
+        .right .inner {
+            background:$white;
+        }
     }
 }
 
