@@ -27,8 +27,10 @@ if( !empty($block['align']) ) {
 $bg_color = get_field('bg_color');
 $the_form = get_field('the_form');
 $title_override = get_field('title_override');
-$subheading = get_field('subheading');
+$desc_override = get_field('desc_override');
+$legal_note = get_field('legal_note');
 $is_narrow = get_field('is_narrow');
+$hide_desc = get_field('hide_desc');
 $is_single_col = get_field('is_single_col');
 
 $bg_color_class = ( $bg_color ) ? $bg_color : '';
@@ -44,16 +46,23 @@ $single_col_class = ( $is_single_col ) ? 'force_1col' : '';
                         <?php
                         $title = ( $title_override ) ? $title_override : $the_form['title'];
                         echo '<h2 class="lined">'.$title.'</h2>';
-        
-                        if( $subheading ) {
-                            echo '<p>'.$subheading.'</p>';
+                        if( !$hide_desc ) {
+                            if( $desc_override ) {
+                                $subheading = $desc_override;
+                            } elseif( $the_form['description'] ) {
+                                $subheading = $the_form['description'];
+                            }
+                            if( $subheading != '' ) {
+                                echo '<p>'.$subheading.'</p>';
+                            }
+                            
                         }
                         
                         gravity_form($the_form['id'], false, false, false, '', true, 1);
                         
                         //add the description
-                        if( $the_form['description'] ) {
-                            echo '<p class="nomargin">'.$the_form['description'].'</p>';
+                        if( $legal_note ) {
+                            echo '<p class="nomargin">'.$legal_note.'</p>';
                         }
                         ?>
                     </div>
