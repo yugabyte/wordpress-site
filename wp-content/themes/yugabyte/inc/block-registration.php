@@ -514,6 +514,24 @@ function custom_acf_blocks_init() {
             ),
         ));
         
+        //LARGE ICON + CONTENT BUCKETS/LIST
+        acf_register_block_type(array(
+            'name'              => 'icon_content_list',
+            'title'             => __('Large Icon + Content List'),
+            'description'       => __('A list of buckets with large icons and wysiwyg content, either stacked vertically or in a 2-up grid'),
+            'render_template'   => 'template-parts/blocks/icon_content_list.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
     }
 }
 ?>

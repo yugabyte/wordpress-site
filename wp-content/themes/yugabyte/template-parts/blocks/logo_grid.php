@@ -38,7 +38,17 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
             if( $heading ) {
                 echo '<h2 class="lined '.$alt_class.'">'.$heading.'</h2>';
             }
-            echo '<ul class="logos">';
+            
+            //total count
+            $c = count(get_field('logos'));
+            
+            if( $c % 3 == 0 ) { //if divisible evenly by 3, set alt class for width 33.33%
+                $alt_class = 'three';
+            } else { //default state is block width 25%
+                $alt_class = '';
+            }
+            
+            echo '<ul class="logos '.$alt_class.'">';
             while ( have_rows('logos') ): the_row();
                 $name = get_sub_field('name');
                 $logo = get_sub_field('logo');

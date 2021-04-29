@@ -282,6 +282,18 @@
                 }
             }
         }
+        
+        &.three {
+            
+            .gridblock {
+                width:calc(25% - 60px);
+                margin:0 0 60px 80px;
+            
+                &:nth-of-type(4n + 1) {
+                    margin-left:60px;
+                }
+            }
+        }
     }
 }
 
@@ -859,6 +871,10 @@
     .cont {
         padding-right:60px;
         
+        p {
+            font-size:1.22em;
+        }
+        
         * {
             color: $white;
         }
@@ -908,6 +924,115 @@
             }
         }
     }
+}
+
+.icon_cont_list {
+    
+    .intro {
+        width:70%;
+        margin:0 auto 80px;
+    }
+    
+    
+    .icon_cont_blocks {
+        
+        
+        .bucket {
+            display:block;
+            background:none;
+            margin-bottom:100px;
+            
+            &:last-of-type {
+                margin-bottom:0;
+            }
+        }
+        
+        .inner {
+            
+        }
+        
+        .icon {
+            float:left;
+            width:28%;
+            
+            img {
+                display:block;
+                width:130px;
+                margin:0 auto;
+            }
+        }
+        
+        .cont {
+            float:left;
+            width:72%;
+        }
+        
+        h3 {
+            text-align:left;
+            color: $purple_dark;
+            text-transform:none;
+            font-size:1.67em;
+            font-weight:$semibold;
+            letter-spacing:1px;
+        }
+        
+        &.two_up {
+            
+            .inner {
+                padding:96px 96px 80px;
+            }
+            
+            .bucket {
+                display:inline-block;
+                vertical-align:top;
+                width:calc(50% - 40px);
+                margin:0 0 40px 40px;
+                background:$gray_lightest;
+                
+                &:nth-of-type(2n+1) {
+                    margin-left:0;
+                }
+            }
+            
+            .vert_align {
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                height:100%;
+                margin:0 0 60px;
+                
+                .icon {
+                    width:140px;
+                    height:140px;
+                }
+                h3 {
+                    width:calc(100% - 140px);
+                    margin:0 0 0 20px;
+                    box-sizing:border-box;
+                    text-align:left;
+                    color: $purple_dark;
+                    text-transform:none;
+                    font-size:2em;
+                    font-weight:$semibold;
+                    letter-spacing:1px;
+                }
+            }
+            
+            .inner_content {
+                
+                
+                ul {
+                    
+                }
+                
+                li {
+                    color:$nearlyblack;
+                }
+            }
+        
+        }
+    }
+    
 }
 
 @media screen and (max-width: #{$bp_small}) {

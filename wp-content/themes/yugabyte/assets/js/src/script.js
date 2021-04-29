@@ -224,6 +224,8 @@ jQuery(document).ready(function($) {
         
         //FORM FLOAT LABELS SETUP
         floatThoseLabels();
+        
+        rowMaxHeight( $('.icon_cont_blocks.two_up > li') );
     });
     
     var resizeTimer;
@@ -352,7 +354,7 @@ jQuery(document).ready(function($) {
     
     function rowMaxHeight(el) {
         if( $(window).width() > 767 && el.length > 0 ) {
-            el.each(function() {
+            /*el.each(function() {
                 $(this).find('.inner_content').css('height','auto');
                 var h = Math.max.apply(null, $(this).find('.inner_content').map(function () {
                             return $(this).height();
@@ -361,7 +363,17 @@ jQuery(document).ready(function($) {
                     var h_new = h;
                     $(this).height(h_new);
                 });
+            });*/
+            
+            var tallest = 0;
+            el.each(function() {
+                var i = $(this).find('.inner_content');
+                if( i.height() > tallest ) {
+                    tallest = i.height(); 
+                }
+      
             });
+            el.find('.inner_content').height(tallest);
         }
     }
     

@@ -111,7 +111,8 @@ h3 {
     text-transform:uppercase;
     letter-spacing:3px;
     
-    &.lined {
+    &.lined,
+    &.lined_left {
         position:relative;
         margin-bottom:1.5em;
         
@@ -124,6 +125,14 @@ h3 {
             background:$purple_dark;
             content:'';
             transform:translateX(-50%);
+        }
+    }
+    
+    &.lined_left {
+        
+        &:after {
+            left:0;
+            transform:none;
         }
     }
 }
