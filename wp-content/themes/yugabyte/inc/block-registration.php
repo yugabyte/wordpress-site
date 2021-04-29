@@ -463,9 +463,45 @@ function custom_acf_blocks_init() {
         //TWO-COLUMN, INSET RIGHT COL (EX: UNIVERSITY)
         acf_register_block_type(array(
             'name'              => 'inset_right_col',
-            'title'             => __('Inset Right Column'),
-            'description'       => __('Narrow, two-column wysiwyg, inset right column - example usage is YB University'),
+            'title'             => __('Sidebar Right Column'),
+            'description'       => __('Narrow, two-column wysiwyg, sidebar right column - example usage is YB University'),
             'render_template'   => 'template-parts/blocks/inset_right_col.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //FORM EMBED
+        acf_register_block_type(array(
+            'name'              => 'form_embed',
+            'title'             => __('Form Embed'),
+            'description'       => __('Embed a site form'),
+            'render_template'   => 'template-parts/blocks/form_embed.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //SKINNY CTA
+        acf_register_block_type(array(
+            'name'              => 'skinny_cta',
+            'title'             => __('Skinny CTA'),
+            'description'       => __('Simple, short CTA block - content field and button'),
+            'render_template'   => 'template-parts/blocks/skinny_cta.php',
             'category'          => 'yugabyte-blocks',
             'post_types' => array('page'),
             'align' => false,

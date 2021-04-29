@@ -81,6 +81,17 @@ h2 {
             content:'';
             transform:translateX(-50%);
         }
+        
+        &.alt {
+            margin:0 0 0.75em;
+            text-transform:none;
+            letter-spacing:0;
+            color: $white;
+            
+            &:after {
+                background:$white;
+            }
+        }
     }
     
     &.lined_left {
@@ -267,6 +278,11 @@ p {
     
     strong, b {
         font-family:$ssans;
+    }
+    
+    &.footnote {
+        font-size:0.8em;
+        font-style:italic;
     }
 }
 

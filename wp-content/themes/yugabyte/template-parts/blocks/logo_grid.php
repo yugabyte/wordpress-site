@@ -26,7 +26,9 @@ if( !empty($block['align']) ) {
 // Load values and adding defaults.
 $bg_color = get_field('bg_color');
 $heading = get_field('heading');
+$alt_heading = get_field('alt_heading');
 
+$alt_class = ( $alt_heading ) ? 'alt' : '';
 $bg_color_class = ( $bg_color ) ? $bg_color : '';
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
@@ -34,7 +36,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
         <?php
         if( have_rows('logos') ):
             if( $heading ) {
-                echo '<h2 class="lined">'.$heading.'</h2>';
+                echo '<h2 class="lined '.$alt_class.'">'.$heading.'</h2>';
             }
             echo '<ul class="logos">';
             while ( have_rows('logos') ): the_row();

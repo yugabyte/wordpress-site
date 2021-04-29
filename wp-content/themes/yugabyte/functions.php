@@ -635,4 +635,15 @@ function video_setup($v, $p) {
     echo '</div>';
 }
 
+
+add_filter( 'gform_field_content', function ( $field_content, $field ) {
+	
+	if ( 'number' !== $field->type && $field->cssClass == 'whole_num' ) {
+		return $field_content;
+	}
+	
+	return str_replace( "step='any'", "step='1'", $field_content );
+
+}, 10, 2 );
+
 ?>
