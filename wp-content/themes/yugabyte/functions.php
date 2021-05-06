@@ -211,8 +211,5 @@ function getIntegrationsList( $test ) {
 }
 add_action("wp_ajax_get_integrations_list", "getIntegrationsList");
 add_action("wp_ajax_nopriv_get_integrations_list", "getIntegrationsList");
-add_filter('rest_enabled', '_return_false');
-add_filter('rest_jsonp_enabled', '_return_false');
-
 
 ?>
