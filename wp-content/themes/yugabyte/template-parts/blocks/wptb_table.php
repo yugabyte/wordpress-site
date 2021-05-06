@@ -24,12 +24,14 @@ if( !empty($block['align']) ) {
 }
 
 // Load values and adding defaults.
+$bg_color = get_field('bg_color');
 $heading = get_field('heading');
 $intro = get_field('intro');
 $wptb_sc = get_field('wptb_sc');
 
+$bg_color_class = ( $bg_color ) ? $bg_color : '';
 ?>
-<div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?>">
+<div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
     <div class="content_section_inner full">
         <div class="grid nopadding">
             <div class="col-8-12 push-2-12 mobile-col-1-1 nopadding centered">

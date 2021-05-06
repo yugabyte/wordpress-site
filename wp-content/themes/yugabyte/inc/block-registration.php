@@ -532,6 +532,24 @@ function custom_acf_blocks_init() {
             ),
         ));
         
+        //IMAGE ROWS
+        acf_register_block_type(array(
+            'name'              => 'image_rows',
+            'title'             => __('Image Rows'),
+            'description'       => __('Set rows of up to three images - used for benchmarking comparisons'),
+            'render_template'   => 'template-parts/blocks/image_rows.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
     }
 }
 ?>

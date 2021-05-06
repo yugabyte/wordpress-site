@@ -226,6 +226,48 @@ jQuery(document).ready(function($) {
         floatThoseLabels();
         
         rowMaxHeight( $('.icon_cont_blocks.two_up > li') );
+        
+        //ZOOM IMAGES
+        if( $('.zoomable').length > 0 ) {
+            $('.zoomable').each(function() {
+                $(this).zoom({ on:'click' });
+                
+                /*var cont = $(this),
+                    mover = cont.find('.zoom_mover'),
+                    bg_posx = '',
+                    bg_posy = '';
+        
+                cont.on('mousemove', function(e) {
+                    //bg_posx = -e.offsetX * 1.8 + 'px',
+                    //bg_posy = -e.offsetY + 80 + 'px';
+                    bg_posx = -e.offsetX + 'px',
+                    bg_posy = -e.offsetY + 80 + 'px';
+                    
+                    mover.css({
+                        backgroundPositionX : bg_posx,
+                        backgroundPositionY : bg_posy
+                    });
+                    //mover.style.backgroundPositionX = -e.offsetX * 1.8 + 'px';
+                    //mover.style.backgroundPositionY = -e.offsetY + 80 + 'px';
+                });
+        
+                cont.on('mouseenter', function(e) {
+                    //setTimeout(function() {
+                        mover.addClass('no-more-slidey');
+                        cont.off('mouseenter');
+                    //}, 250);
+                }); 
+                
+                cont.on('mouseleave', function(e) {
+                    mover.css({
+                        backgroundPositionX : 'center',
+                        backgroundPositionY : 'center'
+                    });
+                }); 
+                */
+                
+            });
+        }
     });
     
     var resizeTimer;
@@ -459,6 +501,24 @@ jQuery(document).ready(function($) {
                 the_label.addClass('float_label');
             }
         });
+    }
+    
+    function zoomImages() {
+        
+        var cont = $('.zoom_cont'),
+            mover = $('.zoom_mover');
+        
+        cont.on('mousemove', function(e) {
+            mover.style.backgroundPositionX = -e.offsetX * 1.8 + 'px';
+            mover.style.backgroundPositionY = -e.offsetY + 80 + 'px';
+        });
+        
+        cont.on('mouseenter', function(e) {
+            setTimeout(function() {
+                mover.addClass('no-more-slidey');
+                cont.off('mouseenter');
+            }, 250);
+        });        
     }
     
 });
