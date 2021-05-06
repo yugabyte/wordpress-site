@@ -550,6 +550,24 @@ function custom_acf_blocks_init() {
             ),
         ));
         
+        //HAPPY CUSTOMERS
+        acf_register_block_type(array(
+            'name'              => 'happy_customers',
+            'title'             => __('Happy Customers'),
+            'description'       => __('Selected customer testimonial, logo group, and cta button'),
+            'render_template'   => 'template-parts/blocks/happy_customers.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
     }
 }
 ?>

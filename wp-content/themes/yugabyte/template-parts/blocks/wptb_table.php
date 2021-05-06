@@ -28,11 +28,14 @@ $bg_color = get_field('bg_color');
 $heading = get_field('heading');
 $intro = get_field('intro');
 $wptb_sc = get_field('wptb_sc');
+$table_footnote = get_field('table_footnote');
+$narrow_table = get_field('narrow_table');
 
-$bg_color_class = ( $bg_color ) ? $bg_color : '';
+$table_grid_classes = ( $narrow_table ) ? 'col-6-12 push-3-12 mobile-col-1-1 nopadding narrow_table' : 'col-8-12 push-2-12 mobile-col-1-1 nopadding';
+$bg_color_class = ( $bg_color ) ? $bg_color : 'white';
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
-    <div class="content_section_inner full">
+    <div class="content_section_inner full tall_pad">
         <div class="grid nopadding">
             <div class="col-8-12 push-2-12 mobile-col-1-1 nopadding centered">
             <?php
@@ -46,9 +49,12 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
             </div>
         </div>
         <div class="grid nopadding">
-            <div class="col-8-12 push-2-12 mobile-col-1-1 nopadding">
+            <div class="<?php echo $table_grid_classes; ?>">
                 <?php
                 echo do_shortcode($wptb_sc);
+                if( $table_footnote ) {
+                    echo '<p class="table_footnote">'.$table_footnote.'</p>';
+                }
                 ?>
             </div>
         </div>

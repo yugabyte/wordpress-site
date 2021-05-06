@@ -62,7 +62,7 @@ $single_col_class = ( $is_single_col ) ? 'force_1col' : '';
                         
                         //add the description
                         if( $legal_note ) {
-                            echo '<p class="nomargin">'.$legal_note.'</p>';
+                            echo '<p class="form_footnote nomargin">'.$legal_note.'</p>';
                         }
                         ?>
                     </div>

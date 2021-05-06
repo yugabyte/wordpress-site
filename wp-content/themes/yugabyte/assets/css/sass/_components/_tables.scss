@@ -35,6 +35,16 @@ table {
             width:40% !important;
         }
     }
+    
+    .narrow_table & {
+        //LOCK WIDTH FOR FIRST COLUMN
+        td {
+        
+            &:first-of-type {
+                width:55% !important;
+            }
+        }
+    }
 }
 
 //INLINE WYSIWYG TABLE STYLES (ADDED VIA THE CLASSIC MCE EDITOR)
@@ -94,11 +104,19 @@ table {
 //WP-TABLE-BUILDER STYLES
 .content_section.ybtable {
     
-    
+    .wptb-table-container {
+        margin-bottom:20px;
+    }
     .wptb-image-wrapper img {
         width:auto !important;
         display:block;
         margin:0 auto;
+    }
+    
+    .table_footnote {
+        margin:0 auto;
+        width:70%;
+        text-align:center;
     }
     
 }
