@@ -26,7 +26,9 @@ if( !empty($block['align']) ) {
 // Load values and adding defaults.
 $bg_color = get_field('bg_color');
 $heading = get_field('heading');
+$heading_img = get_field('heading_img');
 $underline = get_field('underline');
+$standard_h2 = get_field('standard_h2');
 $subheading = get_field('subheading');
 $social = get_field('social');
 
@@ -37,7 +39,32 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'purple-dark';
         <?php
         if( $heading ) {
             $is_lined = ( $underline ) ? 'lined' : '';
-            echo '<h2 class="'.$is_lined.'">'.$heading.'</h2>';
+            $is_standard = ( $standard_h2 ) ? 'standard' : '';
+            
+            //IF LOGOS GROUP
+            if( have_rows('logos_group') ) {
+                echo '<div class="head_wrap clearfix">';
+                echo '<div class="logos_group">';
+                while ( have_rows('logos_group') ): the_row();
+                    $logo = get_sub_field('logo');
+                    $logo_name = get_sub_field('logo_name');
+                    $logo_url = get_sub_field('logo_url');
+                    
+                    $logo_src = $logo['url'];
+                    $logo_alt = ( $logo_name ) ? $logo_name : $logo['alt'];
+                    
+                    if( $logo_url ) {
+                        echo '<a href="'.$logo_url.'" class="logo"><img src="'.$logo_src.'" alt="'.$logo_alt.'" /></a>';
+                    } else {
+                        echo '<span class="logo"><img src="'.$logo_src.'" alt="'.$logo_alt.'" /></span>';
+                    }
+                endwhile;
+                echo '</div>';
+                echo '<h2 class="'.$is_standard.'">'.$heading.'</h2>';
+                echo '</div>';
+            } else {
+                echo '<h2 class="'.$is_lined.' '.$is_standard.'">'.$heading.'</h2>';
+            }
         }
         if( $subheading ) {
             echo '<p>'.$subheading.'</p>';

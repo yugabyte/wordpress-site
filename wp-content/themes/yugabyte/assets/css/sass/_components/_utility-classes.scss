@@ -11,6 +11,32 @@
 
 /* PATTERNS */
 
+//BULLETED LIST WITH BIG CHECK MARK ICONS
+.wysiwyg ul.checkmark {
+    margin:0;
+                
+    > li {
+        position:relative;
+        margin:0 0 20px;
+        padding:0 0 0 60px;
+        color: $nearlyblack;
+        
+        &:before {
+            position:absolute;
+            left:0;
+            top:-5px;
+            width:36px;
+            height:36px;
+            background:transparent url(../../images/list-type-checkmark.svg) no-repeat center center;
+            background-size:cover;
+            content:'';
+        }
+        
+        &:last-of-type {
+            margin:0;
+        }
+    }
+}
 
 .flexrow {
     display:flex;

@@ -142,6 +142,11 @@ function constrain_mce_editor( $init ) {
             'classes' => 'special_ol',
         ),
         array(
+            'title' => 'CHECKMARK UL',
+            'selector'    => 'ul',
+            'classes' => 'checkmark',
+        ),
+        array(
             'title' => 'TAB INDENT WRAP',
             'block'    => 'div',
             'classes' => 'tab_indent_wrap',
@@ -289,6 +294,7 @@ function set_hero() {
     
     //ADDITIONAL FIELDS
     $subheading = get_field('subheading');
+    $post_cta_note = get_field('post_cta_note');
     
     /*if( is_home() || is_front_page() ):
         
@@ -384,6 +390,11 @@ function set_hero() {
                 echo '</div>';
             endif;
             wp_reset_postdata();
+            
+            //POST-CTA NOTE
+            if( $post_cta_note ) {
+                echo '<p class="post_note">'.$post_cta_note.'</p>';
+            }
             
             echo '</div>';
             echo '</div>';

@@ -25,13 +25,18 @@ if( !empty($block['align']) ) {
 
 // Load values and adding defaults.
 $heading = get_field('heading');
+$standard_h2 = get_field('standard_h2');
 //icons
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?>">
     <div class="content_section_inner centered">
         <?php
         if( $heading ) {
-            echo '<h3 class="lined">'.$heading.'</h3>';
+            if( $standard_h2 ) {
+                echo '<h2 class="lined">'.$heading.'</h2>';
+            } else {
+                echo '<h3 class="lined">'.$heading.'</h3>';
+            }
         }
         
         if( have_rows('icons') ):
@@ -39,6 +44,7 @@ $heading = get_field('heading');
             while ( have_rows('icons') ): the_row();
                 $icon = get_sub_field('icon');
                 $icon_label = get_sub_field('icon_label');
+                $subheading = get_sub_field('subheading');
                 
                 $icon_src = $icon['url'];
                 $icon_alt = $icon['alt'];
@@ -47,6 +53,9 @@ $heading = get_field('heading');
                 echo '<div class="icon" style="background-image:url('.$icon_src.');"></div>';
                 if( $icon_label ) {
                     echo '<h4>'.$icon_label.'</h4>';
+                }
+                if( $subheading ) {
+                    echo '<p>'.$subheading.'</p>';
                 }
                 echo '</div>';
             endwhile;

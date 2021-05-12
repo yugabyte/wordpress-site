@@ -171,6 +171,19 @@
             }
         }
     }
+    
+    .post_note {
+        margin:0.75em 0 0 0;
+        
+        a {
+            color: $white;
+            font-weight:$bold;
+            
+            &:hover {
+                color: $orange;
+            }
+        }
+    }
 }
 
 #hero_ss {

@@ -300,12 +300,51 @@
 .fw_cta {
     
     
+    .head_wrap {
+        width:70%;
+        margin:0 auto 60px;
+        display:flex;
+        align-items:center;
+        
+        h2 {
+            width:40%;
+            margin:0 0 40px;
+            padding-left:40px;
+            border-left:2px solid $white;
+            box-sizing:border-box;
+            text-align:left;
+        }
+        
+        .logos_group {
+            width:55%;
+            text-align:center;
+            
+            .logo {
+                display:inline-block;
+                margin:0 70px 40px 0;
+                
+                img {
+                    display:block;
+                    height:auto;
+                    max-height:50px;
+                }
+            }
+        }
+    }
+    
     h2 {
         margin:0 0 0.75em;
         text-transform:none;
         letter-spacing:0;
         font-weight:$semibold;
         color: $white;
+        
+        &.standard {
+            font-weight:$normal;
+            color:$orange;
+            text-transform:uppercase;
+            letter-spacing:4px;
+        }
         
         &.lined {
             margin:0 0 1.5em;
@@ -646,7 +685,11 @@
             background:transparent;
             background-repeat:no-repeat;
             background-position:center bottom;
-            background-size:100% auto;
+            background-size:auto;
+        }
+        
+        p {
+            margin:2em 0 0 0;
         }
         
         

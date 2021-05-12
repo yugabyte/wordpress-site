@@ -177,6 +177,14 @@ body {
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000041', endColorstr='#2b59c3',GradientType=1 );
     }
     
+    &.grad-dkpurple-blue-flat {
+        background: $purple_dark;
+        background: -moz-linear-gradient(90deg,  $purple_dark 0%, $blue 100%);
+        background: -webkit-linear-gradient(90deg,  $purple_dark 0%,$blue 100%);
+        background: linear-gradient(90deg,  $purple_dark 0%,$blue 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000041', endColorstr='#2b59c3',GradientType=1 );
+    }
+    
     &.invert {
         > * {
             color: $white;
