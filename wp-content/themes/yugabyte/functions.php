@@ -163,6 +163,11 @@ function constrain_mce_editor( $init ) {
             'classes' => 'lined_left',
         ),
         array(
+            'title' => 'H2 LARGE PURPLE',
+            'block'    => 'h2',
+            'classes' => 'large_purple',
+        ),
+        array(
             'title' => 'BUTTON STANDARD',
             'selector'    => 'a',
             'classes' => 'btn',

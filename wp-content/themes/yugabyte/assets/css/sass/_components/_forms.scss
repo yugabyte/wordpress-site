@@ -134,6 +134,26 @@
                     display:block;
                     margin:0;
                 }
+                
+                &.two_col_address {
+                    margin:0;
+            
+                    .ginput_complex {
+                        .ginput_full.address_line_1,
+                        .ginput_full.address_line_2 {
+                            position:relative;
+                            display:inline-block;
+                            vertical-align:top;
+                            width:calc(50% - 8px);
+                            margin:0 0 1.25em;
+                            padding-right:0;
+                            z-index:102;
+                        }
+                        .ginput_full.address_line_2 {
+                            margin-left:16px;
+                        }
+                    }
+                }
             
             }
         }
@@ -185,9 +205,8 @@
             
             &.gfield_label_before_complex {
                 position:static;
-                margin:0 0 2em;
+                margin:0 0 1em;
                 padding:0;
-                font-size:14px;
                 line-height:18px;
                 color: $purple_dark;
                 
@@ -246,6 +265,16 @@
                 font-style:italic;
                 color: $purple_dark;
             }
+            
+            .ginput_complex.ginput_container label {
+                font-size:1em;
+                font-style:normal;
+                
+                &.float_label {
+                    font-size:14px;
+                    line-height:18px;
+                }
+            }
         }
     
         .instruction {
@@ -272,7 +301,8 @@
         }
         
         .ginput_container_select,
-        .ginput_complex .address_state {
+        .ginput_complex .address_state,
+        .ginput_complex .address_country {
             position:relative;
             cursor:pointer;
             background:$white;
@@ -445,12 +475,12 @@
                 margin-left:16px;
             }
             
-            .address_state {
+            /*.address_state {
                 
                 label {
                     z-index:-1;
                 }
-            }
+            }*/
             
             input[type='text'],
             input[type='number'],

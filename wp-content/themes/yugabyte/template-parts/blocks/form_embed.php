@@ -30,11 +30,12 @@ $title_override = get_field('title_override');
 $desc_override = get_field('desc_override');
 $legal_note = get_field('legal_note');
 $is_narrow = get_field('is_narrow');
+$hide_title = get_field('hide_title');
 $hide_desc = get_field('hide_desc');
 $is_single_col = get_field('is_single_col');
 
 $bg_color_class = ( $bg_color ) ? $bg_color : '';
-$narrow_class = ( $is_narrow ) ? 'col-6-12 push-3-12 mobile-col-1-1' : 'col-10-12 push-1-12 mobile-col-1-1';
+$narrow_class = ( $is_narrow ) ? 'col-6-12 push-3-12 mobile-col-1-1 nopadding' : 'col-10-12 push-1-12 mobile-col-1-1 nopadding';
 $single_col_class = ( $is_single_col ) ? 'force_1col' : '';
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?> <?php echo $single_col_class; ?>">
@@ -44,8 +45,10 @@ $single_col_class = ( $is_single_col ) ? 'force_1col' : '';
                 <div class="<?php echo $narrow_class; ?>">
                     <div class="inner">
                         <?php
-                        $title = ( $title_override ) ? $title_override : $the_form['title'];
-                        echo '<h2 class="lined">'.$title.'</h2>';
+                        if( !$hide_title ) {
+                            $title = ( $title_override ) ? $title_override : $the_form['title'];
+                            echo '<h2 class="lined">'.$title.'</h2>';
+                        }
                         if( !$hide_desc ) {
                             if( $desc_override ) {
                                 $subheading = $desc_override;

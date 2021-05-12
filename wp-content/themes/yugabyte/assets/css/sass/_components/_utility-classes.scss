@@ -171,6 +171,10 @@ iframe {
     padding-top:30px !important;
     padding-bottom:30px !important;
 }
+.mid_pad {
+    padding-top:60px !important;
+    padding-bottom:60px !important;
+}
 .nopadding {
     padding:0 !important;
 }
@@ -200,6 +204,89 @@ iframe {
 .large_padding_top {
     padding-top:100px !important;
 }
+
+/* SOUPY: PROVIDE ABILITY TO OVERRIDE YB BLOCK PADDINGS VIA GUTENBERG ADVANCED CSS FIELD */
+.content_section.override_padding {
+    
+    &.tall_pad {
+        padding:0 !important;
+        .content_section_inner {
+            padding-top:100px !important;
+            padding-bottom:100px !important;
+        }
+    }
+    &.mid_pad {
+        padding:0 !important;
+        .content_section_inner {
+            padding-top:60px !important;
+            padding-bottom:60px !important;
+        }
+    }
+    &.short_pad {
+        padding:0 !important;
+        .content_section_inner {
+            padding-top:30px !important;
+            padding-bottom:30px !important;
+        }
+    }
+    &.nopadding {
+        padding:0 !important;
+        .content_section_inner {
+            padding:0 !important;
+        }
+    }
+    &.nopadding_lr {
+        padding:0 !important;
+        .content_section_inner {
+            padding-right:0 !important;
+            padding-left:0 !important;
+        }
+    }
+    &.nopadding_tb {
+        padding:0 !important;
+        .content_section_inner {
+            padding-top:0 !important;
+            padding-bottom:0 !important;
+        }
+    }
+    &.nopadding_top {
+        padding:0 !important;
+        .content_section_inner {
+            padding-top:0 !important;
+        }
+    }
+    &.nopadding_bottom {
+        padding:0 !important;
+        .content_section_inner {
+            padding-bottom:0 !important;
+        }
+    }
+    &.small_padding_top {
+        padding:0 !important;
+        .content_section_inner {
+            padding-top:30px !important;
+        }
+    }
+    &.small_padding_bottom {
+        padding:0 !important;
+        .content_section_inner {
+            padding-bottom:30px !important;
+        }
+    }
+    &.large_padding_top {
+        padding:0 !important;
+        .content_section_inner {
+            padding-top:100px !important;
+        }
+    }
+    &.large_padding_bottom {
+        padding:0 !important;
+        .content_section_inner {
+            padding-bottom:100px !important;
+        }
+    }
+}
+
 .nobullets {
     list-style:none !important;
 }

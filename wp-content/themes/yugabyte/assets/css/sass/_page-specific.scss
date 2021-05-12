@@ -70,6 +70,16 @@
 /**********************************************************************************************/
 .img_cont {
     
+    &.wide_content {
+        .cont .inner_content {
+            padding:0;
+        }
+        
+        .cont h2 {
+            padding-right:60px;
+        }
+    }
+    
     .vert_align {
         
         

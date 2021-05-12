@@ -26,19 +26,34 @@ if( !empty($block['align']) ) {
 // Load values and adding defaults.
 $bg_color = get_field('bg_color');
 $flip = get_field('flip');
+$narrow_block = get_field('narrow_block');
+$wide_content = get_field('wide_content');
 $cont = get_field('cont');
 $image = get_field('image');
 $img_src = $image['sizes']['large'];
 $img_alt = $image['alt'];
 
-$flip_class_img = ( $flip ) ? 'col-1-2 mobile-col-1-1 img' : 'col-1-2 mobile-col-1-1 push-right img';
-$flip_class_cont = ( $flip ) ? 'col-1-2 mobile-col-1-1 push-right cont' : 'col-1-2 mobile-col-1-1 cont';
+if( $wide_content ) {
+    $flip_class_img = ( $flip ) ? 'col-5-12 mobile-col-1-1 img' : 'col-5-12 mobile-col-1-1 push-right img';
+    $flip_class_cont = ( $flip ) ? 'col-7-12 mobile-col-1-1 push-right cont' : 'col-7-12 mobile-col-1-1 cont';
+} else {
+    $flip_class_img = ( $flip ) ? 'col-1-2 mobile-col-1-1 img' : 'col-1-2 mobile-col-1-1 push-right img';
+    $flip_class_cont = ( $flip ) ? 'col-1-2 mobile-col-1-1 push-right cont' : 'col-1-2 mobile-col-1-1 cont';
+}
 
 $bg_color_class = ( $bg_color ) ? $bg_color : '';
+$wide_class = ( $wide_content ) ? 'wide_content' : '';
+$flip_class = ( $flip ) ? 'flip' : '';
 ?>
-<div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
+<div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?> <?php echo $flip_class; ?> <?php echo $wide_class; ?>">
     <div class="content_section_inner tall_pad">
         <div class="clearfix vert_align">
+            <?php
+            if( $narrow_block ) {
+                echo '<div class="grid">';
+                echo '<div class="col-10-12 push-1-12 mobile-col-1-1">';
+            }
+            ?>
             <div class="grid eq_h nopadding">
                 <div class="eq_r nopadding <?php echo $flip_class_img; ?>">
                     <div class="inner">
@@ -55,6 +70,12 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                     </div>
                 </div>
             </div>
+            <?php
+            if( $narrow_block ) {
+                echo '</div>';
+                echo '</div>';
+            }
+            ?>
         </div>
     </div>
 </div>
