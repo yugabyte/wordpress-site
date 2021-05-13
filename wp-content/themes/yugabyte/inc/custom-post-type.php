@@ -322,7 +322,7 @@ function register_taxonomies() {
 	);
 
 	$type_args = array(
-		'hierarchical' => false,
+		'hierarchical' => true,
 		'labels' => $type_labels,
 		//'rewrite' => true,
 		'rewrite' => array( 'slug' => 'type' ),

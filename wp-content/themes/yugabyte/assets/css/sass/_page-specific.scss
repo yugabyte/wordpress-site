@@ -1366,7 +1366,8 @@
 /***** ALL ALM, OTHER FILTERS COLUMN STYLES ***************************************************/
 /**********************************************************************************************/
 #alm-filters-ssfilter,
-#alm-filters-eventsfilter {
+#alm-filters-eventsfilter,
+#alm-filters-ybnewsfilter {
     padding-right:40px;
     
     .alm-filter {
@@ -1469,13 +1470,23 @@
     visibility:hidden;
     text-align:center;
     
-    #events-list & {
+    #events-list &,
+    #ybnews-list & {
         opacity:1;
         visibility:visible;
     }
 
     .btn {
         margin:0;
+        
+        #ybnews-list & {
+            background:$orange !important;
+            color: $white !important;
+            
+            &:hover {
+                background:$blue !important;
+            }
+        }
     }
 }
 
@@ -1513,6 +1524,25 @@
                 margin-left:0;
             }
             
+            > a {
+                display:block;
+                color: $black;
+                
+                &:hover {
+                    
+                    .top {
+                        
+                        img {
+                            transform:translate3d(0,0,0) scale(1.1);
+                        }
+                    }
+                    
+                    .read_more {
+                        color: $orange;
+                    }
+                }
+            }
+            
             .top {
                 position:relative;
                 z-index:12;
@@ -1531,6 +1561,8 @@
                 img {
                     display:block;
                     width:100%;
+                    transform: translate3d(0,0,0);
+                    transition:transform 0.3s;
                 }
                 
                 .vertical {
@@ -1643,7 +1675,7 @@
                 
                 
                 &.meta {
-                    margin:0 0 40px;
+                    margin:0 0 36px;
                 }
                 
                 .date {
@@ -1698,6 +1730,141 @@
         h4 {
             margin:0;
             transition:all 0.3s;
+        }
+    }
+}
+
+/**********************************************************************************************/
+/***** YB NEWS ********************************************************************************/
+/**********************************************************************************************/
+#yb_news {
+    width:calc(100% - 80px);
+    margin:0 auto;
+    padding:60px 0;
+    
+    //SS GRID
+    #ybnews-list {
+        
+        .alm-reveal.alm-filters {
+            display:flex;
+            flex-direction:row;
+            flex-wrap:wrap;
+            justify-content:flex-start;
+    
+            .ajax-load-more-wrap {
+                width:100%;
+            }
+        }
+        
+        .item {
+            position:relative;
+            float:left;
+            width:calc(33.3333% - 27px);
+            margin:0 0 40px 40px;
+            z-index:10;
+            background:#f2f3f8;
+    
+            &:nth-of-type(3n + 1) {
+                margin-left:0;
+            }
+            
+            > a {
+                display:block;
+                color: $black;
+                
+                &:hover {
+                    
+                    .top {
+                        
+                        img {
+                            transform:translate3d(0,0,0) scale(1.1);
+                        }
+                        
+                        &.pr {
+                        
+                            .inner {
+                                transform:translate3d(0,0,0) scale(1.1);
+                            }
+                        }
+                    }
+                    
+                    .read_more {
+                        color: $orange;
+                    }
+                }
+            }
+            
+            .top {
+                position:relative;
+                z-index:12;
+                box-shadow:0 0 15px rgba(20,25,32,0.15);
+                background:$white;
+                overflow:hidden;
+                
+                &.pr {
+                    
+                    .inner {
+                        display:block;
+                        padding:0;
+                        background:$white;
+                        background-repeat:no-repeat;
+                        background-position:center top;
+                        background-size:cover;
+                        transform: translate3d(0,0,0);
+                        transition:transform 0.3s;
+                    }
+                }
+                
+                .inner {
+                    display:flex;
+                    align-items:center;
+                    position:relative;
+                    padding:40px;
+                    height:230px;
+                    box-sizing:border-box;
+                }
+                
+                img {
+                    display:block;
+                    width:100%;
+                    transform: translate3d(0,0,0);
+                    transition:transform 0.3s;
+                }
+                
+                .vertical {
+                    position:absolute;
+                    left:0;
+                    bottom:5px;
+                    display:block;
+                    padding:5px;
+                    width:100%;
+                    font-size:0.78em;
+                    color:$gray;
+                    line-height:1.25em;
+                    box-sizing:border-box;
+                    text-align:center;
+                }
+            }
+            
+            .btm {
+                background:none;
+                z-index:11;
+                
+                .inner {
+                    position:relative;
+                    padding:30px 40px 80px 20px;
+                }
+                
+                p {
+                    margin:0;
+                }
+            }
+            
+            .rm_wrap {
+                position:absolute;
+                left:20px;
+                bottom:20px;
+            }
         }
     }
 }

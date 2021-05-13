@@ -102,6 +102,7 @@
         
         echo '</p>';
         echo '<p>'.$ev_excerpt.'</p>';
+        echo '<a href="'.$link.'" class="btn sq small nomargin" target="'.$link_tar.'">Read more</a>';
     echo '</div></div>';
     ?>
 </li>

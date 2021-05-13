@@ -11,6 +11,8 @@
     $vertical = get_field('vertical');
     $summary = get_field('summary');
     
+    echo '<a href="'.$link.'">';
+    
     echo '<div class="top"><div class="inner">';
         if( $logo ) {
             $logo_src = $logo['url'];
@@ -27,6 +29,7 @@
         }
     echo '</div></div>';
     
-    echo '<div class="rm_wrap"><a href="'.$link.'" class="read_more">See Story</a></div>';
+    echo '<div class="rm_wrap"><span class="read_more">See Story</span></div>';
+    echo '</a>';
     ?>
 </li>

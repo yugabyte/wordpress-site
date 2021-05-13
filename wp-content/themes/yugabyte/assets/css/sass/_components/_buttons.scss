@@ -44,6 +44,15 @@ button.gpnf-add-entry,
     &.small {
         padding:5px 10px;
         font-size:0.9em;
+        
+        &.sq {
+            padding:10px 40px 10px 15px;
+            
+            &:after {
+                right:15px;
+                top:calc(50% + 1px);
+            }
+        }
     }
     
     &.sq {
@@ -191,6 +200,7 @@ button.gpnf-add-entry:disabled,
     line-height:1.333em;
     font-weight:$semibold;
     color:$purple_dark;
+    transition:all 0.3s;
     
     &:after {
         position:absolute;
