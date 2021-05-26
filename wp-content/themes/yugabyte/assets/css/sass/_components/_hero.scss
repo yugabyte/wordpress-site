@@ -11,6 +11,77 @@
     background-size:cover;
     z-index:15;
     
+    &.blog,
+    &.search {
+        
+        h1 {
+            width:70%;
+            color: $white;
+            text-transform:none;
+            letter-spacing:1px;
+        }
+        
+        .inner {
+            position:absolute;
+            left:60px;
+            top:50%;
+            width:calc(100% - 120px);
+            max-width:none;
+            transform:translateY(-50%);
+        }
+    }
+    
+    .byline {
+        display:flex;
+        justify-content:flex-start;
+        align-items:center;
+        margin:1.5em 0 0;
+        
+        .headshot {
+            width:46px;
+            height:46px;
+            border:1px solid $purple_dark;
+            margin-right:15px;
+            border-radius:25px;
+            overflow:hidden;
+            background:$purple_dark;
+            background-repeat:no-repeat;
+            background-position:center top;
+            background-size:cover;
+            
+            &:hover {
+                
+            }
+        }
+        
+        p {
+            margin:0;
+            line-height:1.3em;
+            color: $white;
+            
+            span {
+                font-weight:$semibold;
+            }
+            
+            a {
+                color: $white;
+                text-decoration:none;
+                
+                &:hover {
+                    color: $white;
+                }
+            }
+        }
+    }
+    
+    &.grad_orange_purpledark {
+        background: $purple_dark;
+        background: -moz-linear-gradient(30deg,  $orange 0%, rgba(116,23,130,1) 50%, $purple_dark 100%);
+        background: -webkit-linear-gradient(30deg,  $orange 0%,rgba(116,23,130,1) 50%,$purple_dark 100%);
+        background: linear-gradient(30deg,  $orange 0%,rgba(116,23,130,1) 50%,$purple_dark 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff6e42', endColorstr='#000041',GradientType=1 );
+    }
+    
     &:before {
         position:absolute;
         top:0;

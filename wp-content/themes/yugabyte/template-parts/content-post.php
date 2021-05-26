@@ -13,11 +13,7 @@
     <?php
     
     if( $post->post_content != '' ) {
-        echo '<div class="content_section">';
-        echo '<div class="content_section_inner wysiwyg">';
         the_content();
-        echo '</div>';
-        echo '</div>';
     }
     
     

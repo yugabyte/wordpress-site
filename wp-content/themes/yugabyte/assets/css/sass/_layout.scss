@@ -89,12 +89,26 @@ body {
         border:none;
         padding:0;
     }
+    
+    .archive &,
+    .single-post &,
+    .search & {
+        width:72%;
+        padding:0;
+    }
 }
 #secondary {
     float:right;
     width:50%;
     padding:0 70px;
     box-sizing:border-box;
+    
+    .archive &,
+    .single-post &,
+    .search & {
+        width:28%;
+        padding:0 50px;
+    }
 }
 
 #content {
@@ -115,6 +129,12 @@ body {
             width:calc(100% - 160px);
             max-width:1200px;
             margin:0 auto 80px;
+        }
+    }
+    
+    .single-post & {
+        > article {
+            padding-left:60px;
         }
     }
 }

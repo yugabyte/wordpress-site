@@ -20,17 +20,10 @@
         max-width:1200px;
         margin-right:auto;
         margin-left:auto;
-    }
-    
-    //MAX WIDTH FOR READABILITY, NAKED ELEMENTS
-    > p,
-    > ol,
-    > ul,
-    > hr,
-    > span,
-    > a {
-        padding-right:28%;
-        box-sizing:border-box;
+        
+        .single-post & {
+            width:100%;
+        }
     }
     
     .wp-block-columns {
@@ -72,16 +65,6 @@
         > span,
         > a {
             width:calc(100% - 40px);
-        }
-    
-        //MAX WIDTH FOR READABILITY, NAKED ELEMENTS
-        > p,
-        > ol,
-        > ul,
-        > hr,
-        > span,
-        > a {
-            padding-right:0;
         }
     
         .wp-block-columns {

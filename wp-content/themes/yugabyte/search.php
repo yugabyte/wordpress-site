@@ -34,7 +34,7 @@ if( is_category('blog') ) {
                     // Start the Loop.
                     echo '<div class="listing">';
                     while ( have_posts() ) : the_post();
-                        get_template_part( 'template-parts/content', '' );
+                        get_template_part( 'template-parts/content', 'search' );
                     endwhile;
                     echo '</div>';
                     yb_paging_nav();

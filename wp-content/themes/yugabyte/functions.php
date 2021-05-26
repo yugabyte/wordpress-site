@@ -204,15 +204,15 @@ add_action( 'widgets_init', 'remove_base_widgets', 11 );
 
 function yugabyte_widgets_init() {
 	
-	/*register_sidebar( array(
-        'name'          => __( 'TODO Sidebar', 'darrigo' ),
-        'id'            => 'sidebar-TODO',
-        'description'   => __( 'Add widgets here to appear in your sidebar.', 'darrigo' ),
+	register_sidebar( array(
+        'name'          => __( 'Blog Sidebar Listing', 'yugabyte' ),
+        'id'            => 'sidebar-blog',
+        'description'   => __( 'Add widgets here to appear in your sidebar.', 'yugabyte' ),
         'before_widget' => '<aside id="%1$s" class="widget %2$s">',
         'after_widget'  => '</aside>',
         'before_title'  => '<h3 class="widget-title">',
         'after_title'   => '</h3>',
-    ) );*/
+    ) );
 }
 add_action( 'widgets_init', 'yugabyte_widgets_init' );
 
@@ -301,56 +301,19 @@ function set_hero() {
     $subheading = get_field('subheading');
     $post_cta_note = get_field('post_cta_note');
     
-    /*if( is_home() || is_front_page() ):
-        
-        $subtitle = get_field('subtitle');
-        $about_summary = get_field('about_summary');
-        $about_ct = get_field('about_ct');
-        $about_ct_btn_txt = get_field('about_ct_btn_txt');
-        
-        $el = '#hero_top';
-        //generate_fw_thumbs($hero_image, $el);
-        
-        $fw_image_mobile = $hero_image['sizes']['fw-mobile-home'];
-        $fw_image_desktop = $hero_image['sizes']['fw-x-large-home'];
-        
-        echo '<style>';
-        echo $el.'{background-image:url('.$fw_image_mobile.')}';
-        echo '@media screen and (min-width: 768px) {'.$el.'{background-image:url('.$fw_image_desktop.')}}';
-        echo '</style>';
-        
-        echo '<div id="hero" class="content_section">';
-            echo '<div class="content_section_inner full nopadding">';
-                echo '<div id="hero_top">';
-                    echo '<div class="pink_border"></div>';
-                    echo '<div class="inner">';
-                    echo '<h1>'.$title.'<span class="period">.</span></h1>';
-                    echo '</div>';
-                echo '</div>';
-                echo '<div id="hero_bottom">';
-                    echo '<div class="inner">';
-                        echo '<div class="grid nopadding">';
-                            echo '<div class="col-8-12 tablet-col-7-12 left">';
-                            if( $subtitle ) {
-                                echo '<p class="subtitle">'.$subtitle.'</p>';
-                            }
-                            echo '</div>';
-                            echo '<div class="col-4-12 tablet-col-5-12 right">';
-                            if( $about_summary ) {
-                                echo '<p class="summary">'.$about_summary.'</p>';
-                                if( $about_ct ) {
-                                    echo '<a class="btn dark" href="'.$about_ct.'">'.$about_ct_btn_txt.'</a>';
-                                }
-                            }
-                            echo '</div>';
-                        echo '</div>';
-                    echo '</div>';
-                echo '</div>';
-            echo '</div>';
-        echo '</div>';
-    */
-    //else:
-        
+    if( is_category() || is_tax() ):
+        $term = $post;
+        $term_id = $term->term_id;
+        $tax = $post->taxonomy;
+        $hero_image = get_field('hero_image', $tax.'_'.$term_id);
+        if( get_field('custom_title', $tax.'_'.$term_id) ) {
+            $title = get_field('custom_title', $tax.'_'.$term_id);
+        } else {
+            $title = $term->name;
+        }
+        $subheading = get_field('subheading', $tax.'_'.$term_id);
+    endif;
+    
         $el = '#hero';
         generate_fw_thumbs($hero_image, $el);
         echo '<div id="hero" class="content_section">';
@@ -405,8 +368,6 @@ function set_hero() {
             echo '</div>';
         echo '</div>';
         echo '</div>';
-        
-    //endif;
     wp_reset_postdata();
 }
 
@@ -419,6 +380,8 @@ function set_hero_alt() {
     } else {
         $title = get_the_title();
     }
+    
+    $bg_color_class = '';
     
     if( is_page() ):
         
@@ -436,9 +399,31 @@ function set_hero_alt() {
         } else {
             $title = $term->name;
         }
+        if( is_category() ) {
+            $title = 'Distributed SQL Blog: '.$title;
+        }
         $subheading = get_field('subheading', $tax.'_'.$term_id);
-                
-    else: //is post
+        
+        $bg_color_class = 'blog grad_orange_purpledark';
+    
+    elseif( is_author() ):
+        $author = get_queried_object();
+        $author_id = $author->ID;
+        $author_fname = get_user_meta( $author_id, 'first_name', true );
+        $author_lname = get_user_meta( $author_id, 'last_name', true );
+        $title = 'Articles by '.$author_fname.' '.$author_lname;
+        $bg_color_class = 'blog grad_orange_purpledark';
+    
+    elseif( is_search() ):
+        $search = get_search_query();
+        $title = 'Search results for: "'.$search.'"';
+        $bg_color_class = 'search grad_orange_purpledark';
+    
+    elseif( is_singular('post') ):
+        $hero_image = get_field('hero_image');
+        $bg_color_class = 'blog grad_orange_purpledark';
+        
+    else:
         
         $hero_image_id = get_post_thumbnail_id();
         $hero_image = get_all_featured_image_sizes($hero_image_id);
@@ -446,14 +431,33 @@ function set_hero_alt() {
     endif;
         
     $el = '#hero_alt';
-    generate_fw_thumbs($hero_image, $el);
-    echo '<div id="hero_alt" class="content_section">';
+    if( !is_author() ) {
+        generate_fw_thumbs($hero_image, $el);
+    }
+    echo '<div id="hero_alt" class="content_section '.$bg_color_class.'">';
     echo '<div class="content_section_inner nopadding">';
         echo '<div class="inner">';
         echo '<div class="inner_content">';
         echo '<h1>'.$title.'</h1>';
         if( $subheading ) {
             echo '<p class="subheading">'.$subheading.'</p>';
+        }
+        if( is_singular('post') ) {
+            $author_id = get_the_author_meta('ID');
+            $author = get_the_author();
+            $author_link = get_author_posts_url($author_id);
+            $author_headshot = get_avatar_url($author_id);
+            $author_fname = get_user_meta( $author_id, 'first_name', true );
+            $author_lname = get_user_meta( $author_id, 'last_name', true );
+            $date = get_the_date('', get_the_ID());
+            $date_formatted = date('F j, Y', strtotime($date));
+            
+            echo '<div class="byline">';
+                if( $author_headshot ) {
+                    echo '<a class="headshot" href="'.$author_link.'" style="background-image:url('.$author_headshot.');"></a>';
+                }
+                echo '<p><span>By <a href="'.$author_link.'">'.$author_fname.' '.$author_lname.'</a></span><br />'.$date_formatted.'</p>';
+            echo '</div>';
         }
         echo '</div>';
         echo '</div>';
@@ -578,7 +582,7 @@ function yb_paging_nav() {
 		'format'   => $format,
 		'total'    => $GLOBALS['wp_query']->max_num_pages,
 		'current'  => $paged,
-		'mid_size' => 3,
+		'mid_size' => 1,
 		'add_args' => array_map( 'urlencode', $query_args ),
 		'prev_text' => __( 'Previous', 'yugabyte' ),
 		'next_text' => __( 'Next', 'yugabyte' ),
@@ -662,4 +666,103 @@ add_filter( 'gform_field_content', function ( $field_content, $field ) {
 
 }, 10, 2 );
 
+/**********************************************************************************/
+/***** SET FULL-WIDTH CTA (YUGABYTE GLOBAL OPTIONS PANEL) *************************/
+/**********************************************************************************/
+function setGlobalFWCTA() {
+    // Create id attribute allowing for custom "anchor" value.
+    $id = 'fw_cta-options';
+    $className = 'fw_cta';
+
+    // Load values and adding defaults.
+    $bg_color = get_field('bg_color','option');
+    $heading = get_field('heading','option');
+    $underline = get_field('underline','option');
+    $standard_h2 = get_field('standard_h2','option');
+    $subheading = get_field('subheading','option');
+    $social = get_field('social','option');
+
+    $bg_color_class = ( $bg_color ) ? $bg_color : 'purple-dark';
+    
+    echo '<div id="'.esc_attr($id).'" class="content_section '.esc_attr($className).' '.$bg_color_class.'">';
+    echo '<div class="content_section_inner centered tall_pad">';
+        
+    if( $heading ) {
+        $is_lined = ( $underline ) ? 'lined' : '';
+        $is_standard = ( $standard_h2 ) ? 'standard' : '';
+        
+        //IF LOGOS GROUP
+        if( have_rows('logos_group','option') ) {
+            echo '<div class="head_wrap clearfix">';
+            echo '<div class="logos_group">';
+            while ( have_rows('logos_group','option') ): the_row();
+                $logo = get_sub_field('logo');
+                $logo_name = get_sub_field('logo_name');
+                $logo_url = get_sub_field('logo_url');
+                
+                $logo_src = $logo['url'];
+                $logo_alt = ( $logo_name ) ? $logo_name : $logo['alt'];
+                
+                if( $logo_url ) {
+                    echo '<a href="'.$logo_url.'" class="logo"><img src="'.$logo_src.'" alt="'.$logo_alt.'" /></a>';
+                } else {
+                    echo '<span class="logo"><img src="'.$logo_src.'" alt="'.$logo_alt.'" /></span>';
+                }
+            endwhile;
+            echo '</div>';
+            echo '<h2 class="'.$is_standard.'">'.$heading.'</h2>';
+            echo '</div>';
+        } else {
+            echo '<h2 class="'.$is_lined.' '.$is_standard.'">'.$heading.'</h2>';
+        }
+    }
+    if( $subheading ) {
+        echo '<p>'.$subheading.'</p>';
+    }
+    //SOCIAL
+    if( $social ):
+        echo '<div class="social_wrap">';
+        foreach( $social as $v ):
+            $opt = get_field($v,'option');
+            $icon_path = get_stylesheet_directory_uri().'/assets/images/social-icons/'.$v.'.svg';
+            $icon_file = file_get_contents( $icon_path );
+            echo '<a href="'.$opt.'" class="social '.$v.'" target="_blank"><span>'.$v.'</span>'.$icon_file.'</a>';
+        endforeach;
+        echo '</div>';
+    endif;
+    
+    if( have_rows('ctas','option') ):
+        echo '<div class="ctas_wrap">';
+        while ( have_rows('ctas','option') ): the_row();
+            $ct = get_sub_field('ct');
+            $ct_ext = get_sub_field('ct_ext');
+            $ct_email = get_sub_field('ct_email');
+            $ct_btn_txt = get_sub_field('ct_btn_txt');
+            $cta_tar = get_sub_field('cta_tar');
+            $alt_style = get_sub_field('alt_style');
+            
+            $is_alt = ( $alt_style ) ? 'outline' : '';
+            $tar = ( $cta_tar ) ? '_blank' : '_self';
+                
+            if( $ct || $ct_ext || $ct_email ) {
+                if( $ct_email ) { //EMAIL WILL ALWAYS TAKE PRECEDENCE
+                    $link = 'mailto:'.$ct_email;
+                } elseif( $ct_ext ) {
+                    if( $ct ) {
+                        $link = $ct;
+                    } else {
+                        $link = $ct_ext;
+                    }
+                } else {
+                    $link = $ct;
+                }
+                echo '<a href="'.$link.'" class="btn '.$is_alt.'" target="'.$tar.'">'.$ct_btn_txt.'</a>';
+            }
+        endwhile;
+        echo '</div>';
+    endif;
+    
+    echo '</div>';
+    echo '</div>';
+}
 ?>

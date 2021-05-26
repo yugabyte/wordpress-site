@@ -200,6 +200,7 @@ jQuery(document).ready(function($) {
         if($(window).width() > 767) {
             pushOffHeader();
             calcEqualHeightBlocks();
+            rowMaxHeight( $('.row_h') );
         }
         
         if($(window).width() < 768) {
@@ -250,6 +251,7 @@ jQuery(document).ready(function($) {
         setTimeout(function(){
             if($(window).width() > 767) {
                 calcEqualHeightBlocks();
+                rowMaxHeight( $('.row_h') );
             } else {
                 //RESET EQ H BLOCKS TO AUTO HEIGHT
                 $('.eq_h .eq_l').css('height','auto');
