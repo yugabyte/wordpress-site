@@ -380,6 +380,7 @@ function set_hero_alt() {
     } else {
         $title = get_the_title();
     }
+    $subheading = get_field('subheading');
     
     $bg_color_class = '';
     
@@ -421,6 +422,7 @@ function set_hero_alt() {
     
     elseif( is_singular('post') ):
         $hero_image = get_field('hero_image');
+        $subheading = get_field('subheading');
         $bg_color_class = 'blog grad_orange_purpledark';
         
     else:

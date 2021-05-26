@@ -49,16 +49,7 @@
                         ?>
                     </header><!-- .entry-header -->
                     <div class="entry-content wysiwyg">
-                        <?php            
-                        if( $post->post_content != '' ) {
-                            if( has_excerpt() ) {
-                                $article_excerpt = get_the_excerpt();
-                            } else {
-                                $article_excerpt = substr( strip_tags( strip_shortcodes(get_the_content()) ), 0, 200 ).'&hellip;';
-                            }
-                            echo '<p>'.$article_excerpt.' <a href="'.get_permalink().'">Read More &gt;</a></p>';
-                        }
-                        
+                        <?php                        
                         $author_id = get_the_author_meta('ID');
                         $author = get_the_author();
                         $author_link = get_author_posts_url($author_id);
@@ -73,6 +64,20 @@
                                 echo '<a class="headshot" href="'.$author_link.'" style="background-image:url('.$author_headshot.');"></a>';
                             }
                             echo '<p><span>By <a href="'.$author_link.'">'.$author_fname.' '.$author_lname.'</a></span><br />'.$date_formatted.'</p>';
+                        echo '</div>';
+                        
+                        if( $post->post_content != '' ) {
+                            if( has_excerpt() ) {
+                                $article_excerpt = get_the_excerpt();
+                            } else {
+                                $article_excerpt = substr( strip_tags( strip_shortcodes(get_the_content()) ), 0, 200 ).'&hellip;';
+                            }
+                            echo '<p>'.$article_excerpt.' <a href="'.get_permalink().'">Read More &gt;</a></p>';
+                        }
+                        
+                        //SOCIAL SHARING
+                        echo '<div id="yb_social_bar">';
+                        echo do_shortcode('[addtoany]');
                         echo '</div>';
                         ?>
                     </div><!-- .entry-content -->

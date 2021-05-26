@@ -30,7 +30,7 @@ if( is_singular('post') ): ?>
                     // Start the loop.
                     while ( have_posts() ) : the_post();
                         get_template_part( 'template-parts/content', get_post_type() );
-                    endwhile
+                    endwhile;                    
                     ?>
                 </div><!-- .content-area -->
             </div>
