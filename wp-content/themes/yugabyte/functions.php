@@ -389,7 +389,7 @@ function set_hero_alt() {
         $hero_image_id = get_post_thumbnail_id();
         $hero_image = get_all_featured_image_sizes($hero_image_id);
         
-    elseif( is_category() || is_tax() ):
+    elseif( is_category() || is_tag() || is_tax() ):
     
         $term = $post;
         $term_id = $term->term_id;
@@ -400,7 +400,7 @@ function set_hero_alt() {
         } else {
             $title = $term->name;
         }
-        if( is_category() ) {
+        if( is_category() || is_tag() ) {
             $title = 'Distributed SQL Blog: '.$title;
         }
         $subheading = get_field('subheading', $tax.'_'.$term_id);
@@ -433,7 +433,7 @@ function set_hero_alt() {
     endif;
         
     $el = '#hero_alt';
-    if( !is_author() ) {
+    if( !is_author() && !is_tag() ) {
         generate_fw_thumbs($hero_image, $el);
     }
     echo '<div id="hero_alt" class="content_section '.$bg_color_class.'">';
