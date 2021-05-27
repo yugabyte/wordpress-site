@@ -368,6 +368,59 @@ function set_hero() {
             echo '</div>';
         echo '</div>';
         echo '</div>';
+        //LATEST NEWS
+        if( is_home() || is_front_page() ) {
+            $latest_news = get_field('latest_news');
+            $latest_news_override = get_field('latest_news_override');
+            
+            //LATEST YBNEWS POST QUERY
+            $latest = new WP_Query( array(
+                'post_type' => 'ybnews',
+                'posts_per_page' => 1
+            ));
+            
+            if( $latest_news ) {
+                echo '<div id="latest_news" class="content_section purple-dark">';
+                echo '<div class="content_section_inner">';
+                echo '<div class="ln_wrap clearfix">';
+                
+                /*echo '<pre>';
+                var_dump($latest);
+                echo '</pre>';*/
+                
+                if ($latest->have_posts()):
+                
+                    if( $latest_news_override ) {
+                        
+                        foreach( $latest_news_override as $p ):
+                            setup_postdata($p);
+                            $title = get_the_title($p->ID);
+                            $link = get_permalink($p->ID);
+                    
+                            echo '<span class="ln_label">News</span>';
+                            echo '<a class="ln_link" href="'.$link.'">'.$title.'</a>';
+                        endforeach;
+                        wp_reset_postdata();
+                        
+                    } else {
+                        while ( $latest->have_posts() ) : $latest->the_post();
+                            
+                            $title = get_the_title();
+                            $link = get_permalink();
+                    
+                            echo '<span class="ln_label">News</span>';
+                            echo '<a class="ln_link" href="'.$link.'">'.$title.'</a>';
+                            
+                        endwhile;
+                    }
+                endif;
+                wp_reset_query();
+                
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+        }
     wp_reset_postdata();
 }
 

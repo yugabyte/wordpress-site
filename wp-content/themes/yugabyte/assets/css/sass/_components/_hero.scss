@@ -257,6 +257,66 @@
     }
 }
 
+#latest_news {
+    border-top:1px solid $gray;
+    
+    .content_section_inner {
+        padding:0;
+        text-align:center;
+    }
+    
+    .ln_wrap {
+        display:flex;
+        width:90%;
+        margin:0 auto;
+        justify-content:center;
+        align-items:center;
+    }
+    
+    .ln_label {
+        display:block;
+        margin:0;
+        padding:30px 20px 30px 0;
+        font-size:1.22em;
+        text-transform:uppercase;
+        color: $orange;
+        text-align:right;
+    }
+    
+    .ln_link {
+        display:block;
+        position:relative;
+        margin:0;
+        padding:30px 30px 30px 0;
+        font-size:1.22em;
+        line-height:1em;
+        text-decoration:none;
+        color:$white;
+        
+        &:after {
+            position:absolute;
+            right:10px;
+            top:calc(50% + 2px);
+            width: 0; 
+            height: 0; 
+            border-style: solid;
+            border-width: 6px 0 6px 10px;
+            border-color: transparent transparent transparent $orange;
+            content:'';
+            transform:translateY(-50%);
+            transition:all 0.3s;
+        }
+        
+        &:hover {
+            color: $orange;
+            
+            &:after {
+                right:0px;
+            }
+        }
+    }
+}
+
 #hero_ss {
     position:relative;
     height:520px;
