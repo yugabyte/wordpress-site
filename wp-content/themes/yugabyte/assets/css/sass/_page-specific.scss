@@ -1273,6 +1273,90 @@
     }
 }
 
+.metrics_cont {
+    background-repeat:no-repeat;
+    background-position:center center;
+    background-size:cover;
+    
+    .vert_align {
+        
+        
+        .inner {
+            display:flex;
+            align-items:center;
+            height:100%;
+        }
+    }
+    
+    .metrics {
+        .inner_content {
+            padding:0 60px;
+        }
+    }
+    
+    .cont {
+        
+        .inner {
+            padding:0 60px;
+        }
+        
+        .inner_content {
+            position:relative;
+            padding:60px;
+            background:$white;
+            
+            &:after {
+                position:absolute;
+                right:-40px;
+                top:100px;
+                width: 0; 
+                height: 0; 
+                border-style: solid;
+                border-width: 24px 0 24px 40px;
+                border-color: transparent transparent transparent $white;
+                content:'';
+            }
+        }
+        
+        &.flip .inner_content {
+            
+            &:after {
+                right:auto;
+                left:-40px;
+                border-width: 24px 40px 24px 0;
+                border-color: transparent $white transparent transparent;
+            }
+        }
+    }
+    
+    .metrics_grid {
+        
+        
+        li {
+            display:inline-block;
+            width:calc(50% - 40px);
+            margin:0 20px 40px;
+            text-align:center;
+            
+            .metric {
+                display:block;
+                margin:0.5em 0;
+                font-size:3.33em;
+                line-height:1.3em;
+                font-weight:$semibold;
+                color: $purple_dark;
+            }
+            
+            .metric_label {
+                display:block;
+                margin:0;
+                font-size:1.22em;
+                font-weight:$normal;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: #{$bp_small}) {
     
     

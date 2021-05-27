@@ -568,6 +568,24 @@ function custom_acf_blocks_init() {
             ),
         ));
         
+        //2 COL METRICS/CONTENT
+        acf_register_block_type(array(
+            'name'              => 'content_metrics',
+            'title'             => __('Two Column Content and Metrics Group'),
+            'description'       => __('Standard two-column, 50-50 Content and Metrics Group'),
+            'render_template'   => 'template-parts/blocks/content_metrics.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
     }
 }
 ?>

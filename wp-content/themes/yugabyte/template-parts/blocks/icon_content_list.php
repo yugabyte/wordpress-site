@@ -24,12 +24,14 @@ if( !empty($block['align']) ) {
 }
 
 // Load values and adding defaults.
+$bg_color = get_field('bg_color');
 $heading = get_field('heading');
 $intro = get_field('intro');
 $grid_layout = get_field('grid_layout');
 
 //if the 2-up grid view, bg is always white; if vertical stack, bg is always light-blue
-$bg_color_class = ( $grid_layout ) ? 'white' : 'light-blue';
+$bg_color_class = ( $bg_color ) ? $bg_color : '';
+//$bg_color_class = ( $grid_layout ) ? 'white' : 'light-blue';
 $container_pad = ( $grid_layout ) ? '' : 'tall_pad';
 $grid_classes = ( $grid_layout ) ? 'col-1-1' : 'col-10-12 push-1-12';
 ?>
