@@ -28,12 +28,22 @@ $bg_color = get_field('bg_color');
 $heading = get_field('heading');
 $intro = get_field('intro');
 $grid_layout = get_field('grid_layout');
+$grid_layout_variant = get_field('grid_layout_variant');
 
 //if the 2-up grid view, bg is always white; if vertical stack, bg is always light-blue
 $bg_color_class = ( $bg_color ) ? $bg_color : '';
 //$bg_color_class = ( $grid_layout ) ? 'white' : 'light-blue';
 $container_pad = ( $grid_layout ) ? '' : 'tall_pad';
 $grid_classes = ( $grid_layout ) ? 'col-1-1' : 'col-10-12 push-1-12';
+if( $grid_layout ) {
+    if( $grid_layout_variant ) {
+        $grid_classes = 'col-10-12 push-1-12';
+    } else {
+        $grid_classes = 'col-1-1';
+    }
+} else {
+    $grid_classes = 'col-10-12 push-1-12';
+}
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
     <div class="content_section_inner centered <?php echo $container_pad; ?>">
@@ -53,7 +63,15 @@ $grid_classes = ( $grid_layout ) ? 'col-1-1' : 'col-10-12 push-1-12';
                     }
         
                     if( have_rows('icon_cont_blocks') ):
-                        $list_type = ( $grid_layout ) ? 'two_up' : 'stack';
+                        if( $grid_layout ) {
+                            if( $grid_layout_variant ) {
+                                $list_type = 'two_up variant';
+                            } else {
+                                $list_type = 'two_up';
+                            }
+                        } else {
+                            $list_type = 'stack';
+                        }
                         echo '<ul class="icon_cont_blocks '.$list_type.'">';
                         while ( have_rows('icon_cont_blocks') ): the_row();
                             $icon = get_sub_field('icon');
@@ -66,13 +84,25 @@ $grid_classes = ( $grid_layout ) ? 'col-1-1' : 'col-10-12 push-1-12';
                             echo '<li class="bucket">';
                             echo '<div class="inner">';
                             if( $grid_layout ) {
-                                echo '<div class="vert_align">';
+                                if( $grid_layout_variant ) {
+                                    
+                                    echo '<img class="icon" src="'.$icon_src.'" alt="'.$icon_alt.'" />';
+                                    echo '<div class="inner_content wysiwyg">';
+                                    echo '<h3>'.$title.'</h3>';
+                                    echo $cont;
+                                    echo '</div>';
+                                    
+                                } else {
+                                    
+                                    echo '<div class="vert_align">';
                                     echo '<img class="icon" src="'.$icon_src.'" alt="'.$icon_alt.'" />';
                                     echo '<h3>'.$title.'</h3>';
-                                echo '</div>';
-                                echo '<div class="inner_content wysiwyg">';
-                                echo $cont;
-                                echo '</div>';
+                                    echo '</div>';
+                                    echo '<div class="inner_content wysiwyg">';
+                                    echo $cont;
+                                    echo '</div>';
+                                    
+                                }
                                 
                             } else {
                                 echo '<div class="clearfix">';

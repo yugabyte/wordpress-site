@@ -1082,6 +1082,49 @@
                     color:$nearlyblack;
                 }
             }
+            
+            &.variant {
+                
+                .inner {
+                    padding:50px;
+                }
+                
+                .icon {
+                    float:none;
+                    display:block;
+                    margin:0 auto 30px;
+                    width:140px;
+                    height:140px;
+                }
+                h3 {
+                    width:80%;
+                    margin:0 auto 30px;
+                    text-align:center;
+                    color: $black;
+                    text-transform:uppercase;
+                    letter-spacing:3px;
+                    font-size:1.22em;
+                    font-weight:$semibold;
+                }
+                
+                .inner_content {
+                    text-align:center;
+                }
+                
+                .bucket {
+                    display:inline-block;
+                    vertical-align:top;
+                    width:calc(50% - 60px);
+                    margin:0 0 60px 60px;
+                    background:$white;
+                    border-radius:8px;
+                    box-shadow:0 0 12px rgba(0,0,0,0.16);
+                    
+                    &:nth-of-type(2n+1) {
+                        margin-left:0;
+                    }
+                }
+            }
         
         }
     }
@@ -1352,6 +1395,76 @@
                 margin:0;
                 font-size:1.22em;
                 font-weight:$normal;
+            }
+        }
+    }
+}
+
+.yb_is_for {
+    
+    
+    h2.lined {
+        margin:0 0 2.5em;
+    }
+    
+    .contentbuckets {
+        display:flex;
+        justify-content:flex-start;
+        
+        .bucket {
+            width:calc(33.3333% - 22px);
+            margin:0 0 0 33px;
+            
+            &:first-of-type {
+                margin-left:0;
+            }
+        }
+        
+        .img {
+            height:250px;
+            background:$purple_dark;
+            background-repeat:no-repeat;
+            background-position:center top;
+            background-size:cover;
+        }
+        .cont {
+            
+            .inner {
+                background:$offwhite;
+                border:1px dashed $purple_dark;
+                border-top:none;
+                padding:70px 50px 30px 80px;
+                text-align:left;
+            }
+            
+            h4 {
+                width:calc(100% + 30px);
+                margin-left:-30px;
+                padding:0 0 0 50px;
+                box-sizing:border-box;
+                letter-spacing:2px;
+                
+                &:before {
+                    top:50%;
+                    transform:translateY(-50%);
+                }
+            }
+            
+            .wysiwyg {
+                ul {
+                    
+                }
+                
+                li {
+                    color: $black;
+                    
+                    &:before {
+                        left:-20px;
+                        width:6px;
+                        height:6px;
+                        border-radius:3px;
+                    }
+                }
             }
         }
     }

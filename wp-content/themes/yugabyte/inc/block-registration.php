@@ -586,6 +586,24 @@ function custom_acf_blocks_init() {
             ),
         ));
         
+        //3-UP GRID OF IMAGE+CONTENT BUCKETS (YugabyteDB page, 'YB is For...')
+        acf_register_block_type(array(
+            'name'              => 'yb_is_for',
+            'title'             => __('Yugabyte is For'),
+            'description'       => __('3-up grid of image+content buckets'),
+            'render_template'   => 'template-parts/blocks/yb_is_for.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
     }
 }
 ?>

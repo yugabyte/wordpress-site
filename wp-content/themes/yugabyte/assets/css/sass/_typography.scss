@@ -178,6 +178,22 @@ h4 {
             transform:none;
         }
     }
+    
+    &.checkmark {
+        position:relative;
+        padding:0 0 0 60px;
+        
+        &:before {
+            position:absolute;
+            left:0;
+            top:-5px;
+            width:36px;
+            height:36px;
+            background:transparent url(../../images/list-type-checkmark.svg) no-repeat center center;
+            background-size:cover;
+            content:'';
+        }
+    }
 }
 
 h5 {
