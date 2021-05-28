@@ -26,6 +26,7 @@ if( !empty($block['align']) ) {
 // Load values and adding defaults.
 $heading = get_field('heading');
 $standard_h2 = get_field('standard_h2');
+$intro = get_field('intro');
 //icons
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?>">
@@ -37,6 +38,9 @@ $standard_h2 = get_field('standard_h2');
             } else {
                 echo '<h3 class="lined">'.$heading.'</h3>';
             }
+        }
+        if( $intro ) {
+            echo $intro;
         }
         
         if( have_rows('icons') ):

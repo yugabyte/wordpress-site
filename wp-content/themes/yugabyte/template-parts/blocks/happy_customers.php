@@ -43,6 +43,7 @@ $ct_btn_txt = get_field('ct_btn_txt');
         </div>
         <?php
         if( $testimonial ):
+            //TODO: NEEDS TO BE A SLIDER
             foreach( $testimonial as $p ):
                 setup_postdata($p);
 
