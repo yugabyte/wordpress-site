@@ -28,17 +28,28 @@ $bg_color = get_field('bg_color');
 $flip = get_field('flip');
 $narrow_block = get_field('narrow_block');
 $wide_content = get_field('wide_content');
+$narrow_img = get_field('narrow_img');
 $cont = get_field('cont');
 $image = get_field('image');
 $img_src = $image['sizes']['large'];
 $img_alt = $image['alt'];
 
 if( $wide_content ) {
-    $flip_class_img = ( $flip ) ? 'col-5-12 mobile-col-1-1 img' : 'col-5-12 mobile-col-1-1 push-right img';
-    $flip_class_cont = ( $flip ) ? 'col-7-12 mobile-col-1-1 push-right cont' : 'col-7-12 mobile-col-1-1 cont';
+    if( $narrow_img ) {
+        $flip_class_img = ( $flip ) ? 'col-3-12 push-2-12 mobile-col-1-1 img' : 'col-3-12 mobile-col-1-1 push-right img';
+        $flip_class_cont = ( $flip ) ? 'col-6-12 mobile-col-1-1 cont' : 'col-6-12 mobile-col-1-1 cont';
+    } else {
+        $flip_class_img = ( $flip ) ? 'col-5-12 mobile-col-1-1 img' : 'col-5-12 mobile-col-1-1 push-right img';
+        $flip_class_cont = ( $flip ) ? 'col-7-12 mobile-col-1-1 push-right cont' : 'col-7-12 mobile-col-1-1 cont';
+    }
 } else {
-    $flip_class_img = ( $flip ) ? 'col-1-2 mobile-col-1-1 img' : 'col-1-2 mobile-col-1-1 push-right img';
-    $flip_class_cont = ( $flip ) ? 'col-1-2 mobile-col-1-1 push-right cont' : 'col-1-2 mobile-col-1-1 cont';
+    if( $narrow_img ) {
+        $flip_class_img = ( $flip ) ? 'col-3-12 push-2-12 mobile-col-1-1 img' : 'col-6-12 mobile-col-1-1 push-right img';
+        $flip_class_cont = ( $flip ) ? 'col-1-2 mobile-col-1-1 cont' : 'col-1-2 mobile-col-1-1 cont';
+    } else {
+        $flip_class_img = ( $flip ) ? 'col-1-2 mobile-col-1-1 img' : 'col-1-2 mobile-col-1-1 push-right img';
+        $flip_class_cont = ( $flip ) ? 'col-1-2 mobile-col-1-1 push-right cont' : 'col-1-2 mobile-col-1-1 cont';
+    }
 }
 
 $bg_color_class = ( $bg_color ) ? $bg_color : '';
