@@ -124,32 +124,6 @@ jQuery(document).ready(function($) {
     //IMAGE GALLERY
     $('.img_gallery_slider').each(function(i) {
 	    var t = $(this);
-        /*var img_slider_config = {
-            auto:false,
-            slideMargin:10,
-            slideWidth:200,
-            minSlides: 1,
-            maxSlides:20,
-            speed:1000,
-            controls:(t.children().length < 2) ? false : true,
-            pager:false,
-            useCSS:false,
-            moveSlides:1,
-            easing:'easeInOutQuad',
-            onSliderLoad: function() {
-                t.animate({
-                    opacity:1
-                }, 200);
-            },
-            onSlideBefore: function() {
-                            
-            },
-            onSlideAfter: function() {
-                //slide_index = ImageSlider.getCurrentSlide();
-                //console.log('AFTER: ' + slide_index);            
-            }
-        }
-        var ImageSlider = t.bxSlider(img_slider_config);*/
         
         var img_slider_config = {
             dots: false,
@@ -160,6 +134,22 @@ jQuery(document).ready(function($) {
             variableWidth: true
         }
         var ImageSlider = t.slick(img_slider_config);
+    });
+    
+    //TESTIMONIAL W/ LOGO SLIDER
+    $('.test_slider').each(function(i) {
+	    var t = $(this);
+        
+        var test_slider_config = {
+            dots: false,
+            infinite: true,
+            speed: 300,
+            slidesToShow: 1,
+            centerMode: true,
+            variableWidth: false,
+            adaptiveHeight: true
+        }
+        var TestSlider = t.slick(test_slider_config);
     });
     
     //ALL GRAVITY FORMS SELECTS - TARGET INITIAL OPTION TO LIGHTEN AS PLACEHOLDER

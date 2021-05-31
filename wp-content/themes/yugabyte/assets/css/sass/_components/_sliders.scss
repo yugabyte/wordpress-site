@@ -34,7 +34,20 @@
 .test_slider {
     
     
+    * {
+        box-sizing:border-box;
+    }
     
+    .slick-list {
+        padding:0 !important;
+    }
+    
+    li {
+        position:relative;
+        overflow:hidden;
+        background:none;
+        z-index:1000;
+    }
 }
 
 

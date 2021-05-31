@@ -1226,11 +1226,12 @@
         }
         
         .cont {
-            padding:0;
+            padding:0 50px 0 0;
             
             .inner {
                 padding:70px 70px 30px 100px;
-                background:$white;
+                background:$offwhite;
+                text-align:left;
             }
         }
         
@@ -1272,6 +1273,14 @@
             background-repeat:no-repeat;
             background-position:center center;
             background-size:cover;
+        }
+    }
+    
+    &.light-blue,
+    &.light-gray {
+        
+        .hc_text .cont .inner {
+            background:$white;
         }
     }
     

@@ -214,6 +214,33 @@ $slick-opacity-not-active: 0.25 !default;
         text-indent:0;
         transition:all 0.3s;
     }
+    
+    .test_slider & {
+        height: 40px;
+        width: 31px;
+        &:hover, &:focus {
+            &:before {
+                //color: $orange;
+            }
+        }
+        &:before {
+            position:absolute;
+            top:50%;
+            //margin:-20px;
+            width:31px;
+            height:40px;
+            line-height:40px;
+            text-align:center;
+            color:$purple_dark;
+            /*font-family:$ssans;
+            content:'>';
+            font-size:26px;
+            text-indent:0;*/
+            content:'';
+            background:transparent url(../../images/slider-arrow-alt.svg);
+            transition:all 0.3s;
+        }
+    }
 }
 
 .slick-prev {
@@ -229,6 +256,10 @@ $slick-opacity-not-active: 0.25 !default;
         }*/
         transform:rotate(180deg);
     }
+    
+    .test_slider & {
+        //left:-80px;
+    }
 }
 
 .slick-next {
@@ -242,6 +273,10 @@ $slick-opacity-not-active: 0.25 !default;
         [dir="rtl"] & {
             content: $slick-prev-character;
         }*/
+    }
+    
+    .test_slider & {
+        //right:-80px;
     }
 }
 

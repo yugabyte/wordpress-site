@@ -29,8 +29,9 @@ $testimonial = get_field('testimonial');
 $ct = get_field('ct');
 $ct_btn_txt = get_field('ct_btn_txt');
 
+$bg_color_class = ( $bg_color ) ? $bg_color : '';
 ?>
-<div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> light-blue">
+<div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
     <div class="content_section_inner tall_pad">
         <div class="grid nopadding">
             <div class="intro col-8-12 push-2-12 mobile-col-1-1 nopadding centered">
@@ -43,7 +44,9 @@ $ct_btn_txt = get_field('ct_btn_txt');
         </div>
         <?php
         if( $testimonial ):
-            //TODO: NEEDS TO BE A SLIDER
+            echo '<div class="grid nopadding">';
+            echo '<div class="intro col-10-12 push-1-12 mobile-col-1-1 nopadding centered">';
+            echo '<ul class="test_slider">';
             foreach( $testimonial as $p ):
                 setup_postdata($p);
 
@@ -54,6 +57,7 @@ $ct_btn_txt = get_field('ct_btn_txt');
                 $logo = get_field('logo', $p->ID);
                 $test_quote = get_field('test_quote', $p->ID);
                 
+                echo '<li class="slide clearfix">';
                 echo '<div class="hc_test grid eq_h nopadding">';
                 if( $logo ) {
                     $logo_src = $logo['url'];
@@ -67,7 +71,7 @@ $ct_btn_txt = get_field('ct_btn_txt');
                     echo '</div>';
                     echo '</div>';
                 }
-                echo '<div class="cont eq_r col-7-12 mobile-col-1-1 clearfix">';
+                echo '<div class="cont eq_r col-8-12 mobile-col-1-1 clearfix">';
                 echo '<div class="inner">';
                     if( $test_quote ) {
                         echo '<p class="quote"><span class="mark">&ldquo;</span>'.$test_quote.'</p>';
@@ -91,8 +95,12 @@ $ct_btn_txt = get_field('ct_btn_txt');
                 echo '</div>';
                 echo '</div>';
                 echo '</div>';
+                echo '</li>';
 
             endforeach;
+            echo '</ul>';
+            echo '</div>';
+            echo '</div>';
             wp_reset_postdata();
         endif;
         
