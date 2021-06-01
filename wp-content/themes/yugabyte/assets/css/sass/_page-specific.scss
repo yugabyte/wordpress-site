@@ -1759,6 +1759,55 @@
     }
 }
 
+.contrib_journey {
+    
+    .cont_wrap {
+        padding:0 60px;
+    }
+    
+    .intro {
+        width:70%;
+        margin:0 auto 80px;
+    }
+    
+    .contentbuckets {
+        display:flex;
+        justify-content:flex-start;
+        
+        .bucket {
+            width:calc(33.3333% - 40px);
+            margin:0 0 0 60px;
+            background:none;
+            filter: drop-shadow(0 0 0.4rem rgba(0, 0, 0, 0.3));
+            
+            &:first-of-type {
+                margin-left:0;
+            }
+            
+            .notched {
+                clip-path: polygon(0% 0%, 42% 0, 50% 24px, 58% 0, 100% 0, 100% 100%, 0 100%);
+
+                background:$white;
+            }
+        }
+                    
+        .inner {
+            background:$white;
+            border-top:none;
+            padding:60px;
+            text-align:center;
+            
+            .wysiwyg {
+                text-align:center;
+            }
+            
+            img {
+                max-width:50%;
+            }
+        }
+    }
+}
+
 @media screen and (max-width: #{$bp_small}) {
     
     
