@@ -364,10 +364,29 @@ window.onload = function () {
 		if (term === 'None') {
 			$(".events-page .event-list li.item-container").removeClass('hidden');
 		} else {
-			$(".events-page .event-list li.item-container").addClass('hidden');
-			$(`.events-page .event-list li.item-container[data-event-type='${term}']`).removeClass('hidden');
+			$(".events-page .event-list li.item-container").each(function (index) {
+				var eventType = $(this).data('event-type');
+				if (term !== eventType) {
+					$(this).addClass('hidden');
+				}
+			});
 		}
 	});
+
+	// Careers page
+	$('select#job-location-filter').on('change', function (ev) {
+		var term = ev.target.value;
+		if (term === 'None') {
+			$(".jobs-section .job-list li.job-container").removeClass('hidden');
+		} else {
+			$(".jobs-section .job-list li.job-container").each(function (index) {
+				var currentJobLocation = $(this).data('job-location');
+				if (currentJobLocation.indexOf(term) < 0) {
+					$(this).addClass('hidden');
+				}
+			});
+		}
+	})
 
 	// primitive search over content library items available on current page
 	$('.content-library-search__input').on('keyup', function(event) {

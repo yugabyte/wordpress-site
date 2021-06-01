@@ -48,18 +48,39 @@
 			<div class="container">
 				<h3><?php the_field('jobs_section_title'); ?></h3>
 				<div class="description"><?php the_field('jobs_section_description'); ?></div>
-				<ul class="job-list">
-					<?php if(have_rows('jobs_list_repeater')): ?>
+				<?php if(have_rows('jobs_list_repeater')): ?>
+					<?php $options = ['None'];
+						function trimStrings($str) {
+							return trim($str);
+						}
+						foreach( get_field('jobs_list_repeater') as &$value) {
+							$locations = array_map('trimStrings', explode(",", $value["location"]));
+							foreach($locations as &$loc) {
+								if (!in_array($loc, $options)) {
+									array_push($options, $loc);
+								}
+							}							
+						}
+					?>
+					<div class="filters">
+						<span>Filter by location</span>
+						<select id="job-location-filter">
+							<?php foreach ($options as $type): array_map('htmlentities', $type); ?>
+							<option value="<?php echo $type ?>"><?php echo $type ?></option>
+							<?php endforeach; ?>
+						</select>
+					</div>
+					<ul class="job-list">				
 						<?php while(have_rows('jobs_list_repeater')) : the_row(); ?>
-							<li class="job-container">
+							<li class="job-container" data-job-location="<?php the_sub_field('location'); ?>">
 								<a href="<?php the_sub_field('job_link'); ?>" class="title"><?php the_sub_field('job_title'); ?></a>
 								<div class="job-info">
 									<span><strong><?php the_sub_field('department'); ?></strong> | <?php the_sub_field('location') ?><span>
 								</div>
 							</li>
-						<?php endwhile; ?>
-					<?php endif; ?>
-				</ul>
+						<?php endwhile; ?>					
+					</ul>
+				<?php endif; ?>
 			</div>
 		</section>
 		<section class="footer-cta">

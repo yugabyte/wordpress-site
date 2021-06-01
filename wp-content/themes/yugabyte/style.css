@@ -5941,6 +5941,13 @@ span.wpcf7-not-valid-tip {
 	display: flex;
 	margin-top: 5px;
 	margin-bottom: 10px;
+	align-items: center;
+}
+
+.events-page .filters select,
+.jobs-section .filters select {
+	padding: 6px;
+    border-radius: 4px;
 }
 
 .events-page .event-list .filters select {
@@ -6123,11 +6130,16 @@ span.wpcf7-not-valid-tip {
 	margin: 12px 0 3.125rem;
 }
 
-.jobs-section .job-list {
+.jobs-section .job-list,
+.jobs-section .filters {
 	list-style: none;
 	max-width: 600px;
 	margin: 0 auto 1.25rem;
 	padding: 0;	
+}
+
+.jobs-section .filters > span {
+	margin-right: 15px;
 }
 
 .jobs-section .job-list li {
