@@ -1670,6 +1670,7 @@
                         
             > a {
                 display:inline-block;
+                position:relative;
                 width: 100%;
                 margin:0;
                 padding:36px 10px;
@@ -1702,16 +1703,17 @@
             .toggle {
                 position:absolute;
                 right:10px;
-                top:50%;
+                top:36px;
                 display:inline-block;
                 width:21px;
-                height:12px;
+                height:46px;
                 padding:0;
                 vertical-align:middle;
                 box-sizing:border-box;
-                background: transparent url('../../images/accordion-toggle.svg') no-repeat right center;
+                background: transparent url('../../images/accordion-toggle.svg') no-repeat center center;
                 background-size:100% auto;
-                transform:translateY(-50%);
+                //transform:translateY(-50%);
+                transform-origin:center;
                 transition:all 0.3s;
             }
         
@@ -1721,7 +1723,7 @@
                     color: $orange;
                 }
                 
-                > span {
+                .toggle {
                     transform:rotate(180deg);
                 }
             }
