@@ -442,6 +442,24 @@ function custom_acf_blocks_init() {
             ),
         ));
         
+        //STANDARD SINGLE-COLUMN WYSIWYG
+        acf_register_block_type(array(
+            'name'              => 'wysiwyg',
+            'title'             => __('Single-Column WYSIWYG'),
+            'description'       => __('Standard, single-column content editor'),
+            'render_template'   => 'template-parts/blocks/wysiwyg.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
         //NARROW, SINGLE-COLUMN WYSIWYG - THIS IS EXCLUSIVELY FOR ANCILLARY PAGES SUCH AS SUPPORT POLICY
         acf_register_block_type(array(
             'name'              => 'narrow_wysiwyg',
