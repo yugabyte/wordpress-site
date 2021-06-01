@@ -1763,6 +1763,10 @@
     
     .cont_wrap {
         padding:0 60px;
+        
+        > .btn {
+            margin-bottom:0;
+        }
     }
     
     .intro {
@@ -1773,6 +1777,7 @@
     .contentbuckets {
         display:flex;
         justify-content:flex-start;
+        margin-bottom:60px;
         
         .bucket {
             width:calc(33.3333% - 40px);

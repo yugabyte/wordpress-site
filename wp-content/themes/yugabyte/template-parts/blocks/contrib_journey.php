@@ -27,7 +27,8 @@ if( !empty($block['align']) ) {
 $bg_color = get_field('bg_color');
 $heading = get_field('heading');
 $intro = get_field('intro');
-$ct = get_field('ct');
+$ct_int = get_field('ct_int');
+$ct_ext = get_field('ct_ext');
 $ct_btn_txt = get_field('ct_btn_txt');
 
 $bg_color_class = ( $bg_color ) ? $bg_color : '';
@@ -66,9 +67,14 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                     echo '</div>';
                     wp_reset_postdata();
                 endif;
-        
-                if( $ct ) {
-                    echo '<a href="'.$ct.'" class="btn sq">'.$ct_btn_txt.'</a>';
+                
+                if( $ct_int || $ct_ext ) {
+                    if( $ct_ext ) {
+                        $ct_url = ( $ct_int ) ? $ct_int : $ct_ext;
+                    } elseif( $ct_int ) {
+                        $ct_url = $ct_int;
+                    }
+                    echo '<a href="'.$ct_url.'" class="btn sq">'.$ct_btn_txt.'</a>';
                 }
                 ?>
             </div>
