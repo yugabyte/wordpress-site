@@ -28,6 +28,8 @@ $bg_color = get_field('bg_color');
 $flip = get_field('flip');
 $narrow_block = get_field('narrow_block');
 $wide_content = get_field('wide_content');
+$wide_img = get_field('wide_img');
+$zoomable = get_field('zoomable');
 $narrow_img = get_field('narrow_img');
 $cont = get_field('cont');
 $image = get_field('image');
@@ -51,10 +53,16 @@ if( $wide_content ) {
         $flip_class_cont = ( $flip ) ? 'col-1-2 mobile-col-1-1 push-right cont' : 'col-1-2 mobile-col-1-1 cont';
     }
 }
+//if the 'wide image' field is checked, it'll trump all others
+if( $wide_img ) {
+    $flip_class_img = ( $flip ) ? 'col-7-12 mobile-col-1-1 img' : 'col-7-12 mobile-col-1-1 push-right img';
+    $flip_class_cont = ( $flip ) ? 'col-5-12 mobile-col-1-1 push-right cont' : 'col-5-12 mobile-col-1-1 cont';
+}
 
 $bg_color_class = ( $bg_color ) ? $bg_color : '';
 $wide_class = ( $wide_content ) ? 'wide_content' : '';
 $flip_class = ( $flip ) ? 'flip' : '';
+$z_class = ( $zoomable ) ? 'zoomable' : '';
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?> <?php echo $flip_class; ?> <?php echo $wide_class; ?>">
     <div class="content_section_inner tall_pad">
@@ -69,7 +77,16 @@ $flip_class = ( $flip ) ? 'flip' : '';
                 <div class="eq_r nopadding <?php echo $flip_class_img; ?>">
                     <div class="inner">
                         <div class="inner_content">
-                            <?php echo '<img src="'.$img_src.'" alt="'.$img_alt.'" />'; ?>
+                            <?php
+                            if( $zoomable ) {
+                                echo '<div class="zoom_cont '.$z_class.'">';
+                                echo '<img src="'.$img_src.'" alt="'.$img_alt.'" />';
+                                echo '<div class="hover_prompt"></div>';
+                                echo '</div>';
+                            } else {
+                                echo '<img src="'.$img_src.'" alt="'.$img_alt.'" />';
+                            }
+                            ?>
                         </div>
                     </div>
                 </div>
