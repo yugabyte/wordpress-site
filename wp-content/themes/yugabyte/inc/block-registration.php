@@ -604,6 +604,24 @@ function custom_acf_blocks_init() {
             ),
         ));
         
+        //3-UP GRID OF ICON-BULLETED LINK GROUPS
+        acf_register_block_type(array(
+            'name'              => 'link_groups',
+            'title'             => __('Link Groups'),
+            'description'       => __('3-up grid of icon-bulleted link groups'),
+            'render_template'   => 'template-parts/blocks/link_groups.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
     }
 }
 ?>
