@@ -622,6 +622,60 @@ function custom_acf_blocks_init() {
             ),
         ));
         
+        //ACCORDION SIMPLE
+        acf_register_block_type(array(
+            'name'              => 'accordion_simple',
+            'title'             => __('Accordion Simple'),
+            'description'       => __('Left column open content in notched box; Right column iconed-accordion element'),
+            'render_template'   => 'template-parts/blocks/accordion_simple.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //ACCORDION COMPLEX
+        acf_register_block_type(array(
+            'name'              => 'accordion_complex',
+            'title'             => __('Accordion Complex'),
+            'description'       => __('Top section: two-col open content; Bottom section: complex accordion element'),
+            'render_template'   => 'template-parts/blocks/accordion_complex.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
+        //CONTRIBUTOR JOURNEY (Specialized block, found on Community page)
+        acf_register_block_type(array(
+            'name'              => 'contrib_journey',
+            'title'             => __('Contributor Journey'),
+            'description'       => __('3-up grid, inset-notched boxes with open content'),
+            'render_template'   => 'template-parts/blocks/contrib_journey.php',
+            'category'          => 'yugabyte-blocks',
+            'post_types' => array('page'),
+            'align' => false,
+            'mode' => 'edit',
+            'supports'          => array(
+                'align' => false,
+                'anchor' => true,
+                'alignWide' => false,
+                'html' => false,
+            ),
+        ));
+        
     }
 }
 ?>

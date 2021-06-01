@@ -1496,6 +1496,7 @@
         display:flex;
         justify-content:flex-start;
         align-items:flex-start;
+        padding:0 60px;
         
         .bucket {
             width:calc(33.3333% - 40px);
@@ -1549,7 +1550,7 @@
             a {
                 display:block;
                 position:relative;
-                padding:20px 30px 20px 50px;
+                padding:26px 30px 26px 50px;
                 text-align:left;
                 font-size:1em;
                 line-height:30px;
@@ -1586,6 +1587,171 @@
                 img {
                     vertical-align:middle;
                 }
+            }
+        }
+    }
+}
+
+.accordion_simple {
+    
+    
+    .vert_align {
+        
+        
+        .inner {
+            display:flex;
+            align-items:flex-start;
+            height:100%;
+        }
+    }
+    
+    .acc {
+        
+        
+        .inner_content {
+            flex-grow:1;
+            padding:0 60px;
+        }
+    }
+    
+    .cont {
+        
+        .inner {
+            padding:0 60px;
+        }
+        
+        .inner_content {
+            position:relative;
+            padding:60px;
+            background:$white;
+            
+            &:after {
+                position:absolute;
+                right:-40px;
+                top:100px;
+                width: 0; 
+                height: 0; 
+                border-style: solid;
+                border-width: 24px 0 24px 40px;
+                border-color: transparent transparent transparent $white;
+                content:'';
+            }
+        }
+    }
+    
+    .accordion_wrap {
+        
+    }
+    
+    .accordion {
+        margin:60px 0 0;
+        padding:0;
+        list-style:none;
+        
+        > li {
+            display:block;
+            list-style:none;
+            margin:0;
+            padding:0;
+            border-bottom:1px dashed $purple_dark;
+            
+            &:before {
+                display:none;
+            }
+        }
+    
+        .acc_heading {
+            position:relative;
+            margin:0;
+            text-transform:none;
+            font-weight:$semibold;
+            letter-spacing:0;
+            color: $purple_dark;
+                        
+            > a {
+                display:inline-block;
+                width: 100%;
+                margin:0;
+                padding:36px 10px;
+                color: $purple_dark;
+                vertical-align:middle;
+                text-decoration:none;
+                box-sizing:border-box;
+            
+                &:hover {
+                    color: $orange;
+                }
+            }
+            
+            span {
+                display:inline-block;
+                vertical-align:middle;
+                height:46px;
+                line-height:46px;
+            }
+            
+            .acc_icon {
+                width:46px;
+                margin:0 15px 0 0;
+                
+                img {
+                    vertical-align:middle;
+                }
+            }
+        
+            .toggle {
+                position:absolute;
+                right:10px;
+                top:50%;
+                display:inline-block;
+                width:21px;
+                height:12px;
+                padding:0;
+                vertical-align:middle;
+                box-sizing:border-box;
+                background: transparent url('../../images/accordion-toggle.svg') no-repeat right center;
+                background-size:100% auto;
+                transform:translateY(-50%);
+                transition:all 0.3s;
+            }
+        
+            &.active {
+                
+                > a {
+                    color: $orange;
+                }
+                
+                > span {
+                    transform:rotate(180deg);
+                }
+            }
+        }
+    
+        .acc_content {
+            display:none;
+        
+            .inner {
+                display:block;
+                padding:0 0 30px 72px;
+                box-sizing:border-box;
+                
+                ul {
+                    margin-top:0;
+                    
+                    li {
+                        color: $black;
+                        
+                        &:before {
+                            width:6px;
+                            height:6px;
+                            border-radius:3px;
+                        }
+                    }
+                }
+            }
+        
+            p {
+                margin-bottom:0.5em;
             }
         }
     }

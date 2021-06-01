@@ -99,6 +99,26 @@ jQuery(document).ready(function($) {
         e.preventDefault();
     });
     
+    //GENERAL ACCORDION FUNCTIONALITY
+    if( $('.accordion_wrap').length > 0 ) {
+        $('.accordion_wrap').each(function() {
+            var t = $(this),
+                acc = t.find('.accordion'),
+                h = acc.find('.acc_heading');
+            
+            h.on('click', function(e) {
+                e.preventDefault();
+                var t = $(this),
+                    c = t.siblings('.acc_content');
+        
+                t.toggleClass('active');
+                c.slideToggle(300, function() {
+            
+                });
+            });
+        });
+    }
+    
     //KILL DISABLED BUTTONS
     /*$('.btn.disabled').on('click', function(e) {
         e.preventDefault();
