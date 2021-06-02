@@ -37,6 +37,7 @@ $container_pad = ( $grid_layout ) ? '' : 'tall_pad';
 $grid_classes = ( $grid_layout ) ? 'col-1-1' : 'col-10-12 push-1-12';
 if( $grid_layout ) {
     if( $grid_layout_variant ) {
+        $container_pad = 'tall_pad';
         $grid_classes = 'col-10-12 push-1-12';
     } else {
         $grid_classes = 'col-1-1';
@@ -86,19 +87,28 @@ if( $grid_layout ) {
                             if( $grid_layout ) {
                                 if( $grid_layout_variant ) {
                                     
-                                    echo '<img class="icon" src="'.$icon_src.'" alt="'.$icon_alt.'" />';
                                     echo '<div class="inner_content wysiwyg">';
-                                    echo '<h3>'.$title.'</h3>';
+                                    if( $icon ) {
+                                        echo '<img class="icon" src="'.$icon_src.'" alt="'.$icon_alt.'" />';
+                                    }
+                                    if( $title ) {
+                                        echo '<h3>'.$title.'</h3>';
+                                    }
                                     echo $cont;
                                     echo '</div>';
                                     
                                 } else {
                                     
-                                    echo '<div class="vert_align">';
-                                    echo '<img class="icon" src="'.$icon_src.'" alt="'.$icon_alt.'" />';
-                                    echo '<h3>'.$title.'</h3>';
-                                    echo '</div>';
                                     echo '<div class="inner_content wysiwyg">';
+                                    echo '<div class="vert_align">';
+                                    if( $icon ) {
+                                        echo '<img class="icon" src="'.$icon_src.'" alt="'.$icon_alt.'" />';
+                                    }
+                                    if( $title ) {
+                                        echo '<h3>'.$title.'</h3>';
+                                    }
+                                    echo '</div>';
+                                    
                                     echo $cont;
                                     echo '</div>';
                                     
@@ -106,9 +116,13 @@ if( $grid_layout ) {
                                 
                             } else {
                                 echo '<div class="clearfix">';
-                                echo '<div class="icon"><img src="'.$icon_src.'" alt="'.$icon_alt.'" /></div>';
+                                if( $icon ) {
+                                    echo '<div class="icon"><img src="'.$icon_src.'" alt="'.$icon_alt.'" /></div>';
+                                }
                                 echo '<div class="cont wysiwyg">';
-                                echo '<h3 class="lined_left">'.$title.'</h3>';
+                                if( $title ) {
+                                    echo '<h3 class="lined_left">'.$title.'</h3>';
+                                }
                                 echo $cont;
                                 echo '</div>';
                             }

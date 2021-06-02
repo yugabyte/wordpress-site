@@ -37,22 +37,30 @@ $flip_class_cont = ( $flip ) ? 'col-9-12 mobile-col-1-1 push-right cont' : 'col-
 
 $is_flipped = ( $flip ) ? 'flip' : '';
 $bg_color_class = ( $bg_color ) ? $bg_color : '';
+
+if( $ct || $ct_ext ) {
+    $eq_h_class = 'eq_h';
+} else {
+    $eq_h_class = 'eq_h';
+    $flip_class_cont = 'col-10-12 push-1-12 mobile-col-1-1 cont solo';
+}
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?> <?php echo $is_flipped; ?>">
     <div class="content_section_inner">
         <div class="clearfix vert_align">
-            <div class="grid eq_h nopadding">
+            <div class="grid <?php echo $eq_h_class; ?> nopadding">
                 <div class="eq_l <?php echo $flip_class_cont; ?>">
                     <div class="inner">
                         <div class="inner_content wysiwyg">
                             <?php
                             if( $cont ) {
-                                echo '<p class="nomargin">'.$cont.'</p>';
+                                echo $cont;
                             }
                             ?>
                         </div>
                     </div>
                 </div>
+                <?php if( $ct || $ct_ext ) { ?>
                 <div class="eq_r <?php echo $flip_class_ct; ?>">
                     <div class="inner">
                         <div class="inner_content">
@@ -75,6 +83,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                         </div>
                     </div>
                 </div>
+                <?php } ?>
             </div>
         </div>
     </div>
