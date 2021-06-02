@@ -34,40 +34,48 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
     <div class="content_section_inner centered">
-        <?php
-        if( $heading ) {
-            if( $standard_h2 ) {
-                echo '<h2 class="lined">'.$heading.'</h2>';
-            } else {
-                echo '<h3 class="lined">'.$heading.'</h3>';
-            }
-        }
-        if( $intro ) {
-            echo $intro;
-        }
+        <div class="grid nopadding">
+            <div class="col-10-12 push-1-12 mobile-col-1-1 nopadding">
+                <?php
+                if( $heading || $intro ) {
+                    echo '<div class="intro">';
+                    if( $heading ) {
+                        if( $standard_h2 ) {
+                            echo '<h2 class="lined">'.$heading.'</h2>';
+                        } else {
+                            echo '<h3 class="lined">'.$heading.'</h3>';
+                        }
+                    }
+                    if( $intro ) {
+                        echo $intro;
+                    }
+                    echo '</div>';
+                }
         
-        if( have_rows('icons') ):
-            echo '<div class="icons">';
-            while ( have_rows('icons') ): the_row();
-                $icon = get_sub_field('icon');
-                $icon_label = get_sub_field('icon_label');
-                $subheading = get_sub_field('subheading');
+                if( have_rows('icons') ):
+                    echo '<div class="icons">';
+                    while ( have_rows('icons') ): the_row();
+                        $icon = get_sub_field('icon');
+                        $icon_label = get_sub_field('icon_label');
+                        $subheading = get_sub_field('subheading');
                 
-                $icon_src = $icon['url'];
-                $icon_alt = $icon['alt'];
+                        $icon_src = $icon['url'];
+                        $icon_alt = $icon['alt'];
                 
-                echo '<div class="bucket">';
-                echo '<div class="icon" style="background-image:url('.$icon_src.');"></div>';
-                if( $icon_label ) {
-                    echo '<h4>'.$icon_label.'</h4>';
-                }
-                if( $subheading ) {
-                    echo '<p>'.$subheading.'</p>';
-                }
-                echo '</div>';
-            endwhile;
-            echo '</div>';
-        endif;
-        ?>
+                        echo '<div class="bucket">';
+                        echo '<div class="icon" style="background-image:url('.$icon_src.');"></div>';
+                        if( $icon_label ) {
+                            echo '<h4>'.$icon_label.'</h4>';
+                        }
+                        if( $subheading ) {
+                            echo '<p>'.$subheading.'</p>';
+                        }
+                        echo '</div>';
+                    endwhile;
+                    echo '</div>';
+                endif;
+                ?>
+            </div>
+        </div>
     </div>
 </div>

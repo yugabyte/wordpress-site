@@ -1,6 +1,6 @@
 <?php
 /**
- * Testimonial Content Two Column Block Template.
+ * Simple Accordion Block Template.
  *
  * @param   array $block The block settings and attributes.
  * @param   string $content The block inner HTML (empty).

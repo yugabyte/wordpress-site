@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="472px" height="50px" viewBox="0 0 472 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 61.2 (89653) - https://sketch.com -->
+    <title>accordion-complex-divider</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="accordion-complex-divider" fill-rule="nonzero">
+            <rect id="Rectangle" fill="#FFFFFF" x="0" y="23.5" width="472" height="3"></rect>
+            <circle id="Oval" fill="#FFFFFF" cx="236" cy="25" r="25"></circle>
+            <polygon id="Path" fill="#F36E45" points="245 23.5 237.5 23.5 237.5 16 234.5 16 234.5 23.5 227 23.5 227 26.5 234.5 26.5 234.5 34 237.5 34 237.5 26.5 245 26.5"></polygon>
+        </g>
+    </g>
+</svg>

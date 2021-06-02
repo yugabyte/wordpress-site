@@ -417,6 +417,10 @@
 .ss_test {
     padding:100px 0;
     
+    .page & {
+        padding-bottom:160px;
+    }
+    
     .test_bg {
         position:relative;
         padding:100px 44px 160px;

@@ -709,6 +709,11 @@
         padding:100px 0 20px;
     }
     
+    .intro {
+        width:70%;
+        margin:0 auto 80px;
+    }
+    
     h3 {
         color: $purple_dark;
         text-transform:none;
@@ -720,9 +725,8 @@
         flex-wrap:wrap;
         justify-content:center;
         align-items:top;
-        margin:80px auto 0;
-        width:80%;
-        
+        margin:0 auto;
+                
         .bucket {
             width:33.33%;
             margin:0 auto 80px;
@@ -1788,6 +1792,235 @@
             .inner {
                 display:block;
                 padding:0 0 30px 72px;
+                box-sizing:border-box;
+                
+                ul {
+                    margin-top:0;
+                    
+                    li {
+                        color: $black;
+                        
+                        &:before {
+                            width:6px;
+                            height:6px;
+                            border-radius:3px;
+                        }
+                    }
+                }
+            }
+        
+            p {
+                margin-bottom:0.5em;
+            }
+        }
+    }
+}
+
+.accordion_complex {
+    
+    
+    .intro {
+        width:70%;
+        margin:0 auto 80px;
+        text-align:center;
+    }
+    
+    .vert_align {
+        
+        
+        .inner {
+            display:flex;
+            align-items:center;
+            height:100%;
+        }
+    }
+    
+    .cont_right {
+        
+        
+        .inner_content {
+            flex-grow:1;
+            padding:0 60px;
+        }
+        
+        ul {
+            margin-top:0;
+            
+            li {
+                color: $black;
+                
+                &:before {
+                    width:6px;
+                    height:6px;
+                    border-radius:3px;
+                }
+            }
+        }
+    }
+    
+    .cont_left {
+        padding:0 0 0 60px !important;
+        
+        .inner {
+            position:relative;
+            padding:0;
+            clip-path: polygon(93% 0, 93% 100px, 100% 122px, 93% 144px, 93% 100%, 0 100%, 0 0);
+            background:$orange;
+            
+            
+            &:before {
+                position:absolute;
+                left:1px;
+                top:1px;
+                width:calc(100% - 2px);
+                height:calc(100% - 2px);
+                background:$white;
+                clip-path: polygon(93% 0, 93% 100px, calc(100% - 1px) 121px, 93% 142px, 93% 100%, 0 100%, 0 0);
+                content:'';
+            }
+        }
+        
+        .inner_content {
+            position:relative;
+            padding:100px 100px 70px;
+        }
+    }
+    
+    .accordion_wrap {
+        position:relative;
+        margin:60px 0 0;
+        padding-top:100px;
+        
+        &:before {
+            position:absolute;
+            left:50%;
+            top:0;
+            transform:translateX(-50%);
+            width:40%;
+            height:100px;
+            background:transparent url(../../images/accordion-complex-divider.svg) no-repeat center center;
+            background-size:100% auto;
+            content:'';
+        }
+    }
+    
+    .accordion {
+        margin:0;
+        padding:0;
+        list-style:none;
+        
+        > li {
+            display:block;
+            list-style:none;
+            margin:0;
+            padding:0;
+            border-bottom:1px dashed $purple_dark;
+            
+            &:before {
+                display:none;
+            }
+        }
+    
+        .acc_heading {
+            position:relative;
+            margin:0;
+            text-transform:none;
+            font-weight:$semibold;
+            letter-spacing:0;
+            color: $purple_dark;
+                        
+            > a {
+                display:block;
+                position:relative;
+                width: 100%;
+                margin:0;
+                padding:60px 10% 60px 100px;
+                color: $black;
+                vertical-align:middle;
+                text-decoration:none;
+                box-sizing:border-box;
+            
+                &:hover {
+                    color: $orange;
+                }
+                
+                &:before {
+                    position:absolute;
+                    left:40px;
+                    top:60px;
+                    width:36px;
+                    height:36px;
+                    background:transparent url(../../images/list-type-checkmark.svg) no-repeat center center;
+                    background-size:cover;
+                    content:'';
+                }
+                
+                .inner {
+                    display:flex;
+                    justify-content:flex-start;
+                    align-items:center;
+                }
+            }
+            
+            span {
+                display:inline-block;
+                vertical-align:middle;
+            }
+            
+            .h {
+                flex:0 0 30%;
+                margin:0;
+                font-size: 1em;
+                line-height:1.45em;
+                font-weight:$semibold;
+                text-transform:uppercase;
+                letter-spacing:3px;
+            }
+            
+            .sh {
+                flex:1 0 70%;
+                margin-left:20px;
+                font-size:0.82em;
+                font-weight:$normal;
+                line-height:1.5em;
+                color: $black;
+            }
+        
+            .toggle {
+                position:absolute;
+                right:10px;
+                top:50%;
+                display:inline-block;
+                width:21px;
+                height:46px;
+                padding:0;
+                vertical-align:middle;
+                box-sizing:border-box;
+                background: transparent url('../../images/accordion-toggle.svg') no-repeat center center;
+                background-size:100% auto;
+                transform:translateY(-50%);
+                transform-origin:center;
+                transition:all 0.3s;
+            }
+        
+            &.active {
+                
+                > a {
+                    color: $orange;
+                }
+                
+                .toggle {
+                    transform:translateY(-50%) rotate(180deg);
+                }
+            }
+        }
+    
+        .acc_content {
+            display:none;
+        
+            .inner {
+                display:block;
+                padding:0 0 30px calc(30% + 60px);
                 box-sizing:border-box;
                 
                 ul {
