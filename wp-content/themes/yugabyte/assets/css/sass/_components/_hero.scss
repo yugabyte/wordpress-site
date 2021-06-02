@@ -317,6 +317,34 @@
     }
 }
 
+#alert_bar {
+    border-top:1px solid $gray;
+    
+    .content_section_inner {
+        padding:0;
+        text-align:center;
+    }
+    
+    .alert_bar_wrap {
+        width:50%;
+        margin:0 auto;
+        padding:30px 0;
+        text-align:center;
+        
+        * {
+            color: $white;
+        }
+        
+        a {
+            color:$orange;
+            
+            &:hover {
+                color: $orange;
+            }
+        }
+    }
+}
+
 #hero_ss {
     position:relative;
     height:520px;

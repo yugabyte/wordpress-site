@@ -299,7 +299,11 @@ sub {
         }
         
         p:first-of-type {
-            margin-bottom:1.56em !important;
+            margin-bottom:1.56em;
+        }
+        
+        p:only-of-type {
+            margin:0;
         }
     }
 }

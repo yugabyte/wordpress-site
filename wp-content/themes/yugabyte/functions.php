@@ -300,6 +300,7 @@ function set_hero() {
     //ADDITIONAL FIELDS
     $subheading = get_field('subheading');
     $post_cta_note = get_field('post_cta_note');
+    $alert_bar = get_field('alert_bar');
     
     if( is_category() || is_tax() ):
         $term = $post;
@@ -420,6 +421,16 @@ function set_hero() {
                 echo '</div>';
                 echo '</div>';
             }
+        }
+        //ALERT BAR
+        if( $alert_bar ) {
+            echo '<div id="alert_bar" class="content_section purple-dark">';
+            echo '<div class="content_section_inner">';
+            echo '<div class="alert_bar_wrap wysiwyg plast">';
+            echo $alert_bar;
+            echo '</div>';
+            echo '</div>';
+            echo '</div>';
         }
     wp_reset_postdata();
 }
