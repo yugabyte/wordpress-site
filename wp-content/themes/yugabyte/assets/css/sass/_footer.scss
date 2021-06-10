@@ -202,7 +202,51 @@
 
 @media only screen and (max-width: 767px) {
 	
-	
+	.site-footer {
+        
+        .logo {
+            margin:0 auto 40px;
+        }
+    
+        .footer_inner {
+            width:calc(100% - 40px);
+        }
+        
+        #menu-footer-nav {
+            display:block;
+                
+            > li {
+                display:block;
+                padding:0;
+                text-align:center;
+            }
+            
+            .sub-menu {
+                margin:0 0 40px;
+            }
+        
+            li li {
+                
+                a {
+                    padding:3px 0;
+                }
+            }
+        }
+        
+        p {
+            
+            &.copyright {
+                display:block;
+                text-align:center;
+            }
+        }
+        
+        .social_cont {
+            margin:0 auto 40px;
+            text-align:center;
+        }
+    
+    }
 	
 }
 

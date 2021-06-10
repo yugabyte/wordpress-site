@@ -164,8 +164,45 @@ table {
 }
 
 @media screen and (max-width: #{$bp_small}) {
-
     
+    .content_section.ybtable {
+    
+        .wptb-table-container {
+            
+        }
+        .wptb-image-wrapper img {
+            
+        }
+    
+        .table_footnote {
+            width:90%;
+        }
+        
+        .wptb-table-container-matrix {
+            overflow-y:scroll !important;
+        }
+    }
+    
+    .info_tip {
+        
+        &:hover {
+            .tip {
+                display:none;
+            }
+        }
+        
+        &.showtip {
+        
+            .tip {
+                display:block;
+            }
+        }
+    
+        .tip {
+            width:200px;
+            height:auto;
+        }
+    }
     
 }
 

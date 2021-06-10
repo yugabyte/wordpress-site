@@ -34,12 +34,12 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
     <div class="content_section_inner tall_pad">
         <div class="clearfix">
             <div class="grid nopadding">
-                <div class="left col-8-12 mobile-col-1-1">
+                <div class="left col-8-12 mobile-col-1-1 nopadding">
                     <div class="inner wysiwyg">
                         <?php echo $cont_left; ?>
                     </div>
                 </div>
-                <div class="right col-4-12 mobile-col-1-1">
+                <div class="right col-4-12 mobile-col-1-1 nopadding">
                     <div class="inner wysiwyg">
                         <?php echo $cont_right; ?>
                     </div>

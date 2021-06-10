@@ -15,6 +15,11 @@
                 
                 <div class="footer_inner clearfix">
                     <div class="grid extra_wide">
+                        <div class="col-9-12 tablet-col-10-12 mobile-col-1-1 push-right nopadding">
+                            <?php
+                            wp_nav_menu( array( 'container'=> false, 'theme_location' => 'footer', 'menu_class' => 'nav-menu' ) );
+                            ?>
+                        </div>
                         <div class="col-3-12 tablet-col-2-12 mobile-col-1-1 nopadding">
                             <a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img class="" src="<?php echo get_stylesheet_directory_uri().'/assets/images/logo-main.svg' ?>" alt="<?php bloginfo( 'name' ); ?>" /></a>
                             
@@ -61,11 +66,6 @@
                             if( $copyright ) {
                                 echo '<p class="copyright nomargin">&copy; 2020-'.date("Y").' '.$copyright.'</p>';
                             }
-                            ?>
-                        </div>
-                        <div class="col-9-12 tablet-col-10-12 mobile-col-1-1 nopadding">
-                            <?php
-                            wp_nav_menu( array( 'container'=> false, 'theme_location' => 'footer', 'menu_class' => 'nav-menu' ) );
                             ?>
                         </div>
                     </div>

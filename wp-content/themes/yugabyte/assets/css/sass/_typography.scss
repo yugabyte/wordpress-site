@@ -308,6 +308,38 @@ sub {
     }
 }
 
+.single-post #content {
+    
+    ul,
+    ol {
+        margin: 1em 0 1.56em 20px;
+        list-style:decimal;
+    }
+    ul {
+        padding:0;
+        list-style:disc;
+    }
+    ul li,
+    ol li {
+        display: list-item; 
+        margin-bottom:0.25em;
+        font-size:1em;
+        line-height:1.45em;
+        color:$black;
+    }
+    ol li {
+        list-style: decimal;
+    }
+        
+    ul li {
+        position:relative;
+        
+        &:before {
+            display:none;
+        }
+    }
+}
+
 p {
     margin-bottom:1.56em;
     line-height:1.56em;
@@ -440,7 +472,14 @@ ol > li:first-child {counter-reset: item;} /* reset counter */
 ol > li {counter-increment: item; position: relative;} /* increment counter */
 ol > li:before {content:counters(item, ".") ". "; position: absolute; margin-right: 100%; right: 10px;} /* print counter */
 
-@media only screen and (max-width: 767px) {
+@media screen and (max-width: #{$bp_small}) {
+    
+    h2,h3,h4,h5,h6 {
+        
+        br {
+            display:none;
+        }
+    }
     
     h1 {
         font-size: 2.44em; /* 44px */
@@ -455,14 +494,6 @@ ol > li:before {content:counters(item, ".") ". "; position: absolute; margin-rig
 
     h2 {
         font-size:2.22em; /* 40px */
-    
-        &.lined {
-        
-            .feat_prods &,
-            #related_products & {
-                margin-bottom:0.5em;
-            }
-        }
     }
     
     h3 {

@@ -44,7 +44,7 @@ $img_rows = get_field('img_rows');
             </div>
         </div>
         <div class="grid nopadding">
-            <div class="col-10-12 push-1-12 mobile-col-10-12 nopadding clearfix centered">
+            <div class="col-10-12 push-1-12 mobile-col-1-1 nopadding clearfix centered">
                 <?php
                 if ( have_rows('img_rows') ):
                     echo '<div class="zoom_row">';

@@ -362,6 +362,7 @@
         position:relative;
         height:100%;
         min-height:520px;
+        padding:0;
         z-index:10;
         text-align:left;
     }
@@ -415,7 +416,113 @@
 
 @media screen and (max-width: #{$bp_small}) {
     
+    #hero_alt {
+        
+        &.blog,
+        &.search {
+        
+            h1 {
+                width:100%;
+            }
+        
+            .inner {
+                left:0;
+                width:100%;
+            }
+        }
+        
+        .content_section_inner {
+            width:calc(100% - 40px);
+        }
     
+        .inner {
+            width:100%;
+        }
+        h1 {
+            width:100%;
+        }
+    }
+    
+    #hero {
+        height:520px;
+        min-height:520px;
+        
+        .content_section_inner {
+            width:calc(100% - 40px);
+            min-height:520px;
+        }
+    
+        .inner {
+            width:100%;
+        }
+    
+        h1 {
+            margin:0 0 80px;
+            font-size:3em;
+        
+            &:before {
+                height:50px;
+            }
+        
+            &:after {
+                top:calc(100% + 50px);
+            }
+        }
+        
+        p {
+            
+            br {
+                display:none;
+            }
+        }
+    
+        .cta_group {
+        
+            .btn {
+                display:block;
+                width:100%;
+                max-width:400px;
+                margin:20px auto 0;
+                
+                &:first-of-type {
+                    margin:0 auto;
+                }
+            }
+        }
+    }
+    
+    #latest_news {
+        
+        .ln_wrap {
+            width:calc(100% - 40px);
+        }
+        
+        .ln_link {
+            line-height:1.3em;
+            text-align:left;
+        }
+    }
+    
+    #alert_bar {
+        
+        .alert_bar_wrap {
+            width:calc(100% - 40px);
+        }
+    }
+    
+    #hero_ss {
+        height:auto;
+        min-height:0;
+    
+        .content_section_inner {
+            min-height:0;
+            padding:40px 20px;
+        }
+    
+        .inner {
+            width:100%;
+        }
+    }
     
 }
 

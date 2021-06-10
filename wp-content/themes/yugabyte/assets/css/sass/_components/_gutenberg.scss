@@ -26,6 +26,14 @@
         }
     }
     
+    ul, ol {
+        margin-left:20px;
+        
+        .single-post & {
+            width:auto;
+        }
+    }
+    
     .wp-block-columns {
         display:flex;
         flex-wrap:nowrap;

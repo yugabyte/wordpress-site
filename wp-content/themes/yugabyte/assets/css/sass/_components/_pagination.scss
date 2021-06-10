@@ -271,8 +271,67 @@ ul.alm-paging {
 }
 
 @media screen and (max-width: #{$bp_small}) {
-
     
+    .pagination {
+        padding: 48px 30px;
+        width:100%;
+        box-sizing:border-box;
+    
+        &:before,
+        &:after {
+            width:20px;
+            height:9px;
+            background-size:100% auto;
+        }
+    
+        .page-numbers {
+            display: inline-block;
+            width:36px;
+            height:36px;
+            margin:0;
+            padding:10px 5px;
+            font-size:16px;
+            line-height:16px;
+            
+            &.prev,
+            &.next {
+                width:80px;
+                font-size:16px;
+            }
+        }
+    }
+    
+    //AJAX LOAD MORE PAGINATION
+    ul.alm-paging {
+        padding: 48px 30px;
+    
+        &:before,
+        &:after {
+            width:20px;
+            height:9px;
+            background-size:100% auto;
+        }
+    
+        > li {
+            margin: 0 2px;
+            
+            a {
+                width:80px;
+                height:36px;
+                padding: 10px;
+            }
+        
+            &.num {
+            
+            
+                a {
+                    width:36px;
+                    font-size:16px;
+                    padding:10px;
+                }
+            }
+        }
+    }
     
 }
 

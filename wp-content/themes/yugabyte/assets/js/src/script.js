@@ -27,6 +27,7 @@ jQuery(document).ready(function($) {
 	
 	$('.info_tip').on('click', function(e){
 	    e.preventDefault();
+	    $(this).toggleClass('showtip');
 	});
 	
 	//ALM FILTERS

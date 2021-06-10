@@ -43,7 +43,7 @@ $intro_cont = get_field('intro_cont');
             </div>
         </div>
         <div class="grid nopadding">
-            <div class="col-10-12 push-1-12 mobile-col-10-12 nopadding clearfix">
+            <div class="col-10-12 push-1-12 mobile-col-1-1 nopadding clearfix">
                 <?php
                 if ( have_rows('slider_images') ):
                     echo '<ul class="img_gallery_slider">';

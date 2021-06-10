@@ -253,25 +253,36 @@ body {
     #content {
         
         > article {
-            padding-top:60px;
-            
+                        
             > .gform_wrapper {
                 width:calc(100% - 40px);
                 margin:0 auto 40px;
             }
         }
+        
+        .single-post & {
+            > article {
+                padding-left:0;
+            }
+        }
     }
     
     #main {
-        
+        margin:0;
     }
     
     #primary {
         float:none;
         width:100%;
-        box-sizing:border-box;
         margin:0;
         padding:40px 0;
+        
+        .archive &,
+        .single-post &,
+        .search & {
+            width:100%;
+            padding:0;
+        }
     }
     #secondary {
         float:none;
@@ -279,8 +290,11 @@ body {
         margin-top:0;
         padding:0;
         
-        .inner {
-            min-height:0;
+        .archive &,
+        .single-post &,
+        .search & {
+            width:100%;
+            padding:0;
         }
     }
     

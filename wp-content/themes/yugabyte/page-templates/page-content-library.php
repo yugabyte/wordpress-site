@@ -35,12 +35,12 @@ $exclude = array();
                 <div class="content_section">
                     <div class="content_section_inner full nopadding">
                         <div id="resources_search" class="grid">
-                            <div class="left row_h col-1-2 nopadding">
+                            <div class="left row_h col-1-2 mobile-col-1-1 nopadding">
                                 <div class="inner_content">
                                     <h3>Find Resources</h3>
                                 </div>
                             </div>
-                            <div class="right row_h col-1-2 nopadding">
+                            <div class="right row_h col-1-2 mobile-col-1-1 nopadding">
                                 <div class="inner_content">
                                     <div class="filter_wrap">
                                         <?php 

@@ -23,8 +23,20 @@ $logo = get_field('logo', $current_id);
 $test_quote = get_field('test_quote', $current_id);
 
 echo '<div class="inline_cta test">';
-    echo '<div class="grid nopadding flex_vert_cent">';
-        echo '<div class="col-4-12 nopadding meta centered">';
+    echo '<div class="grid nopadding">';
+        echo '<div class="col-8-12 mobile-col-1-1 push-right nopadding quote">';
+            echo '<div class="inner">';
+            if( $logo ) {
+                $logo_src = $logo['url'];
+                $logo_alt = ( $logo['alt'] ) ? $logo['alt'] : $company;
+                echo '<img src="'.$logo_src.'" alt="'.$logo_alt.'" />';
+            }
+            if( $test_quote ) {
+                echo '<p>&ldquo;'.$test_quote.'&rdquo;</p>';
+            }
+            echo '</div>';
+        echo '</div>';
+        echo '<div class="col-4-12 mobile-col-1-1 nopadding meta centered">';
             echo '<div class="inner">';
             if( $headshot ) {
                 $headshot_src = $headshot['sizes']['medium'];
@@ -44,18 +56,7 @@ echo '<div class="inline_cta test">';
             }
             echo '</div>';
         echo '</div>';
-        echo '<div class="col-8-12 nopadding quote">';
-            echo '<div class="inner">';
-            if( $logo ) {
-                $logo_src = $logo['url'];
-                $logo_alt = ( $logo['alt'] ) ? $logo['alt'] : $company;
-                echo '<img src="'.$logo_src.'" alt="'.$logo_alt.'" />';
-            }
-            if( $test_quote ) {
-                echo '<p>&ldquo;'.$test_quote.'&rdquo;</p>';
-            }
-            echo '</div>';
-        echo '</div>';
+        
     echo '</div>';
 echo '</div>';
 ?>

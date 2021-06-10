@@ -556,7 +556,7 @@ function set_ss_hero() {
     echo '</style>';
     
     echo '<div id="hero_ss" class="content_section">';
-    echo '<div class="content_section_inner nopadding">';
+    echo '<div class="content_section_inner">';
         echo '<div class="inner">';
         echo '<div class="inner_content">';
         if( $hero_logo ) {
