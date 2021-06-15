@@ -9,6 +9,7 @@
     
     $start_time = get_field('start_time');
     $end_time = get_field('end_time');
+    $time_note = get_field('time_note');
     
     //Formatting for simpler dates
     $startdate = new DateTime($start_time);
@@ -20,6 +21,11 @@
     $endmonth = $enddate->format('F');
     $endday = $enddate->format('d');
     $endyear = $enddate->format('Y');
+    
+    //Site time zone setting
+    $site_tz = wp_timezone_string();
+    date_default_timezone_set($site_tz);
+    $tz_abbrev = date('T');
     
     $conf_img = get_field('conf_img');
     $ext_url = get_field('ext_url');
@@ -70,6 +76,12 @@
             //RARE EVENT SPANNING MULTIPLE YEARS
             if( $endyear && ($endyear != $startyear) ) {
                 echo '-'.$endyear;
+            }
+            //TIME ZONE
+            echo ' ('.$tz_abbrev.')';
+            //Additional Time Note
+            if( $time_note ) {
+                echo ' '.$time_note;
             }
             echo '</span>';
         }
