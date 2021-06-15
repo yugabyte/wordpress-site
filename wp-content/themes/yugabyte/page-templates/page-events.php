@@ -10,8 +10,8 @@
 get_header();
 set_hero();
 
-//$posts_per_page = get_option( 'posts_per_page' );
-$posts_per_page = 2;
+$posts_per_page = get_option( 'posts_per_page' );
+//$posts_per_page = 2;
 $paged = get_query_var( 'page', 0 );
 $preloaded_amt = 0;
 

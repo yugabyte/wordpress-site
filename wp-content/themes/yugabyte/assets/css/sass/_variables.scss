@@ -138,7 +138,7 @@ $bp_small: 767px;
 }
 
 .push-right {
-	float: right;
+	float: right !important;
 }
 
 @media screen and (max-width: #{$bp_full}) {
