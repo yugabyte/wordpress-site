@@ -35,7 +35,7 @@
     if( has_excerpt() ) {
         $ev_excerpt = get_the_excerpt();
     } else {
-        $ev_excerpt = substr( strip_tags( strip_shortcodes(get_the_content()) ), 0, 200 ).'&hellip;';
+        $ev_excerpt = substr( strip_tags( strip_shortcodes(get_the_content()) ), 0, 200 );
     }
     
     //IMAGE
