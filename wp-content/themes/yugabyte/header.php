@@ -88,14 +88,14 @@
             <header id="masthead" class="site-header" role="banner">
                 <div class="header_inner clearfix">
                     <div class="grid">
-                        <div class="col-8-12 tablet-col-9-12 mobile-col-9-12 nopadding">
+                        <div class="col-8-12 tablet-col-8-12 mobile-col-9-12 nopadding">
                             <p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img class="" src="<?php echo get_stylesheet_directory_uri().'/assets/images/logo-main-light.svg' ?>" alt="<?php bloginfo( 'name' ); ?>" /></a></p>
                             <nav id="primary-navigation" class="site-navigation primary-navigation" role="navigation">
                                 <a class="screen-reader-text skip-link" href="#content"><?php _e( 'Skip to content', 'twentysixteen' ); ?></a>
                                 <?php wp_nav_menu( array( 'theme_location' => 'primary', 'menu_class' => 'nav-menu' ) ); ?>
                             </nav>
                         </div>
-                        <div class="col-4-12 tablet-col-3-12 mobile-col-3-12 nopadding">
+                        <div class="col-4-12 tablet-col-4-12 mobile-col-3-12 nopadding">
                             <div class="header_right clearfix">
                                 <?php
                                 if( $header_cta || $header_cta_ext ) {

@@ -282,3 +282,11 @@ button.gpnf-add-entry:disabled,
     
     
 }
+
+@media only screen and (min-width: 991px) and (max-width: #{$bp_full}) {
+    
+    #header_cta {
+        margin-left:18px;
+    }
+    
+}

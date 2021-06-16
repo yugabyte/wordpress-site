@@ -7,7 +7,8 @@
     
     .logo {
         display:block;
-        width:200px;
+        width:calc(100% - 60px);
+        max-width:200px;
         height:auto;
         margin:0 0 40px;
         z-index:1000;
@@ -252,7 +253,30 @@
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     
-    
+    .site-footer {
+        
+        .social_cont {
+            margin:0 20px 40px 0;
+        }
+        
+        .social {
+            width:28px;
+            height:28px;
+            margin:0 0 10px 10px;
+        
+            &.gh {
+                            
+                svg {
+                    top:17px;
+                }
+            }
+        
+            svg {
+                margin:-12px 0 0 0;
+                height:24px;
+            }
+        }
+    }
     
 }
 

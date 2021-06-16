@@ -35,7 +35,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
     <div class="content_section_inner centered">
         <div class="grid nopadding">
-            <div class="col-10-12 push-1-12 mobile-col-1-1 nopadding">
+            <div class="col-10-12 push-1-12 tablet-col-1-1 mobile-col-1-1 nopadding">
                 <?php
                 if( $heading || $intro ) {
                     echo '<div class="intro">';

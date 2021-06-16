@@ -34,14 +34,14 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'light-blue';
     <div class="content_section_inner tall_pad">
         <div class="clearfix vert_align">
             <div class="grid eq_h nopadding">
-                <div class="eq_r nopadding col-1-2 mobile-col-1-1 cont">
+                <div class="eq_r nopadding col-1-2 tablet-col-8-12 tablet-push-2-12 mobile-col-1-1 cont">
                     <div class="inner">
                         <div class="inner_content">
                             <?php echo $cont; ?>
                         </div>
                     </div>
                 </div>
-                <div class="eq_l nopadding col-1-2 mobile-col-1-1 push-right acc">
+                <div class="eq_l nopadding col-1-2 tablet-col-8-12 tablet-push-2-12 mobile-col-1-1 push-right tablet-push-left acc">
                     <div class="inner">
                         <div class="inner_content wysiwyg plast">
                             <?php

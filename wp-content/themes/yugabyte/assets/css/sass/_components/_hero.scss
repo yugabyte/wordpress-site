@@ -289,7 +289,7 @@
         margin:0;
         padding:30px 30px 30px 0;
         font-size:1.22em;
-        line-height:1em;
+        line-height:1.15em;
         text-decoration:none;
         color:$white;
         
@@ -534,7 +534,24 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     
+    #hero {
+        
+        .inner {
+            width:90%;
+        }
+        
+        h1 {
+            font-size:3em;
+        }
+    }
     
+    
+    #alert_bar {
+        
+        .alert_bar_wrap {
+            width:70%;
+        }
+    }
     
 }
 

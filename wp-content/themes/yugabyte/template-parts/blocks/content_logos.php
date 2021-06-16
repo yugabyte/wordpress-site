@@ -37,7 +37,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
     <div class="content_section_inner tall_pad">
         <div class="clearfix vert_align">
             <div class="grid eq_h nopadding">
-                <div class="eq_r nopadding <?php echo $flip_class_logos; ?>">
+                <div class="eq_r nopadding <?php echo $flip_class_logos; ?> tablet-col-5-12">
                     <div class="inner">
                         <div class="inner_content">
                             <?php
@@ -72,7 +72,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                         </div>
                     </div>
                 </div>
-                <div class="eq_l nopadding <?php echo $flip_class_cont; ?>">
+                <div class="eq_l nopadding <?php echo $flip_class_cont; ?> tablet-col-7-12">
                     <div class="inner">
                         <div class="inner_content wysiwyg plast">
                             <?php echo $cont; ?>

@@ -53,7 +53,7 @@ $single_col_class = ( $is_single_col ) ? 'force_1col' : '';
     <div class="content_section_inner tall_pad centered">
         <div class="clearfix">
             <div class="grid nopadding">
-                <div class="col-10-12 push-1-12 mobile-col-1-1 nopadding">
+                <div class="col-10-12 push-1-12 tablet-col-1-1 mobile-col-1-1 nopadding">
                     <div class="inner">
                         <?php
                         if( !$hide_title ) {

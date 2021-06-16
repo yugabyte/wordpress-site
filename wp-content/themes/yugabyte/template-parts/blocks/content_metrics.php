@@ -68,7 +68,7 @@ if( $bg_image ) {
                 $cont_classes = ( $i % 2 == 0 ) ? 'col-1-2 mobile-col-1-1 cont' : 'col-1-2 mobile-col-1-1 push-right cont flip';
                 //$cont_flip = ( $i % 2 == 0 ) ? 'flip' : '';
                 ?>
-                <div class="eq_r nopadding <?php echo $metrics_classes; ?>">
+                <div class="eq_r nopadding <?php echo $metrics_classes; ?> tablet-col-5-12">
                     <div class="inner">
                         <div class="inner_content">
                             <?php
@@ -97,7 +97,7 @@ if( $bg_image ) {
                         </div>
                     </div>
                 </div>
-                <div class="eq_l nopadding <?php echo $cont_classes; ?>">
+                <div class="eq_l nopadding <?php echo $cont_classes; ?> tablet-col-7-12">
                     <div class="inner">
                         <div class="inner_content wysiwyg plast">
                             <?php echo $cont; ?>

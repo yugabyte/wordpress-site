@@ -31,7 +31,7 @@ $wptb_sc = get_field('wptb_sc');
 $table_footnote = get_field('table_footnote');
 $narrow_table = get_field('narrow_table');
 
-$table_grid_classes = ( $narrow_table ) ? 'col-6-12 push-3-12 mobile-col-1-1 nopadding narrow_table' : 'col-8-12 push-2-12 mobile-col-1-1 nopadding';
+$table_grid_classes = ( $narrow_table ) ? 'col-6-12 push-3-12 tablet-col-8-12 tablet-push-2-12 mobile-col-1-1 nopadding narrow_table' : 'col-8-12 push-2-12 tablet-col-10-12 tablet-push-1-12 mobile-col-1-1 nopadding';
 $bg_color_class = ( $bg_color ) ? $bg_color : 'white';
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">

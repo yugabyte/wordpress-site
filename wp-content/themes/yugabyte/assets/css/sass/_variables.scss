@@ -88,7 +88,7 @@ $bold: 700;
 
 $gutter: 20px; //col width is 65 at full width
 $bp_full: 1360px;
-$bp_mid: 1000px;
+$bp_mid: 1024px;
 $bp_small: 767px;
 
 [class*='grid'],
@@ -118,7 +118,7 @@ $bp_small: 767px;
 	/*overflow: hidden;*/
 	
 	&.extra_wide {
-	    max-width:1440px;
+	    max-width:1360px;
 	}
 	&.full {
 	    max-width:none;
@@ -139,6 +139,10 @@ $bp_small: 767px;
 
 .push-right {
 	float: right !important;
+}
+
+.tablet-push-left {
+	float: left !important;
 }
 
 @media screen and (max-width: #{$bp_full}) {

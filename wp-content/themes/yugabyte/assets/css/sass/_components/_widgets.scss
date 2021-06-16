@@ -235,7 +235,26 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     
+    .blog_ctas {
     
+        .widget {
+        
+            .inner {
+                display:block;
+            
+                .icon {
+                    width:100%;
+                    margin:0 auto 20px;
+                    height:70px;
+                    background-size:auto 100%;
+                }
+            
+                h3 {
+                    width:100%;
+                }
+            }
+        }
+    }
     
 }
 

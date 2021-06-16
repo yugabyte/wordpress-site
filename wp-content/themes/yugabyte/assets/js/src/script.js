@@ -210,12 +210,16 @@ jQuery(document).ready(function($) {
         
         if($(window).width() > 767) {
             pushOffHeader();
-            calcEqualHeightBlocks();
+            //calcEqualHeightBlocks();
             rowMaxHeight( $('.row_h') );
         }
         
         if($(window).width() < 768) {
             
+        }
+        
+        if($(window).width() > 1024) {
+            calcEqualHeightBlocks();
         }
         
         if( window.location.hash ) {

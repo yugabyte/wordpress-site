@@ -70,7 +70,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'light-blue';
             </div>
         </div>
         <div class="grid nopadding">
-            <div class="nopadding col-10-12 push-1-12 mobile-col-1-1 acc">
+            <div class="nopadding col-10-12 push-1-12 tablet-col-1-1 mobile-col-1-1 acc">
                 <div class="inner">
                     <div class="inner_content wysiwyg plast">
                         <?php

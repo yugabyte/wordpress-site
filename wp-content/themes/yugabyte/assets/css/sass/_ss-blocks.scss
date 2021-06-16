@@ -936,7 +936,85 @@
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
     
+    .ss_test {
     
+        .test_bg {
+            position:relative;
+            padding:100px 44px 160px;
+            border:1px dashed $purple_dark;
+            background:$offwhite;
+        
+            &:before {
+                position:absolute;
+                left:50%;
+                top:0;
+                width:108px;
+                height:108px;
+                padding-right:15px;
+                border-radius:60px;
+                border:1px dashed $purple_dark;
+                background:$white;
+                transform:translate(-50%,-50%);
+                font-size:6.67em;
+                line-height:154px;
+                text-align:center;
+                font-style:italic;
+                color: $purple_dark;
+                box-sizing:border-box;
+                content:'“';
+            }
+        
+            .quote {
+                padding:0 20px;
+            
+                &.single {
+                    text-align:center;
+                }
+            
+                p {
+                    margin:0;
+                    font-size:1.33em;
+                    line-height:1.5em;
+                    font-style:italic;
+                }
+            }
+        
+            .cites_cont {
+                position:absolute;
+                left:50%;
+                top:100%;
+                transform:translate(-50%, -50%);
+                width:calc(100% - 88px);
+            }
+        
+            .cite {
+                padding:0 20px;
+            
+                .inner {
+                    padding:20px 20px;
+                    border:1px solid $black;
+                    background:$white;
+                }
+            
+                .inner_content {
+                    display:flex;
+                    align-items:center;
+                    justify-content:center;
+                }
+            
+                .headshot {
+                    flex:0 0 auto;
+                    width:80px;
+                    height:80px;
+                    margin:0 20px 0 0;
+                }
+                
+                p {
+                    flex:1 0 calc(100% - 100px);
+                }
+            }
+        }
+    }
     
 }
 

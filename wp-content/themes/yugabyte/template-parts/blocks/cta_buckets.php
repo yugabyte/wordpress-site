@@ -31,11 +31,11 @@ if( !empty($block['align']) ) {
             if( have_rows('cta_buckets') ):
                 $row_count = count( get_field('cta_buckets') );
                 if( $row_count == 1 ) {
-                    $grid_classes = 'cta col-6-12 push-3-12 mobile-col-1-1';
+                    $grid_classes = 'cta col-6-12 push-3-12 tablet-col-8-12 tablet-push-2-12 mobile-col-1-1';
                 } elseif( $row_count == 2 ) {
-                    $grid_classes = 'cta col-6-12 mobile-col-1-1';
+                    $grid_classes = 'cta col-6-12 tablet-col-8-12 tablet-push-2-12 mobile-col-1-1';
                 } else { // $row_count == 3
-                    $grid_classes = 'cta col-4-12 mobile-col-1-1';
+                    $grid_classes = 'cta col-4-12 tablet-col-8-12 tablet-push-2-12 mobile-col-1-1';
                 }
                 while ( have_rows('cta_buckets') ): the_row();
                     $title = get_sub_field('title');

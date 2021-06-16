@@ -356,8 +356,68 @@
     
 }
 
-@media screen and (min-width: 1025px) and (max-width: 1260px) {
+@media screen and (min-width: 991px) and (max-width: 1100px) {
     
     
+    #primary-navigation {
+        
+    
+        .nav-menu {
+            
+        
+            > li {
+                
+            
+                a {
+                    font-size:0.83em;
+                    padding:0 14px;
+                }
+            }
+        
+            ul {
+                           
+            
+                li {
+                
+                    a {
+                        padding:15px 14px;
+                    
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+@media screen and (min-width: 1101px) and (max-width: 1260px) {
+    
+    #primary-navigation {
+        
+    
+        .nav-menu {
+            
+        
+            > li {
+                
+            
+                a {
+                    padding:0 15px;
+                }
+            }
+        
+            ul {
+                           
+            
+                li {
+                
+                    a {
+                        padding:15px 15px;
+                    
+                    }
+                }
+            }
+        }
+    }
     
 }

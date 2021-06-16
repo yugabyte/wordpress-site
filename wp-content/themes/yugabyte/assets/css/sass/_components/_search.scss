@@ -126,3 +126,11 @@
         display:block;
     }
 }
+
+@media screen and (min-width: 991px) and (max-width: 1260px) {
+    
+    #search_container {
+        width:calc(100% - 140px);
+    }
+    
+}

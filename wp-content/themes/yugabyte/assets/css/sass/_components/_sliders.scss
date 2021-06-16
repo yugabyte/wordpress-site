@@ -3,6 +3,7 @@
 /**********************************************************************************************/
 .img_gallery_slider {
     margin:40px 0 0 0;
+    margin-left:0 !important;
     height:330px;
     
     * {
@@ -32,7 +33,7 @@
 }
 
 .test_slider {
-    
+    margin-left:0 !important;
     
     * {
         box-sizing:border-box;

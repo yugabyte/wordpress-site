@@ -74,7 +74,7 @@ $z_class = ( $zoomable ) ? 'zoomable' : '';
             }
             ?>
             <div class="grid eq_h nopadding">
-                <div class="eq_r nopadding <?php echo $flip_class_img; ?>">
+                <div class="eq_r nopadding <?php echo $flip_class_img; ?> tablet-col-10-12 tablet-push-1-12 tablet-push-left">
                     <div class="inner">
                         <div class="inner_content">
                             <?php
@@ -90,7 +90,7 @@ $z_class = ( $zoomable ) ? 'zoomable' : '';
                         </div>
                     </div>
                 </div>
-                <div class="eq_l nopadding <?php echo $flip_class_cont; ?>">
+                <div class="eq_l nopadding <?php echo $flip_class_cont; ?> tablet-col-10-12 tablet-push-1-12 tablet-push-left">
                     <div class="inner">
                         <div class="inner_content wysiwyg plast">
                             <?php echo $cont; ?>
