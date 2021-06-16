@@ -141,10 +141,6 @@ $bp_small: 767px;
 	float: right !important;
 }
 
-.tablet-push-left {
-	float: left !important;
-}
-
 @media screen and (max-width: #{$bp_full}) {
     
     
@@ -503,6 +499,10 @@ $bp_small: 767px;
 		    padding:0;
 		}
 	}
+	
+	.tablet-push-left {
+	    float: left !important;
+    }
     
     [class*='tablet-col-'] {
 		float: left;

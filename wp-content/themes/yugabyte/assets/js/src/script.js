@@ -139,6 +139,23 @@ jQuery(document).ready(function($) {
         }, 1000);
     }*/
     
+    //CONTACT PAGE TABS
+    if( $('#contact_panels').length > 0 ) {
+        
+        $('#contact_tabs a').on('click', function(e) {
+            e.preventDefault();
+        
+            var t = $(this).attr('id');
+        
+            if( $(this).hasClass('inactive') ) {
+                $('#contact_tabs a').addClass('inactive');
+                $(this).removeClass('inactive');
+                $('.contact_cont').hide();
+                $('#' + t + 'C').fadeIn('slow');
+            }
+        });
+    }
+    
     /******************************************************/
     /***** SLIDERS ****************************************/
     /******************************************************/

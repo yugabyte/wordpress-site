@@ -168,6 +168,21 @@ function constrain_mce_editor( $init ) {
             'classes' => 'large_purple',
         ),
         array(
+            'title' => 'H2 TITLE CASE',
+            'block'    => 'h2',
+            'classes' => 'title_case',
+        ),
+        array(
+            'title' => 'H3 TITLE CASE',
+            'block'    => 'h3',
+            'classes' => 'title_case',
+        ),
+        array(
+            'title' => 'H4 TITLE CASE',
+            'block'    => 'h4',
+            'classes' => 'title_case',
+        ),
+        array(
             'title' => 'BUTTON STANDARD',
             'selector'    => 'a',
             'classes' => 'btn',
@@ -397,9 +412,10 @@ function set_hero() {
                             setup_postdata($p);
                             $title = get_the_title($p->ID);
                             $link = get_permalink($p->ID);
+                            $rm_link = get_field('read_more_link', $p->ID);
                     
                             echo '<span class="ln_label">News</span>';
-                            echo '<a class="ln_link" href="'.$link.'">'.$title.'</a>';
+                            echo '<a class="ln_link" href="'.$rm_link.'" target="_blank">'.$title.'</a>';
                         endforeach;
                         wp_reset_postdata();
                         
@@ -408,9 +424,10 @@ function set_hero() {
                             
                             $title = get_the_title();
                             $link = get_permalink();
+                            $rm_link = get_field('read_more_link');
                     
                             echo '<span class="ln_label">News</span>';
-                            echo '<a class="ln_link" href="'.$link.'">'.$title.'</a>';
+                            echo '<a class="ln_link" href="'.$rm_link.'">'.$title.'</a>';
                             
                         endwhile;
                     }
@@ -831,4 +848,21 @@ function setGlobalFWCTA() {
     echo '</div>';
     echo '</div>';
 }
+
+//REDIRECT SINGLE YBNEWS POSTS
+add_action( 'template_redirect', 'redirect_ybnews_single' );
+function redirect_ybnews_single(){
+    if ( !is_singular( 'ybnews' ) )
+        return;
+    wp_redirect( get_permalink( get_page_by_path('news') ), 301 );
+    exit;
+}
+
+//FORCE NOINDEX NOFOLLOW ON SINGLE YBNEWS POSTS
+function noindex_ybnews() {
+    if ( is_singular('ybnews') ) {
+        return '<meta name="robots" content="noindex, follow">';
+    }
+}
+add_action('wp_head', 'noindex_ybnews');
 ?>

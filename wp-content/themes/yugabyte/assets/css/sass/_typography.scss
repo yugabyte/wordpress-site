@@ -108,6 +108,11 @@ h2 {
             transform:none;
         }
     }
+    
+    &.title_case {
+        text-transform:none !important;
+        letter-spacing:0 !important;
+    }
 }
 
 h3 {
@@ -141,6 +146,11 @@ h3 {
             left:0;
             transform:none;
         }
+    }
+    
+    &.title_case {
+        text-transform:none !important;
+        letter-spacing:0 !important;
     }
 }
 
@@ -193,6 +203,11 @@ h4 {
             background-size:cover;
             content:'';
         }
+    }
+    
+    &.title_case {
+        text-transform:none !important;
+        letter-spacing:0 !important;
     }
 }
 
