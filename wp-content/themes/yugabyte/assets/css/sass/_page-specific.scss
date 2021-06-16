@@ -4404,6 +4404,17 @@
     #alm-filters-ybnewsfilter,
     #alm-filters-resourcesfilter {
         padding-right:10px;
+        
+        .alm-filter--title {
+    
+            h3 {
+                font-size:1em;
+            
+                &:after {
+                    right:0;
+                }
+            }
+        }
     }
 
 }
