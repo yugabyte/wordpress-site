@@ -542,6 +542,10 @@ ol > li:before {content:counters(item, ".") ". "; position: absolute; margin-rig
         &.long {
             font-size: 1.75em;
         }
+        
+        #hero_ss & {
+            font-size:1.5em;
+        }
     }
     
     h2 {
