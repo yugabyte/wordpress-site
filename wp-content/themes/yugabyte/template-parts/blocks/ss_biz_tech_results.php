@@ -50,7 +50,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                 <?php
                 if( $c_b > 1 && $c_t == 1 ) { //Business but no Tech ?>
                     
-                    <div class="col-8-12 push-2-12 mobile-col-1-1 nopadding list_col single">
+                    <div class="col-8-12 push-2-12 tablet-col-10-12 tablet-push-1-12 mobile-col-1-1 nopadding list_col single">
                         <div class="inner">
                             <div class="inner_content">
                                 <?php
@@ -68,7 +68,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                         </div>
                     </div>
                 <?php } elseif( $c_t > 1 && $c_b == 1 ) { //Technical but no biz ?>
-                    <div class="col-8-12 push-2-12 mobile-col-1-1 nopadding list_col single">
+                    <div class="col-8-12 push-2-12 tablet-col-10-12 tablet-push-1-12 mobile-col-1-1 nopadding list_col single">
                         <div class="inner">
                             <div class="inner_content">
                                 <?php
@@ -86,7 +86,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                         </div>
                     </div>
                 <?php } else { //Both business and technical results exist ?>
-                    <div class="col-5-12 push-1-12 mobile-col-1-1 nopadding list_col">
+                    <div class="col-5-12 push-1-12 tablet-col-1-2 mobile-col-1-1 nopadding list_col">
                         <div class="inner">
                             <div class="inner_content">
                                 <?php
@@ -103,7 +103,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                             </div>
                         </div>
                     </div>
-                    <div class="col-5-12 mobile-col-1-1 nopadding list_col">
+                    <div class="col-5-12 tablet-col-1-2 mobile-col-1-1 nopadding list_col">
                         <div class="inner">
                             <div class="inner_content">
                                 <?php

@@ -33,15 +33,15 @@ $icon_alt = $icon['alt'];
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?>">
     <div class="content_section_inner tall_pad nopadding_top">
         <div class="clearfix vert_align">
-            <div class="grid eq_h nopadding">
-                <div class="eq_l nopadding col-2-12 push-2-12 mobile-col-1-1 icon">
+            <div class="grid nopadding">
+                <div class="nopadding col-2-12 push-2-12 tablet-col-2-12 mobile-col-1-1 icon">
                     <div class="inner">
                         <div class="inner_content">
                             <?php echo '<img src="'.$icon_src.'" alt="'.$icon_alt.'" />'; ?>
                         </div>
                     </div>
                 </div>
-                <div class="eq_r nopadding col-6-12 mobile-col-1-1 cont">
+                <div class="nopadding col-6-12 tablet-col-10-12 mobile-col-1-1 cont">
                     <div class="inner">
                         <div class="inner_content wysiwyg plast">
                             <?php

@@ -57,7 +57,7 @@ if ( !empty($c_r) ) {
                 
                 //open grid
                 echo '<div class="clearfix vert_align '.$is_last.'">';
-                echo '<div class="grid eq_h nopadding">';
+                echo '<div class="grid nopadding">';
                 
                 //alternating row classes
                 $cont_classes = ( $i % 2 == 0 ) ? 'col-7-12 mobile-col-1-1 cont' : 'col-7-12 mobile-col-1-1 push-right cont';
@@ -83,7 +83,7 @@ if ( !empty($c_r) ) {
                             }
                         }
                         
-                        echo '<div class="eq_r nopadding '.$cont_classes.'">';
+                        echo '<div class="nopadding '.$cont_classes.'">';
                             echo '<div class="inner">';
                                 echo '<div class="inner_content '.$cont_flip.'">';
                                     $the_title = ( $custom_title ) ? $custom_title : $title;
@@ -94,7 +94,7 @@ if ( !empty($c_r) ) {
                                 echo '</div>';
                             echo '</div>';
                         echo '</div>';
-                        echo '<div class="eq_l nopadding '.$img_classes.'">';
+                        echo '<div class="nopadding '.$img_classes.'">';
                             echo '<div class="inner">';
                                 echo '<div class="inner_content">';
                                     if( has_term(array('video','webinar'),'resource_types', $lc->ID) ) {
@@ -119,7 +119,7 @@ if ( !empty($c_r) ) {
                     
                 elseif( $naked_video ):
                     
-                    echo '<div class="eq_r nopadding '.$cont_classes.'">';
+                    echo '<div class="nopadding '.$cont_classes.'">';
                         echo '<div class="inner">';
                             echo '<div class="inner_content '.$cont_flip.'">';
                                 if( $custom_title ) {
@@ -131,7 +131,7 @@ if ( !empty($c_r) ) {
                             echo '</div>';
                         echo '</div>';
                     echo '</div>';
-                    echo '<div class="eq_l nopadding '.$img_classes.'">';
+                    echo '<div class="nopadding '.$img_classes.'">';
                         echo '<div class="inner">';
                             echo '<div class="inner_content">';
                                 video_setup($naked_video, $poster_src);

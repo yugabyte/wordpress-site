@@ -49,15 +49,15 @@ $flip_class_cont = ( $flip ) ? 'col-7-12 mobile-col-1-1 cont' : 'col-7-12 mobile
         }
         ?>
         <div class="clearfix vert_align">
-            <div class="grid eq_h nopadding">
-                <div class="eq_l nopadding <?php echo $flip_class_img; ?>">
+            <div class="grid nopadding">
+                <div class="nopadding <?php echo $flip_class_img; ?>">
                     <div class="inner">
                         <div class="inner_content">
                             <?php echo '<img src="'.$img_src.'" alt="'.$img_alt.'" />'; ?>
                         </div>
                     </div>
                 </div>
-                <div class="eq_r nopadding <?php echo $flip_class_cont; ?>">
+                <div class="nopadding <?php echo $flip_class_cont; ?>">
                     <div class="inner">
                         <div class="inner_content wysiwyg plast">
                             <?php echo $cont; ?>
