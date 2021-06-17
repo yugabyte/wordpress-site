@@ -33,7 +33,7 @@ $client = get_field('client');
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?>">
     <div class="content_section_inner tall_pad">
         <div class="clearfix vert_align">
-            <div class="grid nopadding eq_h">
+            <div class="grid nopadding">
                 <?php
                 if( have_rows('company_notes') || have_rows('results') ): ?>
                     

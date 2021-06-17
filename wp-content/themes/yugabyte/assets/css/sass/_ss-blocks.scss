@@ -3,6 +3,14 @@
 /**********************************************************************************************/
 .ss_aag {
     
+    .vert_align {
+        
+        .grid {
+            display:flex;
+            align-items:flex-start;
+        }
+    }
+    
     .data {
         padding:0 0 0 40px;
         border-left:1px solid $gray;
@@ -76,8 +84,8 @@
     
     .icon_buckets {
         display:flex;
-        justify-content:left;
-        align-items:top;
+        justify-content:flex-start;
+        align-items:flex-start;
         
         .bucket {
             text-align:left;
@@ -112,6 +120,13 @@
                     left:50%;
                     transform:translateX(-50%);
                 }
+            }
+        }
+        
+        .vert_align {
+        
+            .grid {
+                display:block;
             }
         }
     

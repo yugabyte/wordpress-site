@@ -65,7 +65,7 @@ $flip_class = ( $flip ) ? 'flip' : '';
 $z_class = ( $zoomable ) ? 'zoomable' : '';
 ?>
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?> <?php echo $flip_class; ?> <?php echo $wide_class; ?>">
-    <div class="content_section_inner tall_pad">
+    <div class="content_section_inner">
         <div class="clearfix vert_align">
             <?php
             if( $narrow_block ) {
@@ -73,7 +73,7 @@ $z_class = ( $zoomable ) ? 'zoomable' : '';
                 echo '<div class="col-10-12 push-1-12 mobile-col-1-1">';
             }
             ?>
-            <div class="grid eq_h nopadding">
+            <div class="grid nopadding">
                 <div class="eq_r nopadding <?php echo $flip_class_img; ?> tablet-col-10-12 tablet-push-1-12 tablet-push-left">
                     <div class="inner">
                         <div class="inner_content">

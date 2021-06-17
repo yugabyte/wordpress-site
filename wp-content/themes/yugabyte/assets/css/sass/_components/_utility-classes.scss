@@ -273,6 +273,13 @@ iframe {
             padding-bottom:30px !important;
         }
     }
+    &.small_padding_tb {
+        padding:0 !important;
+        .content_section_inner {
+            padding-top:30px !important;
+            padding-bottom:30px !important;
+        }
+    }
     &.large_padding_top {
         padding:0 !important;
         .content_section_inner {
@@ -282,6 +289,13 @@ iframe {
     &.large_padding_bottom {
         padding:0 !important;
         .content_section_inner {
+            padding-bottom:100px !important;
+        }
+    }
+    &.large_padding_tb {
+        padding:0 !important;
+        .content_section_inner {
+            padding-top:100px !important;
             padding-bottom:100px !important;
         }
     }

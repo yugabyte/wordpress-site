@@ -71,7 +71,7 @@ set_hero();
                             </div>
                         </div>
                         <div class="content_section form_embed light-blue">
-                            <div class="content_section_inner centered nopadding_bottom">
+                            <div class="content_section_inner centered small_padding_bottom">
                                 <div class="clearfix">
                                     <div class="grid nopadding">
                                         <div class="col-10-12 push-1-12 tablet-col-1-1 mobile-col-1-1 nopadding">

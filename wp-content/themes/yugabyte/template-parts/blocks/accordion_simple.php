@@ -33,7 +33,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'light-blue';
 <div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
     <div class="content_section_inner tall_pad">
         <div class="clearfix vert_align">
-            <div class="grid eq_h nopadding">
+            <div class="grid nopadding">
                 <div class="eq_r nopadding col-1-2 tablet-col-8-12 tablet-push-2-12 mobile-col-1-1 cont">
                     <div class="inner">
                         <div class="inner_content">

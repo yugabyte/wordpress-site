@@ -59,7 +59,7 @@ if( $bg_image ) {
                 
                 //open grid
                 echo '<div class="clearfix vert_align '.$is_last.'">';
-                echo '<div class="grid eq_h nopadding">';
+                echo '<div class="grid nopadding">';
                 
                 //alternating row classes
                 
