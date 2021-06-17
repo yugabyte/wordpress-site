@@ -41,7 +41,7 @@ $flip_class_cont = ( $flip ) ? 'col-7-12 mobile-col-1-1 cont' : 'col-7-12 mobile
     <div class="content_section_inner tall_pad">
         <?php
         if( $heading ) {
-            echo '<div class="grid eq_h nopadding">';
+            echo '<div class="grid nopadding">';
             echo '<div class="col-10-12 push-1-12 mobile-col-1-1 nopadding">';
             echo '<h3 class="centered">'.$heading.'</h3>';
             echo '</div>';
