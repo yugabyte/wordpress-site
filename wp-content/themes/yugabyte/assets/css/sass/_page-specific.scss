@@ -5676,7 +5676,11 @@
             
             
             h2 {
-                margin:0 0 80px;
+                font-size:2.33em;
+                color: $purple_dark;
+                text-transform:none;
+                margin:0 0 40px;
+                letter-spacing:0;
             }
         }
     }
