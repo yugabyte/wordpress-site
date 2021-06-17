@@ -145,15 +145,22 @@ jQuery(document).ready(function($) {
         $('#contact_tabs a').on('click', function(e) {
             e.preventDefault();
         
-            var t = $(this).attr('id');
+            var t = $(this),
+                t_id = t.attr('id'),
+                t_cont = $('#' + t_id + 'C');
         
-            if( $(this).hasClass('inactive') ) {
-                $('#contact_tabs a').addClass('inactive');
-                $(this).removeClass('inactive');
-                $('.contact_cont').hide();
-                $('#' + t + 'C').fadeIn('slow');
-            }
+            //if( t.hasClass('active') ) {
+            $('#contact_tabs a').not(t).removeClass('active');
+            t.addClass('active');
+            $('.contact_cont').not(t_cont).removeClass('active');
+            t_cont.addClass('active');
+            //}
         });
+        
+        //IF THE URL HASH IS THERE, TRIGGER CLICK
+        if (window.location.hash) {
+            $('#' + window.location.hash.substr(1)).click();
+        }
     }
     
     /******************************************************/
@@ -239,7 +246,7 @@ jQuery(document).ready(function($) {
             calcEqualHeightBlocks();
         }
         
-        if( window.location.hash ) {
+        if( window.location.hash && window.location.hash != '#Sales' ) {
             var hash = window.location.hash,
                 header_h = $('#masthead').height(),
                 sT = $(hash).offset().top;

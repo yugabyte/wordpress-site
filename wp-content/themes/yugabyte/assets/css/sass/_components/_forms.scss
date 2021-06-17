@@ -559,6 +559,33 @@
             }
         }
     }
+    
+    .white_form {
+        
+        .gform_wrapper {
+            
+            input[type='text'],
+            input[type='number'],
+            input[type='tel'],
+            textarea {
+                border:1px solid $gray;
+                
+                &:focus,
+                &:valid {
+                    border:1px solid $gray;
+                }
+            }
+            
+            .ginput_container_select,
+            .ginput_complex .address_state,
+            .ginput_complex .address_country {
+                
+                select {
+                    border:1px solid $gray;
+                }
+            }
+        }
+    }
 }
 
 #content .force_1col {

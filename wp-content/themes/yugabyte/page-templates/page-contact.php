@@ -29,8 +29,10 @@ set_hero();
                     
                     <div id="contact_tabs" class="content_section">
                         <div class="content_section_inner centered nopadding_bottom">
-                            <div class="tab"><a id="Sales" class="inactive">Contact Sales</a></div>
-                            <div class="tab"><a id="Inquiry">General Inquiry</a></div>
+                            <div class="tabs_wrap">
+                                <div class="tab"><a id="Sales">Contact Sales</a></div>
+                                <div class="tab"><a id="Inquiry" class="active">General Inquiry</a></div>
+                            </div>
                         </div>
                     </div>
                     
@@ -38,7 +40,7 @@ set_hero();
                         <div class="content_section">
                             <div class="content_section_inner centered">
                                 <div class="grid nopadding">
-                                    <div class="col-10-12 push-1-12 tablet-col-1-1 mobile-col-1-1 nopadding">
+                                    <div class="col-1-1 tablet-col-1-1 mobile-col-1-1 nopadding">
                                         <?php
                                         if( $sales_intro ) {
                                             echo '<div class="intro">';
@@ -72,7 +74,7 @@ set_hero();
                             <div class="content_section_inner centered nopadding_bottom">
                                 <div class="clearfix">
                                     <div class="grid nopadding">
-                                        <div class="col-10-12 push-1-12 tablet-col-1-1 mobile-col-1-1 nopadding">
+                                        <div class="col-1-1 tablet-col-1-1 mobile-col-1-1 nopadding">
                                             <div class="inner">
                                                 <?php
                                                 $title = $sales_form['title'];
@@ -91,9 +93,9 @@ set_hero();
                         </div>
                     </div>
                     
-                    <div class="contact_cont" id="InquiryC">
+                    <div class="contact_cont active" id="InquiryC">
                         <div class="content_section">
-                            <div class="content_section_inner centered">
+                            <div class="content_section_inner centered nopadding_bottom">
                                 <div class="grid nopadding">
                                     <div class="col-10-12 push-1-12 tablet-col-1-1 mobile-col-1-1 nopadding">
                                         <?php
@@ -107,19 +109,19 @@ set_hero();
                                 </div>
                             </div>
                         </div>
-                        <div class="content_section form_embed">
+                        <div class="content_section form_embed white_form">
                             <div class="content_section_inner centered">
                                 <div class="clearfix">
                                     <div class="grid nopadding">
                                         <div class="col-10-12 push-1-12 tablet-col-1-1 mobile-col-1-1 nopadding">
                                             <div class="inner">
                                                 <?php
-                                                $title = $inquiry_form['title'];
+                                                /*$title = $inquiry_form['title'];
                                                 echo '<h2>'.$title.'</h2>';
                                                 if( $inquiry_form['description'] ) {
                                                     $subheading = $inquiry_form['description'];
                                                     echo '<p class="desc">'.$subheading.'</p>';
-                                                }
+                                                }*/
                                                 gravity_form($inquiry_form['id'], false, false, false, '', true, 1);
                                                 ?>
                                             </div>

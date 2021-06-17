@@ -37,7 +37,7 @@ $hide_desc = get_field('hide_desc');
 $is_single_col = get_field('is_single_col');
 
 $alt_class = ( $alt_layout ) ? 'alt_layout' : '';
-$bg_color_class = ( $bg_color ) ? $bg_color : '';
+$bg_color_class = ( $bg_color ) ? $bg_color : 'white_form';
 
 if( $bg_img ) {
     $bg_img_src = $bg_img['url'];

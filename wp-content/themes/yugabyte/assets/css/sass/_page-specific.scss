@@ -5611,33 +5611,90 @@
     
     #contact_tabs {
         
+        .tabs_wrap {
+            display:flex;
+            justify-content:center;
+            align-items:flex-start;
+            margin-bottom:30px;
+        }
         
         .tab {
-            
+            flex:0 0 30%;
+            border-bottom:1px solid $gray;
         }
         
         a {
+            display:block;
+            position:relative; 
+            color: $purple_dark;
+            font-size:1.56em;
+            font-weight:$normal;
+            line-height:2.4em;
+            overflow:hidden;
+            cursor:pointer;
+            outline:none;
+            transition:all 0.3s;
             
+            &:after {
+                position:absolute;
+                left:0;
+                bottom:-4px;
+                width:100%;
+                height:4px;
+                background:$purple_dark;
+                content:'';
+                transition:all 0.3s;
+            }
             
-            &.inactive {
+            &.active {
                 
+                
+                &:after {
+                    transform:translateY(-4px);
+                }
             }
             
             &:hover {
-                
+                color:$orange;
             }
         }
     }
     
     .contact_cont {
+        display:none;
+        opacity:0;
+        visibility:hidden;
+        transition:opacity 0.3s;
         
+        &.active {
+            display:block;
+            opacity:1;
+            visibility:visible;
+        }
+        
+        &#SalesC {
+            
+            
+            h2 {
+                margin:0 0 80px;
+            }
+        }
     }
     
     .sales_locs {
-        
+        display:flex;
+        justify-content:center;
+        align-items:center;
         
         .bucket {
-            
+            flex:0 0 33.333%;
+            align-self:stretch;
+        }
+        
+        h4 {
+            margin:0;
+            font-size:1em;
+            letter-spacing:2px;
         }
     }
 }
