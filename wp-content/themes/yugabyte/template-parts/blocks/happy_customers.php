@@ -58,7 +58,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                 $test_quote = get_field('test_quote', $p->ID);
                 
                 echo '<li class="slide clearfix">';
-                echo '<div class="hc_test grid eq_h nopadding">';
+                echo '<div class="hc_test grid nopadding">';
                 if( $logo ) {
                     $logo_src = $logo['url'];
                     $logo_alt = ( $logo['alt'] ) ? $logo['alt'] : $company;

@@ -35,7 +35,7 @@ $heading = get_field('heading');
         }
         
         if( have_rows('contentbuckets') ):
-            echo '<div class="contentbuckets row_h">';
+            echo '<div class="contentbuckets">';
             while ( have_rows('contentbuckets') ): the_row();
                 $img = get_sub_field('img');
                 $bucketheading = get_sub_field('heading');

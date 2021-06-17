@@ -612,7 +612,8 @@
         align-items:center;
         
         h2 {
-            width:40%;
+            flex:0 0 calc(100% - 400px);
+            //width:40%;
             margin:0 0 40px;
             padding-left:40px;
             border-left:2px solid $white;
@@ -621,7 +622,8 @@
         }
         
         .logos_group {
-            width:55%;
+            flex:0 0 400px;
+            //width:55%;
             text-align:center;
             
             .logo {
@@ -747,13 +749,15 @@
             width:100%;
         
             h2 {
-                width:60%;
+                flex:1 0 60%;
+                //width:60%;
                 padding-left:20px;
                 border-left:1px solid $white;
             }
         
             .logos_group {
-                width:40%;
+                flex:0 0 40%;
+                //width:40%;
             
                 .logo {
                     margin:0 30px 30px 0;
@@ -1981,6 +1985,8 @@
         }
         
         &.two_up {
+            display:flex;
+            flex-wrap:wrap;
             
             .inner {
                 padding:96px 96px 80px;
@@ -2476,7 +2482,7 @@
         display:flex;
         justify-content:flex-start;
         align-items:center;
-        margin-top:30px;
+        //margin-top:30px;
         
         .logo {
             padding:0 50px 0 0;
@@ -2603,6 +2609,7 @@
     .happy_customers {
         
         .hc_test {
+            display:block;
             margin-top:30px;
         
             .logo {
@@ -2970,8 +2977,10 @@
         justify-content:flex-start;
         
         .bucket {
+            flex:0 0 calc(33.3333% - 22px);
             width:calc(33.3333% - 22px);
             margin:0 0 0 33px;
+            align-self:stretch;
             
             &:first-of-type {
                 margin-left:0;
@@ -2986,13 +2995,16 @@
             background-size:cover;
         }
         .cont {
+            height:calc(100% - 250px);
             
             .inner {
                 background:$offwhite;
                 border:1px dashed $purple_dark;
                 border-top:none;
+                height:100%;
                 padding:70px 50px 30px 80px;
                 text-align:left;
+                box-sizing:border-box;
             }
             
             h4 {
@@ -3003,8 +3015,9 @@
                 letter-spacing:2px;
                 
                 &:before {
-                    top:50%;
-                    transform:translateY(-50%);
+                    /*top:50%;
+                    transform:translateY(-50%);*/
+                    top:-2px;
                 }
             }
             
@@ -3935,6 +3948,7 @@
             }
             
             .notched {
+                height:100%;
                 clip-path: polygon(0% 0%, 42% 0, 50% 24px, 58% 0, 100% 0, 100% 100%, 0 100%);
 
                 background:$white;
@@ -5675,12 +5689,15 @@
         &#SalesC {
             
             
-            h2 {
-                font-size:2.33em;
-                color: $purple_dark;
-                text-transform:none;
-                margin:0 0 40px;
-                letter-spacing:0;
+            .form_embed {
+            
+                h2 {
+                    font-size:2.33em;
+                    color: $purple_dark;
+                    text-transform:none;
+                    margin:0 0 40px;
+                    letter-spacing:0;
+                }
             }
         }
     }

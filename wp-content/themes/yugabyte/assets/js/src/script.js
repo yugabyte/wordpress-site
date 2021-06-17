@@ -192,7 +192,7 @@ jQuery(document).ready(function($) {
             slidesToShow: 1,
             centerMode: true,
             variableWidth: false,
-            adaptiveHeight: true
+            adaptiveHeight: false
         }
         var TestSlider = t.slick(test_slider_config);
     });
@@ -265,7 +265,7 @@ jQuery(document).ready(function($) {
         //FORM FLOAT LABELS SETUP
         floatThoseLabels();
         
-        rowMaxHeight( $('.icon_cont_blocks.two_up > li') );
+        //rowMaxHeight( $('.icon_cont_blocks.two_up > li') );
         
         //ZOOM IMAGES
         if( $('.zoomable').length > 0 ) {
@@ -283,8 +283,8 @@ jQuery(document).ready(function($) {
             pushOffHeader();
         } else {
             //REMOVE ANY TOP MARGIN ON #MAIN, REMOVE SCROLLING CLASS
-            //$('#main').css('marginTop',0);
-            //$('.site-header').removeClass('scrolling');
+            $('#main').css('marginTop',0);
+            $('.site-header').removeClass('scrolling');
         }
         
         setTimeout(function(){
@@ -385,16 +385,6 @@ jQuery(document).ready(function($) {
                 var l = $(this).find('.eq_l'),
                     r = $(this).find('.eq_r');
                 
-                //set min-height on the image half
-                /*$('.bg_img').each(function() {
-                    var el = $(this),
-                        el_h = el.closest('.eq_l').next().height();
-                    
-                    el.css({
-                        'min-height' : el_h
-                    });
-                });*/
-                
                 setEqualHeights( l, r );
             });
         }
@@ -402,16 +392,6 @@ jQuery(document).ready(function($) {
     
     function rowMaxHeight(el) {
         if( $(window).width() > 767 && el.length > 0 ) {
-            /*el.each(function() {
-                $(this).find('.inner_content').css('height','auto');
-                var h = Math.max.apply(null, $(this).find('.inner_content').map(function () {
-                            return $(this).height();
-                        }).get());
-                $(this).find('.inner_content').each(function() {
-                    var h_new = h;
-                    $(this).height(h_new);
-                });
-            });*/
             
             var tallest = 0;
             el.each(function() {

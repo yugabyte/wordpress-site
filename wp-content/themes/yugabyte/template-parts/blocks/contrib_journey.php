@@ -50,7 +50,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                 }
         
                 if( have_rows('contentbuckets') ):
-                    echo '<div class="contentbuckets row_h">';
+                    echo '<div class="contentbuckets">';
                     while ( have_rows('contentbuckets') ): the_row();
                         $cont = get_sub_field('cont');
                 

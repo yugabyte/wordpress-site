@@ -39,6 +39,11 @@
         box-sizing:border-box;
     }
     
+    .slick-track {
+        display:flex;
+        align-items:center;
+    }
+    
     .slick-list {
         padding:0 !important;
     }

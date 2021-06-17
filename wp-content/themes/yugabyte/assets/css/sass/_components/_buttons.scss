@@ -31,6 +31,7 @@ button.gpnf-add-entry,
     -webkit-appearance:none;
     transition:all 0.3s;
     cursor:pointer;
+    user-select:none;
     
     &.offset {
         margin-left:20px;
