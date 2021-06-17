@@ -358,7 +358,7 @@
         .gfield_radio {
             position: relative;
             cursor: pointer;
-            margin:0;
+            margin:0 !important;
             padding:0;
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -433,6 +433,87 @@
                     }
                 }
             }
+        }
+        
+        .ginput_container_checkbox {
+            height:130px;
+            margin-top:0;
+            padding:26px 16px 16px;
+            background:$white;
+        }
+        
+        .gfield_checkbox {
+            position: relative;
+            cursor: pointer;
+            margin:0 !important;
+            padding:0;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        
+            > li {
+                display:inline-block;
+                width:calc(33.3333% - 15px) !important;
+                margin:0 0 10px 30px;
+                vertical-align:top;
+            
+                &:nth-of-type(2n + 1) {
+                    margin-left:0;
+                }
+            }
+        
+            label {
+                display:inline-block;
+                position: relative;
+                margin:0;
+                padding:0 0 0 24px;
+                line-height:16px;
+                font-style:normal !important;
+                cursor: pointer;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                user-select: none;
+                font-size:0.78em !important;
+                color: $purple_dark !important;
+            
+                &:before {
+                    position:absolute;
+                    left:0;
+                    top:0;
+                    width:16px;
+                    height:16px;
+                    font-family: FontAwesome;
+                    line-height:16px;
+                    font-size:14px;
+                    border-radius:2px;
+                    color: $gray_light;
+                    content:'\f00c';
+                    border:none;
+                    background: $gray_light;
+                    text-align:center;
+                }
+            }
+        
+            input[type='checkbox'] {
+                position:absolute;
+                opacity:0;
+                cursor:pointer;
+            
+                &:checked {
+                
+                    ~ label:before {
+                        //background-image: url(../../images/checkmark-on.png);
+                        color: $purple_dark;
+                    }
+                }
+            }
+        
+            &:hover {
+            
+            }
+        
         }
     
         .no_label {
