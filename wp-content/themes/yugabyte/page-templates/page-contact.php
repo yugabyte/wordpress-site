@@ -40,7 +40,7 @@ set_hero();
                         <div class="content_section">
                             <div class="content_section_inner centered">
                                 <div class="grid nopadding">
-                                    <div class="col-1-1 tablet-col-1-1 mobile-col-1-1 nopadding">
+                                    <div class="col-10-12 push-1-12 tablet-col-1-1 mobile-col-1-1 nopadding">
                                         <?php
                                         if( $sales_intro ) {
                                             echo '<div class="intro">';
@@ -74,7 +74,7 @@ set_hero();
                             <div class="content_section_inner centered nopadding_bottom">
                                 <div class="clearfix">
                                     <div class="grid nopadding">
-                                        <div class="col-1-1 tablet-col-1-1 mobile-col-1-1 nopadding">
+                                        <div class="col-10-12 push-1-12 tablet-col-1-1 mobile-col-1-1 nopadding">
                                             <div class="inner">
                                                 <?php
                                                 $title = $sales_form['title'];
