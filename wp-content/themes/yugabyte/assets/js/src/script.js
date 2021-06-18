@@ -401,7 +401,9 @@ jQuery(document).ready(function($) {
                 }
       
             });
-            el.find('.inner_content').height(tallest);
+            el.find('.inner_content').height(tallest).css({
+                'min-height' : tallest + 'px'
+            });
         }
     }
     
