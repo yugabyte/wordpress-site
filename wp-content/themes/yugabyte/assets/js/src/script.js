@@ -396,6 +396,9 @@ jQuery(document).ready(function($) {
             var tallest = 0;
             el.each(function() {
                 var i = $(this).find('.inner_content');
+                
+                i.height('auto');
+                
                 if( i.height() > tallest ) {
                     tallest = i.height(); 
                 }
