@@ -500,6 +500,10 @@ function set_hero_alt() {
         $search = get_search_query();
         $title = 'Search results for: "'.$search.'"';
         $bg_color_class = 'search grad_orange_purpledark';
+        
+    elseif( is_404() ):
+        $title = get_field('title_404','option');
+        $bg_color_class = 'error grad_orange_purpledark';
     
     elseif( is_singular('post') ):
         $hero_image = get_field('hero_image');
