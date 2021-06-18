@@ -52,7 +52,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'light-blue';
         }
         ?>
         <div class="clearfix vert_align">
-            <div class="grid nopadding">
+            <div class="grid">
                 <div class="eq_r nopadding col-1-2 mobile-col-1-1 cont_left">
                     <div class="inner">
                         <div class="inner_content">

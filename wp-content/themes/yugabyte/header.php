@@ -62,7 +62,6 @@
         } else {
             $cta_url = $header_cta;
         }
-        echo '<a href="'.$cta_url.'" id="header_cta" class="btn">'.$header_cta_btn_txt.'</a>';
     }
     ?>
 

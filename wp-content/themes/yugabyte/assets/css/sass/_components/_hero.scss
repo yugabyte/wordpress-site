@@ -137,33 +137,24 @@
 
 #hero {
     position:relative;
-    height:520px;
-    min-height:520px;
-    background-color:$blue;
+    /*height:520px;
+    min-height:520px;*/
+    background-color:$purple_dark;
     background-repeat:no-repeat;
     background-position:center center;
     background-size:cover;
     z-index:15;
     
-    &:before {
-        position:absolute;
-        top:0;
-        right:0;
-        bottom:0;
-        left:0;
-        content:'';
-        z-index:-1;
-    }
-    
     .content_section_inner {
-        /*display:flex;
+        display:flex;
         align-items:center;
-        justify-content:center;*/
+        justify-content:center;
         position:relative;
         width:calc(100% - 80px);
         max-width:1360px;
         height:100%;
-        min-height:520px;
+        //min-height:520px;
+        padding:0;
         z-index:10;
         text-align:center;
     }
@@ -174,11 +165,14 @@
         justify-content:center;
         width:100%;
         margin:0 auto;*/
-        position:absolute;
+        /*position:absolute;
         left:50%;
         top:50%;
         width:70%;
-        transform:translate(-50%,-50%);
+        transform:translate(-50%,-50%);*/
+        position:static;
+        flex:0 0 70%;
+        padding:40px 0;
     }
     .inner_content {
         
@@ -224,6 +218,10 @@
         font-size:1.1em;
         color: $white;
         
+        &.subheading {
+            margin:0;
+        }
+        
         a {
             color: $orange;
             
@@ -234,6 +232,7 @@
     }
     
     .cta_group {
+        margin-top:30px;
         
         .btn {
             margin:0 0 0 40px;

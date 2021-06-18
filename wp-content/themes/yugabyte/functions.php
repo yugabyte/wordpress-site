@@ -333,7 +333,7 @@ function set_hero() {
         $el = '#hero';
         generate_fw_thumbs($hero_image, $el);
         echo '<div id="hero" class="content_section">';
-        echo '<div class="content_section_inner nopadding">';
+        echo '<div class="content_section_inner">';
             echo '<div class="inner">';
             echo '<div class="inner_content">';
             echo '<h1>'.$title.'</h1>';

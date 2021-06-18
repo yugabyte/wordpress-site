@@ -203,7 +203,7 @@
             margin:0 0 40px;
         
             .inner_content {
-                padding-right:0;
+                padding:0;
             }
             
             img {
@@ -3680,6 +3680,7 @@
         .grid {
             display:flex;
             align-items:center;
+            padding:0 60px;
         }
         
         .inner {
@@ -3736,7 +3737,7 @@
         
         .inner_content {
             position:relative;
-            padding:100px 100px 70px;
+            padding:100px 120px 70px 80px;
         }
     }
     
@@ -3912,6 +3913,7 @@
         
             .grid {
                 display:block;
+                padding:0;
             }
         
             .inner {
@@ -4004,6 +4006,13 @@
         .intro {
             width:90%;
         }
+        
+        .vert_align {
+        
+            .grid {
+                padding:0;
+            }
+        }
     
         .cont_right {
             
@@ -4049,7 +4058,19 @@
 
 @media only screen and (min-width: 1025px) and (max-width: #{$bp_full}) {
     
+    .accordion_complex {
+        
+        .intro {
+            width:80%;
+        }
     
+        .vert_align {
+        
+            .grid {
+                padding:0;
+            }
+        }
+    }
     
 }
 
