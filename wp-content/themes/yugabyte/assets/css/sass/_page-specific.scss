@@ -1330,6 +1330,20 @@
             text-align:center;
         }
         
+        .inner {
+            display:flex;
+            flex-direction:column;
+            height:100%;
+            
+            .top {
+                flex:1 0 70%;
+            }
+            
+            p {
+                flex:0 0 30%;
+            }
+        }
+        
         .icon {
             display:block;
             width:120px;
@@ -1342,7 +1356,7 @@
         }
         
         p {
-            margin:2em 0 0 0;
+            margin:1em 0 0 0;
         }
         
         

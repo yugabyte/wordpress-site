@@ -63,13 +63,17 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                         $icon_alt = $icon['alt'];
                 
                         echo '<div class="bucket">';
-                        echo '<div class="icon" style="background-image:url('.$icon_src.');"></div>';
-                        if( $icon_label ) {
-                            echo '<h4>'.$icon_label.'</h4>';
-                        }
-                        if( $subheading ) {
-                            echo '<p>'.$subheading.'</p>';
-                        }
+                            echo '<div class="inner">';
+                                echo '<div class="top">';
+                                    echo '<div class="icon" style="background-image:url('.$icon_src.');"></div>';
+                                    if( $icon_label ) {
+                                        echo '<h4>'.$icon_label.'</h4>';
+                                    }
+                                echo '</div>';
+                                if( $subheading ) {
+                                    echo '<p>'.$subheading.'</p>';
+                                }
+                            echo '</div>';
                         echo '</div>';
                     endwhile;
                     echo '</div>';
