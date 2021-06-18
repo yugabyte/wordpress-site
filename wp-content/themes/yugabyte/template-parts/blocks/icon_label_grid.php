@@ -64,10 +64,10 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                 
                         echo '<div class="bucket">';
                             echo '<div class="inner">';
-                                echo '<div class="top inner_content">';
+                                echo '<div class="top">';
                                     echo '<div class="icon" style="background-image:url('.$icon_src.');"></div>';
                                     if( $icon_label ) {
-                                        echo '<h4>'.$icon_label.'</h4>';
+                                        echo '<h4 class="inner_content">'.$icon_label.'</h4>';
                                     }
                                 echo '</div>';
                                 //echo '<div class="inner_content">';
