@@ -53,7 +53,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                 }
         
                 if( have_rows('icons') ):
-                    echo '<div class="icons">';
+                    echo '<div class="icons row_h">';
                     while ( have_rows('icons') ): the_row();
                         $icon = get_sub_field('icon');
                         $icon_label = get_sub_field('icon_label');
@@ -64,15 +64,17 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                 
                         echo '<div class="bucket">';
                             echo '<div class="inner">';
-                                echo '<div class="top">';
+                                echo '<div class="top inner_content">';
                                     echo '<div class="icon" style="background-image:url('.$icon_src.');"></div>';
                                     if( $icon_label ) {
                                         echo '<h4>'.$icon_label.'</h4>';
                                     }
                                 echo '</div>';
+                                //echo '<div class="inner_content">';
                                 if( $subheading ) {
                                     echo '<p>'.$subheading.'</p>';
                                 }
+                                //echo '</div>';
                             echo '</div>';
                         echo '</div>';
                     endwhile;

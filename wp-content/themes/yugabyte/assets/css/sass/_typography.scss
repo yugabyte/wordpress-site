@@ -497,7 +497,7 @@ ol > li:before {content:counters(item, ".") ". "; position: absolute; margin-rig
     }
     
     h1 {
-        font-size: 2.44em; /* 44px */
+        font-size: 2.44em;
     
         &.midlong {
             font-size: 1.75em;
@@ -508,34 +508,22 @@ ol > li:before {content:counters(item, ".") ". "; position: absolute; margin-rig
     }
 
     h2 {
-        font-size:2.22em; /* 40px */
+        font-size:1.5em;
+        letter-spacing:2px;
     }
     
     h3 {
-        font-size:1.56em; /* 28px */
+        font-size:1.4em;
+        letter-spacing:2px;
     }
     
     h4 {
-        font-size:1.22em; /* 22px */
-    }
-    
-    .wysiwyg {
-        p {
-            font-size:0.89em;
-        }
-        ul,
-        ol {
-            font-size:0.89em;
-        }
+        
     }
     
     cite,
     p.cite {
         font-size: 1em;
-    }
-
-    p {
-        font-size:0.89em;
     }
     
 }
@@ -549,13 +537,13 @@ ol > li:before {content:counters(item, ".") ". "; position: absolute; margin-rig
 @media screen and (min-width: 768px) and (max-width: 1024px) {
     
     h1 {
-        font-size: 3em; /* 54px */
+        font-size: 3.5em;
     
         &.midlong {
-            font-size: 2.25em;
+            font-size: 3.25em;
         }
         &.long {
-            font-size: 1.75em;
+            font-size: 2.75em;
         }
         
         #hero_ss & {
@@ -564,30 +552,13 @@ ol > li:before {content:counters(item, ".") ". "; position: absolute; margin-rig
     }
     
     h2 {
-        font-size: 2.44em; /* 44px */
+        font-size: 1.5em;
+        letter-spacing:2px;
     }
 
     h3 {
-        font-size:1.78em; /* 32px */
-    }
-    
-    .wysiwyg {
-        p {
-            font-size:0.89em;
-        }
-        ul,
-        ol {
-            font-size:0.89em;
-        }
-    }
-    
-    cite,
-    p.cite {
-        font-size: 1em;
-    }
-
-    p {
-        font-size:0.89em;
+        font-size:1.25em;
+        letter-spacing:2px;
     }
     
 }

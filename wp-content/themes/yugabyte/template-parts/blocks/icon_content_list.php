@@ -50,7 +50,7 @@ if( $grid_layout ) {
     <div class="content_section_inner centered <?php echo $container_pad; ?>">
         <div class="clearfix">
             <div class="grid nopadding">
-                <div class="nopadding <?php echo $grid_classes; ?>">
+                <div class="nopadding <?php echo $grid_classes; ?> tablet-col-1-1">
                     <?php
                     if( $heading || $intro ) {
                         echo '<div class="intro">';
@@ -89,12 +89,14 @@ if( $grid_layout ) {
                                     
                                     echo '<div class="inner_content wysiwyg">';
                                     if( $icon ) {
-                                        echo '<img class="icon" src="'.$icon_src.'" alt="'.$icon_alt.'" />';
+                                        echo '<div class="icon_wrap"><img class="icon" src="'.$icon_src.'" alt="'.$icon_alt.'" /></div>';
                                     }
+                                    echo '<div class="cont_wrap">';
                                     if( $title ) {
                                         echo '<h3>'.$title.'</h3>';
                                     }
                                     echo $cont;
+                                    echo '</div>';
                                     echo '</div>';
                                     
                                 } else {
@@ -108,8 +110,9 @@ if( $grid_layout ) {
                                         echo '<h3>'.$title.'</h3>';
                                     }
                                     echo '</div>';
-                                    
+                                    echo '<div class="cont_wrap">';
                                     echo $cont;
+                                    echo '</div>';
                                     echo '</div>';
                                     
                                 }
