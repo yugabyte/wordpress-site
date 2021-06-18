@@ -854,19 +854,30 @@ function setGlobalFWCTA() {
 }
 
 //REDIRECT SINGLE YBNEWS POSTS
-add_action( 'template_redirect', 'redirect_ybnews_single' );
-function redirect_ybnews_single(){
-    if ( !is_singular( 'ybnews' ) )
+add_action( 'template_redirect', 'redirect_cpt_single' );
+function redirect_cpt_single(){
+    if ( !is_singular( array('ybnews','teammember','testimonial','ybevent') ) )
         return;
-    wp_redirect( get_permalink( get_page_by_path('news') ), 301 );
+    
+    if ( is_singular('ybnews') ) {
+        $redirect_url = get_permalink( get_page_by_path('news') );
+    } elseif( is_singular('teammember') ) {
+        $redirect_url = get_permalink( get_page_by_path('about') );
+    } elseif( is_singular('testimonial') ) {
+        $redirect_url = get_permalink( get_page_by_path('about') );
+    } elseif( is_singular('ybevent') ) {
+        $redirect_url = get_permalink( get_page_by_path('events') );
+    }
+    
+    wp_redirect( $redirect_url, 301 );
     exit;
 }
 
-//FORCE NOINDEX NOFOLLOW ON SINGLE YBNEWS POSTS
-function noindex_ybnews() {
-    if ( is_singular('ybnews') ) {
+//FORCE NOINDEX NOFOLLOW ON SINGLE POST TYPES WHERE NO FRONTEND DESIGN EXISTS
+function noindex_cpt_single() {
+    if ( is_singular( array('ybnews','teammember','testimonial','ybevent') ) ) {
         return '<meta name="robots" content="noindex, follow">';
     }
 }
-add_action('wp_head', 'noindex_ybnews');
+add_action('wp_head', 'noindex_cpt_single');
 ?>
