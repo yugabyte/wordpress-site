@@ -17,10 +17,18 @@
     $startday = $startdate->format('d');
     $startyear = $startdate->format('Y');
     
+    $starthour = $startdate->format('g');
+    $startminute = $startdate->format('i');
+    $startmerid = $startdate->format('a');
+    
     $enddate = new DateTime($end_time);
     $endmonth = $enddate->format('F');
     $endday = $enddate->format('d');
     $endyear = $enddate->format('Y');
+    
+    $endhour = $enddate->format('g');
+    $endminute = $enddate->format('i');
+    $endmerid = $enddate->format('a');
     
     //Site time zone setting
     $site_tz = wp_timezone_string();
@@ -64,19 +72,21 @@
             echo $startmonth.' '.$startday;
             if( $endday && ($endday != $startday) ) {
                 //if different months
-                if( $startmonth != $endmonth ) {
-                    echo '-'.$endmonth.' '.$endday;
-                } else {
-                    echo '-'.$endday;
+                //if( $startmonth != $endmonth ) {
+                echo ', '.$startyear; 
+                echo ' '.$starthour.':'.$startminute.$startmerid;
+                echo ' - '.$endmonth.' '.$endday;
+                echo ', '.$endyear;
+                echo ' '.$endhour.':'.$endminute.$endmerid;
+                
+            } else {
+                if( $startyear ) {
+                    echo ', '.$startyear;
                 }
+                //TIME OF DAY
+                echo ' '.$starthour.':'.$startminute.$startmerid.' - '.$endhour.':'.$endminute.$endmerid;
             }
-            if( $startyear ) {
-                echo ', '.$startyear;
-            }
-            //RARE EVENT SPANNING MULTIPLE YEARS
-            if( $endyear && ($endyear != $startyear) ) {
-                echo '-'.$endyear;
-            }
+            
             //TIME ZONE
             echo ' ('.$tz_abbrev.')';
             //Additional Time Note
