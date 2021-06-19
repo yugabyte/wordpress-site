@@ -129,7 +129,7 @@
         remove_filter( $ev_excerpt, 'wpautop' );
         add_filter( $ev_excerpt, 'wpautop' , 99);
         echo $ev_excerpt;
-        echo '<a href="'.$link.'" class="btn sq small nomargin" target="'.$link_tar.'">Read more</a>';
+        echo '<p class="nomargin"><a href="'.$link.'" class="btn sq small nomargin" target="'.$link_tar.'">Read more</a></p>';
     echo '</div></div>';
     ?>
 </li>
