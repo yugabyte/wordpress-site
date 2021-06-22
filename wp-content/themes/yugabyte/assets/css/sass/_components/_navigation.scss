@@ -326,7 +326,28 @@
 
 @media only screen and (max-width: #{$bp_small}) {
     
-    
+    #primary-navigation-mobile {
+        
+        .nav-menu {
+            
+            > li {
+            
+                > a {
+                    font-size:1.25em;
+                }
+            }
+        
+            ul {
+            
+                li {
+                    
+                    a {
+                        font-size:1em;
+                    }
+                }
+            }
+        }
+    }
     
 }
 

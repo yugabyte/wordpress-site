@@ -55,13 +55,13 @@ $bg_color_class = ( $bg_color ) ? $bg_color : 'light-blue';
                         
                                     echo '<li>';
                                     echo '<h4 class="acc_heading">';
-                                    echo '<a href="">';
+                                    echo '<a href=""><div class="inner">';
                                     if( $acc_icon ) {
                                         $acc_icon_src = $acc_icon['url'];
                                         $acc_icon_alt = $acc_icon['alt'];
                                         echo '<span class="acc_icon"><img src="'.$acc_icon_src.'" alt="'.$acc_icon_alt.'" /></span>';
                                     }
-                                    echo '<span>'.$acc_h.'</span><span class="toggle"></span></a></h4>';
+                                    echo '<span>'.$acc_h.'</span><span class="toggle"></span></div></a></h4>';
                                     echo '<div class="acc_content wysiwyg">';
                                     echo '<div class="inner">'.$acc_cont.'</div>';
                                     echo '</div>';

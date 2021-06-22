@@ -2587,10 +2587,11 @@
         .cont {
             padding:0 50px 0 0;
             
-            .inner {
+            .inner_content {
                 padding:70px 70px 30px 100px;
                 background:$offwhite;
                 text-align:left;
+                box-sizing:border-box;
             }
         }
         
@@ -2611,7 +2612,7 @@
             font-weight:$semibold;
         }
         
-        .inner_content {
+        .cite_wrap {
             display:flex;
             align-items:center;
             justify-content:left;
@@ -2694,7 +2695,7 @@
             margin-top:30px;
         
             .logo {
-                margin:0 0 40px;
+                margin:0 0 20px;
                 padding:0;
                 
                 .inner {
@@ -2703,7 +2704,7 @@
                 
                 img {
                     width:auto;
-                    max-width:300px;
+                    max-width:200px;
                     margin:0 auto;
                 }
             }
@@ -2711,7 +2712,7 @@
             .cont {
                 padding:0 40px;
             
-                .inner {
+                .inner_content {
                     padding:50px 40px 30px 50px;
                 }
             }
@@ -2756,7 +2757,7 @@
             .cont {
                 padding:0 20px 0 0;
             
-                .inner {
+                .inner_content {
                     padding:40px 40px 20px 70px;
                 }
             }
@@ -2954,24 +2955,24 @@
         }
     
         .metrics_grid {
-            margin-bottom:80px;
+            margin:0 0 80px !important;
         
             li {
                 display:inline-block;
-                width:calc(50% - 40px);
-                margin:30px 20px 30px;
+                width:calc(50% - 10px);
+                margin:20px 5px 20px;
                 text-align:center;
             
                 img {
                     display:block;
-                    width:60%;
+                    width:50%;
                     margin:0 auto;
                 }
             
                 .metric {
                     display:block;
                     margin:0 0 0.25em;
-                    font-size:3.33em;
+                    font-size:2.33em;
                     line-height:1.3em;
                     font-weight:$semibold;
                     color: $purple_dark;
@@ -2980,7 +2981,7 @@
                 .metric_label {
                     display:block;
                     margin:0;
-                    font-size:1.22em;
+                    font-size:1em;
                     font-weight:$normal;
                 }
             }
@@ -3467,16 +3468,24 @@
                 &:hover {
                     color: $orange;
                 }
+                
+                .inner {
+                    display:flex;
+                    justify-content:flex-start;
+                    align-items:center;
+                }
             }
             
             span {
-                display:inline-block;
+                /*display:inline-block;
                 vertical-align:middle;
-                height:46px;
-                line-height:46px;
+                height:46px;*/
+                line-height:1.2em;
+                flex:0 0 calc(100% - 100px);
             }
             
             .acc_icon {
+                flex:0 0 46px;
                 width:46px;
                 margin:0 15px 0 0;
                 
@@ -3589,6 +3598,8 @@
                         
                 > a {
                     padding:20px 10px;
+                    font-size:18px;
+                    line-height:1.2em;
                 }
         
                 .toggle {
@@ -4544,6 +4555,10 @@
     }
 }
 
+.alm-layouts .alm-listing {
+    margin:0 !important;
+}
+
 @media screen and (max-width: #{$bp_small}) {
     
     #alm-filters-ssfilter,
@@ -4666,6 +4681,8 @@
                 img {
                     display:block;
                     width:100%;
+                    max-width:300px;
+                    margin:0 auto;
                     transform: translate3d(0,0,0);
                     transition:transform 0.3s;
                 }
@@ -4729,7 +4746,7 @@
         
             .item {
                 width:100%;
-                max-width:400px;
+                max-width:540px;
                 margin:0 auto 40px auto;
                 
                 &:nth-of-type(3n + 1) {

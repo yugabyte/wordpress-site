@@ -184,6 +184,21 @@ jQuery(document).ready(function($) {
     //TESTIMONIAL W/ LOGO SLIDER
     $('.test_slider').each(function(i) {
 	    var t = $(this);
+	    
+	    t.on('init', function(event, slick) {
+            var tallest = 0;
+            t.each(function() {
+                var i = $(this).find('.inner_content');
+                
+                i.height('auto');
+                
+                if( i.height() > tallest ) {
+                    tallest = i.height(); 
+                }
+      
+            });
+            t.find('.inner_content').height(tallest);
+        });
         
         var test_slider_config = {
             dots: false,

@@ -179,6 +179,7 @@ $slick-opacity-not-active: 0.25 !default;
     padding: 0;
     border: none;
     outline: none;
+    z-index:10;
     &:hover, &:focus {
         outline: none;
         background: transparent;

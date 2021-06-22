@@ -13,7 +13,7 @@
 
 //BULLETED LIST WITH BIG CHECK MARK ICONS
 .wysiwyg ul.checkmark {
-    margin:0;
+    margin:0 !important;
                 
     > li {
         position:relative;

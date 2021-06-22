@@ -261,7 +261,28 @@ button.gpnf-add-entry:disabled,
     button.btn,
     button.gpnf-add-entry,
     .wp-block-button__link {
-        
+        padding:6px 10px;
+        font-size: 1em;
+    }
+    
+    .play_btn {
+        margin:-30px 0 0 -30px;
+        width:60px;
+        height:60px;
+        border-radius:30px;
+    
+        &:after {
+            left:13px;
+            top:17px;
+            width:30px;
+            height:26px;
+            line-height:26px;
+            font-size:40px;
+        }
+    }
+    
+    .read_more {
+        font-size:1em;
     }
     
 }

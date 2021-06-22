@@ -810,6 +810,10 @@
     
     .ss_img_cont {
         
+        h3 {
+            font-size:1.25em;
+        }
+        
         .grid {
             display:block;
         }
@@ -1027,13 +1031,17 @@
         }
     
         .test_bg {
-            padding:70px 20px 160px;
+            padding:70px 20px 120px;
         
             .quote {
                 padding:0 20px;
                 
                 &:first-of-type {
                     margin-bottom:40px;
+                }
+                
+                p {
+                    font-size:1em;
                 }
             }
         
@@ -1047,7 +1055,7 @@
                 .inner {
                     max-width:260px;
                     margin:10px auto;
-                    padding:20px 20px;
+                    padding:10px 10px;
                 }
             
                 .inner_content {
@@ -1056,14 +1064,16 @@
                 }
             
                 .headshot {
-                    flex:0 0 60px;
-                    width:60px;
-                    height:60px;
-                    margin:0 20px 0 0;
+                    flex:0 0 40px;
+                    width:40px;
+                    height:40px;
+                    margin:0 10px 0 0;
                 }
             
                 p {
-                    flex:0 0 calc(100% - 84px);
+                    flex:0 0 calc(100% - 50px);
+                    font-size:0.89em;
+                    line-height:1.2em;
                 }
             }
         }

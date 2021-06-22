@@ -63,7 +63,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                     $logo_src = $logo['url'];
                     $logo_alt = ( $logo['alt'] ) ? $logo['alt'] : $company;
                     
-                    echo '<div class="logo eq_l col-3-12 push-1-12 mobile-col-1-1 clearfix">';
+                    echo '<div class="logo col-3-12 push-1-12 mobile-col-1-1 clearfix">';
                     echo '<div class="inner">';
                     echo '<div class="inner_inner">';
                     echo '<img src="'.$logo_src.'" alt="'.$logo_alt.'" />';
@@ -71,12 +71,12 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
                     echo '</div>';
                     echo '</div>';
                 }
-                echo '<div class="cont eq_r col-8-12 mobile-col-1-1 clearfix">';
-                echo '<div class="inner">';
+                echo '<div class="cont col-8-12 mobile-col-1-1 clearfix">';
+                echo '<div class="inner_content">';
                     if( $test_quote ) {
                         echo '<p class="quote"><span class="mark">&ldquo;</span>'.$test_quote.'</p>';
                     }
-                    echo '<div class="inner_content">';
+                    echo '<div class="cite_wrap">';
                         if( $headshot ) {
                             $headshot_src = $headshot['sizes']['medium'];
                             echo '<div class="headshot" style="background-image:url('.$headshot_src.');"></div>';

@@ -440,25 +440,23 @@
         }
         h1 {
             width:100%;
+            font-size:1.5em;
         }
     }
     
     #hero {
-        height:520px;
-        min-height:520px;
         
         .content_section_inner {
             width:calc(100% - 40px);
-            min-height:520px;
         }
     
         .inner {
-            width:100%;
+            flex:0 0 100%;
         }
     
         h1 {
             margin:0 0 80px;
-            font-size:3em;
+            font-size:1.5em;
         
             &:before {
                 height:50px;
@@ -470,6 +468,7 @@
         }
         
         p {
+            font-size:1em;
             
             br {
                 display:none;
@@ -498,6 +497,7 @@
         }
         
         .ln_link {
+            font-size:1em;
             line-height:1.3em;
             text-align:left;
         }
