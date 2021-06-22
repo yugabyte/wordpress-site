@@ -44,7 +44,7 @@ $bg_color_class = ( $bg_color ) ? $bg_color : '';
         </div>
         <?php
         if( $testimonial ):
-            echo '<div class="grid nopadding">';
+            echo '<div class="grid nopadding clearfix">';
             echo '<div class="intro col-10-12 push-1-12 mobile-col-1-1 nopadding centered">';
             echo '<ul class="test_slider">';
             foreach( $testimonial as $p ):

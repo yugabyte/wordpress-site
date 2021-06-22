@@ -183,11 +183,12 @@ jQuery(document).ready(function($) {
     
     //TESTIMONIAL W/ LOGO SLIDER
     $('.test_slider').each(function(i) {
-	    var t = $(this);
+	    var t = $(this),
+	        t_li = t.find('.slide');
 	    
 	    t.on('init', function(event, slick) {
             var tallest = 0;
-            t.each(function() {
+            t_li.each(function() {
                 var i = $(this).find('.inner_content');
                 
                 i.height('auto');
