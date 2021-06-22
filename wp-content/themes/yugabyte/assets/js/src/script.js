@@ -187,6 +187,7 @@ jQuery(document).ready(function($) {
 	        t_li = t.find('.slide');
 	    
 	    t.on('init', function(event, slick) {
+                        
             var tallest = 0;
             t_li.each(function() {
                 var i = $(this).find('.inner_content');

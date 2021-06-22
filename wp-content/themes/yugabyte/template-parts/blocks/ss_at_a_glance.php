@@ -52,7 +52,7 @@ $client = get_field('client');
                                     echo '<div class="inner">';
                                     if( $icon ) {
                                         $icon_src = $icon['url'];
-                                        $icon_alt = ( $icon['alt'] ) ? $icon['alt'] : $client;
+                                        $icon_alt = ( $icon['alt'] ) ? $icon['alt'] : 'At a glance icon';
                                         echo '<div class="icon"><img src="'.$icon_src.'" alt="'.$icon_alt.'" /></div>';
                                     }
                                     if( $txt ) {
