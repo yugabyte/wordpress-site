@@ -49,7 +49,7 @@ $deep_anchor = get_field('deep_anchor');
                 <div id="new-list" class="grid nopadding">
                     <div class="col-4-12 mobile-col-1-1 nopadding">
                         <div id="lever-jobs-filter">
-                            <div class="jobs_filter_wrap">
+                            <!--<div class="jobs_filter_wrap">
                                 <h3>Filter by Location</h3>
                                 <select class="lever-jobs-filter-locations">
                                     <option value="" disabled selected>All</option>
@@ -60,9 +60,9 @@ $deep_anchor = get_field('deep_anchor');
                                 <select class="lever-jobs-filter-departments">
                                     <option value="" disabled selected>All</option>
                                 </select>
-                            </div>
+                            </div>-->
                             <div class="jobs_filter_wrap">
-                                <h3>Filter by Team</h3>
+                                <h3>Filter by Department</h3>
                                 <select class="lever-jobs-filter-teams">
                                     <option value="" disabled selected>All</option>
                                 </select>
@@ -295,6 +295,8 @@ $deep_anchor = get_field('deep_anchor');
                     
                                 for (var i = 0; i < jobList.items.length; i++) {
                                     var item = jobList.items[i]._values;
+                                    
+                                    /*
                                     var location = item.location;
                         
                                     if(jQuery.inArray(location, locations) == -1) {
@@ -306,7 +308,8 @@ $deep_anchor = get_field('deep_anchor');
                                     if(jQuery.inArray(department, departments) == -1) {
                                         departments.push(department);
                                     }
-                        
+                                    */
+                                    
                                     var team = item.team;
                         
                                     if(jQuery.inArray(team, teams) == -1) {
@@ -320,17 +323,17 @@ $deep_anchor = get_field('deep_anchor');
                                     }*/
                                 }
                     
-                                locations.sort();
-                                departments.sort();
+                                //locations.sort();
+                                //departments.sort();
                                 teams.sort();
                                 //workTypes.sort();
                     
-                                for (var j = 0; j < locations.length; j++ ) {
+                                /*for (var j = 0; j < locations.length; j++ ) {
                                     $( "#lever-jobs-filter .lever-jobs-filter-locations").append('<option>' + locations[j] + '</option>');
                                 }
                                 for (var j = 0; j < departments.length; j++ ) {
                                     $( "#lever-jobs-filter .lever-jobs-filter-departments").append('<option class=department>' + departments[j] + '</option>');
-                                }
+                                }*/
                                 for (var j = 0; j < teams.length; j++ ) {
                                     $( "#lever-jobs-filter .lever-jobs-filter-teams").append('<option>' + teams[j] + '</option>');
                                 }
@@ -353,8 +356,8 @@ $deep_anchor = get_field('deep_anchor');
                                 $('#lever-jobs-filter select').change(function(){
                         
                                     var selectedFilters = {
-                                        location: $('#lever-jobs-filter select.lever-jobs-filter-locations').val(),
-                                        department: $('#lever-jobs-filter select.lever-jobs-filter-departments').val(),
+                                        //location: $('#lever-jobs-filter select.lever-jobs-filter-locations').val(),
+                                        //department: $('#lever-jobs-filter select.lever-jobs-filter-departments').val(),
                                         team: $('#lever-jobs-filter select.lever-jobs-filter-teams').val(),
                                         //'work-type': $('#lever-jobs-filter select.lever-jobs-filter-work-types').val(),
                                     }
@@ -388,7 +391,7 @@ $deep_anchor = get_field('deep_anchor');
                                         $('#lever-no-results').show();
                                     }
                         
-                                    console.log("filtered?", jobList.filtered);
+                                    //console.log("filtered?", jobList.filtered);
                         
                                     $('#lever-clear-filters').show();
                         
@@ -397,11 +400,11 @@ $deep_anchor = get_field('deep_anchor');
                                 });
                     
                                 $('#new-list').on('click', '#lever-clear-filters', function() {
-                                    console.log("clicked clear filters");
+                                    //console.log("clicked clear filters");
                         
                                     jobList.filter();
                         
-                                    console.log("jobList filtered?", jobList.filtered);
+                                    //console.log("jobList filtered?", jobList.filtered);
                         
                                     if (jobList.filtered == false) {
                                         hideFilterResults();
@@ -412,7 +415,7 @@ $deep_anchor = get_field('deep_anchor');
                                 });
                     
                                 // Showing/hiding search results when the search box is empty
-                                $('#new-list').on('input', '#lever-jobs-search', function() {
+                                /*$('#new-list').on('input', '#lever-jobs-search', function() {
                                     if($(this).val().length || jobList.filtered == true) {
                                         showFilterResults();
                             
@@ -427,7 +430,7 @@ $deep_anchor = get_field('deep_anchor');
                                         hideFilterResults();
                                         $('#lever-no-results').hide();
                                     }
-                                });
+                                });*/
                 
                             }(jQuery));
                 
