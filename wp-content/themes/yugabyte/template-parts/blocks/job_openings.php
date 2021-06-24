@@ -220,7 +220,7 @@ $deep_anchor = get_field('deep_anchor');
                                 
                                         for (var k = 0; k < groupedPostings[i].teams[j].postings.length; k ++) {
                                             content += '<li class="lever-job" data-department="' + groupedPostings[i].departmentTitle +'" data-team="' + groupedPostings[i].teams[j].postings[k].categories.team + '" data-location="' + groupedPostings[i].teams[j].postings[k].categories.location + '"data-work-type="' + groupedPostings[i].teams[j].postings[k].categories.commitment + '">';
-                                            content += '<a class="lever-job-title" href="' + groupedPostings[i].teams[j].postings[k].hostedUrl + '">';
+                                            content += '<a class="lever-job-title" href="' + groupedPostings[i].teams[j].postings[k].hostedUrl + '" target="_blank">';
                                             content += '<h4>' + sanitizeForHTML(groupedPostings[i].teams[j].postings[k].text) + '</h4>';
                                             content += '<span class="team">' + (sanitizeForHTML(groupedPostings[i].teams[j].postings[k].categories.team) || '') + '</span>';
                                             content += ' | ';
