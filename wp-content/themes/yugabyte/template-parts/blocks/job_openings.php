@@ -75,14 +75,14 @@ $deep_anchor = get_field('deep_anchor');
                             <a id="lever-clear-filters" class="btn" style="display: none;">Clear filters</a>
                         </div>
                     </div>
-                    <div class="col-8-12 mobile-col-1-1 nopadding">
+                    <div id="jobs_list" class="col-8-12 mobile-col-1-1 nopadding">
                 
                         <div>
                             <ul class="list"></ul>
                             <div id="lever-no-results" style="display: none;">No results</div>
                         </div>
                 
-                        <div id="lever_jobs_cont"></div>
+                        <ul id="lever_jobs_cont"></ul>
                 
                         <script type='text/javascript'>
                         window.loadLeverJobs = function (options) {

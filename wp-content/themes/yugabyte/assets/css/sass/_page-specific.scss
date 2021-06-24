@@ -4287,41 +4287,44 @@
         }
     }    
     
-    #lever_jobs_cont {
-        margin:0;
-        padding:0;
-        list-style:none !important;
+    #jobs_list {
         
-        li {
-            padding:5px 0;            
+        ul {
+            margin:0;
+            padding:0;
+            list-style:none !important;
+        
+            li {
+                padding:5px 0;            
             
-            a {
-                display:block;
-                padding:6px 30px;
-                box-shadow:0 0 0 rgba(0,0,0,0.3);
-                text-decoration:none;
-                transition:all 0.3s;
-                color: $black;
-                background:$white;
-                z-index:6;
+                a {
+                    display:block;
+                    padding:6px 30px;
+                    box-shadow:0 0 0 rgba(0,0,0,0.3);
+                    text-decoration:none;
+                    transition:all 0.3s;
+                    color: $black;
+                    background:$white;
+                    z-index:6;
                 
-                h4 {
-                    margin:0;
-                    color: $orange;
-                }
-                
-                span {
-                    display:inline-block;
-                    vertical-align:middle;
-                    color:$black;
-                    
-                    &.team {
-                        font-weight:$bold;
+                    h4 {
+                        margin:0;
+                        color: $orange;
                     }
-                }
                 
-                &:hover {
-                    box-shadow:0 0 10px rgba(0,0,0,0.3);
+                    span {
+                        display:inline-block;
+                        vertical-align:middle;
+                        color:$black;
+                    
+                        &.team {
+                            font-weight:$bold;
+                        }
+                    }
+                
+                    &:hover {
+                        box-shadow:0 0 10px rgba(0,0,0,0.3);
+                    }
                 }
             }
         }
