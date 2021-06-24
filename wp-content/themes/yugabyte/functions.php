@@ -470,6 +470,12 @@ function set_hero_alt() {
         $hero_image_id = get_post_thumbnail_id();
         $hero_image = get_all_featured_image_sizes($hero_image_id);
         
+        if( has_post_thumbnail() ) {
+            $bg_color_class = '';
+        } else {
+            $bg_color_class = 'grad-dkpurple-blue';
+        }
+        
     elseif( is_category() || is_tag() || is_tax() ):
     
         $term = $post;

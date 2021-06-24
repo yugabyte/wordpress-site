@@ -275,6 +275,7 @@ sub {
             border-radius:4px;
             background:$blue;
         }
+        
     }
     .invert & {
         
@@ -319,6 +320,15 @@ sub {
         
         p:only-of-type {
             margin:0;
+        }
+    }
+    
+    #iubenda_policy {
+        ul li {
+           
+            &:before {
+                display:none;
+            }
         }
     }
 }
@@ -486,6 +496,20 @@ ol li {display:block;} /* hide original list counter */
 ol > li:first-child {counter-reset: item;} /* reset counter */
 ol > li {counter-increment: item; position: relative;} /* increment counter */
 ol > li:before {content:counters(item, ".") ". "; position: absolute; margin-right: 100%; right: 10px;} /* print counter */
+
+
+/* IUBENDA POLICY OVERRIDES */
+#iubenda_policy {
+    
+    hr {
+        border-color: $blue;
+        background:none;
+    }
+}
+
+
+
+
 
 @media screen and (max-width: #{$bp_small}) {
     
