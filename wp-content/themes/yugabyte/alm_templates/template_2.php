@@ -31,9 +31,11 @@
     $endmerid = $enddate->format('a');
     
     //Site time zone setting
-    $site_tz = wp_timezone_string();
-    date_default_timezone_set($site_tz);
-    $tz_abbrev = date('T');
+    //$site_tz = wp_timezone_string();
+    //date_default_timezone_set($site_tz);
+    //$tz_abbrev = date('T');
+
+	$tz_abbrev = 'PT';
     
     $conf_img = get_field('conf_img');
     $ext_url = get_field('ext_url');
@@ -66,7 +68,7 @@
         
     }
     
-    echo '<div class="cont '.$has_img.'"><div class="inner">';
+    echo '<div class="cont wysiwyg plast'.$has_img.'"><div class="inner">';
         echo '<h4><a href="'.$link.'" target="'.$link_tar.'">'.$title.'</a></h4>';
         echo '<p class="meta">';
         //DATE
@@ -129,7 +131,7 @@
         remove_filter( $ev_excerpt, 'wpautop' );
         add_filter( $ev_excerpt, 'wpautop' , 99);
         echo $ev_excerpt;
-        echo '<p class="nomargin"><a href="'.$link.'" class="btn sq small nomargin" target="'.$link_tar.'">Read more</a></p>';
+        echo '<p class="nomargin"><a href="'.$link.'" class="btn sq small" target="'.$link_tar.'">Read more</a></p>';
     echo '</div></div>';
     ?>
 </li>

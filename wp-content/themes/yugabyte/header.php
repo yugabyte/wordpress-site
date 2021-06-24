@@ -38,6 +38,16 @@
 	<!-- TODO: ADD GOOGLE ANALYTICS AND PAGE VERIFICATION? -->
 	<!--<meta name="google-site-verification" content="R0-l_4c6h_NY5wrlIo7A7aLmXzGtOcLAMunTYmyg2Xg" />-->
 	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-104956980-1"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-104956980-1');
+    </script>
+    <!-- End Google Analytics -->
+	
 </head>
 
 <body <?php body_class(); ?>>
