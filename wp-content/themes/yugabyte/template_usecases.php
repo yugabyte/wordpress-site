@@ -50,7 +50,7 @@
 			<?php } ?>
 
 			<section class="it-blocks" id="ce-1">
-				<div class="container" data-aos="zoom-in">
+				<div class="container">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-12">
 							<div class="section-title text-center"><?php the_field('it_title'); ?></div>
@@ -75,7 +75,7 @@
 			</section>
 
 			<section class="it-blocks two" id="ce-2">
-				<div class="container" data-aos="zoom-in">
+				<div class="container">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-12">
 							<div class="section-title text-center"><?php the_field('it_title_2'); ?></div>
@@ -100,7 +100,7 @@
 			</section>
 
 			<section class="it-blocks three" id="ce-3">
-				<div class="container" data-aos="zoom-in">
+				<div class="container">
 					<div class="row d-flex justify-content-center">
 						<div class="col-lg-12">
 							<div class="section-title text-center"><?php the_field('it_title_3'); ?></div>
