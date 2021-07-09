@@ -620,7 +620,12 @@ a.banner-link:hover span {
 	font-size: 15px;
 	line-height: 34px;
 }
-.main-footer .copyright-container .terms-hyperlink {
+
+.main-footer .legal-links-container > a:hover {
+	color: #FF6E42;
+}
+
+.main-footer .legal-links-container > a:not(:last-child) {
 	margin-right: 1.25rem;
 }
 
