@@ -67,11 +67,12 @@
 			</div>
 			<div class="row clearfix">
 				<div class="col-lg-12 copyright-container">
-					<span class="copyright"><?php the_field('main_copyright', 23); ?></span>
-					<!--
-					<a class="terms-hyperlink" href="<?php the_field('terms_url', 23); ?>" target="_blank">Terms</a>
-					<a href="<?php the_field('privacy_url', 23); ?>" target="_blank">Privacy</a>
-					-->
+					<span class="copyright"><?php the_field('main_copyright', 23); ?></span>					
+				</div>
+				<div class="col-lg-12 copyright-container">
+					<a class="terms-hyperlink" href="<?php the_field('terms_url', 23); ?>" target="_blank">Terms of Service</a>
+					<a href="<?php the_field('privacy_url', 23); ?>" target="_blank">Privacy Policy</a>
+					<a class="terms-hyperlink" href="<?php the_field('support_url', 23); ?>" target="_blank">Support Policy</a>
 				</div>
 			</div>
 		</div>
