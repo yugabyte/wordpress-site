@@ -641,6 +641,51 @@ function set_ss_hero() {
     wp_reset_postdata();
 }
 
+function set_hero_gated() {
+    $post = get_queried_object();
+    $hero_image = get_field('hero_image');
+    if( get_field('custom_title') ) {
+        $title = get_field('custom_title');
+    } else {
+        $title = get_the_title();
+    }
+    $tagline = get_field('tagline');
+    $subheading = get_field('subheading');
+    
+    $bg_color_class = '';
+        
+    if( !$hero_image ) {
+        $bg_color_class = 'grad-dkpurple-blue';
+    }
+        
+    $el = '#hero_gated';
+    generate_fw_thumbs($hero_image, $el);
+    echo '<div id="hero_gated" class="content_section '.$bg_color_class.'">';
+    echo '<div class="content_section_inner nopadding_tb">';
+        echo '<div class="grid nopadding">';
+        echo '<div class="col-5-12 push-1-12 mobile-col-1-1 nopadding">';
+            echo '<div class="inner">';
+            echo '<div class="inner_content">';
+            //SITE HEADER IS HIDDEN, SO SET LOGO IN HEADER
+            ?>
+            <a class="logo" href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><img class="" src="<?php echo get_stylesheet_directory_uri().'/assets/images/logo-main-light.svg' ?>" alt="<?php bloginfo( 'name' ); ?>" /></a>
+            <?php
+            if( $tagline ) {
+                echo '<p class="tagline">'.$tagline.'</p>';
+            }
+            echo '<h1>'.$title.'</h1>';
+            if( $subheading ) {
+                echo '<p class="subheading">'.$subheading.'</p>';
+            }
+            echo '</div>';
+            echo '</div>';
+        echo '</div>';
+        echo '</div>';
+    echo '</div>';
+    echo '</div>'; 
+    wp_reset_postdata();
+}
+
 function get_all_featured_image_sizes($attachment_id = 0) {
     $sizes = get_intermediate_image_sizes();
     if(!$attachment_id) $attachment_id = get_post_thumbnail_id();

@@ -75,6 +75,10 @@ body {
     margin-top:81px;
     background:$white;
     transition:margin 0.3s;
+    
+    .gated_landing & {
+        margin:0 !important;
+    }
 }
 
 #primary {

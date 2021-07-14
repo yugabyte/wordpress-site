@@ -56,6 +56,9 @@
     the_post(); rewind_posts();
     
     $pageclass = '';
+    if( is_page_template('page-templates/page-gated-landing.php') ) {
+        $pageclass = 'gated_landing';
+    }
     
     //CTA SETUP
     $header_cta = get_field('header_cta','option');

@@ -6040,3 +6040,66 @@
         }
     }
 }
+
+/**********************************************************************************************/
+/***** GATED LANDING PAGE *********************************************************************/
+/**********************************************************************************************/
+#page.gated_landing {
+    
+    #content {
+        overflow:visible;
+    }
+    
+    #form_col {
+        margin-top:-160px;
+        
+        .inner {
+            padding:36px;
+            border-radius:10px;
+            background:$offwhite;
+        }
+        
+        .cont {
+            margin-top:-170px;
+        }
+    }
+    
+    #pre_gate_label {
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        box-shadow:inset 0 0 0 1px $white;
+        overflow:hidden;
+        background:$orange;
+        
+        h3 {
+            margin:0;
+            padding:6px;
+            height:calc(100% - 2px);
+            text-align:center;
+            color:$white;
+            font-weight:normal;
+            font-size:1.67em;
+            text-transform:none;
+            letter-spacing:0;
+            line-height:1.27em;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            overflow:hidden;
+        }
+    }
+    
+    #pre_gate_asset {
+        border:1px solid $white;
+        border-top:none;
+        
+        img {
+            display:block;
+            width:100%;
+        }
+    }
+    
+    #content .gform_wrapper {
+        padding-bottom:0;
+        margin-bottom:0;
+    }
+}
