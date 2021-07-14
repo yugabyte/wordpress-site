@@ -336,6 +336,16 @@ function set_hero() {
         echo '<div class="content_section_inner">';
             echo '<div class="inner">';
             echo '<div class="inner_content">';
+            
+            //HOMEPAGE ROTATING 'TYPING' BANNER
+            if( is_home() || is_front_page() ) {
+                echo '<div class="jumbotron" id="hero-animation">';
+                echo '<div class="inner">';
+                echo '<div id="wordstring">High Performance</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+            
             echo '<h1>'.$title.'</h1>';
             if( $subheading ) {
                 echo '<p class="subheading">'.$subheading.'</p>';

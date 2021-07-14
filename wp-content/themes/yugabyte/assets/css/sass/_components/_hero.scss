@@ -186,6 +186,31 @@
         
     }
     
+    .jumbotron {
+        min-height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content:center;
+        margin:0 0 30px;
+    
+        .inner {
+            flex:0 0 auto;
+            //min-width:300px;
+            padding:0;
+            height:60px;
+            border:2px solid $white;
+            box-sizing:border-box;
+        }
+    
+        #wordstring {
+            padding:10px;
+            color:$orange;
+            font-size:2.2em;
+            line-height:40px;
+            letter-spacing:1px;
+        }
+    }
+    
     h1 {
         position:relative;
         display:inline-block;
@@ -197,6 +222,23 @@
         color: $orange;
         text-transform:uppercase;
         border:2px solid $white;
+        
+        .home & {
+            margin:0 0 0.75em;
+            padding:0;
+            border:none;
+            font-size:2em;
+            line-height:1.3em;
+            color: $white;
+            font-weight:$bold;
+            text-transform:none;
+            letter-spacing:0;
+            
+            &:before,
+            &:after {
+                display:none;
+            }
+        }
         
         &:before {
             position:absolute;
@@ -472,6 +514,10 @@
         
             &:after {
                 top:calc(100% + 50px);
+            }
+            
+            br {
+                display:none;
             }
         }
         

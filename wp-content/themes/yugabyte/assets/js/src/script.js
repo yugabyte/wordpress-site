@@ -30,7 +30,32 @@ jQuery(document).ready(function($) {
 	    $(this).toggleClass('showtip');
 	});
 	
-	//ALM FILTERS
+	//JUMBOTRON - HOMEPAGE ROTATING "TYPING" BANNER
+	if( $('#hero-animation.jumbotron').length > 0 ) {
+	    var wordString = "High Performance",
+	        words = ["High Performance", "Resilience", "High Availability", "Scalability", "Compliance"],
+	        wordIndex = 0,
+	        letterIndex = 16,
+	        timeWaited = 0,
+	        interval = null,
+	        typingStatus = "waiting",
+	        looped = false,
+	        // same as color animation
+	        totalWordTypeTime = 5000,
+	        // ANIMATION OPTIONS:
+	        // how many milliseconds a 'frame' lasts. a letter is typed or deleted in 1 frame
+	        frameInterval = 100,
+	        // how many frames to wait after a word has been typed before starting to delete it
+	        // setting loop to false will stop typing after word returns to 'voices'
+	        loop = true;
+	        /*relatedCaseStudies: null,
+	        upcomingEvents: null,
+	        latestInsights: null;*/
+	    
+	    //set initial wordstring
+	    //$('#wordstring').text(wordString);
+	    interval = setInterval(function(){ nextFrame() }, frameInterval);
+	}
 	
 	//init the All items to active
 	$('.alm-filter').each(function() {
@@ -357,6 +382,45 @@ jQuery(document).ready(function($) {
             //nothing to do here yet...
         }
     });
+    
+    function nextFrame() {
+        //console.log('RUNNING NEXTFRAME');
+        var waitingIntervalFrames = totalWordTypeTime - frameInterval * (2 * words[wordIndex].length + 1);
+        switch (typingStatus) {
+            case "typing":
+                if (letterIndex < words[wordIndex].length) {
+                    letterIndex++;
+                } else {
+                    typingStatus = "waiting";
+                    timeWaited = 0;
+                }
+                //console.log('TYPING');
+            break;
+            case "waiting":
+                if ( timeWaited < waitingIntervalFrames ) {
+                    timeWaited += frameInterval;
+                } else if (loop || !looped) {
+                    typingStatus = "deleting";
+                }
+                //console.log('WAITING | TIME WAITED = ' + timeWaited);
+            break;
+            case "deleting":
+                if (letterIndex > 0) {
+                    letterIndex--;
+                } else {
+                    typingStatus = "changingWord";
+                }
+                //console.log('DELETING');
+            break;
+            default:
+                wordIndex = (wordIndex + 1) % words.length;
+                looped = wordIndex === 0;
+                typingStatus = "typing";
+                //console.log('DEFAULT TYPING');
+            break;
+        }
+        $('#wordstring').text(words[wordIndex].substring(0, letterIndex));
+    }
     
     function pushOffHeader() {
         var hInner = $('#masthead').height(),
