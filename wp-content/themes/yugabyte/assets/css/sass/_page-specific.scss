@@ -3138,6 +3138,17 @@
             }
         }
     }
+    
+    &.light-gray,
+    &.light-blue {
+        .contentbuckets {
+            .cont {
+                .inner {
+                    background:$white;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: #{$bp_small}) {

@@ -24,10 +24,13 @@ if( !empty($block['align']) ) {
 }
 
 // Load values and adding defaults.
+$bg_color = get_field('bg_color');
 $heading = get_field('heading');
 //icons
+
+$bg_color_class = ( $bg_color ) ? $bg_color : '';
 ?>
-<div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?>">
+<div id="<?php echo esc_attr($id); ?>" class="content_section <?php echo esc_attr($className); ?> <?php echo $bg_color_class; ?>">
     <div class="content_section_inner centered tall_pad">
         <?php
         if( $heading ) {
