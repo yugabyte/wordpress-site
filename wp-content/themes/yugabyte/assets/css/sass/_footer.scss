@@ -5,6 +5,10 @@
     position:relative;
     background: $white;
     
+    #gated_landing_footer.footer_inner {
+        display:none;
+    }
+    
     .logo {
         display:block;
         width:calc(100% - 60px);
