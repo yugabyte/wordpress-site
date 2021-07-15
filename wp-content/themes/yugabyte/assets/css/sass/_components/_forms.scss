@@ -241,6 +241,10 @@
                 outline:none;
                 border:none;
             }
+            
+            #page.gated_landing & {
+                font-size:0.9em;
+            }
         }
     
         input[type='text'] {
@@ -771,8 +775,39 @@
     
 }
 
-@media only screen and (min-width: 1025px) and (max-width: #{$bp_full}) {
+@media only screen and (min-width: 1025px) and (max-width: 1260px) {
     
+    #content {
+        .gform_wrapper {
+            
+            .gfield_label,
+            .ginput_complex label {
+                font-size:0.9em;
+            
+                #page.gated_landing & {
+                    font-size:0.9em;
+                }
+        
+                &.float_label {
+                
+                    #page.gated_landing & {
+                        font-size:14px;
+                    }
+                }
+        
+            }
     
+            input[type='text'],
+            input[type='number'],
+            input[type='tel'],
+            textarea {
+                font-size: 0.9em;
+            
+                #page.gated_landing & {
+                    font-size:0.9em;
+                }
+            }
+        }
+    }
     
 }

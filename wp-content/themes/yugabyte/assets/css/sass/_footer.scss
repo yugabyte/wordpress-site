@@ -201,7 +201,32 @@
     }
     
     .gated_landing & {
-        display:none;
+        
+        #gated_landing_footer.footer_inner {
+            display:block;
+            background:$gray_lightest;
+            width:100%;
+            
+            p {
+                display:inline-block;
+                margin:0 20px;
+                font-size:0.9em;
+                vertical-align:middle;
+                line-height:1.45em;
+                color:$purple;
+            
+                a {
+                    color: $purple;
+                    &:hover {
+                        color: $orange;
+                    }
+                }
+            }
+        }
+        
+        #default_footer.footer_inner {
+            display:none;
+        }
     }
 }
 
@@ -253,6 +278,33 @@
     
     }
 	
+}
+
+@media screen and (max-width: 480px) {
+    
+    .site-footer {
+        
+        
+        .gated_landing & {
+        
+            #gated_landing_footer.footer_inner {
+                
+                p {
+                    display:block;
+                    margin:0 0 20px;
+                    
+                    &:last-of-type {
+                        margin:0;
+                    }
+                }
+            }
+        
+            #default_footer.footer_inner {
+                display:none;
+            }
+        }
+    }
+    
 }
 
 @media screen and (min-width: 768px) and (max-width: 1024px) {

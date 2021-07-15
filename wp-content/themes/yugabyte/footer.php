@@ -13,7 +13,24 @@
             </div><!-- #main -->
             <footer id="colophon" class="site-footer" role="contentinfo">
                 
-                <div class="footer_inner clearfix">
+                <div id="gated_landing_footer" class="footer_inner clearfix">
+                    <div class="grid extra_wide">
+                        <div class="col-1-1 nopadding centered">
+                            <?php
+                            //COPYRIGHT
+                            $copyright = get_field('copyright', 'option');
+                            if( $copyright ) {
+                                echo '<p class="copyright">&copy; Yugabyte, Inc. 2020-'.date("Y").'</p>';
+                            }
+                            
+                            //HARD-CODED TERMS, PRIVACY
+                                echo '<p><a href="/terms-of-service/">Terms</a>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;<a href="/privacy-policy/">Privacy</a></p>';
+                            ?>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="default_footer" class="footer_inner clearfix">
                     <div class="grid extra_wide">
                         <div class="col-8-12 tablet-col-8-12 mobile-col-1-1 push-right nopadding">
                             <?php

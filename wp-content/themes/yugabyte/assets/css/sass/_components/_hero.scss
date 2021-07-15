@@ -565,6 +565,24 @@
         }
     }
     
+    #hero_gated {
+        .content_section_inner {
+            padding:0 20px;
+        }
+        
+        .logo {
+            width:80%;
+        }
+    
+        h1 {
+            font-size:2.25em;
+        }
+    
+        p {
+            font-size:1em;
+        }
+    }
+    
     #hero {
         
         .content_section_inner {
@@ -658,6 +676,13 @@
 }
 
 @media only screen and (min-width: 768px) and (max-width: 1024px) {
+    
+    #hero_gated {
+        
+        .logo {
+            width:100%;
+        }
+    }
     
     #hero {
         
