@@ -612,6 +612,14 @@
             br {
                 display:none;
             }
+            
+            .home & {
+                font-size:2em;
+                
+                br {
+                    display:inline;
+                }
+            }
         }
         
         p {
@@ -675,7 +683,15 @@
 
 @media only screen and (max-width: 480px) {
     
+    #hero {
     
+        h1 {
+            
+            .home & {
+                font-size:1.5em;
+            }
+        }
+    }
     
 }
 
