@@ -20,6 +20,7 @@ set_hero_gated();
     
                 <?php
                 $gate_form = get_field('gate_form');
+                $legal_note = get_field('legal_note');
                 $pre_gate_label = get_field('pre_gate_label');
                 $pre_gate_label_alt_bg = get_field('pre_gate_label_alt_bg');
                 $pre_gate_img = get_field('pre_gate_img');
@@ -70,6 +71,10 @@ set_hero_gated();
                                         
                                         //SET THE FORM
                                         gravity_form($gate_form['id'], false, false, false, '', true, 1);
+                                        
+                                        if( $legal_note ) {
+                                            echo '<p class="form_footnote">'.$legal_note.'</p>';
+                                        }
                                     }
                                     ?>
                                     </div>
