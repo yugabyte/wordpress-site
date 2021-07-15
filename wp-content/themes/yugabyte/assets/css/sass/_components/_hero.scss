@@ -284,6 +284,26 @@
         #wordstring {
             
         }
+        
+        .cursor-wrapper {
+            display: inline;
+            animation: fadeIn 0.5s both;
+            animation-delay: .8s;
+        }
+        
+        .cursor {
+            display: inline-block;
+            position: absolute;
+            width: 4px;
+            background:$orange;
+            height: 1.1em;
+            transform: translateY(.2rem);
+            animation-name: fadeIn;
+            animation-duration: .6s;
+            animation-direction: alternate;
+            animation-iteration-count: infinite;
+            margin-left: .25rem;
+        }
     }
     
     h1 {
@@ -305,7 +325,7 @@
             font-size:3em;
             line-height:1.3em;
             color: $white;
-            font-weight:$bold;
+            font-weight:$semibold;
             text-transform:none;
             letter-spacing:0;
             
@@ -595,6 +615,13 @@
     
         .inner {
             flex:0 0 100%;
+        }
+        
+        .jumbotron {
+            
+            .cursor {
+                width: 3px;
+            }
         }
     
         h1 {

@@ -341,7 +341,7 @@ function set_hero() {
             if( is_home() || is_front_page() ) {
                 echo '<div class="jumbotron" id="hero-animation">';
                 echo '<div class="inner">';
-                echo '<h1><span>The&nbsp;</span><span id="wordstring">Resilient</span><br /><span>Distributed SQL Database</span></h1>';
+                echo '<h1><span>The&nbsp;</span><span id="wordstring">Resilient</span><div class="cursor-wrapper"><span class="cursor"></span></div><br /><span>Distributed SQL Database</span></h1>';
                 echo '</div>';
                 echo '</div>';
             }

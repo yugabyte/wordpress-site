@@ -18,6 +18,15 @@ $blue: #2b59c3;
     background-color: rgba($color, $opacity);
 }
 
+@keyframes fadeIn {
+  0% {
+    opacity: 0.0001;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 // Gutenberg color options
 // -- see editor-color-palette in functions.php
 $colors: (
