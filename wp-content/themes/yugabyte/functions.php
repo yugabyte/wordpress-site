@@ -341,12 +341,12 @@ function set_hero() {
             if( is_home() || is_front_page() ) {
                 echo '<div class="jumbotron" id="hero-animation">';
                 echo '<div class="inner">';
-                echo '<div id="wordstring">High Performance</div>';
+                echo '<h1><span>The&nbsp;</span><span id="wordstring">Resilient</span><br /><span>Distributed SQL Database</span></h1>';
                 echo '</div>';
                 echo '</div>';
             }
             
-            echo '<h1>'.$title.'</h1>';
+            //echo '<h1>'.$title.'</h1>';
             if( $subheading ) {
                 echo '<p class="subheading">'.$subheading.'</p>';
             }

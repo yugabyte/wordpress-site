@@ -258,27 +258,31 @@
     }
     
     .jumbotron {
-        min-height: 80px;
+        /*min-height: 80px;
         display: flex;
         align-items: center;
-        justify-content:center;
-        margin:0 0 30px;
+        justify-content:center;*/
+        margin:0;
     
         .inner {
             flex:0 0 auto;
             //min-width:300px;
             padding:0;
-            height:68px;
-            border:2px solid $white;
+            //height:68px;
+            //border:2px solid $white;
             box-sizing:border-box;
         }
-    
-        #wordstring {
-            padding:12px;
+        
+        span {
+            /*padding:12px 0;
             color:$orange;
             font-size:2.2em;
             line-height:40px;
-            letter-spacing:1px;
+            letter-spacing:1px;*/
+        }
+    
+        #wordstring {
+            
         }
     }
     
@@ -298,7 +302,7 @@
             margin:0 0 0.75em;
             padding:0;
             border:none;
-            font-size:2em;
+            font-size:3em;
             line-height:1.3em;
             color: $white;
             font-weight:$bold;

@@ -32,19 +32,19 @@ jQuery(document).ready(function($) {
 	
 	//JUMBOTRON - HOMEPAGE ROTATING "TYPING" BANNER
 	if( $('#hero-animation.jumbotron').length > 0 ) {
-	    var wordString = "High Performance",
-	        words = ["High Performance", "Resilience", "High Availability", "Scalability", "Compliance"],
+	    var wordString = "Resilient",
+	        words = ["Resilient", "Scalable", "High Performance"],
 	        wordIndex = 0,
-	        letterIndex = 16,
+	        letterIndex = 9,
 	        timeWaited = 0,
 	        interval = null,
 	        typingStatus = "waiting",
 	        looped = false,
 	        // same as color animation
-	        totalWordTypeTime = 5000,
+	        totalWordTypeTime = 3500,
 	        // ANIMATION OPTIONS:
 	        // how many milliseconds a 'frame' lasts. a letter is typed or deleted in 1 frame
-	        frameInterval = 100,
+	        frameInterval = 50,
 	        // how many frames to wait after a word has been typed before starting to delete it
 	        // setting loop to false will stop typing after word returns to 'voices'
 	        loop = true;
