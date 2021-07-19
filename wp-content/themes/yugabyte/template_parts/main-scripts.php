@@ -250,7 +250,9 @@ window.onload = function () {
 				} else if (window.location.pathname.match(/dzone-data-persistence-report-2021/)) {
 					url = `${SERVICE_URL}/dzone-data-persistence-2021/download`;
 				} else if (window.location.pathname.match(/catalysts-of-change-retail-fireside-chat-kohls/)) {
-					url= `${SERVICE_URL}/retail-fireside-chat/register`;
+					url = `${SERVICE_URL}/retail-fireside-chat/register`;
+				} else if (window.location.pathname.match(/worldremit-webinar-july-27-2021/)) {
+					url = `${SERVICE_URL}/worldremit-webinar-july-2021/register`;
 				}
 				if (url) {
 					fetch(url, {
