@@ -344,9 +344,10 @@ function set_hero() {
                 echo '<h1><span>The&nbsp;</span><span id="wordstring">Resilient</span><div class="cursor-wrapper"><span class="cursor"></span></div><br /><span>Distributed SQL Database</span></h1>';
                 echo '</div>';
                 echo '</div>';
+            } else {
+                echo '<h1>'.$title.'</h1>';
             }
             
-            //echo '<h1>'.$title.'</h1>';
             if( $subheading ) {
                 echo '<p class="subheading">'.$subheading.'</p>';
             }
