@@ -258,7 +258,11 @@ sub {
         color:$gray;
     }
     ol li {
-        list-style: decimal;
+        list-style: none;
+        
+        &::marker {
+            display: none;
+        }
     }
         
     ul li {
