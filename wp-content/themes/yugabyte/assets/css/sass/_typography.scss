@@ -263,6 +263,13 @@ sub {
         &::marker {
             display: none;
         }
+
+        code {
+            border-radius: 4px;
+            background: #e6efff;
+            border: 1px solid #DEE0EA;
+            padding: 2px 4px;
+        }
     }
         
     ul li {
