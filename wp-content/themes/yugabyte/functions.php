@@ -95,7 +95,7 @@ function kill_parent_load_child_style() {
 	    wp_enqueue_script( 'custom_script' );
 	}
 		
-	wp_enqueue_style('yugabyte-style', get_stylesheet_directory_uri().'/assets/css/dist/screen.min.css');
+	wp_enqueue_style('yugabyte-style', get_stylesheet_directory_uri().'/assets/css/dist/screen.min.css', array(), '20210909');
     wp_enqueue_style( 'dashicons' );
     wp_enqueue_style( 'font-awesome', '//maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css' );
 }
