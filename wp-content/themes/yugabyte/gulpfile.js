@@ -1,6 +1,6 @@
 // Gulp Imports
 var gulp        = require ('gulp');
-var sass        = require ('gulp-sass');
+var sass        = require ('gulp-sass')(require('sass'));
 var prefix      = require ('gulp-autoprefixer');
 var concat      = require ('gulp-concat');
 var rename      = require ('gulp-rename');
@@ -73,4 +73,4 @@ gulp.task ( 'serve', function(){
 
 });
 
-gulp.task( 'default', [ 'serve', 'styles', 'scripts', 'watch']);    // initial task
+gulp.task( 'default', gulp.series('serve', 'styles', 'scripts', 'watch'));    // initial task
