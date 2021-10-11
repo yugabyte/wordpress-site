@@ -79,6 +79,8 @@ wp-content/plugins
 /wp-content/plugins/index.php
 /wp-content/plugins/akismet*
 
+node_modules
+
 # large/disallowed file types
 # a CDN should be used for these
 *.hqx
