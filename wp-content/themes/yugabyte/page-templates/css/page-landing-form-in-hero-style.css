@@ -1,0 +1,57 @@
+.gform_wrapper {
+	margin-top: 0px !important;
+	margin-bottom: 0px !important;
+}
+body .gform_wrapper ul li.gfield {
+	margin-top: 0px !important;
+}
+.gform_wrapper li.hidden_label input {
+	margin-top: 0px !important;
+}
+.gform_wrapper .top_label li.gfield.gf_left_half .ginput_container:not(.gfield_time_hour):not(.gfield_time_minute):not(.gfield_time_ampm):not(.ginput_container_date):not(.ginput_quantity):not(.datepicker):not(.gfield_signature_container),
+.gform_wrapper .top_label li.gfield.gf_right_half .ginput_container:not(.gfield_time_hour):not(.gfield_time_minute):not(.gfield_time_ampm):not(.ginput_container_date):not(.ginput_quantity):not(.datepicker):not(.gfield_signature_container) {
+	margin-top: 4px !important;
+}
+.gform_wrapper .gform_footer {
+	padding: 0px !important;
+	margin-top: 4px !important;
+}
+.gform_wrapper input:not([type=radio]):not([type=checkbox]):not([type=image]):not([type=file]) {
+	line-height: 1 !important;
+}
+
+.btn a,
+.wp-block-button__link,
+a span.btn, a.btn, button.btn,
+button.gpnf-add-entry,
+input[type=image],
+input[type=submit],
+input[type=button] {
+	padding: 2px 4px !important;
+	margin: 0px !important;
+}
+p.form_footnote {
+	margin: 4px 0px 0px 0px;
+    font-size: 0.75em !important;
+    color: #fff !important;
+}
+div.gform_confirmation_message {
+    color: #fff !important;
+}
+@media only screen and (max-width: 1024px) {
+	#hero_alt h1 {
+	    width: 75% !important;
+	    font-size: 2em !important;
+	}
+}
+@media only screen and (max-width: 768px) {
+	#hero_alt h1 {
+	    width: 100% !important;
+	    font-size: 1.5em !important;
+	}
+}
+@media only screen and (max-width: 480px) {
+	p.form_footnote {
+		font-size: 0.5em !important;
+	}
+}
